@@ -136,6 +136,42 @@ SDNA *ReadSDNA(std::ifstream& file, uint64_t data_offset, uint64_t data_length) 
     return sdna;
 }
 
+void Int32ToChar(char a[], int32_t n) {
+    memcpy(a, &n, sizeof(int32_t));
+}
+
+int32_t CharToInt32(char a, char b, char c, char d) {
+    return (int32_t(d) << 24 | int32_t(c) << 16 | int32_t(b) << 8 | int32_t(a));
+}
+
+/* See init_structDNA() in dna_genfile.cc, called after ReadSDNA fetches the data and stores it in sdna->data */
+void InitalizeSDNA(SDNA *sdna) {
+    int *data = (int*)sdna->data;
+
+    sdna->types = nullptr;
+    sdna->types_size = nullptr;
+    sdna->types_alignment = nullptr;
+    sdna->structs = nullptr;
+    // sdna->type_to_structs_map = nullptr;
+    sdna->members = nullptr;
+    sdna->members_array_num = nullptr;
+
+    if (*data != CharToInt32('S', 'D', 'N', 'A')) {
+        throw std::runtime_error("SDNA error in SDNA file");
+    }
+
+    data++;
+    if (*data == CharToInt32('N', 'A', 'M', 'E')) {
+        data++;
+        sdna->members_num = *data;
+        sdna->members_num_alloc = sdna->members_num;
+
+        data++;
+        sdna->members = new const char*[sdna->members_num];
+        memset(sdna->members, 0, sdna->members_num * sizeof(const char*));
+    }
+}
+
 
 
 BlendFile ReadBlendFile(const char* path) {
@@ -194,12 +230,12 @@ BlendFile ReadBlendFile(const char* path) {
 
     result.file_SDNA = ReadSDNA(file, result.block_header_list.last->perv->file_offset, result.block_header_list.last->perv->block_header.len);
 
+    InitalizeSDNA(result.file_SDNA);
+
     return result;
 }
 
-void Int32ToChar(char a[], int32_t n) {
-    memcpy(a, &n, sizeof(int32_t));
-}
+
 
 int main() {
 
@@ -228,5 +264,6 @@ int main() {
         node = node->next;
     }
 
-    std::cout.write(blendFile.file_SDNA->data, blendFile.file_SDNA->data_size);
+    // std::cout.write(blendFile.file_SDNA->data, blendFile.file_SDNA->data_size);
+    std::cout << blendFile.file_SDNA->members_num << "\n";
 }
