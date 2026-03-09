@@ -117,25 +117,21 @@ int main() {
     std::cout << "format version: " << blendFile.format_version << "\n";
     std::cout << "blender version: " << blendFile.blender_version << "\n";
 
-    std::cout << "\nblock:\n";
-    BlockHeader& block_header = blendFile.block_header_list.first->block_header;
-    char code[sizeof(int32_t) + 1];
-    code[sizeof(int32_t)] = '\0';
-    Int32ToChar(code, block_header.code);
-    std::cout << "code: " << code << "\n";
-    std::cout << "SDNA struct type: " << block_header.SDNAnr << "\n";
-    std::cout << "old pointer: " << block_header.old_pointer << "\n";
-    std::cout << "byte length: " << block_header.len << "\n";
-    std::cout << "number of structs: " << block_header.nr << "\n";
+    BlockHeaderNode* node = blendFile.block_header_list.first;
+    while(node) {
+        const BlockHeader& block_header = node->block_header;
+        std::cout << "\nblock\n";
 
-    std::cout << "\nblock:\n";
-    BlockHeader& block_header2 = blendFile.block_header_list.first->next->block_header;
-    char code2[sizeof(int32_t) + 1];
-    code[sizeof(int32_t)] = '\0';
-    Int32ToChar(code2, block_header2.code);
-    std::cout << "code: " << code2 << "\n";
-    std::cout << "SDNA struct type: " << block_header2.SDNAnr << "\n";
-    std::cout << "old pointer: " << block_header2.old_pointer << "\n";
-    std::cout << "byte length: " << block_header2.len << "\n";
-    std::cout << "number of structs: " << block_header2.nr << "\n";
+        char code_cstr[sizeof(uint32_t)+ 1];
+        code_cstr[sizeof(uint32_t)] = '\0';
+        Int32ToChar(code_cstr, block_header.code);
+        std::cout << "code:" << code_cstr << "\n";
+
+        std::cout << "SDNA struct type: " << block_header.SDNAnr << "\n";
+        std::cout << "old pointer: " << block_header.old_pointer << "\n";
+        std::cout << "byte length: " << block_header.len << "\n";
+        std::cout << "number of structs: " << block_header.nr << "\n";
+
+        node = node->next;
+    }
 }
