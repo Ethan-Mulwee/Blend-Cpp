@@ -144,9 +144,13 @@ int32_t CharToInt32(char a, char b, char c, char d) {
     return (int32_t(d) << 24 | int32_t(c) << 16 | int32_t(b) << 8 | int32_t(a));
 }
 
+const char* PadTo4(const char* ptr) {
+    return (const char*)((uintptr_t(ptr) + 3) & ~3);
+}
+
 /* See init_structDNA() in dna_genfile.cc, called after ReadSDNA fetches the data and stores it in sdna->data */
 void InitalizeSDNA(SDNA *sdna) {
-    int *data = (int*)sdna->data;
+    int *data_pointer = (int*)sdna->data;
 
     sdna->types = nullptr;
     sdna->types_size = nullptr;
@@ -156,20 +160,53 @@ void InitalizeSDNA(SDNA *sdna) {
     sdna->members = nullptr;
     sdna->members_array_num = nullptr;
 
-    if (*data != CharToInt32('S', 'D', 'N', 'A')) {
-        throw std::runtime_error("SDNA error in SDNA file");
+    if (*data_pointer != CharToInt32('S', 'D', 'N', 'A')) {
+        throw std::runtime_error("Error reading SDNA header");
     }
 
-    data++;
-    if (*data == CharToInt32('N', 'A', 'M', 'E')) {
-        data++;
-        sdna->members_num = *data;
+    data_pointer++;
+    if (*data_pointer == CharToInt32('N', 'A', 'M', 'E')) {
+        data_pointer++;
+        sdna->members_num = *data_pointer;
         sdna->members_num_alloc = sdna->members_num;
 
-        data++;
+        data_pointer++;
         sdna->members = new const char*[sdna->members_num];
         memset(sdna->members, 0, sdna->members_num * sizeof(const char*));
+    } else {
+        throw std::runtime_error("Error reading SDNA NAME header");
     }
+
+    /* Find member names */
+    const char *member_pointer = (char*)data_pointer;
+    for (int member_index = 0; member_index < sdna->members_num; member_index++) {
+        sdna->members[member_index] = member_pointer;
+
+        /* Keep going until you find null terminator */
+        while(*member_pointer) {
+            member_pointer++;
+        }
+        /* Go to next member name */
+        member_pointer++;
+    }
+
+    member_pointer = PadTo4(member_pointer);
+
+    /* Find type names */
+    data_pointer = (int*)member_pointer;
+    if (*data_pointer == CharToInt32('T', 'Y', 'P', 'E')) {
+        data_pointer++;
+
+        sdna->types_num = *data_pointer;
+
+        data_pointer++;
+        sdna->types = new const char*[sdna->types_num];
+        memset(sdna->types, 0, sdna->types_num * sizeof(const char*));
+    } else {
+        throw std::runtime_error("Error reading SDNA TYPE header");
+    }
+
+
 }
 
 
@@ -265,5 +302,10 @@ int main() {
     }
 
     // std::cout.write(blendFile.file_SDNA->data, blendFile.file_SDNA->data_size);
-    std::cout << blendFile.file_SDNA->members_num << "\n";
+    std::cout << "\nNumber of members: " << blendFile.file_SDNA->members_num << "\nMembers: \n";
+    for (int i = 0; i < blendFile.file_SDNA->members_num; i++) {
+        std::cout << blendFile.file_SDNA->members[i] << "\n";
+    }
+
+    std::cout << "\nNumber of types: " << blendFile.file_SDNA->types_num << "\nTypes: \n";
 }
