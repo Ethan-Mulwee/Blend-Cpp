@@ -119,7 +119,7 @@ struct BlendFile {
 
     BlockHeaderList block_header_list;
 
-    SDNA *file_SDNA;
+    SDNA *SDNA;
 };
 
 // const char* ReadBlock()
@@ -147,6 +147,39 @@ int32_t CharToInt32(char a, char b, char c, char d) {
 
 const char* PadTo4(const char* ptr) {
     return (const char*)((uintptr_t(ptr) + 3) & ~3);
+}
+
+/* See dna_utils.cc */
+int DNA_member_array_num(const char *str) {
+    int result = 1;
+    int current = 0;
+    while (true) {
+        char c = *str++;
+        switch(c) {
+            case '\0':
+                return result;
+            case '[':
+                current = 0;
+                break;
+            case ']':
+                result *= current;
+                break;
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                current = current * 10 + (c - '0');
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 /* See init_structDNA() in dna_genfile.cc, called after ReadSDNA fetches the data and stores it in sdna->data */
@@ -179,6 +212,8 @@ void InitalizeSDNA(SDNA *sdna) {
         sdna->members = new const char*[sdna->members_num];
         // Zero new array
         memset(sdna->members, 0, sdna->members_num * sizeof(const char*));
+
+        sdna->members_array_num = new short[sdna->members_num];
     } else {
         throw std::runtime_error("Error reading SDNA NAME header");
     }
@@ -197,6 +232,11 @@ void InitalizeSDNA(SDNA *sdna) {
     }
 
     member_pointer = PadTo4(member_pointer);
+
+    /* Find array numbers */
+    for (int member_index = 0; member_index < sdna->members_num; member_index++) {
+        sdna->members_array_num[member_index] = DNA_member_array_num(sdna->members[member_index]); 
+    }
 
     /* ---------------------------------- Types --------------------------------- */
 
@@ -241,7 +281,7 @@ void InitalizeSDNA(SDNA *sdna) {
         sdna->types_size = type_length_pointer;
         type_length_pointer += sdna->types_num;
     } else {
-        throw std::runtime_error("Error reading SDNA TYPE LENGTH header");
+        throw std::runtime_error("Error reading SDNA TYPE LENGTH (TLEN) header");
     }
 
     /* prevent BUS error? honestly not sure why this is here */
@@ -259,12 +299,23 @@ void InitalizeSDNA(SDNA *sdna) {
         sdna->structs = new SDNA_Struct*[sdna->structs_num];
         memset(sdna->structs, 0, sdna->structs_num * sizeof(SDNA_Struct));
     } else {
-        throw std::runtime_error("Error reading SDNA STRCUT ARRAY header");
+        throw std::runtime_error("Error reading SDNA STRCUT ARRAY (STRC) header");
     }
 
     /* 
      * Blender does a check to ensure the same struct index isn't used twice here 
      * but I'm not going to bother at least for now
+     */
+
+    short* struct_pointer = (short*)data_pointer;
+    for (int struct_index = 0; struct_index < sdna->structs_num; struct_index++) {
+        SDNA_Struct *struct_info = (SDNA_Struct*)struct_pointer;
+        sdna->structs[struct_index] = struct_info;
+    }
+
+    /* 
+     * Here pointer_size is normally calculated but since this is for blender 5.0 
+     * 64bit or 8 bytes is assumed by this library 
      */
 
     
@@ -326,9 +377,9 @@ BlendFile ReadBlendFile(const char* path) {
 
     file.clear();
 
-    result.file_SDNA = ReadSDNA(file, result.block_header_list.last->perv->file_offset, result.block_header_list.last->perv->block_header.len);
+    result.SDNA = ReadSDNA(file, result.block_header_list.last->perv->file_offset, result.block_header_list.last->perv->block_header.len);
 
-    InitalizeSDNA(result.file_SDNA);
+    InitalizeSDNA(result.SDNA);
 
     return result;
 }
@@ -363,13 +414,14 @@ int main() {
     }
 
     // std::cout.write(blendFile.file_SDNA->data, blendFile.file_SDNA->data_size);
-    std::cout << "\nNumber of members: " << blendFile.file_SDNA->members_num << "\nMembers: \n";
-    for (int i = 0; i < blendFile.file_SDNA->members_num; i++) {
-        std::cout << blendFile.file_SDNA->members[i] << "\n";
+
+    std::cout << "\nNumber of members: " << blendFile.SDNA->members_num << "\nMembers: \n";
+    for (int i = 0; i < blendFile.SDNA->members_num; i++) {
+        std::cout << blendFile.SDNA->members[i] << ", Array length: " << blendFile.SDNA->members_array_num[i] << "\n";
     }
 
-    std::cout << "\nNumber of types: " << blendFile.file_SDNA->types_num << "\nTypes: \n";
-        for (int i = 0; i < blendFile.file_SDNA->types_num; i++) {
-        std::cout << blendFile.file_SDNA->types[i] << "\n";
+    std::cout << "\nNumber of types: " << blendFile.SDNA->types_num << "\nTypes: \n";
+        for (int i = 0; i < blendFile.SDNA->types_num; i++) {
+        std::cout << blendFile.SDNA->types[i] << "\n";
     }
 }
