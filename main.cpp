@@ -320,6 +320,13 @@ void InitalizeSDNA(SDNA *sdna) {
      * 64bit or 8 bytes is assumed by this library 
      */
 
+    // TODO: alignment
+
+    /* ----------------------------- Type Alignment ----------------------------- */
+    sdna->types_alignment = new int[sdna->types_num];
+    for (int type_index = 0; type_index < sdna->types_num; type_index++) {
+       sdna->types_alignment[type_index] = int(16UL);
+    }
     
 }
 
@@ -438,7 +445,33 @@ int main() {
                 std::cout << "(Name): " << blend_file.sdna->members[member.member_index] << "\n";
             }
             std::cout << "Type index:" << struct_pointer->type_index << "\n";
+            std::cout << "True index:" << i << "\n";
             std::cout << "Type name:" << blend_file.sdna->types[struct_pointer->type_index] << "\n";
             std::cout << "\n\n";
     }
+
+    std::fstream decoded_block_output("blocks.txt", std::ios::out);
+    node = blend_file.block_header_list.first;
+    while(node) {
+        const BlockHeader& block_header = node->block_header;
+        decoded_block_output << "\nblock\n";
+
+        char code_cstr[sizeof(uint32_t)+ 1];
+        code_cstr[sizeof(uint32_t)] = '\0';
+        Int32ToChar(code_cstr, block_header.code);
+        decoded_block_output << "code:" << code_cstr << "\n";
+
+        decoded_block_output << "SDNA struct type: " << block_header.SDNAnr << "\n";
+        SDNA_Struct* struct_info = blend_file.sdna->structs[block_header.SDNAnr];
+        // decoded_block_output << "SDNA struct type name: " << blend_file.sdna->types[block_header.SDNAnr] << "\n";
+        decoded_block_output << "Members num: " << struct_info->members_num << "\n";
+        decoded_block_output << "Struct type name: " << blend_file.sdna->types[struct_info->type_index] << "\n";
+        decoded_block_output << "old pointer: " << block_header.old_pointer << "\n";
+        decoded_block_output << "byte length: " << block_header.len << "\n";
+        decoded_block_output << "number of structs: " << block_header.nr << "\n";
+
+        node = node->next;
+    }
+
+    decoded_block_output.close();
 }
