@@ -390,14 +390,47 @@ BlendFile ReadBlendFile(const char* path) {
 
     InitalizeSDNA(result.sdna);
 
+    /* TODO: see blo_read_file_internal(), read_libblock(), and read_struct() */
+
+    /* read_struct seems to return an array of data which is the data section of block headers 
+     * which is then cast to an ID*? which doesn't really make any sense to me */
+
+
+     /* readfile.cc line 3486 "Read datablock contents." */
+
+     /* oldnewmap_insert() it seems datablock contents get put in fd->datamap*/
+
+     /* blo_do_version_500() & do_versions seems to do that actual reading of data into the software */
+
+     /*  
+      * In blo_read_file_Internal before do_versions happens it seems bmain is where all the data is gathered
+      * then MainListsArray lbarray = BKE_main_lists_get(*bmain) shows how to read IDs?
+      */
+
     return result;
 }
 
+void ExtractSDNATypesToHeaderFile(const BlendFile& blend_file) {
+    std::fstream file("sdna_structs.h", std::ios::out);
 
+    for (int i = 0; i < blend_file.sdna->structs_num; i++) {
+        SDNA_Struct* struct_pointer = blend_file.sdna->structs[i];
+        file << "struct " << blend_file.sdna->types[struct_pointer->type_index] << " { \n";
+        for (int member_index = 0; member_index < struct_pointer->members_num; member_index++) {
+            SDNA_StructMember member = struct_pointer->members[member_index];
+            file << "\t" << blend_file.sdna->types[member.type_index] << " ";
+            file << "" << blend_file.sdna->members[member.member_index] << ";\n";
+        }
+        file << "}; \n\n";
+    }
+
+    file.close();
+}
 
 int main() {
 
     BlendFile blend_file = ReadBlendFile("Cube.blend");
+    ExtractSDNATypesToHeaderFile(blend_file);
 
     std::cout << "header: " << blend_file.header << "\n";
     std::cout << "length: " << blend_file.header_length << "\n";
@@ -441,14 +474,14 @@ int main() {
             std::cout << "Members: \n";
             for (int member_index = 0; member_index < struct_pointer->members_num; member_index++) {
                 SDNA_StructMember member = struct_pointer->members[member_index];
-                std::cout << "(Type): " << blend_file.sdna->types[member.type_index] << ", ";
-                std::cout << "(Name): " << blend_file.sdna->members[member.member_index] << "\n";
+                std::cout << "" << blend_file.sdna->types[member.type_index] << " ";
+                std::cout << "" << blend_file.sdna->members[member.member_index] << ";\n";
             }
             std::cout << "Type index:" << struct_pointer->type_index << "\n";
             std::cout << "True index:" << i << "\n";
             std::cout << "Type name:" << blend_file.sdna->types[struct_pointer->type_index] << "\n";
             std::cout << "\n\n";
-    }
+        }
 
     std::fstream decoded_block_output("blocks.txt", std::ios::out);
     node = blend_file.block_header_list.first;
