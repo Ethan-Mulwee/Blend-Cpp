@@ -119,7 +119,7 @@ struct BlendFile {
 
     BlockHeaderList block_header_list;
 
-    SDNA *SDNA;
+    SDNA *sdna;
 };
 
 // const char* ReadBlock()
@@ -311,6 +311,8 @@ void InitalizeSDNA(SDNA *sdna) {
     for (int struct_index = 0; struct_index < sdna->structs_num; struct_index++) {
         SDNA_Struct *struct_info = (SDNA_Struct*)struct_pointer;
         sdna->structs[struct_index] = struct_info;
+
+        struct_pointer += 2 + (sizeof(SDNA_StructMember) / sizeof(short)) * struct_info->members_num;
     }
 
     /* 
@@ -377,9 +379,9 @@ BlendFile ReadBlendFile(const char* path) {
 
     file.clear();
 
-    result.SDNA = ReadSDNA(file, result.block_header_list.last->perv->file_offset, result.block_header_list.last->perv->block_header.len);
+    result.sdna = ReadSDNA(file, result.block_header_list.last->perv->file_offset, result.block_header_list.last->perv->block_header.len);
 
-    InitalizeSDNA(result.SDNA);
+    InitalizeSDNA(result.sdna);
 
     return result;
 }
@@ -388,14 +390,14 @@ BlendFile ReadBlendFile(const char* path) {
 
 int main() {
 
-    BlendFile blendFile = ReadBlendFile("Cube.blend");
+    BlendFile blend_file = ReadBlendFile("Cube.blend");
 
-    std::cout << "header: " << blendFile.header << "\n";
-    std::cout << "length: " << blendFile.header_length << "\n";
-    std::cout << "format version: " << blendFile.format_version << "\n";
-    std::cout << "blender version: " << blendFile.blender_version << "\n";
+    std::cout << "header: " << blend_file.header << "\n";
+    std::cout << "length: " << blend_file.header_length << "\n";
+    std::cout << "format version: " << blend_file.format_version << "\n";
+    std::cout << "blender version: " << blend_file.blender_version << "\n";
 
-    BlockHeaderNode* node = blendFile.block_header_list.first;
+    BlockHeaderNode* node = blend_file.block_header_list.first;
     while(node) {
         const BlockHeader& block_header = node->block_header;
         std::cout << "\nblock\n";
@@ -415,13 +417,21 @@ int main() {
 
     // std::cout.write(blendFile.file_SDNA->data, blendFile.file_SDNA->data_size);
 
-    std::cout << "\nNumber of members: " << blendFile.SDNA->members_num << "\nMembers: \n";
-    for (int i = 0; i < blendFile.SDNA->members_num; i++) {
-        std::cout << blendFile.SDNA->members[i] << ", Array length: " << blendFile.SDNA->members_array_num[i] << "\n";
+    std::cout << "\nNumber of members: " << blend_file.sdna->members_num << "\nMembers: \n";
+    for (int i = 0; i < blend_file.sdna->members_num; i++) {
+        std::cout << blend_file.sdna->members[i] << ", Array length: " << blend_file.sdna->members_array_num[i] << "\n";
     }
 
-    std::cout << "\nNumber of types: " << blendFile.SDNA->types_num << "\nTypes: \n";
-        for (int i = 0; i < blendFile.SDNA->types_num; i++) {
-        std::cout << blendFile.SDNA->types[i] << "\n";
+    std::cout << "\nNumber of types: " << blend_file.sdna->types_num << "\nTypes: \n";
+        for (int i = 0; i < blend_file.sdna->types_num; i++) {
+        std::cout << blend_file.sdna->types[i] << "\n";
+    }
+
+    std::cout << "\nNumber of structs: " << blend_file.sdna->structs_num << "\nTypes: \n";
+        for (int i = 0; i < blend_file.sdna->structs_num; i++) {
+            SDNA_Struct* struct_pointer = blend_file.sdna->structs[i];
+            std::cout << "Members num:" << struct_pointer->members_num << "\n";
+            std::cout << "Type index:" << struct_pointer->type_index << "\n";
+            std::cout << "Type name:" << blend_file.sdna->types[struct_pointer->type_index] << "\n";
     }
 }
