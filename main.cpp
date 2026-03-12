@@ -413,6 +413,14 @@ BlendFile ReadBlendFile(const char* path) {
 void ExtractSDNATypesToHeaderFile(const BlendFile& blend_file) {
     std::fstream file("sdna_structs.h", std::ios::out);
 
+    /* forward declaration to avoid ordering issues */
+    for (int i = 0; i < blend_file.sdna->structs_num; i++) {
+        SDNA_Struct* struct_pointer = blend_file.sdna->structs[i];
+        file << "struct " << blend_file.sdna->types[struct_pointer->type_index] << ";\n";
+    }
+
+    file << "\n";
+
     for (int i = 0; i < blend_file.sdna->structs_num; i++) {
         SDNA_Struct* struct_pointer = blend_file.sdna->structs[i];
         file << "struct " << blend_file.sdna->types[struct_pointer->type_index] << " { \n";
@@ -430,6 +438,7 @@ void ExtractSDNATypesToHeaderFile(const BlendFile& blend_file) {
 int main() {
 
     BlendFile blend_file = ReadBlendFile("Cube.blend");
+    /* TODO: some types don't have any structs defining such as GPUBatchHandle them why is this? */
     ExtractSDNATypesToHeaderFile(blend_file);
 
     std::cout << "header: " << blend_file.header << "\n";
@@ -480,6 +489,7 @@ int main() {
             std::cout << "Type index:" << struct_pointer->type_index << "\n";
             std::cout << "True index:" << i << "\n";
             std::cout << "Type name:" << blend_file.sdna->types[struct_pointer->type_index] << "\n";
+            // std::cout << "Type name2:" << blend_file.sdna->types[i] << "\n";
             std::cout << "\n\n";
         }
 
