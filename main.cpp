@@ -434,6 +434,9 @@ void ExtractSDNATypesToHeaderFile(const BlendFile& blend_file) {
     /* These members have size zero and are almost exclusively just named pointers */
     for (int i = 0; i < blend_file.sdna->types_num; i++) {
         const char* type = blend_file.sdna->types[i];
+        if ((strcmp(type, "void") == 0) || (strcmp(type, "bool") == 0) || (strcmp(type, "raw_data") == 0)) {
+            continue;
+        }
         if (blend_file.sdna->types_size[i] == 0) {
             file << "typedef void " << type << ";\n";
         }
