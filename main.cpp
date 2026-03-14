@@ -131,21 +131,6 @@ struct BlendFile {
     SDNA *sdna;
 };
 
-// const char* ReadBlock()
-
-SDNA *ReadSDNA(std::ifstream& file, uint64_t data_offset, uint64_t data_length) {
-    SDNA *sdna = new SDNA();
-
-    sdna->data_size = data_length;
-    char* data = new char[data_length];
-    file.seekg(data_offset);
-    file.read(data, data_length);
-
-    sdna->data = data;
-
-    return sdna;
-}
-
 void Int32ToChar(char a[], int32_t n) {
     memcpy(a, &n, sizeof(int32_t));
 }
@@ -339,7 +324,20 @@ void InitalizeSDNA(SDNA *sdna) {
     
 }
 
+SDNA *ReadSDNA(std::ifstream& file, uint64_t data_offset, uint64_t data_length) {
+    SDNA *sdna = new SDNA();
 
+    sdna->data_size = data_length;
+    char* data = new char[data_length];
+    file.seekg(data_offset);
+    file.read(data, data_length);
+
+    sdna->data = data;
+
+    InitalizeSDNA(sdna);
+
+    return sdna;
+}
 
 BlendFile ReadBlendFile(const char* path) {
     BlendFile result;
@@ -398,8 +396,6 @@ BlendFile ReadBlendFile(const char* path) {
     file.clear();
 
     result.sdna = ReadSDNA(file, result.block_header_list.last->perv->file_offset, result.block_header_list.last->perv->block_header.len);
-
-    InitalizeSDNA(result.sdna);
 
     return result;
 }
