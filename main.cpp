@@ -125,7 +125,8 @@ struct BlendFile {
 
     BlockHeaderList block_header_list;
 
-    std::map<uint64_t, uint64_t> pointer_to_block_mapping;
+    /* TODO: replace this with a more efficent structure later */
+    std::map<void*, void*> pointer_to_block_mapping;
 
     SDNA *sdna;
 };
@@ -389,6 +390,8 @@ BlendFile ReadBlendFile(const char* path) {
 
         result.block_header_list.add(block_header_node);
 
+        // result.pointer_to_block_mapping.insert(block_header.old_pointer, ...); need to have data read to memory before you can do this
+
         file.seekg(block_header.len, std::ios::seekdir::_S_cur);
     }
 
@@ -398,32 +401,8 @@ BlendFile ReadBlendFile(const char* path) {
 
     InitalizeSDNA(result.sdna);
 
-    /* TODO: see blo_read_file_internal(), read_libblock(), and read_struct() */
-
-    /* read_struct seems to return an array of data which is the data section of block headers 
-     * which is then cast to an ID*? which doesn't really make any sense to me */
-
-
-     /* readfile.cc line 3486 "Read datablock contents." */
-
-     /* oldnewmap_insert() it seems datablock contents get put in fd->datamap*/
-
-     /* blo_do_version_500() & do_versions seems to do that actual reading of data into the software */
-
-     /*  
-      * In blo_read_file_Internal before do_versions happens it seems bmain is where all the data is gathered
-      * then MainListsArray lbarray = BKE_main_lists_get(*bmain) shows how to read IDs?
-      */
-
     return result;
 }
-
-/*
- * TODO: some types don't have structs defining them however you do have access to the sizeof the type
- * so you can make placeholder dummy types
- *
- * There are some types like mat4 that are actually important so maybe you should add a manual special case for them
- */ 
 
 void ExtractSDNATypesToHeaderFile(const BlendFile& blend_file) {
     std::fstream file("sdna_structs.h", std::ios::out);
@@ -470,107 +449,42 @@ void ExtractSDNATypesToHeaderFile(const BlendFile& blend_file) {
     file.close();
 }
 
+void LogBlendFileHeader(const BlendFile& blend) {
+    std::cout << "header: " << blend.header << "\n";
+    std::cout << "length: " << blend.header_length << "\n";
+    std::cout << "format version: " << blend.format_version << "\n";
+    std::cout << "blender version: " << blend.blender_version << "\n";
+}
+
+void LogDataBlockHeaders(const BlendFile& blend) {
+    BlockHeaderNode* node = blend.block_header_list.first;
+    while(node) {
+        const BlockHeader& block_header = node->block_header;
+        std::cout << "\nblock\n";
+
+        char code_cstr[sizeof(uint32_t)+ 1];
+        code_cstr[sizeof(uint32_t)] = '\0';
+        Int32ToChar(code_cstr, block_header.code);
+        std::cout << "code:" << code_cstr << "\n";
+
+        std::cout << "SDNA struct type: " << block_header.SDNAnr << "\n";
+        SDNA_Struct* struct_info = blend.sdna->structs[block_header.SDNAnr];
+        std::cout << "Struct type name: " << blend.sdna->types[struct_info->type_index] << "\n";
+        std::cout << "old pointer: " << block_header.old_pointer << "\n";
+        std::cout << "byte length: " << block_header.len << "\n";
+        std::cout << "number of structs: " << block_header.nr << "\n";
+
+        node = node->next;
+    }
+}
+
 int main() {
 
     BlendFile blend_file = ReadBlendFile("Cube.blend");
     // ExtractSDNATypesToHeaderFile(blend_file);
 
-    // std::cout << "header: " << blend_file.header << "\n";
-    // std::cout << "length: " << blend_file.header_length << "\n";
-    // std::cout << "format version: " << blend_file.format_version << "\n";
-    // std::cout << "blender version: " << blend_file.blender_version << "\n";
-
-    // BlockHeaderNode* node = blend_file.block_header_list.first;
-    // while(node) {
-    //     const BlockHeader& block_header = node->block_header;
-    //     std::cout << "\nblock\n";
-
-    //     char code_cstr[sizeof(uint32_t)+ 1];
-    //     code_cstr[sizeof(uint32_t)] = '\0';
-    //     Int32ToChar(code_cstr, block_header.code);
-    //     std::cout << "code:" << code_cstr << "\n";
-
-    //     std::cout << "SDNA struct type: " << block_header.SDNAnr << "\n";
-    //     std::cout << "old pointer: " << block_header.old_pointer << "\n";
-    //     std::cout << "byte length: " << block_header.len << "\n";
-    //     std::cout << "number of structs: " << block_header.nr << "\n";
-
-    //     node = node->next;
-    // }
-
-    // // std::cout.write(blendFile.file_SDNA->data, blendFile.file_SDNA->data_size);
-
-    // std::cout << "\nNumber of members: " << blend_file.sdna->members_num << "\nMembers: \n";
-    // for (int i = 0; i < blend_file.sdna->members_num; i++) {
-    //     std::cout << blend_file.sdna->members[i] << ", Array length: " << blend_file.sdna->members_array_num[i] << "\n";
-    // }
-
-    // std::cout << "\nNumber of types: " << blend_file.sdna->types_num << "\nTypes: \n";
-    //     for (int i = 0; i < blend_file.sdna->types_num; i++) {
-    //     std::cout << blend_file.sdna->types[i] << ", " << blend_file.sdna->types_size[i] <<"\n";
-    // }
-
-    // std::cout << "\nNumber of structs: " << blend_file.sdna->structs_num << "\nTypes: \n";
-    //     for (int i = 0; i < blend_file.sdna->structs_num; i++) {
-    //         SDNA_Struct* struct_pointer = blend_file.sdna->structs[i];
-    //         std::cout << "Members num:" << struct_pointer->members_num << "\n";
-    //         std::cout << "Members: \n";
-    //         for (int member_index = 0; member_index < struct_pointer->members_num; member_index++) {
-    //             SDNA_StructMember member = struct_pointer->members[member_index];
-    //             std::cout << "" << blend_file.sdna->types[member.type_index] << " ";
-    //             std::cout << "" << blend_file.sdna->members[member.member_index] << ";\n";
-    //         }
-    //         std::cout << "Type index:" << struct_pointer->type_index << "\n";
-    //         std::cout << "True index:" << i << "\n";
-    //         std::cout << "Type name:" << blend_file.sdna->types[struct_pointer->type_index] << "\n";
-    //         // std::cout << "Type name2:" << blend_file.sdna->types[i] << "\n";
-    //         std::cout << "\n\n";
-    //     }
-
-    // std::fstream decoded_block_output("blocks.txt", std::ios::out);
-    // node = blend_file.block_header_list.first;
-    // while(node) {
-    //     const BlockHeader& block_header = node->block_header;
-    //     decoded_block_output << "\nblock\n";
-
-    //     char code_cstr[sizeof(uint32_t)+ 1];
-    //     code_cstr[sizeof(uint32_t)] = '\0';
-    //     Int32ToChar(code_cstr, block_header.code);
-    //     decoded_block_output << "code:" << code_cstr << "\n";
-
-    //     decoded_block_output << "SDNA struct type: " << block_header.SDNAnr << "\n";
-    //     SDNA_Struct* struct_info = blend_file.sdna->structs[block_header.SDNAnr];
-    //     // decoded_block_output << "SDNA struct type name: " << blend_file.sdna->types[block_header.SDNAnr] << "\n";
-    //     decoded_block_output << "Members num: " << struct_info->members_num << "\n";
-    //     decoded_block_output << "Struct type name: " << blend_file.sdna->types[struct_info->type_index] << "\n";
-    //     decoded_block_output << "old pointer: " << block_header.old_pointer << "\n";
-    //     decoded_block_output << "byte length: " << block_header.len << "\n";
-    //     decoded_block_output << "number of structs: " << block_header.nr << "\n";
-
-    //     node = node->next;
-    // }
-
-    // decoded_block_output.close();
-
     /* Attempt to read mesh data */
     /* See DNA_mesh_types.h struct Mesh */
-    /*  
-     * DNA_outliner_types.h 133
-     * "Elements to be packed from mempool in `writefile.cc`
-     *  or extracted to mempool in `readfile.cc`."
-     * TreeStoreElem *data = nullptr;
-     *
-     * It seems maybe any data pointed to in these structs is stored in a "mempool" somewhere in the file?
-     * perhaps this could be the first data block with the type raw_data and code TEST.
-     * See writefile.cc and writefile.hh
-     *
-     * "struct WriteDataStableAddressIDs {
-     * Knows which DNA members are pointers. Those members are overridden when serializing the
-     * .blend file to get more stable pointer identifiers.
-     * std::shared_ptr<dna::pointers::PointersInDNA> sdna_pointers;"
-     *
-     * this is what you are looking for ^
-     */
     BlockHeaderNode* node = blend_file.block_header_list.first;
     while(node) {
         const BlockHeader& block_header = node->block_header;
@@ -584,29 +498,16 @@ int main() {
             file.read((char*)&mesh, sizeof(Mesh));
             std::cout << mesh.id.name << "\n";
             std::cout << mesh.totvert << "\n";
-            /* Some where in attribute sotrage I think the vertex data is kept */
             std::cout << mesh.attribute_storage.dna_attributes_num << "\n";
-            // 
             /* 
              * This pointer is equal to the old pointer of a data block in the list where the data is stored 
              * Old pointer: 4450082800180973424 Struct type name: Attribute
              */
             std::cout << (uint64_t)mesh.attribute_storage.dna_attributes << "\n";
-            /* TODO: read blendfile into memory so you cna actuall take a look at these pointers */
+            /* TODO: read blendfile into memory so you cna actually take a look at these pointers */
             // Attribute test = *mesh.attribute_storage.dna_attributes;
             // std::cout << sizeof(Mesh) << "\n";
         }
-
-        // if (block_header.len > 1000) {
-        //     char code_cstr[sizeof(uint32_t)+ 1];
-        //     code_cstr[sizeof(uint32_t)] = '\0';
-        //     Int32ToChar(code_cstr, block_header.code);
-        //     std::cout << code_cstr << "\n";
-        //     // std::cout << block_header.code << "\n";
-        //     std::cout << block_header.len << "\n";
-        //     std::cout << type_name << "\n";
-        //     std::cout << "\n";
-        // }
 
         node = node->next;
     }
