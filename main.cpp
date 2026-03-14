@@ -4,6 +4,7 @@
 #include <string>
 #include <exception>
 #include <cstdint>
+#include <map>
 
 #include "sdna_structs.h"
 
@@ -123,6 +124,8 @@ struct BlendFile {
     int blender_version;
 
     BlockHeaderList block_header_list;
+
+    std::map<uint64_t, uint64_t> pointer_to_block_mapping;
 
     SDNA *sdna;
 };
@@ -450,6 +453,8 @@ void ExtractSDNATypesToHeaderFile(const BlendFile& blend_file) {
 
     file << "\n";
 
+    /* TODO: sorting system to avoid ordering issues */
+
     for (int i = 0; i < blend_file.sdna->structs_num; i++) {
         SDNA_Struct* struct_pointer = blend_file.sdna->structs[i];
         file << "struct " << blend_file.sdna->types[struct_pointer->type_index] << " { \n";
@@ -571,33 +576,37 @@ int main() {
         const BlockHeader& block_header = node->block_header;
         SDNA_Struct* struct_info = blend_file.sdna->structs[block_header.SDNAnr];
         const char* type_name = blend_file.sdna->types[struct_info->type_index];
-        // if (strcmp(type_name, "Mesh") == 0) {
-        //     std::ifstream file("Cube.blend", std::ios::in | std::ios::binary);
-        //     file.seekg(node->file_offset);
+        if (strcmp(type_name, "Mesh") == 0) {
+            std::ifstream file("Cube.blend", std::ios::in | std::ios::binary);
+            file.seekg(node->file_offset);
 
-        //     Mesh mesh; 
-        //     file.read((char*)&mesh, sizeof(Mesh));
-        //     std::cout << mesh.id.name << "\n";
-        //     std::cout << mesh.totvert << "\n";
-        //     /* Some where in attribute sotrage I think the vertex data is kept */
-        //     std::cout << mesh.attribute_storage.dna_attributes_num << "\n";
-        //     // 
-        //     std::cout << mesh.attribute_storage.dna_attributes << "\n";
-        //     /* TODO: read blendfile into memory so you cna actuall take a look at these pointers */
-        //     // Attribute test = *mesh.attribute_storage.dna_attributes;
-        //     std::cout << sizeof(Mesh) << "\n";
-        // }
-
-        if (block_header.len > 1000) {
-            char code_cstr[sizeof(uint32_t)+ 1];
-            code_cstr[sizeof(uint32_t)] = '\0';
-            Int32ToChar(code_cstr, block_header.code);
-            std::cout << code_cstr << "\n";
-            // std::cout << block_header.code << "\n";
-            std::cout << block_header.len << "\n";
-            std::cout << type_name << "\n";
-            std::cout << "\n";
+            Mesh mesh; 
+            file.read((char*)&mesh, sizeof(Mesh));
+            std::cout << mesh.id.name << "\n";
+            std::cout << mesh.totvert << "\n";
+            /* Some where in attribute sotrage I think the vertex data is kept */
+            std::cout << mesh.attribute_storage.dna_attributes_num << "\n";
+            // 
+            /* 
+             * This pointer is equal to the old pointer of a data block in the list where the data is stored 
+             * Old pointer: 4450082800180973424 Struct type name: Attribute
+             */
+            std::cout << (uint64_t)mesh.attribute_storage.dna_attributes << "\n";
+            /* TODO: read blendfile into memory so you cna actuall take a look at these pointers */
+            // Attribute test = *mesh.attribute_storage.dna_attributes;
+            // std::cout << sizeof(Mesh) << "\n";
         }
+
+        // if (block_header.len > 1000) {
+        //     char code_cstr[sizeof(uint32_t)+ 1];
+        //     code_cstr[sizeof(uint32_t)] = '\0';
+        //     Int32ToChar(code_cstr, block_header.code);
+        //     std::cout << code_cstr << "\n";
+        //     // std::cout << block_header.code << "\n";
+        //     std::cout << block_header.len << "\n";
+        //     std::cout << type_name << "\n";
+        //     std::cout << "\n";
+        // }
 
         node = node->next;
     }
