@@ -15,7 +15,7 @@
 /* -------------------------------------------------------------------------- */
 
 /* Aka BHead or LargeBHead8 in blender source */
-struct BlockHeader {
+struct DataBlockHeader {
     int32_t code;
     int32_t SDNAnr;
     uint64_t old_pointer;
@@ -24,18 +24,18 @@ struct BlockHeader {
 };
 
 /* Aka BHeadN */
-struct BlockHeaderNode {
-    BlockHeaderNode *next, *perv;
-    uint64_t file_offset;
+struct DataBlockNode {
+    DataBlockNode *next, *perv;
+    uint64_t data_offset;
     bool has_data;
-    BlockHeader block_header;
+    DataBlockHeader block_header;
 };
 
 struct BlockHeaderList {
-    BlockHeaderNode* first = nullptr;
-    BlockHeaderNode* last = nullptr;
+    DataBlockNode* first = nullptr;
+    DataBlockNode* last = nullptr;
 
-    void add(BlockHeaderNode* header) {
+    void add(DataBlockNode* header) {
         if (first) {
             header->perv = last;
             last->next = header;
@@ -69,7 +69,6 @@ struct SDNA_Struct {
 /* Structure DNA largely mirrors SDNA def from blender source */
 struct SDNA {
     /* Encoded data from before parsing */
-    const char *data;
     int data_size;
     bool data_alloc;
 
@@ -117,6 +116,7 @@ struct SDNA {
 
 struct BlendFile {
     const char *data;
+    size_t data_length;
 
     char* header;
     int header_length;
@@ -126,10 +126,18 @@ struct BlendFile {
     BlockHeaderList block_header_list;
 
     /* TODO: replace this with a more efficent structure later */
-    std::map<void*, void*> pointer_to_data_mapping;
-    std::map<void*, size_t> pointer_to_data_index_mapping;
+    std::map<void*, DataBlockNode*> pointer_to_block_map;
 
     SDNA *sdna;
+
+    template<typename T>
+    T ReadRawDataAs(size_t data_index) {
+        return *((T*)&data[data_index]);
+    }
+
+    const char* GetRawDataAddress(size_t data_index) {
+        return &data[data_index];
+    }
 };
 
 void Int32ToChar(char a[], int32_t n) {
@@ -142,6 +150,10 @@ int32_t CharToInt32(char a, char b, char c, char d) {
 
 const char* PadTo4(const char* ptr) {
     return (const char*)((uintptr_t(ptr) + 3) & ~3);
+}
+
+size_t PadTo4(size_t index) {
+    return (size_t)((uintptr_t(index) + 3) & ~3);
 }
 
 /* See dna_utils.cc */
@@ -178,8 +190,8 @@ int DNA_member_array_num(const char *str) {
 }
 
 /* See init_structDNA() in dna_genfile.cc, called after ReadSDNA fetches the data and stores it in sdna->data */
-void InitalizeSDNA(SDNA *sdna) {
-    int *data_pointer = (int*)sdna->data;
+SDNA *ReadSDNA(BlendFile file, uint64_t data_index) {
+    SDNA *sdna = new SDNA();
 
     sdna->types = nullptr;
     sdna->types_size = nullptr;
@@ -189,21 +201,23 @@ void InitalizeSDNA(SDNA *sdna) {
     sdna->members = nullptr;
     sdna->members_array_num = nullptr;
 
-    if (*data_pointer != CharToInt32('S', 'D', 'N', 'A')) {
+
+    if (file.ReadRawDataAs<int>(data_index) != CharToInt32('S', 'D', 'N', 'A')) {
         throw std::runtime_error("Error reading SDNA header");
     }
 
-    data_pointer++;
+
+    data_index += sizeof(int);
 
     /* --------------------------------- Members -------------------------------- */
 
     /* Initalize member name array */
-    if (*data_pointer == CharToInt32('N', 'A', 'M', 'E')) {
-        data_pointer++;
-        sdna->members_num = *data_pointer;
+    if (file.ReadRawDataAs<int>(data_index) == CharToInt32('N', 'A', 'M', 'E')) {
+        data_index += sizeof(int);
+        sdna->members_num = file.ReadRawDataAs<int>(data_index);
+        data_index += sizeof(int);
         sdna->members_num_alloc = sdna->members_num;
 
-        data_pointer++;
         sdna->members = new const char*[sdna->members_num];
         // Zero new array
         memset(sdna->members, 0, sdna->members_num * sizeof(const char*));
@@ -214,19 +228,22 @@ void InitalizeSDNA(SDNA *sdna) {
     }
 
     /* Find member names */
-    const char *member_pointer = (char*)data_pointer;
     for (int member_index = 0; member_index < sdna->members_num; member_index++) {
+        const char *member_pointer = file.GetRawDataAddress(data_index);
         sdna->members[member_index] = member_pointer;
 
         /* Keep going until you find null terminator */
         while(*member_pointer) {
             member_pointer++;
+            data_index++;
         }
         /* Go to next member name */
-        member_pointer++;
+        data_index++;
     }
 
-    member_pointer = PadTo4(member_pointer);
+    std::cout << data_index << "\n";
+    data_index = PadTo4(data_index);
+    std::cout << data_index << "\n";
 
     /* Find array numbers */
     for (int member_index = 0; member_index < sdna->members_num; member_index++) {
@@ -236,13 +253,12 @@ void InitalizeSDNA(SDNA *sdna) {
     /* ---------------------------------- Types --------------------------------- */
 
     /* Initalize type name arrays */
-    data_pointer = (int*)member_pointer;
-    if (*data_pointer == CharToInt32('T', 'Y', 'P', 'E')) {
-        data_pointer++;
+    if (file.ReadRawDataAs<int>(data_index) == CharToInt32('T', 'Y', 'P', 'E')) {
+        data_index += sizeof(int);
 
-        sdna->types_num = *data_pointer;
+        sdna->types_num = file.ReadRawDataAs<int>(data_index);
+        data_index += sizeof(int);
 
-        data_pointer++;
         sdna->types = new const char*[sdna->types_num];
         // Zero new array
         memset(sdna->types, 0, sdna->types_num * sizeof(const char*));
@@ -251,125 +267,127 @@ void InitalizeSDNA(SDNA *sdna) {
     }
 
     /* Find type names */
-    const char* type_pointer = (char*)data_pointer;
     for (int type_index = 0; type_index < sdna->types_num; type_index++) {
+        const char* type_pointer = file.GetRawDataAddress(data_index);
         sdna->types[type_index] = type_pointer;
         
         /* Keep going until you find null terminator */
         while (*type_pointer) {
             type_pointer++;  
+            data_index++;
         }
         /* Go to next type name */
-        type_pointer++;
+        data_index++;
     }
 
-    type_pointer = PadTo4(type_pointer);
+    data_index = PadTo4(data_index);
 
-    /* --------------------------- Type Length Arrray --------------------------- */
-    /* Array is already in the data memory properly so no need to loop over this one */
-    data_pointer = (int*)type_pointer;
-    short* type_length_pointer;
-    if (*data_pointer == CharToInt32('T', 'L', 'E', 'N')) {
-        data_pointer++;
-        type_length_pointer = (short*)data_pointer;
+    // /* --------------------------- Type Length Arrray --------------------------- */
+    // /* Array is already in the data memory properly so no need to loop over this one */
+    // data_pointer = (int*)type_pointer;
+    // short* type_length_pointer;
+    // if (*data_pointer == CharToInt32('T', 'L', 'E', 'N')) {
+    //     data_pointer++;
+    //     type_length_pointer = (short*)data_pointer;
 
-        sdna->types_size = type_length_pointer;
-        type_length_pointer += sdna->types_num;
-    } else {
-        throw std::runtime_error("Error reading SDNA TYPE LENGTH (TLEN) header");
-    }
+    //     sdna->types_size = type_length_pointer;
+    //     type_length_pointer += sdna->types_num;
+    // } else {
+    //     throw std::runtime_error("Error reading SDNA TYPE LENGTH (TLEN) header");
+    // }
 
-    /* prevent BUS error? honestly not sure why this is here */
-    if (sdna->types_num & 1) {
-        type_length_pointer++;
-    }
+    // /* prevent BUS error? honestly not sure why this is here */
+    // if (sdna->types_num & 1) {
+    //     type_length_pointer++;
+    // }
 
-    /* ------------------------------ Struct Array ------------------------------ */
-    data_pointer = (int*)type_length_pointer;
-    if (*data_pointer == CharToInt32('S', 'T', 'R', 'C')) {
-        data_pointer++;
-        sdna->structs_num = *data_pointer;
-        data_pointer++;
+    // /* ------------------------------ Struct Array ------------------------------ */
+    // data_pointer = (int*)type_length_pointer;
+    // if (*data_pointer == CharToInt32('S', 'T', 'R', 'C')) {
+    //     data_pointer++;
+    //     sdna->structs_num = *data_pointer;
+    //     data_pointer++;
 
-        sdna->structs = new SDNA_Struct*[sdna->structs_num];
-        memset(sdna->structs, 0, sdna->structs_num * sizeof(SDNA_Struct));
-    } else {
-        throw std::runtime_error("Error reading SDNA STRCUT ARRAY (STRC) header");
-    }
+    //     sdna->structs = new SDNA_Struct*[sdna->structs_num];
+    //     memset(sdna->structs, 0, sdna->structs_num * sizeof(SDNA_Struct));
+    // } else {
+    //     throw std::runtime_error("Error reading SDNA STRCUT ARRAY (STRC) header");
+    // }
 
-    /* 
-     * Blender does a check to ensure the same struct index isn't used twice here 
-     * but I'm not going to bother at least for now
-     */
+    // /* 
+    //  * Blender does a check to ensure the same struct index isn't used twice here 
+    //  * but I'm not going to bother at least for now
+    //  */
 
-    short* struct_pointer = (short*)data_pointer;
-    for (int struct_index = 0; struct_index < sdna->structs_num; struct_index++) {
-        SDNA_Struct *struct_info = (SDNA_Struct*)struct_pointer;
-        sdna->structs[struct_index] = struct_info;
+    // short* struct_pointer = (short*)data_pointer;
+    // for (int struct_index = 0; struct_index < sdna->structs_num; struct_index++) {
+    //     SDNA_Struct *struct_info = (SDNA_Struct*)struct_pointer;
+    //     sdna->structs[struct_index] = struct_info;
 
-        struct_pointer += 2 + (sizeof(SDNA_StructMember) / sizeof(short)) * struct_info->members_num;
-    }
+    //     struct_pointer += 2 + (sizeof(SDNA_StructMember) / sizeof(short)) * struct_info->members_num;
+    // }
 
-    /* 
-     * Here pointer_size is normally calculated but since this is for blender 5.0 
-     * 64bit or 8 bytes is assumed by this library 
-     */
+    // /* 
+    //  * Here pointer_size is normally calculated but since this is for blender 5.0 
+    //  * 64bit or 8 bytes is assumed by this library 
+    //  */
 
-    // TODO: alignment
+    // // TODO: alignment
 
-    /* ----------------------------- Type Alignment ----------------------------- */
-    sdna->types_alignment = new int[sdna->types_num];
-    for (int type_index = 0; type_index < sdna->types_num; type_index++) {
-       sdna->types_alignment[type_index] = int(16UL);
-    }
-    
-}
-
-SDNA *ReadSDNA(std::ifstream& file, uint64_t data_offset, uint64_t data_length) {
-    SDNA *sdna = new SDNA();
-
-    sdna->data_size = data_length;
-    char* data = new char[data_length];
-    file.seekg(data_offset);
-    file.read(data, data_length);
-
-    sdna->data = data;
-
-    InitalizeSDNA(sdna);
+    // /* ----------------------------- Type Alignment ----------------------------- */
+    // sdna->types_alignment = new int[sdna->types_num];
+    // for (int type_index = 0; type_index < sdna->types_num; type_index++) {
+    //    sdna->types_alignment[type_index] = int(16UL);
+    // }
 
     return sdna;
 }
 
+/* TODO:
+ * Code should deal in indices rather than pointers
+ * refactor pointer mapping to map to data blocks rather than raw data
+ */
+
+ template<typename T>
+T ReadDataBlock(const BlendFile& blend_file, const DataBlockNode* node, int offset) {
+    return *((T*)&blend_file.data[node->data_offset + (sizeof(T)*offset)]);
+}
+
+template<typename T>
+T ReadDataAs(void* data) {
+    return *((T*)data);
+}
+
 BlendFile ReadBlendFile(const char* path) {
-    BlendFile result;
+    BlendFile file;
 
-    std::ifstream file(path, std::ios::in | std::ios::binary);
+    std::ifstream file_reader(path, std::ios::in | std::ios::binary);
 
-    if (!file) {
+    if (!file_reader) {
         throw std::runtime_error("Failed to open file");
     }
 
     /* --------------------------- READ RAW FILE DATA --------------------------- */
 
-    file.seekg(0, std::ios::end);
-    int file_size = file.tellg();
+    file_reader.seekg(0, std::ios::end);
+    size_t data_length = file_reader.tellg();
 
-    file.seekg(0, std::ios::beg);
+    file_reader.seekg(0, std::ios::beg);
     
-    char* data = new char[file_size];
-    file.read(data, file_size);
-    result.data = data;
+    char* data = new char[data_length];
+    file_reader.read(data, data_length);
+    file.data = data;
+    file.data_length = data_length;
 
-    file.clear();
-    file.seekg(0, std::ios::beg);
+    file_reader.close();
 
     /* ------------------------------- READ HEADER ------------------------------ */
     /* hardcoded because this isn't really expected to change */
-    int header_length = 17;
-    char* header = new char[header_length + 1];
-    header[header_length + 1] = '\0';
+    size_t data_index = 0;
 
-    file.read(header, 17);
+    int header_length = 17;
+    char* header = &data[0];
+    data_index += header_length;
 
     char format_version_cstr[2] = {header[10], header[11]};
     int format_version = atoi(format_version_cstr);
@@ -378,48 +396,34 @@ BlendFile ReadBlendFile(const char* path) {
     int blender_version = atoi(blender_version_cstr);
 
     /* ------------------------------- SET HEADER ------------------------------- */
-    result.header = header;
-    result.header_length = header_length;
-    result.format_version = format_version;
-    result.blender_version = blender_version;
+    file.header = header;
+    file.header_length = header_length;
+    file.format_version = format_version;
+    file.blender_version = blender_version;
 
-    /* ---------------------------- READ BLOCK HEADER --------------------------- */
+    /* ------------------------- READ DATA BLOCK HEADERS ------------------------ */
 
+    while(data_index < data_length) {
+        DataBlockHeader block_header = file.ReadRawDataAs<DataBlockHeader>(data_index);
+        data_index += sizeof(DataBlockHeader);
 
-    // based on get_bhead()
-    // int file_size = 0;
-    while(true) {
-        BlockHeader block_header; 
-        file.read((char*)&block_header, sizeof(BlockHeader));
-        int file_offset = file.tellg();
-        if (file.eof()) {
-            break;
-        }
+        DataBlockNode* block_node = new DataBlockNode();
+        block_node->next = nullptr;
+        block_node->perv = nullptr;
+        block_node->data_offset = data_index;
+        block_node->block_header = block_header;
 
-        // file_size = file_offset;
+        file.block_header_list.add(block_node);
 
-        BlockHeaderNode* block_header_node = new BlockHeaderNode();
-        block_header_node->next = nullptr;
-        block_header_node->perv = nullptr;
-        block_header_node->file_offset = file_offset;
-        block_header_node->block_header = block_header;
+        file.pointer_to_block_map.insert({(void*)block_header.old_pointer, block_node});
 
-        result.block_header_list.add(block_header_node);
-
-        // result.pointer_to_block_mapping.insert(block_header.old_pointer, ...); need to have data read to memory before you can do this
-        result.pointer_to_data_mapping.insert({(void*)block_header.old_pointer, (void*)&(result.data[block_header_node->file_offset])});
-        result.pointer_to_data_index_mapping.insert({(void*)block_header.old_pointer, block_header_node->file_offset});
-
-        file.seekg(block_header.len, std::ios::seekdir::_S_cur);
+        data_index += block_header.len;
     }
 
-    file.clear();
+    // file.sdna = ReadSDNA(data, file.block_header_list.last->perv->data_offset, file.block_header_list.last->perv->block_header.len);
+    file.sdna = ReadSDNA(file, file.block_header_list.last->perv->data_offset);
 
-    result.sdna = ReadSDNA(file, result.block_header_list.last->perv->file_offset, result.block_header_list.last->perv->block_header.len);
-
-    file.close();
-
-    return result;
+    return file;
 }
 
 void ExtractSDNATypesToHeaderFile(const BlendFile& blend_file) {
@@ -474,10 +478,10 @@ void LogBlendFileHeader(const BlendFile& blend) {
     std::cout << "blender version: " << blend.blender_version << "\n";
 }
 
-void LogDataBlockHeaders(const BlendFile& blend) {
-    BlockHeaderNode* node = blend.block_header_list.first;
+void LogDataBlocks(const BlendFile& blend) {
+    DataBlockNode* node = blend.block_header_list.first;
     while(node) {
-        const BlockHeader& block_header = node->block_header;
+        const DataBlockHeader& block_header = node->block_header;
         std::cout << "\nblock\n";
 
         char code_cstr[sizeof(uint32_t)+ 1];
@@ -486,11 +490,12 @@ void LogDataBlockHeaders(const BlendFile& blend) {
         std::cout << "code:" << code_cstr << "\n";
 
         std::cout << "SDNA struct type: " << block_header.SDNAnr << "\n";
-        SDNA_Struct* struct_info = blend.sdna->structs[block_header.SDNAnr];
-        std::cout << "Struct type name: " << blend.sdna->types[struct_info->type_index] << "\n";
+        // SDNA_Struct* struct_info = blend.sdna->structs[block_header.SDNAnr];
+        // std::cout << "Struct type name: " << blend.sdna->types[struct_info->type_index] << "\n";
         std::cout << "old pointer: " << block_header.old_pointer << "\n";
         std::cout << "byte length: " << block_header.len << "\n";
         std::cout << "number of structs: " << block_header.nr << "\n";
+        std::cout << "data_index: " << node->data_offset << "\n";
 
         node = node->next;
     }
@@ -503,45 +508,56 @@ int main() {
 
     /* Attempt to read mesh data */
     /* See DNA_mesh_types.h struct Mesh */
-    BlockHeaderNode* node = blend_file.block_header_list.first;
-    while(node) {
-        const BlockHeader& block_header = node->block_header;
-        SDNA_Struct* struct_info = blend_file.sdna->structs[block_header.SDNAnr];
-        const char* type_name = blend_file.sdna->types[struct_info->type_index];
-        if (strcmp(type_name, "Mesh") == 0) {
-            std::ifstream file("Cube.blend", std::ios::in | std::ios::binary);
-            file.seekg(node->file_offset);
 
-            Mesh mesh; 
-            file.read((char*)&mesh, sizeof(Mesh));
-            std::cout << mesh.id.name << "\n";
-            std::cout << mesh.totvert << "\n";
-            std::cout << mesh.attribute_storage.dna_attributes_num << "\n";
-            /* 
-             * This pointer is equal to the old pointer of a data block in the list where the data is stored 
-             * Old pointer: 4450082800180973424 Struct type name: Attribute
-             */
-            std::cout << (uint64_t)mesh.attribute_storage.dna_attributes << "\n";
-            /* TODO: read blendfile into memory so you can actually take a look at these pointers */
-            Attribute* mapped_pointer = (Attribute*)blend_file.pointer_to_data_mapping[(void*)mesh.attribute_storage.dna_attributes];
-            uint64_t index = blend_file.pointer_to_data_index_mapping[(void*)mesh.attribute_storage.dna_attributes];
+    // LogBlendFileHeader(blend_file);
 
-
-            // Attribute* mapped_pointer = (Attribute*)&blend_file.data[index];
-            std::cout << (int)blend_file.data[index] << "\n";
-            std::cout << (uint64_t)mapped_pointer << "\n";
-            std::cout << index << "\n";
-            for (int i = 0; i < mesh.attribute_storage.dna_attributes_num; i++) {
-                std::cout << (uint64_t)mapped_pointer[i].name << "\n";
-                char* mapped_name_pointer = (char*)blend_file.pointer_to_data_mapping[(void*)mapped_pointer[i].name];
-                std::cout << mapped_name_pointer << "\n";
-                std::cout << (uint64_t)mapped_pointer[i].data_type << "\n";
-            }
-
-            // CustomDataLayer* mapped_data_layer = (CustomDataLayer*)blend_file.pointer_to_data_mapping[(void*)mesh.vdata.layers];
-            // std::cout << mesh.vdata.totsize << "\n";
-        }
-
-        node = node->next;
+    // LogDataBlocks(blend_file);
+    
+    std::cout << blend_file.sdna->members_num << "\n";
+    for (int i = 0; i < blend_file.sdna->members_num; i++) {
+        std::cout << blend_file.sdna->members[i] << "\n";
     }
+
+
+    // BlockHeaderNode* node = blend_file.block_header_list.first;
+    // while(node) {
+    //     const BlockHeader& block_header = node->block_header;
+    //     SDNA_Struct* struct_info = blend_file.sdna->structs[block_header.SDNAnr];
+    //     const char* type_name = blend_file.sdna->types[struct_info->type_index];
+    //     if (strcmp(type_name, "Mesh") == 0) {
+    //         // std::ifstream file("Cube.blend", std::ios::in | std::ios::binary);
+    //         // file.seekg(node->file_offset);
+
+    //         Mesh mesh; 
+    //         // file.read((char*)&mesh, sizeof(Mesh));
+    //         mesh = ReadDataBlock<Mesh>(blend_file, node, 0);
+    //         std::cout << mesh.id.name << "\n";
+    //         std::cout << mesh.totvert << "\n";
+    //         std::cout << mesh.attribute_storage.dna_attributes_num << "\n";
+    //         /* 
+    //          * This pointer is equal to the old pointer of a data block in the list where the data is stored 
+    //          * Old pointer: 4450082800180973424 Struct type name: Attribute
+    //          */
+    //         std::cout << (uint64_t)mesh.attribute_storage.dna_attributes << "\n";
+    //         /* TODO: read blendfile into memory so you can actually take a look at these pointers */
+    //         Attribute* mapped_pointer = (Attribute*)blend_file.pointer_to_data_mapping[(void*)mesh.attribute_storage.dna_attributes];
+
+
+    //         // Attribute* mapped_pointer = (Attribute*)&blend_file.data[index];
+    //         std::cout << (uint64_t)mapped_pointer << "\n";
+    //         for (int i = 0; i < mesh.attribute_storage.dna_attributes_num; i++) {
+    //             std::cout << (uint64_t)mapped_pointer[i].name << "\n";
+    //             char* mapped_name_pointer = (char*)blend_file.pointer_to_data_mapping[(void*)mapped_pointer[i].name];
+    //             std::cout << mapped_name_pointer << "\n";
+    //             std::cout << (uint64_t)mapped_pointer[i].data_type << "\n";
+    //         }
+
+    //         // CustomDataLayer* mapped_data_layer = (CustomDataLayer*)blend_file.pointer_to_data_mapping[(void*)mesh.vdata.layers];
+    //         // std::cout << mesh.vdata.totsize << "\n";
+    //     }
+
+    //     node = node->next;
+    // }
+
+    return 0;
 }
