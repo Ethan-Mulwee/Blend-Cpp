@@ -156,17 +156,22 @@ struct BlendFile {
         return data_block;
     }
 
-    const char* TypeNameFromStructSDNAIndex(uint32_t SDNAnr) {
+    const char* TypeNameFromStructSDNAIndex(uint32_t SDNAnr) const {
         short data_type_index = sdna->structs[SDNAnr]->type_index;
         const char* data_type = sdna->types[data_type_index];
         return data_type;
     }
 
-        const char* TypeNameOfDataBlock(DataBlockNode* node) {
+        const char* TypeNameOfDataBlock(DataBlockNode* node) const {
         short data_type_index = sdna->structs[node->block_header.SDNA_type_index]->type_index;
         const char* data_type = sdna->types[data_type_index];
         return data_type;
     }
+};
+
+/* Structure designed to simplify reading and writing blend files  */
+struct IntermediateBlendFile {
+
 };
 
 void Int32ToChar(char a[], int32_t n) {
@@ -488,6 +493,23 @@ void ExtractSDNATypesToHeaderFile(const BlendFile& blend_file) {
     file.close();
 }
 
+void InterpretDataBlocks(const BlendFile& blend) {
+    DataBlockNode* node = blend.block_header_list.first;
+    int uncovered_cases = 0;
+    while(node) {
+        // switch on type index
+        switch (node->block_header.SDNA_type_index) {
+            default:
+                uncovered_cases++;
+                break;
+        }
+
+        
+        node = node->next;
+    }
+    std::cout << "Interpret missed " << uncovered_cases << " data blocks" << "\n";
+}
+
 void LogBlendFileHeader(const BlendFile& blend) {
     std::cout << "header: " << blend.header << "\n";
     std::cout << "length: " << blend.header_length << "\n";
@@ -531,6 +553,8 @@ int main() {
     
     /* Attempt to read mesh data */
     /* See DNA_mesh_types.h struct Mesh */
+
+
     DataBlockNode* node = blend_file.block_header_list.first;
     while(node) {
         const DataBlockHeader& block_header = node->block_header;
@@ -557,6 +581,7 @@ int main() {
             Every group is represented by a single integer-- the first index of the elements in the group. 
             The end of the group is simply the next integer in the offsets array. For example, the face offsets 
             [0,3,7,10,14] encode a triangle, a quad, a triangle, and a quad, in that order. */
+
             /* i.e 7 numbers encode 6 faces explaining the + 1 */
             std::cout << "{";
             for (int poly_offset_indice_idx = 0; poly_offset_indice_idx < mesh.totpoly + 1; poly_offset_indice_idx++) {
@@ -645,6 +670,8 @@ int main() {
 
         node = node->next;
     }
+
+    InterpretDataBlocks(blend_file);
 
     return 0;
 }
