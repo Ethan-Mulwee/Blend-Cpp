@@ -1,8 +1,8 @@
-#include "temp_lib.hpp"
+#include "blend_file_reader.h"
 
 int main() {
 
-    BlendFile blend_file = ReadBlendFile("Cube.blend");
+    BlendFileReader blend_file = ReadBlendFile("Cube.blend");
     // ExtractSDNATypesToHeaderFile(blend_file);
 
     

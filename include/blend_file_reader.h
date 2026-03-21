@@ -1,14 +1,9 @@
-#include <iostream>
-#include <fstream>
-#include <cstring>
-#include <string>
-#include <exception>
+#ifndef BLEND_FILE
+#define BLEND_FILE
+
 #include <cstdint>
 #include <map>
-#include <vector>
 
-#include "sdna_structs.h"
-#include "attribute_types.h"
 
 /* -------------------------------------------------------------------------- */
 /*                                BLOCK HEADER                                */
@@ -117,7 +112,7 @@ struct SDNA {
 
 };
 
-struct BlendFile {
+struct BlendFileReader {
     const char *data;
     size_t data_length;
 
@@ -168,37 +163,27 @@ struct BlendFile {
     }
 };
 
-
-
-
-/* Structure designed to simplify reading and writing blend files  */
-struct IntermediateBlendFile;
-
-void Int32ToChar(char a[], int32_t n);
-
-int32_t CharToInt32(char a, char b, char c, char d);
-
-// + 1 and - 1 are needed because the data starts at 0 and not 1
-size_t PadTo4(size_t index);
-
-/* See dna_utils.cc */
-int DNA_member_array_num(const char *str);
-
 /* See init_structDNA() in dna_genfile.cc, called after ReadSDNA fetches the data and stores it in sdna->data */
-SDNA *ReadSDNA(BlendFile file, uint64_t data_index);
-
- template<typename T>
-T ReadDataBlock(const BlendFile& blend_file, const DataBlockNode* node, int offset);
+SDNA *ReadSDNA(BlendFileReader file, uint64_t data_index);
 
 template<typename T>
-T ReadDataAs(void* data);
+T ReadDataBlock(const BlendFileReader& blend_file, const DataBlockNode* node, int offset) {
+    return *((T*)&blend_file.data[node->data_offset + (sizeof(T)*offset)]);
+}
 
-BlendFile ReadBlendFile(const char* path);
+template<typename T>
+T ReadDataAs(void* data) {
+    return *((T*)data);
+}
 
-void ExtractSDNATypesToHeaderFile(const BlendFile& blend_file);
+BlendFileReader ReadBlendFile(const char* path);
 
-void InterpretDataBlocks(BlendFile& blend);
+void ExtractSDNATypesToHeaderFile(const BlendFileReader& blend_file);
 
-void LogBlendFileHeader(const BlendFile& blend);
+void InterpretDataBlocks(BlendFileReader& blend);
 
-void LogDataBlocks(const BlendFile& blend);
+void LogBlendFileHeader(const BlendFileReader& blend);
+
+void LogDataBlocks(const BlendFileReader& blend);
+
+#endif
