@@ -22,25 +22,48 @@ struct DataBlockHeader {
 };
 
 /* Aka BHeadN */
-struct DataBlockNode {
-    DataBlockNode *next, *perv;
+struct FileDataBlockNode {
+    FileDataBlockNode *next, *perv;
     uint64_t data_offset;
     // bool has_data;
     DataBlockHeader block_header;
 };
 
-struct BlockHeaderList {
+struct DataBlockNode {
+    DataBlockNode *next, *perv;
+    void* data;
+    // bool has_data;
+    DataBlockHeader block_header;
+};
+
+struct FileDataBlockList {
+    FileDataBlockNode* first = nullptr;
+    FileDataBlockNode* last = nullptr;
+
+    void add(FileDataBlockNode* block) {
+        if (first) {
+            block->perv = last;
+            last->next = block;
+            last = block;
+        } else {
+            first = block;
+            last = block;
+        }
+    }
+};
+
+struct DataBlockList {
     DataBlockNode* first = nullptr;
     DataBlockNode* last = nullptr;
 
-    void add(DataBlockNode* header) {
+    void add(DataBlockNode* block) {
         if (first) {
-            header->perv = last;
-            last->next = header;
-            last = header;
+            block->perv = last;
+            last->next = block;
+            last = block;
         } else {
-            first = header;
-            last = header;
+            first = block;
+            last = block;
         }
     }
 };
@@ -121,10 +144,10 @@ struct BlendFileReader {
     int format_version;
     int blender_version;
 
-    BlockHeaderList block_header_list;
+    FileDataBlockList data_block_list;
 
     /* TODO: replace this with a more efficent structure later */
-    std::map<void*, DataBlockNode*> pointer_to_block_map;
+    std::map<void*, FileDataBlockNode*> pointer_to_block_map;
 
     SDNA *sdna;
 
@@ -139,14 +162,14 @@ struct BlendFileReader {
 
     template<typename T>
     T* MapPointer(T* ptr) {
-        DataBlockNode* data_block = pointer_to_block_map[ptr];
+        FileDataBlockNode* data_block = pointer_to_block_map[ptr];
         T* mapped_pointer = (T*)GetRawDataAddress(data_block->data_offset);
         return mapped_pointer;
     }
 
     template<typename T>
-    DataBlockNode* MapPointerToBlock(T* ptr) {
-        DataBlockNode* data_block = pointer_to_block_map[ptr];
+    FileDataBlockNode* MapPointerToBlock(T* ptr) {
+        FileDataBlockNode* data_block = pointer_to_block_map[ptr];
         return data_block;
     }
 
@@ -156,7 +179,7 @@ struct BlendFileReader {
         return data_type;
     }
 
-        const char* TypeNameOfDataBlock(DataBlockNode* node) const {
+        const char* TypeNameOfDataBlock(FileDataBlockNode* node) const {
         short data_type_index = sdna->structs[node->block_header.SDNA_type_index]->type_index;
         const char* data_type = sdna->types[data_type_index];
         return data_type;
@@ -167,7 +190,7 @@ struct BlendFileReader {
 SDNA *ReadSDNA(BlendFileReader file, uint64_t data_index);
 
 template<typename T>
-T ReadDataBlock(const BlendFileReader& blend_file, const DataBlockNode* node, int offset) {
+T ReadDataBlock(const BlendFileReader& blend_file, const FileDataBlockNode* node, int offset) {
     return *((T*)&blend_file.data[node->data_offset + (sizeof(T)*offset)]);
 }
 

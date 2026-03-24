@@ -255,20 +255,20 @@ BlendFileReader ReadBlendFile(const char* path) {
         DataBlockHeader block_header = file.ReadRawDataAs<DataBlockHeader>(data_index);
         data_index += sizeof(DataBlockHeader);
 
-        DataBlockNode* block_node = new DataBlockNode();
+        FileDataBlockNode* block_node = new FileDataBlockNode();
         block_node->next = nullptr;
         block_node->perv = nullptr;
         block_node->data_offset = data_index;
         block_node->block_header = block_header;
 
-        file.block_header_list.add(block_node);
+        file.data_block_list.add(block_node);
 
         file.pointer_to_block_map.insert({(void*)block_header.old_pointer, block_node});
 
         data_index += block_header.byte_length;
     }
 
-    file.sdna = ReadSDNA(file, file.block_header_list.last->perv->data_offset);
+    file.sdna = ReadSDNA(file, file.data_block_list.last->perv->data_offset);
 
     return file;
 }
@@ -326,7 +326,7 @@ void LogBlendFileHeader(const BlendFileReader& blend) {
 }
 
 void LogDataBlocks(const BlendFileReader& blend) {
-    DataBlockNode* node = blend.block_header_list.first;
+    FileDataBlockNode* node = blend.data_block_list.first;
     while(node) {
         const DataBlockHeader& block_header = node->block_header;
         std::cout << "\nblock\n";

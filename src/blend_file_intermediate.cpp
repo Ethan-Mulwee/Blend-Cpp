@@ -1,7 +1,25 @@
 #include "blend_file_intermediate.h"
 
-void InterpretDataBlocks(BlendFileReader& blend) {
-    DataBlockNode* node = blend.block_header_list.first;
+BlendFileIntermediate SplitDataBlocks(BlendFileReader& blend) {
+    DataBlockList split_data_blocks;
+    FileDataBlockNode* node = blend.data_block_list.first;
+    while(node) {
+        DataBlockNode* new_block = new DataBlockNode();
+        new_block->block_header = node->block_header;
+        new_block->data = malloc(node->block_header.byte_length);
+        memcpy(new_block->data, blend.GetRawDataAddress(node->data_offset), node->block_header.byte_length);
+        split_data_blocks.add(new_block);
+        node = node->next;
+    }
+
+    BlendFileIntermediate intermediate_blend;
+    intermediate_blend.split_data_blocks = split_data_blocks;
+
+    return intermediate_blend;
+}
+
+void InterpretDataBlocks(BlendFileIntermediate& blend) {
+    DataBlockNode* node = blend.split_data_blocks.first;
     std::vector<Mesh> meshes = {};
     std::vector<FileGlobal> file_globals = {};
     int uncovered_cases = 0;
@@ -21,7 +39,7 @@ void InterpretDataBlocks(BlendFileReader& blend) {
 
             case 170:  { // FileGlobal
                 std::cout << "FileGlobal found \n";
-                FileGlobal file_global = blend.ReadRawDataAs<FileGlobal>(node->data_offset);
+                FileGlobal file_global = *reinterpret_cast<FileGlobal*>(node->data);
                 file_globals.push_back(file_global);
                 break;
             }
@@ -29,7 +47,7 @@ void InterpretDataBlocks(BlendFileReader& blend) {
             case 321: { // Mesh
                 std::cout << "Found a mesh \n";
                 Mesh mesh; 
-                mesh = ReadDataBlock<Mesh>(blend, node, 0);
+                mesh = *reinterpret_cast<Mesh*>(node->data);
                 meshes.push_back(mesh);
                 break;
             }
@@ -45,7 +63,7 @@ void InterpretDataBlocks(BlendFileReader& blend) {
     std::cout << "Interpret missed " << uncovered_cases << " data blocks" << "\n";
 }
 
-void LogMesh(BlendFileReader& blend, DataBlockNode* node, Mesh& mesh) {
+void LogMesh(BlendFileReader& blend, FileDataBlockNode* node, Mesh& mesh) {
     std::cout << "SDNA index: " << node->block_header.SDNA_type_index << "\n";
     std::cout << "Mesh Name: " << mesh.id.name << "\n";
     std::cout << "Vertex Count: " << mesh.totvert << "\n";
@@ -54,7 +72,7 @@ void LogMesh(BlendFileReader& blend, DataBlockNode* node, Mesh& mesh) {
     std::cout << "Corner Count: " << mesh.totloop << "\n";
     std::cout << "Number of Attributes:" << mesh.attribute_storage.dna_attributes_num << "\n";
 
-    DataBlockNode* poly_offset_indices_data_block = blend.MapPointerToBlock(mesh.poly_offset_indices);
+    FileDataBlockNode* poly_offset_indices_data_block = blend.MapPointerToBlock(mesh.poly_offset_indices);
     std::cout << "face_offset_indices Type: " << blend.TypeNameOfDataBlock(poly_offset_indices_data_block) << "\n";
     std::cout << "face_offset_indices Byte Length: " << poly_offset_indices_data_block->block_header.byte_length << "\n";
     int* poly_offset_indices = (int*)blend.GetRawDataAddress(poly_offset_indices_data_block->data_offset);
@@ -82,7 +100,7 @@ void LogMesh(BlendFileReader& blend, DataBlockNode* node, Mesh& mesh) {
         std::cout << "    Type: " << attribute.data_type << "\n";
         std::cout << "    Domain: " << (int)attribute.domain << "\n";
 
-        DataBlockNode* attribute_array_data = blend.MapPointerToBlock(attribute.data);
+        FileDataBlockNode* attribute_array_data = blend.MapPointerToBlock(attribute.data);
         const char* attribute_array_data_type = blend.TypeNameOfDataBlock(attribute_array_data);
         AttributeArray attribute_array = ReadDataBlock<AttributeArray>(blend, attribute_array_data, 0);
 
@@ -90,7 +108,7 @@ void LogMesh(BlendFileReader& blend, DataBlockNode* node, Mesh& mesh) {
         std::cout << "        Size: " << attribute_array.size << "\n";
         
         // Read raw attribute data bytes
-        DataBlockNode* raw_data_block = blend.MapPointerToBlock(attribute_array.data);
+        FileDataBlockNode* raw_data_block = blend.MapPointerToBlock(attribute_array.data);
         const char* raw_data_type = blend.TypeNameOfDataBlock(raw_data_block);
         raw_data* data = (raw_data*)blend.GetRawDataAddress(raw_data_block->data_offset);
         uint32_t byte_length = raw_data_block->block_header.byte_length;
