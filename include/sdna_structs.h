@@ -1,3 +1,5 @@
+// This is partially auto generated code 
+
 #include <cstdint>
 
 struct raw_data;

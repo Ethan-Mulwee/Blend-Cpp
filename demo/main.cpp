@@ -1,28 +1,34 @@
-#include "blend_file_reader.h"
-#include "blend_file_intermediate.h"
-#include <cstdlib>
-#include <cstring>
+// #include "blend_file_reader.h"
+// #include "blend_file_intermediate.h"
+// #include <cstdlib>
+// #include <cstring>
+
+// TODO: get rid of monolithic blend file structs, instead split into multiple functions and structs
+// 1. function for reading and returning the data and info of the raw bytes of the file
+#include "blend_byte_buffer.hpp"
+
+// 2. function for parsing out the list of data blocks, with the data copied and split into individual buffers for each block
+#include "blend_data_blocks.hpp"
+
+// 3. function for reading SDNA data block
+#include "blend_sdna.hpp"
+
+// 4. function for sorting the data blocks into lists by type
+#include "blend_process.hpp"
+// 5. function for processing the pointers contain within the data block data to remap them to the correct buffers
+
 
 int main() {
-    // TODO: get rid of monolithic blend file structs, instead split into multiple functions and structs
-    // 1. function for reading and returning the data and info of the raw bytes of the file
-    // 2. function for parsing out the list of data blocks, with the data copied and split into individual buffers for each block
-    // 3. function for sorting the data blocks into lists by type
-    // 4. function for processing the pointers contain within the data block data to remap them to the correct buffers
-    BlendFileReader blend_file_reader = ReadBlendFile("Cube.blend");
-    // ExtractSDNATypesToHeaderFile(blend_file);
+    // BlendFileReader blend_file_reader = ReadBlendFile("Cube.blend");
+    // BlendFileIntermediate blend_file_intermediate = SplitDataBlocks(blend_file_reader);
+    // InterpretDataBlocks(blend_file_intermediate);
 
-    
-    // LogBlendFileHeader(blend_file);
-    
-    // LogDataBlocks(blend_file);
-    
-    
-    /* Attempt to read mesh data */
-    /* See DNA_mesh_types.h struct Mesh */
-
-    BlendFileIntermediate blend_file_intermediate = SplitDataBlocks(blend_file_reader);
-    InterpretDataBlocks(blend_file_intermediate);
+    BlendByteBuffer blend_bytes = ReadBlendFileBytes("../Cube.blend");
+    DataBlockList block_list = ParseDataBlocks(blend_bytes);
+    SDNA sdna = ParseSDNA(block_list);
+    WriteSDNA(sdna, "test.h");
+    auto mapping = GetPointerMapping(block_list);
+    InterpretDataBlocks(block_list);
 
 
     return 0;
