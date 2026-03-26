@@ -1,6 +1,6 @@
 #include "blend_process.hpp"
-#include "sdna_structs.h"
-#include "attribute_types.h"
+#include "blend_types/sdna_types.h"
+#include "blend_types/attribute_types.h"
 
 #include <vector>
 #include <iostream>
