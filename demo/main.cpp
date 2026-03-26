@@ -28,7 +28,7 @@ int main() {
     SDNA sdna = ParseSDNA(block_list);
     WriteSDNA(sdna, "test.h");
     auto mapping = GetPointerMapping(block_list);
-    InterpretDataBlocks(block_list);
+    InterpretDataBlocks(block_list, sdna);
 
 
     return 0;

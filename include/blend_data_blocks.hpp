@@ -50,4 +50,17 @@ DataBlockList ParseDataBlocks(const BlendByteBuffer& buffer);
 
 std::map<void*, DataBlockNode*> GetPointerMapping(const DataBlockList& list);
 
+template <typename T>
+T* MapPointer(T* ptr, std::map<void*, DataBlockNode*>& map) {
+    DataBlockNode* data_block_node = map[ptr];
+    T* mapped_pointer = (T*)data_block_node->block.data;
+    return mapped_pointer;
+}
+
+template <typename T>
+DataBlockNode* MapPointerToBlock(T* ptr, std::map<void*, DataBlockNode*>& map) {
+    DataBlockNode* data_block_node = map[ptr];
+    return data_block_node;
+}
+
 #endif
