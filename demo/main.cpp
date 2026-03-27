@@ -15,6 +15,8 @@
 // 3. function for reading SDNA data block
 #include "blend_sdna.hpp"
 
+#include "generated_code.h"
+
 // 4. function for sorting the data blocks into lists by type
 // #include "blend_process.hpp"
 // 5. function for processing the pointers contain within the data block data to remap them to the correct buffers

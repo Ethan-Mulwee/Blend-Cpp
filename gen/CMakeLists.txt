@@ -1,3 +1,5 @@
+project(code-gen)
+
 # code gen
 file(GLOB_RECURSE GEN_SRC_FILES ${CMAKE_CURRENT_LIST_DIR}/*.cpp)
 

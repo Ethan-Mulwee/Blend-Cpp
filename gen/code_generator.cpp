@@ -38,20 +38,20 @@ void WriteSDNA(const SDNA& sdna, const char* path) {
 
     /* TODO: sorting system to avoid ordering issues */
 
-    SDNA_Struct** sorted_structs = new SDNA_Struct*[sdna.structs_num];
-    memcpy(sorted_structs, sdna.structs, sdna.structs_num * sizeof(SDNA_Struct*));
+    // SDNA_Struct** sorted_structs = new SDNA_Struct*[sdna.structs_num];
+    // memcpy(sorted_structs, sdna.structs, sdna.structs_num * sizeof(SDNA_Struct*));
 
-    for (int i = 0; i < sdna.structs_num; i++) {
-        SDNA_Struct* struct_pointer = sorted_structs[i];
-        file << "struct " << sdna.types[struct_pointer->type_index] << " { \n";
-        for (int member_index = 0; member_index < struct_pointer->members_num; member_index++) {
-            SDNA_StructMember member = struct_pointer->members[member_index];
+    // for (int i = 0; i < sdna.structs_num; i++) {
+    //     SDNA_Struct* struct_pointer = sdna.structs[i];
+    //     file << "struct " << sdna.types[struct_pointer->type_index] << " { \n";
+    //     for (int member_index = 0; member_index < struct_pointer->members_num; member_index++) {
+    //         SDNA_StructMember member = struct_pointer->members[member_index];
             
-            file << "\t" << sdna.types[member.type_index] << " ";
-            file << "" << sdna.members[member.member_index] << ";\n";
-        }
-        file << "}; \n\n";
-    }
+    //         file << "\t" << sdna.types[member.type_index] << " ";
+    //         file << "" << sdna.members[member.member_index] << ";\n";
+    //     }
+    //     file << "}; \n\n";
+    // }
 
     file.close();
 }
@@ -60,7 +60,7 @@ int main() {
     BlendByteBuffer blend_bytes = ReadBlendFileBytes("../Cube.blend");
     DataBlockList block_list = ParseDataBlocks(blend_bytes);
     SDNA sdna = ParseSDNA(block_list);
-    WriteSDNA(sdna, "../include/blend_types/sdna_types_gen.h");
+    WriteSDNA(sdna, "generated_code.h");
     // WriteSDNA(const SDNA &sdna, const char *path)
     return 0;
 }
