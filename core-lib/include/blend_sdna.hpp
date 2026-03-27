@@ -68,7 +68,4 @@ struct SDNA {
 
 SDNA ParseSDNA(const DataBlockList& blocks);
 
-// Write out SDNA to a C header file, used to auto generate SDNA types
-void WriteSDNA(const SDNA& sdna, const char* path);
-
 #endif

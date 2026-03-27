@@ -3,6 +3,8 @@
 // #include <cstdlib>
 // #include <cstring>
 
+#include <iostream>
+
 // TODO: get rid of monolithic blend file structs, instead split into multiple functions and structs
 // 1. function for reading and returning the data and info of the raw bytes of the file
 #include "blend_byte_buffer.hpp"
@@ -14,7 +16,7 @@
 #include "blend_sdna.hpp"
 
 // 4. function for sorting the data blocks into lists by type
-#include "blend_process.hpp"
+// #include "blend_process.hpp"
 // 5. function for processing the pointers contain within the data block data to remap them to the correct buffers
 
 
@@ -26,9 +28,11 @@ int main() {
     BlendByteBuffer blend_bytes = ReadBlendFileBytes("../Cube.blend");
     DataBlockList block_list = ParseDataBlocks(blend_bytes);
     SDNA sdna = ParseSDNA(block_list);
-    WriteSDNA(sdna, "test.h");
-    auto mapping = GetPointerMapping(block_list);
-    InterpretDataBlocks(block_list, sdna);
+    for (int i = 0; i < sdna.members_num; i++) {
+        std::cout << sdna.members[i] << "\n";
+    }
+    // auto mapping = GetPointerMapping(block_list);
+    // InterpretDataBlocks(block_list, sdna);
 
 
     return 0;
