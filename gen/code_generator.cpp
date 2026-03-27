@@ -60,7 +60,7 @@ int main() {
     BlendByteBuffer blend_bytes = ReadBlendFileBytes("../Cube.blend");
     DataBlockList block_list = ParseDataBlocks(blend_bytes);
     SDNA sdna = ParseSDNA(block_list);
-    WriteSDNA(sdna, "generated_code.h");
+    WriteSDNA(sdna, "../full-lib/include/generated_code.h");
     // WriteSDNA(const SDNA &sdna, const char *path)
     return 0;
 }
