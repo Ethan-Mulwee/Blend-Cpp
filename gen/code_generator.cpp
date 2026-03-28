@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <fstream>
 #include <cstring>
 
@@ -7,6 +8,12 @@
 // generates a switch statement that deals with all sdna types, sorting them into lists with cast types and deals with remapping pointers
 
 using namespace blendio;
+
+// void QuickSort(SDNA_Struct* )
+struct Sortable_SDNA_Struct {
+    SDNA_Struct* struct_pointer;
+    int max_dep = -1;
+};
 
 void WriteSDNA(const SDNA& sdna, const char* path) {
     std::fstream file(path, std::ios::out);
@@ -42,18 +49,37 @@ void WriteSDNA(const SDNA& sdna, const char* path) {
 
     // SDNA_Struct** sorted_structs = new SDNA_Struct*[sdna.structs_num];
     // memcpy(sorted_structs, sdna.structs, sdna.structs_num * sizeof(SDNA_Struct*));
+    Sortable_SDNA_Struct* sorting_array = new Sortable_SDNA_Struct[sdna.structs_num];
+    for (int i = 0; i < sdna.structs_num; i++) {
+        SDNA_Struct* struct_pointer = sdna.structs[i];
+        int max = -1;
+        for (int member_index = 0; member_index < struct_pointer->members_num; member_index++) {
+            SDNA_StructMember member = struct_pointer->members[member_index];
+            if (member.type_index > max)
+                max = member.type_index;
+        }
+        sorting_array[i] = {
+            .struct_pointer = struct_pointer,
+            .max_dep = max
+        };
+    }
 
-    // for (int i = 0; i < sdna.structs_num; i++) {
-    //     SDNA_Struct* struct_pointer = sdna.structs[i];
-    //     file << "struct " << sdna.types[struct_pointer->type_index] << " { \n";
-    //     for (int member_index = 0; member_index < struct_pointer->members_num; member_index++) {
-    //         SDNA_StructMember member = struct_pointer->members[member_index];
+    std::sort(sorting_array, &sorting_array[sdna.structs_num], [](const Sortable_SDNA_Struct &a, const Sortable_SDNA_Struct &b) {
+        return a.max_dep < b.max_dep;
+    });
+
+    for (int i = 0; i < sdna.structs_num; i++) {
+        Sortable_SDNA_Struct sorted_struct = sorting_array[i];
+        SDNA_Struct* struct_pointer = sorted_struct.struct_pointer;
+        file << "struct " << sdna.types[struct_pointer->type_index] << " { // Max dep:" << sorted_struct.max_dep << "\n";
+        for (int member_index = 0; member_index < struct_pointer->members_num; member_index++) {
+            SDNA_StructMember member = struct_pointer->members[member_index];
             
-    //         file << "\t" << sdna.types[member.type_index] << " ";
-    //         file << "" << sdna.members[member.member_index] << ";\n";
-    //     }
-    //     file << "}; \n\n";
-    // }
+            file << "\t" << sdna.types[member.type_index] << " ";
+            file << "" << sdna.members[member.member_index] << "; // type_index: " << member.type_index << "\n";
+        }
+        file << "}; \n\n";
+    }
 
     file.close();
 }
