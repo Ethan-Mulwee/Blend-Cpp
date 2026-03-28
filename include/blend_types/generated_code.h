@@ -1101,78 +1101,182 @@ typedef void WorkSpaceRuntimeHandle;
 typedef unsigned short ushort;
 typedef unsigned char uchar;
 
+struct bNodeSocketValueMaterial { // Max dep:-1
+	Material *value; // type_index: 128
+}; 
+
+struct SpreadsheetBundlePathElem { // Max dep:-1
+	char *identifier; // type_index: 0
+}; 
+
+struct SpreadsheetColumnID { // Max dep:-1
+	char *name; // type_index: 0
+}; 
+
+struct StripModifierDataRuntime { // Max dep:-1
+	float *last_buf; // type_index: 7
+	void *last_sound_in; // type_index: 11
+	void *last_sound_out; // type_index: 11
+}; 
+
+struct EditingRuntime { // Max dep:-1
+	StripLookup *strip_lookup; // type_index: 907
+	MediaPresence *media_presence; // type_index: 908
+	ThumbnailCache *thumbnail_cache; // type_index: 909
+	IntraFrameCache *intra_frame_cache; // type_index: 910
+	SourceImageCache *source_image_cache; // type_index: 911
+	FinalImageCache *final_image_cache; // type_index: 912
+	PreviewCache *preview_cache; // type_index: 913
+}; 
+
+struct SeqConnection { // Max dep:-1
+	SeqConnection *next; // type_index: 905
+	SeqConnection *prev; // type_index: 905
+	Sequence *seq_ref; // type_index: 901
+}; 
+
+struct StripAnim { // Max dep:-1
+	StripAnim *next; // type_index: 892
+	StripAnim *prev; // type_index: 892
+	MovieReader *anim; // type_index: 316
+}; 
+
+struct FileHandler { // Max dep:-1
+	FileHandlerTypeHandle *type; // type_index: 891
+}; 
+
+struct BoneCollectionMember { // Max dep:-1
+	BoneCollectionMember *next; // type_index: 103
+	BoneCollectionMember *prev; // type_index: 103
+	Bone *bone; // type_index: 50
+}; 
+
+struct BoneCollectionReference { // Max dep:-1
+	BoneCollectionReference *next; // type_index: 104
+	BoneCollectionReference *prev; // type_index: 104
+	BoneCollection *bcoll; // type_index: 100
+}; 
+
+struct AssetCatalogPathLink { // Max dep:-1
+	AssetCatalogPathLink *next; // type_index: 110
+	AssetCatalogPathLink *prev; // type_index: 110
+	char *path; // type_index: 0
+}; 
+
+struct AttributeSingle { // Max dep:-1
+	void *data; // type_index: 11
+	ImplicitSharingInfoHandle *sharing_info; // type_index: 112
+}; 
+
+struct GP_Interpolate_Settings { // Max dep:-1
+	CurveMapping *custom_ipo; // type_index: 127
+}; 
+
+struct NamedBrushAssetReference { // Max dep:-1
+	NamedBrushAssetReference *next; // type_index: 823
+	NamedBrushAssetReference *prev; // type_index: 823
+	char *name; // type_index: 0
+	AssetWeakReference *brush_asset_reference; // type_index: 109
+}; 
+
+struct NodeInputString { // Max dep:-1
+	char *string; // type_index: 0
+}; 
+
+struct NodeScriptDict { // Max dep:-1
+	void *dict; // type_index: 11
+	void *node; // type_index: 11
+}; 
+
 struct raw_data { // Max dep:-1
 }; 
 
-struct ColorManagedDisplaySettings { // Max dep:0
-	char display_device[64]; // type_index: 0
-	char emulation; // type_index: 0
-	char _pad[7]; // type_index: 0
+struct bNodeSocketValueTexture { // Max dep:-1
+	Tex *value; // type_index: 227
 }; 
 
-struct NodeReroute { // Max dep:0
-	char type_idname[64]; // type_index: 0
+struct bNodeSocketValueCollection { // Max dep:-1
+	Collection *value; // type_index: 66
 }; 
 
-struct NodeVertexCol { // Max dep:0
-	char name[64]; // type_index: 0
+struct bNodeSocketValueImage { // Max dep:-1
+	Image *value; // type_index: 144
 }; 
 
-struct NodeConvertColorSpace { // Max dep:0
-	char from_color_space[64]; // type_index: 0
-	char to_color_space[64]; // type_index: 0
+struct bNodeSocketValueObject { // Max dep:-1
+	Object *value; // type_index: 51
 }; 
 
-struct NodeDilateErode { // Max dep:0
-	char falloff; // type_index: 0
+struct NodesModifierBakeFile { // Max dep:-1
+	char *name; // type_index: 0
+	PackedFile *packed_file; // type_index: 35
 }; 
 
-struct SpaceAction_Runtime { // Max dep:0
-	char flag; // type_index: 0
-	char _pad0[7]; // type_index: 0
+struct NodesModifierSettings { // Max dep:-1
+	IDProperty *properties; // type_index: 24
 }; 
 
-struct NodeSetAlpha { // Max dep:0
-	char mode; // type_index: 0
+struct ImageAnim { // Max dep:-1
+	ImageAnim *next; // type_index: 315
+	ImageAnim *prev; // type_index: 315
+	MovieReader *anim; // type_index: 316
 }; 
 
-struct ThemeCollectionColor { // Max dep:0
-	char color[4]; // type_index: 0
+struct LightProbeBakingData { // Max dep:-1
+	float (*L0)(); // type_index: 7
+	float (*L1_a)(); // type_index: 7
+	float (*L1_b)(); // type_index: 7
+	float (*L1_c)(); // type_index: 7
+	float *validity; // type_index: 7
+	float (*virtual_offset)(); // type_index: 7
 }; 
 
-struct ThemeStripColor { // Max dep:0
-	char color[4]; // type_index: 0
+struct LightProbeIrradianceData { // Max dep:-1
+	float (*L0)(); // type_index: 7
+	float (*L1_a)(); // type_index: 7
+	float (*L1_b)(); // type_index: 7
+	float (*L1_c)(); // type_index: 7
 }; 
 
-struct ColorManagedColorspaceSettings { // Max dep:0
-	char name[64]; // type_index: 0
+struct LightProbeVisibilityData { // Max dep:-1
+	float *L0; // type_index: 7
+	float *L1_a; // type_index: 7
+	float *L1_b; // type_index: 7
+	float *L1_c; // type_index: 7
 }; 
 
-struct MovieTrackingStats { // Max dep:0
-	char message[256]; // type_index: 0
+struct LightProbeConnectivityData { // Max dep:-1
+	uchar *validity; // type_index: 1
 }; 
 
-struct LightgroupMembership { // Max dep:0
-	char name[64]; // type_index: 0
+struct ListBase { // Max dep:-1
+	void *first; // type_index: 11
+	void *last; // type_index: 11
 }; 
 
-struct NodeShaderPrincipled { // Max dep:0
-	char use_subsurface_auto_radius; // type_index: 0
-	char _pad[3]; // type_index: 0
+struct LinkData { // Max dep:-1
+	LinkData *next; // type_index: 392
+	LinkData *prev; // type_index: 392
+	void *data; // type_index: 11
 }; 
 
-struct TexNodeOutput { // Max dep:0
-	char name[64]; // type_index: 0
+struct Link { // Max dep:-1
+	Link *next; // type_index: 391
+	Link *prev; // type_index: 391
 }; 
 
-struct NodeTrackPosData { // Max dep:0
-	char tracking_object[64]; // type_index: 0
-	char track_name[64]; // type_index: 0
+struct wmKeyMapDiffItem { // Max dep:-1
+	wmKeyMapDiffItem *next; // type_index: 1091
+	wmKeyMapDiffItem *prev; // type_index: 1091
+	wmKeyMapItem *remove_item; // type_index: 1089
+	wmKeyMapItem *add_item; // type_index: 1089
 }; 
 
-struct UserDef_Runtime { // Max dep:0
-	char is_dirty; // type_index: 0
-	char _pad0[7]; // type_index: 0
+struct WorkSpaceInstanceHook { // Max dep:-1
+	WorkSpace *active; // type_index: 1101
+	WorkSpaceLayout *act_layout; // type_index: 1099
+	WorkSpace *temp_workspace_store; // type_index: 1101
+	WorkSpaceLayout *temp_layout_store; // type_index: 1099
 }; 
 
 struct UserDef_SpaceData { // Max dep:0
@@ -1181,15 +1285,27 @@ struct UserDef_SpaceData { // Max dep:0
 	char _pad0[6]; // type_index: 0
 }; 
 
-struct NodeInputString { // Max dep:0
-	char *string; // type_index: 0
+struct TexNodeOutput { // Max dep:0
+	char name[64]; // type_index: 0
 }; 
 
-struct NodeDenoise { // Max dep:0
-	char hdr; // type_index: 0
-	char prefilter; // type_index: 0
-	char quality; // type_index: 0
-	char _pad[1]; // type_index: 0
+struct NodeShaderPrincipled { // Max dep:0
+	char use_subsurface_auto_radius; // type_index: 0
+	char _pad[3]; // type_index: 0
+}; 
+
+struct NodeSetAlpha { // Max dep:0
+	char mode; // type_index: 0
+}; 
+
+struct PanelCategoryStack { // Max dep:0
+	PanelCategoryStack *next; // type_index: 871
+	PanelCategoryStack *prev; // type_index: 871
+	char idname[64]; // type_index: 0
+}; 
+
+struct NodeDilateErode { // Max dep:0
+	char falloff; // type_index: 0
 }; 
 
 struct UserDef_Experimental { // Max dep:0
@@ -1214,8 +1330,56 @@ struct UserDef_Experimental { // Max dep:0
 	char _pad[6]; // type_index: 0
 }; 
 
-struct NodeShaderOutputAOV { // Max dep:0
+struct NodeConvertColorSpace { // Max dep:0
+	char from_color_space[64]; // type_index: 0
+	char to_color_space[64]; // type_index: 0
+}; 
+
+struct NodeTrackPosData { // Max dep:0
+	char tracking_object[64]; // type_index: 0
+	char track_name[64]; // type_index: 0
+}; 
+
+struct LibraryWeakReference { // Max dep:0
+	char library_filepath[1024]; // type_index: 0
+	char library_id_name[258]; // type_index: 0
+	char _pad[2]; // type_index: 0
+}; 
+
+struct NodeVertexCol { // Max dep:0
 	char name[64]; // type_index: 0
+}; 
+
+struct AssetTag { // Max dep:0
+	AssetTag *next; // type_index: 105
+	AssetTag *prev; // type_index: 105
+	char name[64]; // type_index: 0
+}; 
+
+struct UserDef_Runtime { // Max dep:0
+	char is_dirty; // type_index: 0
+	char _pad0[7]; // type_index: 0
+}; 
+
+struct NodeReroute { // Max dep:0
+	char type_idname[64]; // type_index: 0
+}; 
+
+struct ScrArea_Runtime { // Max dep:0
+	bToolRef *tool; // type_index: 881
+	char is_tool_set; // type_index: 0
+	char _pad0[7]; // type_index: 0
+}; 
+
+struct ThemeStripColor { // Max dep:0
+	char color[4]; // type_index: 0
+}; 
+
+struct bUserScriptDirectory { // Max dep:0
+	bUserScriptDirectory *next; // type_index: 1049
+	bUserScriptDirectory *prev; // type_index: 1049
+	char name[64]; // type_index: 0
+	char dir_path[768]; // type_index: 0
 }; 
 
 struct NodeShaderUVMap { // Max dep:0
@@ -1224,6 +1388,103 @@ struct NodeShaderUVMap { // Max dep:0
 
 struct NodeShaderVertexColor { // Max dep:0
 	char layer_name[64]; // type_index: 0
+}; 
+
+struct NodeShaderOutputAOV { // Max dep:0
+	char name[64]; // type_index: 0
+}; 
+
+struct CryptomatteLayer { // Max dep:0
+	CryptomatteEntry *next; // type_index: 666
+	CryptomatteEntry *prev; // type_index: 666
+	char name[64]; // type_index: 0
+}; 
+
+struct NodeDenoise { // Max dep:0
+	char hdr; // type_index: 0
+	char prefilter; // type_index: 0
+	char quality; // type_index: 0
+	char _pad[1]; // type_index: 0
+}; 
+
+struct bFaceMap { // Max dep:0
+	bFaceMap *next; // type_index: 782
+	bFaceMap *prev; // type_index: 782
+	char name[64]; // type_index: 0
+	char flag; // type_index: 0
+	char _pad0[7]; // type_index: 0
+}; 
+
+struct CacheObjectPath { // Max dep:0
+	CacheObjectPath *next; // type_index: 137
+	CacheObjectPath *prev; // type_index: 137
+	char path[4096]; // type_index: 0
+}; 
+
+struct bDeformGroup { // Max dep:0
+	bDeformGroup *next; // type_index: 781
+	bDeformGroup *prev; // type_index: 781
+	char name[64]; // type_index: 0
+	char flag; // type_index: 0
+	char _pad0[7]; // type_index: 0
+}; 
+
+struct CustomDataExternal { // Max dep:0
+	char filename[1024]; // type_index: 0
+}; 
+
+struct MovieTrackingStats { // Max dep:0
+	char message[256]; // type_index: 0
+}; 
+
+struct bTransformCacheConstraint { // Max dep:0
+	CacheFile *cache_file; // type_index: 139
+	char object_path[1024]; // type_index: 0
+	CacheReader *reader; // type_index: 202
+	char reader_object_path[1024]; // type_index: 0
+}; 
+
+struct ColorManagedDisplaySettings { // Max dep:0
+	char display_device[64]; // type_index: 0
+	char emulation; // type_index: 0
+	char _pad[7]; // type_index: 0
+}; 
+
+struct ColorManagedColorspaceSettings { // Max dep:0
+	char name[64]; // type_index: 0
+}; 
+
+struct XrComponentPath { // Max dep:0
+	XrComponentPath *next; // type_index: 1104
+	XrComponentPath *prev; // type_index: 1104
+	char path[192]; // type_index: 0
+}; 
+
+struct ThemeCommonCurves { // Max dep:0
+	char handle_free[4]; // type_index: 0
+	char handle_auto[4]; // type_index: 0
+	char handle_vect[4]; // type_index: 0
+	char handle_align[4]; // type_index: 0
+	char handle_auto_clamped[4]; // type_index: 0
+	char handle_sel_free[4]; // type_index: 0
+	char handle_sel_auto[4]; // type_index: 0
+	char handle_sel_vect[4]; // type_index: 0
+	char handle_sel_align[4]; // type_index: 0
+	char handle_sel_auto_clamped[4]; // type_index: 0
+	char handle_vertex[4]; // type_index: 0
+	char handle_vertex_select[4]; // type_index: 0
+	char handle_vertex_size; // type_index: 0
+	char _pad0[3]; // type_index: 0
+}; 
+
+struct XrUserPath { // Max dep:0
+	XrUserPath *next; // type_index: 1106
+	XrUserPath *prev; // type_index: 1106
+	char path[64]; // type_index: 0
+}; 
+
+struct ThemeCollectionColor { // Max dep:0
+	char color[4]; // type_index: 0
 }; 
 
 struct ThemeCommonAnim { // Max dep:0
@@ -1253,93 +1514,6 @@ struct ThemeCommonAnim { // Max dep:0
 	char _pad0[4]; // type_index: 0
 }; 
 
-struct FreestyleEdge { // Max dep:0
-	char flag; // type_index: 0
-}; 
-
-struct ThemeCommonCurves { // Max dep:0
-	char handle_free[4]; // type_index: 0
-	char handle_auto[4]; // type_index: 0
-	char handle_vect[4]; // type_index: 0
-	char handle_align[4]; // type_index: 0
-	char handle_auto_clamped[4]; // type_index: 0
-	char handle_sel_free[4]; // type_index: 0
-	char handle_sel_auto[4]; // type_index: 0
-	char handle_sel_vect[4]; // type_index: 0
-	char handle_sel_align[4]; // type_index: 0
-	char handle_sel_auto_clamped[4]; // type_index: 0
-	char handle_vertex[4]; // type_index: 0
-	char handle_vertex_select[4]; // type_index: 0
-	char handle_vertex_size; // type_index: 0
-	char _pad0[3]; // type_index: 0
-}; 
-
-struct FreestyleFace { // Max dep:0
-	char flag; // type_index: 0
-}; 
-
-struct MLoopCol { // Max dep:0
-	char r; // type_index: 0
-	char g; // type_index: 0
-	char b; // type_index: 0
-	char a; // type_index: 0
-}; 
-
-struct MCol { // Max dep:0
-	char a; // type_index: 0
-	char r; // type_index: 0
-	char g; // type_index: 0
-	char b; // type_index: 0
-}; 
-
-struct bNodeTreeInterfaceItem { // Max dep:0
-	char item_type; // type_index: 0
-	char _pad[7]; // type_index: 0
-}; 
-
-struct bNodeSocketValueBoolean { // Max dep:0
-	char value; // type_index: 0
-}; 
-
-struct IDHash { // Max dep:0
-	char data[16]; // type_index: 0
-}; 
-
-struct SpreadsheetColumnID { // Max dep:0
-	char *name; // type_index: 0
-}; 
-
-struct LibraryWeakReference { // Max dep:0
-	char library_filepath[1024]; // type_index: 0
-	char library_id_name[258]; // type_index: 0
-	char _pad[2]; // type_index: 0
-}; 
-
-struct SpreadsheetBundlePathElem { // Max dep:0
-	char *identifier; // type_index: 0
-}; 
-
-struct CustomDataExternal { // Max dep:0
-	char filename[1024]; // type_index: 0
-}; 
-
-struct ThemeRegionsAssetShelf { // Max dep:0
-	char back[4]; // type_index: 0
-	char header_back[4]; // type_index: 0
-}; 
-
-struct MStringProperty { // Max dep:0
-	char s[255]; // type_index: 0
-	char s_len; // type_index: 0
-}; 
-
-struct ThemeRegionsChannels { // Max dep:0
-	char back[4]; // type_index: 0
-	char text[4]; // type_index: 0
-	char text_selected[4]; // type_index: 0
-	char _pad0[4]; // type_index: 0
-}; 
-
 struct ThemeRegionsSidebars { // Max dep:0
 	char back[4]; // type_index: 0
 	char tab_back[4]; // type_index: 0
@@ -1352,8 +1526,265 @@ struct ThemeRegionsScrubbing { // Max dep:0
 	char time_marker_selected[4]; // type_index: 0
 }; 
 
-struct NodeGeometryMergeByDistance { // Max dep:1
+struct ThemeRegionsChannels { // Max dep:0
+	char back[4]; // type_index: 0
+	char text[4]; // type_index: 0
+	char text_selected[4]; // type_index: 0
+	char _pad0[4]; // type_index: 0
+}; 
+
+struct ThemeRegionsAssetShelf { // Max dep:0
+	char back[4]; // type_index: 0
+	char header_back[4]; // type_index: 0
+}; 
+
+struct wmOwnerID { // Max dep:0
+	wmOwnerID *next; // type_index: 1100
+	wmOwnerID *prev; // type_index: 1100
+	char name[128]; // type_index: 0
+}; 
+
+struct SpaceAction_Runtime { // Max dep:0
+	char flag; // type_index: 0
+	char _pad0[7]; // type_index: 0
+}; 
+
+struct WorkSpaceLayout { // Max dep:0
+	WorkSpaceLayout *next; // type_index: 1099
+	WorkSpaceLayout *prev; // type_index: 1099
+	bScreen *screen; // type_index: 237
+	char name[64]; // type_index: 0
+}; 
+
+struct MStringProperty { // Max dep:0
+	char s[255]; // type_index: 0
+	char s_len; // type_index: 0
+}; 
+
+struct LightgroupMembership { // Max dep:0
+	char name[64]; // type_index: 0
+}; 
+
+struct IDHash { // Max dep:0
+	char data[16]; // type_index: 0
+}; 
+
+struct bUserMenuItem { // Max dep:0
+	bUserMenuItem *next; // type_index: 1035
+	bUserMenuItem *prev; // type_index: 1035
+	char ui_name[64]; // type_index: 0
+	char type; // type_index: 0
+	char _pad0[7]; // type_index: 0
+}; 
+
+struct bNodeSocketValueBoolean { // Max dep:0
+	char value; // type_index: 0
+}; 
+
+struct bNodeTreeInterfaceItem { // Max dep:0
+	char item_type; // type_index: 0
+	char _pad[7]; // type_index: 0
+}; 
+
+struct wmKeyConfigPref { // Max dep:0
+	wmKeyConfigPref *next; // type_index: 1094
+	wmKeyConfigPref *prev; // type_index: 1094
+	char idname[64]; // type_index: 0
+	IDProperty *prop; // type_index: 24
+}; 
+
+struct bPathCompare { // Max dep:0
+	bPathCompare *next; // type_index: 1033
+	bPathCompare *prev; // type_index: 1033
+	char path[768]; // type_index: 0
+	char flag; // type_index: 0
+	char _pad0[7]; // type_index: 0
+}; 
+
+struct ViewLayerLightgroup { // Max dep:0
+	ViewLayerLightgroup *next; // type_index: 333
+	ViewLayerLightgroup *prev; // type_index: 333
+	char name[64]; // type_index: 0
+}; 
+
+struct bAddon { // Max dep:0
+	bAddon *next; // type_index: 1032
+	bAddon *prev; // type_index: 1032
+	char module[128]; // type_index: 0
+	IDProperty *prop; // type_index: 24
+}; 
+
+struct ImageView { // Max dep:0
+	ImageView *next; // type_index: 317
+	ImageView *prev; // type_index: 317
+	char name[64]; // type_index: 0
+	char filepath[1024]; // type_index: 0
+}; 
+
+struct MLoopCol { // Max dep:0
+	char r; // type_index: 0
+	char g; // type_index: 0
+	char b; // type_index: 0
+	char a; // type_index: 0
+}; 
+
+struct RenderSlot { // Max dep:0
+	RenderSlot *next; // type_index: 319
+	RenderSlot *prev; // type_index: 319
+	char name[64]; // type_index: 0
+	RenderResult *render; // type_index: 320
+}; 
+
+struct MCol { // Max dep:0
+	char a; // type_index: 0
+	char r; // type_index: 0
+	char g; // type_index: 0
+	char b; // type_index: 0
+}; 
+
+struct FreestyleFace { // Max dep:0
+	char flag; // type_index: 0
+}; 
+
+struct FreestyleEdge { // Max dep:0
+	char flag; // type_index: 0
+}; 
+
+struct NodeGeometryCurvePrimitiveBezierSegment { // Max dep:1
 	uchar mode; // type_index: 1
+}; 
+
+struct NodeGeometryMeshToPoints { // Max dep:1
+	uchar mode; // type_index: 1
+}; 
+
+struct NodeGeometryCurveSplineType { // Max dep:1
+	uchar spline_type; // type_index: 1
+}; 
+
+struct NodeGeometrySetCurveHandlePositions { // Max dep:1
+	uchar mode; // type_index: 1
+}; 
+
+struct NodeGeometryCurveSetHandles { // Max dep:1
+	uchar handle_type; // type_index: 1
+	uchar mode; // type_index: 1
+}; 
+
+struct NodeGeometryCurveFill { // Max dep:1
+	uchar mode; // type_index: 1
+}; 
+
+struct NodeSwitch { // Max dep:1
+	uchar input_type; // type_index: 1
+}; 
+
+struct NodeGeometryCurveSelectHandles { // Max dep:1
+	uchar handle_type; // type_index: 1
+	uchar mode; // type_index: 1
+}; 
+
+struct NodeGeometryCurvePrimitiveArc { // Max dep:1
+	uchar mode; // type_index: 1
+}; 
+
+struct NodeGeometryCurvePrimitiveLine { // Max dep:1
+	uchar mode; // type_index: 1
+}; 
+
+struct NodeGeometryStringToCurves { // Max dep:1
+	uchar overflow; // type_index: 1
+	uchar align_x; // type_index: 1
+	uchar align_y; // type_index: 1
+	uchar pivot_mode; // type_index: 1
+}; 
+
+struct NodeGeometryCurvePrimitiveCircle { // Max dep:1
+	uchar mode; // type_index: 1
+}; 
+
+struct NodeGeometryCurvePrimitiveQuad { // Max dep:1
+	uchar mode; // type_index: 1
+}; 
+
+struct NodeGeometryCurveResample { // Max dep:1
+	uchar mode; // type_index: 1
+	uchar keep_last_segment; // type_index: 1
+}; 
+
+struct NodeGeometryCurveFillet { // Max dep:1
+	uchar mode; // type_index: 1
+}; 
+
+struct NodeGeometryCurveTrim { // Max dep:1
+	uchar mode; // type_index: 1
+}; 
+
+struct NodeGeometryCurveToPoints { // Max dep:1
+	uchar mode; // type_index: 1
+}; 
+
+struct NodeGeometryPointsToVolume { // Max dep:1
+	uchar resolution_mode; // type_index: 1
+}; 
+
+struct NodeCMPCombSepColor { // Max dep:1
+	uchar mode; // type_index: 1
+	uchar ycc_mode; // type_index: 1
+}; 
+
+struct MBoolProperty { // Max dep:1
+	uchar b; // type_index: 1
+}; 
+
+struct NodeRadialTiling { // Max dep:1
+	uchar normalize; // type_index: 1
+	char _pad[7]; // type_index: 0
+}; 
+
+struct NodeMapRange { // Max dep:1
+	uchar data_type; // type_index: 1
+	uchar interpolation_type; // type_index: 1
+	uchar clamp; // type_index: 1
+	char _pad[5]; // type_index: 0
+}; 
+
+struct NodeRandomValue { // Max dep:1
+	uchar data_type; // type_index: 1
+}; 
+
+struct NodeAccumulateField { // Max dep:1
+	uchar data_type; // type_index: 1
+	uchar domain; // type_index: 1
+}; 
+
+struct NodeInputBool { // Max dep:1
+	uchar boolean; // type_index: 1
+}; 
+
+struct NodeGeometryExtrudeMesh { // Max dep:1
+	uchar mode; // type_index: 1
+}; 
+
+struct NodeGeometryObjectInfo { // Max dep:1
+	uchar transform_space; // type_index: 1
+}; 
+
+struct NodeGeometryMeshLine { // Max dep:1
+	uchar mode; // type_index: 1
+	uchar count_mode; // type_index: 1
+}; 
+
+struct NodeGeometryCollectionInfo { // Max dep:1
+	uchar transform_space; // type_index: 1
+}; 
+
+struct NodeGeometryProximity { // Max dep:1
+	uchar target_element; // type_index: 1
+}; 
+
+struct NodeGeometryVolumeToMesh { // Max dep:1
+	uchar resolution_mode; // type_index: 1
 }; 
 
 struct NodeGeometryMeshToVolume { // Max dep:1
@@ -1377,91 +1808,7 @@ struct NodeGeometryMeshCone { // Max dep:1
 	uchar fill_type; // type_index: 1
 }; 
 
-struct LightProbeConnectivityData { // Max dep:1
-	uchar *validity; // type_index: 1
-}; 
-
-struct NodeGeometryMeshLine { // Max dep:1
-	uchar mode; // type_index: 1
-	uchar count_mode; // type_index: 1
-}; 
-
-struct NodeSwitch { // Max dep:1
-	uchar input_type; // type_index: 1
-}; 
-
-struct CollectionLightLinking { // Max dep:1
-	uchar link_state; // type_index: 1
-	uchar _pad[3]; // type_index: 1
-}; 
-
-struct NodeGeometryCurvePrimitiveBezierSegment { // Max dep:1
-	uchar mode; // type_index: 1
-}; 
-
-struct NodeGeometryVolumeToMesh { // Max dep:1
-	uchar resolution_mode; // type_index: 1
-}; 
-
-struct NodeGeometryProximity { // Max dep:1
-	uchar target_element; // type_index: 1
-}; 
-
-struct NodeGeometryCollectionInfo { // Max dep:1
-	uchar transform_space; // type_index: 1
-}; 
-
-struct NodeGeometryPointsToVolume { // Max dep:1
-	uchar resolution_mode; // type_index: 1
-}; 
-
-struct NodeGeometryObjectInfo { // Max dep:1
-	uchar transform_space; // type_index: 1
-}; 
-
-struct NodeGeometryExtrudeMesh { // Max dep:1
-	uchar mode; // type_index: 1
-}; 
-
-struct NodeInputBool { // Max dep:1
-	uchar boolean; // type_index: 1
-}; 
-
-struct NodeAccumulateField { // Max dep:1
-	uchar data_type; // type_index: 1
-	uchar domain; // type_index: 1
-}; 
-
-struct NodeRandomValue { // Max dep:1
-	uchar data_type; // type_index: 1
-}; 
-
-struct NodeMapRange { // Max dep:1
-	uchar data_type; // type_index: 1
-	uchar interpolation_type; // type_index: 1
-	uchar clamp; // type_index: 1
-	char _pad[5]; // type_index: 0
-}; 
-
-struct MBoolProperty { // Max dep:1
-	uchar b; // type_index: 1
-}; 
-
-struct NodeRadialTiling { // Max dep:1
-	uchar normalize; // type_index: 1
-	char _pad[7]; // type_index: 0
-}; 
-
-struct NodeGeometrySetCurveHandlePositions { // Max dep:1
-	uchar mode; // type_index: 1
-}; 
-
-struct NodeCMPCombSepColor { // Max dep:1
-	uchar mode; // type_index: 1
-	uchar ycc_mode; // type_index: 1
-}; 
-
-struct NodeGeometryDistributePointsInVolume { // Max dep:1
+struct NodeGeometryMergeByDistance { // Max dep:1
 	uchar mode; // type_index: 1
 }; 
 
@@ -1469,85 +1816,26 @@ struct NodeGeometryUVUnwrap { // Max dep:1
 	uchar method; // type_index: 1
 }; 
 
-struct NodeGeometryStringToCurves { // Max dep:1
-	uchar overflow; // type_index: 1
-	uchar align_x; // type_index: 1
-	uchar align_y; // type_index: 1
-	uchar pivot_mode; // type_index: 1
-}; 
-
-struct NodeGeometryMeshToPoints { // Max dep:1
+struct NodeGeometryDistributePointsInVolume { // Max dep:1
 	uchar mode; // type_index: 1
 }; 
 
-struct NodeGeometryCurveFill { // Max dep:1
-	uchar mode; // type_index: 1
+struct bUserExtensionRepo { // Max dep:1
+	bUserExtensionRepo *next; // type_index: 1040
+	bUserExtensionRepo *prev; // type_index: 1040
+	char name[64]; // type_index: 0
+	char module[48]; // type_index: 0
+	char *access_token; // type_index: 0
+	char custom_dirpath[1024]; // type_index: 0
+	char remote_url[1024]; // type_index: 0
+	uchar flag; // type_index: 1
+	uchar source; // type_index: 1
+	char _pad0[6]; // type_index: 0
 }; 
 
-struct NodeGeometryCurveToPoints { // Max dep:1
-	uchar mode; // type_index: 1
-}; 
-
-struct NodeGeometryCurveTrim { // Max dep:1
-	uchar mode; // type_index: 1
-}; 
-
-struct NodeGeometryCurveFillet { // Max dep:1
-	uchar mode; // type_index: 1
-}; 
-
-struct NodeGeometryCurvePrimitiveQuad { // Max dep:1
-	uchar mode; // type_index: 1
-}; 
-
-struct NodeGeometryCurvePrimitiveCircle { // Max dep:1
-	uchar mode; // type_index: 1
-}; 
-
-struct NodeGeometryCurvePrimitiveLine { // Max dep:1
-	uchar mode; // type_index: 1
-}; 
-
-struct NodeGeometryCurveResample { // Max dep:1
-	uchar mode; // type_index: 1
-	uchar keep_last_segment; // type_index: 1
-}; 
-
-struct NodeGeometryCurvePrimitiveArc { // Max dep:1
-	uchar mode; // type_index: 1
-}; 
-
-struct NodeGeometryCurveSplineType { // Max dep:1
-	uchar spline_type; // type_index: 1
-}; 
-
-struct NodeGeometryCurveSelectHandles { // Max dep:1
-	uchar handle_type; // type_index: 1
-	uchar mode; // type_index: 1
-}; 
-
-struct NodeGeometryCurveSetHandles { // Max dep:1
-	uchar handle_type; // type_index: 1
-	uchar mode; // type_index: 1
-}; 
-
-struct ScrGlobalAreaData { // Max dep:2
-	short cur_fixed_height; // type_index: 2
-	short size_min; // type_index: 2
-	short size_max; // type_index: 2
-	short align; // type_index: 2
-	short flag; // type_index: 2
-	char _pad[2]; // type_index: 0
-}; 
-
-struct NodeFrame { // Max dep:2
-	short flag; // type_index: 2
-	short label_size; // type_index: 2
-}; 
-
-struct vec2s { // Max dep:2
-	short x; // type_index: 2
-	short y; // type_index: 2
+struct CollectionLightLinking { // Max dep:1
+	uchar link_state; // type_index: 1
+	uchar _pad[3]; // type_index: 1
 }; 
 
 struct NodeShaderHairPrincipled { // Max dep:2
@@ -1564,10 +1852,32 @@ struct MovieClipProxy { // Max dep:2
 	short build_tc_flag; // type_index: 2
 }; 
 
+struct StripProxy { // Max dep:2
+	char dir[768]; // type_index: 0
+	char file[256]; // type_index: 0
+	MovieReader *anim; // type_index: 316
+	short tc; // type_index: 2
+	short quality; // type_index: 2
+	short build_size_flags; // type_index: 2
+	short build_tc_flags; // type_index: 2
+	short build_flags; // type_index: 2
+	char storage; // type_index: 0
+	char _pad[5]; // type_index: 0
+}; 
+
 struct NodeTransformData { // Max dep:2
 	short interpolation; // type_index: 2
 	char extension_x; // type_index: 0
 	char extension_y; // type_index: 0
+}; 
+
+struct bGPDlayer_Mask { // Max dep:2
+	bGPDlayer_Mask *next; // type_index: 261
+	bGPDlayer_Mask *prev; // type_index: 261
+	char name[128]; // type_index: 0
+	short flag; // type_index: 2
+	short sort_index; // type_index: 2
+	char _pad[4]; // type_index: 0
 }; 
 
 struct NodeTranslateData { // Max dep:2
@@ -1579,12 +1889,6 @@ struct NodeTranslateData { // Max dep:2
 }; 
 
 struct NodeRotateData { // Max dep:2
-	short interpolation; // type_index: 2
-	char extension_x; // type_index: 0
-	char extension_y; // type_index: 0
-}; 
-
-struct NodeMapUVData { // Max dep:2
 	short interpolation; // type_index: 2
 	char extension_x; // type_index: 0
 	char extension_y; // type_index: 0
@@ -1608,19 +1912,50 @@ struct NodeDisplaceData { // Max dep:2
 	char extension_y; // type_index: 0
 }; 
 
-struct ThemeWireColor { // Max dep:2
-	char solid[4]; // type_index: 0
-	char select[4]; // type_index: 0
-	char active[4]; // type_index: 0
+struct NodeMapUVData { // Max dep:2
+	short interpolation; // type_index: 2
+	char extension_x; // type_index: 0
+	char extension_y; // type_index: 0
+}; 
+
+struct vec2s { // Max dep:2
+	short x; // type_index: 2
+	short y; // type_index: 2
+}; 
+
+struct TreeStoreElem { // Max dep:2
+	short type; // type_index: 2
+	short nr; // type_index: 2
 	short flag; // type_index: 2
+	short used; // type_index: 2
+	ID *id; // type_index: 26
+}; 
+
+struct Effect { // Max dep:2
+	Effect *next; // type_index: 231
+	Effect *prev; // type_index: 231
+	short type; // type_index: 2
+	short flag; // type_index: 2
+	short buttype; // type_index: 2
 	char _pad0[2]; // type_index: 0
 }; 
 
-struct AssetWeakReference { // Max dep:2
+struct ParticleDupliWeight { // Max dep:2
+	ParticleDupliWeight *next; // type_index: 799
+	ParticleDupliWeight *prev; // type_index: 799
+	Object *ob; // type_index: 51
+	short count; // type_index: 2
+	short flag; // type_index: 2
+	short index; // type_index: 2
+	char _pad0[2]; // type_index: 0
+}; 
+
+struct FreestyleModuleConfig { // Max dep:2
+	FreestyleModuleConfig *next; // type_index: 248
+	FreestyleModuleConfig *prev; // type_index: 248
+	Text *script; // type_index: 151
+	short is_displayed; // type_index: 2
 	char _pad[6]; // type_index: 0
-	short asset_library_type; // type_index: 2
-	char *asset_library_identifier; // type_index: 0
-	char *relative_asset_identifier; // type_index: 0
 }; 
 
 struct Stereo3dFormat { // Max dep:2
@@ -1631,11 +1966,119 @@ struct Stereo3dFormat { // Max dep:2
 	char _pad[3]; // type_index: 0
 }; 
 
+struct ThemeWireColor { // Max dep:2
+	char solid[4]; // type_index: 0
+	char select[4]; // type_index: 0
+	char active[4]; // type_index: 0
+	short flag; // type_index: 2
+	char _pad0[2]; // type_index: 0
+}; 
+
+struct NodeFrame { // Max dep:2
+	short flag; // type_index: 2
+	short label_size; // type_index: 2
+}; 
+
+struct AssetWeakReference { // Max dep:2
+	char _pad[6]; // type_index: 0
+	short asset_library_type; // type_index: 2
+	char *asset_library_identifier; // type_index: 0
+	char *relative_asset_identifier; // type_index: 0
+}; 
+
+struct bUserAssetLibrary { // Max dep:2
+	bUserAssetLibrary *next; // type_index: 1039
+	bUserAssetLibrary *prev; // type_index: 1039
+	char name[64]; // type_index: 0
+	char path[1024]; // type_index: 0
+	short import_method; // type_index: 2
+	short flag; // type_index: 2
+	char _pad0[4]; // type_index: 0
+}; 
+
+struct ScrGlobalAreaData { // Max dep:2
+	short cur_fixed_height; // type_index: 2
+	short size_min; // type_index: 2
+	short size_max; // type_index: 2
+	short align; // type_index: 2
+	short flag; // type_index: 2
+	char _pad[2]; // type_index: 0
+}; 
+
+struct ScrEdge { // Max dep:2
+	ScrEdge *next; // type_index: 864
+	ScrEdge *prev; // type_index: 864
+	ScrVert *v1; // type_index: 862
+	ScrVert *v2; // type_index: 862
+	short border; // type_index: 2
+	short flag; // type_index: 2
+	char _pad[4]; // type_index: 0
+}; 
+
 struct FMod_Cycles { // Max dep:2
 	short before_mode; // type_index: 2
 	short after_mode; // type_index: 2
 	short before_cycles; // type_index: 2
 	short after_cycles; // type_index: 2
+}; 
+
+struct GreasePencilLayerMask { // Max dep:3
+	GreasePencilLayerMask *next; // type_index: 307
+	GreasePencilLayerMask *prev; // type_index: 307
+	char *layer_name; // type_index: 0
+	ushort flag; // type_index: 3
+	char _pad[6]; // type_index: 0
+}; 
+
+struct rcti { // Max dep:4
+	int xmin; // type_index: 4
+	int xmax; // type_index: 4
+	int ymin; // type_index: 4
+	int ymax; // type_index: 4
+}; 
+
+struct IDPropertyUIData { // Max dep:4
+	char *description; // type_index: 0
+	int rna_subtype; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodesModifierPackedBake { // Max dep:4
+	int meta_files_num; // type_index: 4
+	int blob_files_num; // type_index: 4
+	NodesModifierBakeFile *meta_files; // type_index: 505
+	NodesModifierBakeFile *blob_files; // type_index: 505
+}; 
+
+struct vec3i { // Max dep:4
+	int x; // type_index: 4
+	int y; // type_index: 4
+	int z; // type_index: 4
+}; 
+
+struct NodesModifierPanel { // Max dep:4
+	int id; // type_index: 4
+	int flag; // type_index: 4
+}; 
+
+struct GreasePencilModifierInfluenceData { // Max dep:4
+	int flag; // type_index: 4
+	char _pad1[4]; // type_index: 0
+	char layer_name[64]; // type_index: 0
+	Material *material; // type_index: 128
+	int layer_pass; // type_index: 4
+	int material_pass; // type_index: 4
+	char vertex_group_name[64]; // type_index: 0
+	CurveMapping *custom_curve; // type_index: 127
+	void *_pad2; // type_index: 11
+}; 
+
+struct GreasePencilTimeModifierSegment { // Max dep:4
+	char name[64]; // type_index: 0
+	int segment_start; // type_index: 4
+	int segment_end; // type_index: 4
+	int segment_mode; // type_index: 4
+	int segment_repeat; // type_index: 4
 }; 
 
 struct MovieClipUser { // Max dep:4
@@ -1644,9 +2087,282 @@ struct MovieClipUser { // Max dep:4
 	short render_flag; // type_index: 2
 }; 
 
-struct MLoop { // Max dep:4
-	int v; // type_index: 4
-	int e; // type_index: 4
+struct ViewerPathElem { // Max dep:4
+	ViewerPathElem *next; // type_index: 1066
+	ViewerPathElem *prev; // type_index: 1066
+	int type; // type_index: 4
+	char _pad[4]; // type_index: 0
+	char *ui_name; // type_index: 0
+}; 
+
+struct bNodeSocketValueString { // Max dep:4
+	int subtype; // type_index: 4
+	char _pad[4]; // type_index: 0
+	char value[1024]; // type_index: 0
+}; 
+
+struct StripCrop { // Max dep:4
+	int top; // type_index: 4
+	int bottom; // type_index: 4
+	int left; // type_index: 4
+	int right; // type_index: 4
+}; 
+
+struct bNodeSocketValueInt { // Max dep:4
+	int subtype; // type_index: 4
+	int value; // type_index: 4
+	int min; // type_index: 4
+	int max; // type_index: 4
+}; 
+
+struct bNestedNodePath { // Max dep:4
+	int node_id; // type_index: 4
+	int id_in_node; // type_index: 4
+}; 
+
+struct bNodeLink { // Max dep:4
+	bNodeLink *next; // type_index: 563
+	bNodeLink *prev; // type_index: 563
+	bNode *fromnode; // type_index: 566
+	bNode *tonode; // type_index: 566
+	bNodeSocket *fromsock; // type_index: 561
+	bNodeSocket *tosock; // type_index: 561
+	int flag; // type_index: 4
+	int multi_input_socket_index; // type_index: 4
+}; 
+
+struct bNodeInstanceKey { // Max dep:4
+	int value; // type_index: 4
+}; 
+
+struct vec2i { // Max dep:4
+	int x; // type_index: 4
+	int y; // type_index: 4
+}; 
+
+struct bNodePanelState { // Max dep:4
+	int identifier; // type_index: 4
+	char flag; // type_index: 0
+	char _pad[3]; // type_index: 0
+}; 
+
+struct MSelect { // Max dep:4
+	int index; // type_index: 4
+	int type; // type_index: 4
+}; 
+
+struct MDisps { // Max dep:4
+	int totdisp; // type_index: 4
+	int level; // type_index: 4
+	float (*disps)(); // type_index: 7
+	int *hidden; // type_index: 4
+}; 
+
+struct SpaceNodeOverlay { // Max dep:4
+	int flag; // type_index: 4
+	int preview_shape; // type_index: 4
+}; 
+
+struct ConsoleLine { // Max dep:4
+	ConsoleLine *next; // type_index: 981
+	ConsoleLine *prev; // type_index: 981
+	int len_alloc; // type_index: 4
+	int len; // type_index: 4
+	char *line; // type_index: 0
+	int cursor; // type_index: 4
+	int type; // type_index: 4
+}; 
+
+struct SpaceClipOverlay { // Max dep:4
+	int flag; // type_index: 4
+	char _pad0[4]; // type_index: 0
+}; 
+
+struct MDeformVert { // Max dep:4
+	MDeformWeight *dw; // type_index: 419
+	int totweight; // type_index: 4
+	int flag; // type_index: 4
+}; 
+
+struct MovieTrackingDopesheetChannel { // Max dep:4
+	MovieTrackingDopesheetChannel *next; // type_index: 1029
+	MovieTrackingDopesheetChannel *prev; // type_index: 1029
+	MovieTrackingTrack *track; // type_index: 552
+	char _pad[4]; // type_index: 0
+	char name[64]; // type_index: 0
+	int tot_segment; // type_index: 4
+	int *segments; // type_index: 4
+	int max_segment; // type_index: 4
+	int total_frames; // type_index: 4
+	int first_not_disabled_marker_framenr; // type_index: 4
+	int last_not_disabled_marker_framenr; // type_index: 4
+}; 
+
+struct SpreadsheetInstanceID { // Max dep:4
+	int reference_index; // type_index: 4
+}; 
+
+struct MIntProperty { // Max dep:4
+	int i; // type_index: 4
+}; 
+
+struct GridPaintMask { // Max dep:4
+	float *data; // type_index: 7
+	int level; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct MaterialLineArt { // Max dep:4
+	int flags; // type_index: 4
+	char transparency_mask; // type_index: 0
+	char mat_occlusion; // type_index: 0
+	char intersection_priority; // type_index: 0
+	char _pad; // type_index: 0
+}; 
+
+struct TexPaintSlot { // Max dep:4
+	Image *ima; // type_index: 144
+	ImageUser *image_user; // type_index: 145
+	char *uvname; // type_index: 0
+	char *attribute_name; // type_index: 0
+	int valid; // type_index: 4
+	int interp; // type_index: 4
+}; 
+
+struct SpreadsheetTableID { // Max dep:4
+	int type; // type_index: 4
+}; 
+
+struct WorkSpaceDataRelation { // Max dep:4
+	WorkSpaceDataRelation *next; // type_index: 1103
+	WorkSpaceDataRelation *prev; // type_index: 1103
+	void *parent; // type_index: 11
+	void *value; // type_index: 11
+	int parentid; // type_index: 4
+	char _pad_0[4]; // type_index: 0
+}; 
+
+struct SpreadsheetTable { // Max dep:4
+	SpreadsheetTableID *id; // type_index: 992
+	SpreadsheetColumn **columns; // type_index: 989
+	int num_columns; // type_index: 4
+	int flag; // type_index: 4
+	int last_used; // type_index: 4
+	int column_use_clock; // type_index: 4
+}; 
+
+struct MaskLayerShape { // Max dep:4
+	MaskLayerShape *next; // type_index: 399
+	MaskLayerShape *prev; // type_index: 399
+	float *data; // type_index: 7
+	int tot_vert; // type_index: 4
+	int frame; // type_index: 4
+	char flag; // type_index: 0
+	char _pad[7]; // type_index: 0
+}; 
+
+struct TextLine { // Max dep:4
+	TextLine *next; // type_index: 1001
+	TextLine *prev; // type_index: 1001
+	char *line; // type_index: 0
+	char *format; // type_index: 0
+	int len; // type_index: 4
+	char _pad0[4]; // type_index: 0
+}; 
+
+struct NodeGeometryViewerItem { // Max dep:4
+	char *name; // type_index: 0
+	short socket_type; // type_index: 2
+	uchar flag; // type_index: 1
+	char _pad[1]; // type_index: 0
+	int identifier; // type_index: 4
+}; 
+
+struct ShaderFxData { // Max dep:4
+	ShaderFxData *next; // type_index: 936
+	ShaderFxData *prev; // type_index: 936
+	int type; // type_index: 4
+	int mode; // type_index: 4
+	char _pad0[4]; // type_index: 0
+	short flag; // type_index: 2
+	short ui_expand_flag; // type_index: 2
+	char name[64]; // type_index: 0
+	char *error; // type_index: 0
+}; 
+
+struct NodesModifierDataBlock { // Max dep:4
+	char *id_name; // type_index: 0
+	char *lib_name; // type_index: 0
+	ID *id; // type_index: 26
+	int id_type; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct SeqTimelineChannel { // Max dep:4
+	SeqTimelineChannel *next; // type_index: 904
+	SeqTimelineChannel *prev; // type_index: 904
+	char name[64]; // type_index: 0
+	int index; // type_index: 4
+	int flag; // type_index: 4
+}; 
+
+struct SDefVert { // Max dep:4
+	SDefBind *binds; // type_index: 498
+	int numbinds; // type_index: 4
+	int vertex_idx; // type_index: 4
+}; 
+
+struct MDefCell { // Max dep:4
+	int offset; // type_index: 4
+	int totinfluence; // type_index: 4
+}; 
+
+struct SurfaceModifierData_Runtime { // Max dep:4
+	float (*vert_positions_prev)(); // type_index: 7
+	float (*vert_velocities)(); // type_index: 7
+	Mesh *mesh; // type_index: 244
+	BVHTreeFromMeshHandle *bvhtree; // type_index: 459
+	int cfra_prev; // type_index: 4
+	int verts_num; // type_index: 4
+}; 
+
+struct bToolRef { // Max dep:4
+	bToolRef *next; // type_index: 881
+	bToolRef *prev; // type_index: 881
+	char idname[64]; // type_index: 0
+	char idname_fallback[64]; // type_index: 0
+	char idname_pending[64]; // type_index: 0
+	short tag; // type_index: 2
+	short space_type; // type_index: 2
+	int mode; // type_index: 4
+	IDProperty *properties; // type_index: 24
+	bToolRef_Runtime *runtime; // type_index: 1098
+}; 
+
+struct MovieTrackingDopesheetCoverageSegment { // Max dep:4
+	MovieTrackingDopesheetCoverageSegment *next; // type_index: 1030
+	MovieTrackingDopesheetCoverageSegment *prev; // type_index: 1030
+	int coverage; // type_index: 4
+	int start_frame; // type_index: 4
+	int end_frame; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct MRecast { // Max dep:4
+	int i; // type_index: 4
+}; 
+
+struct MetaStack { // Max dep:4
+	MetaStack *next; // type_index: 903
+	MetaStack *prev; // type_index: 903
+	Sequence *old_strip; // type_index: 901
+	Sequence *parseq; // type_index: 901
+	int disp_range[2]; // type_index: 4
+}; 
+
+struct SequencerPreviewOverlay { // Max dep:4
+	int flag; // type_index: 4
+	char _pad0[4]; // type_index: 0
 }; 
 
 struct MFace { // Max dep:4
@@ -1659,132 +2375,9 @@ struct MFace { // Max dep:4
 	char flag; // type_index: 0
 }; 
 
-struct SequencerCacheOverlay { // Max dep:4
-	int flag; // type_index: 4
-	char _pad0[4]; // type_index: 0
-}; 
-
-struct MRecast { // Max dep:4
-	int i; // type_index: 4
-}; 
-
-struct MDefCell { // Max dep:4
-	int offset; // type_index: 4
-	int totinfluence; // type_index: 4
-}; 
-
-struct NodesModifierPanel { // Max dep:4
-	int id; // type_index: 4
-	int flag; // type_index: 4
-}; 
-
-struct GreasePencilTimeModifierSegment { // Max dep:4
-	char name[64]; // type_index: 0
-	int segment_start; // type_index: 4
-	int segment_end; // type_index: 4
-	int segment_mode; // type_index: 4
-	int segment_repeat; // type_index: 4
-}; 
-
-struct MEdge { // Max dep:4
-	int v1; // type_index: 4
-	int v2; // type_index: 4
-	char crease; // type_index: 0
-	char bweight; // type_index: 0
-	short flag; // type_index: 2
-}; 
-
-struct SpaceNodeOverlay { // Max dep:4
-	int flag; // type_index: 4
-	int preview_shape; // type_index: 4
-}; 
-
-struct bNodePanelState { // Max dep:4
-	int identifier; // type_index: 4
-	char flag; // type_index: 0
-	char _pad[3]; // type_index: 0
-}; 
-
-struct bNodeInstanceKey { // Max dep:4
-	int value; // type_index: 4
-}; 
-
-struct bNestedNodePath { // Max dep:4
-	int node_id; // type_index: 4
-	int id_in_node; // type_index: 4
-}; 
-
-struct bNodeSocketValueInt { // Max dep:4
-	int subtype; // type_index: 4
-	int value; // type_index: 4
-	int min; // type_index: 4
-	int max; // type_index: 4
-}; 
-
-struct SpaceClipOverlay { // Max dep:4
-	int flag; // type_index: 4
-	char _pad0[4]; // type_index: 0
-}; 
-
-struct bNodeSocketValueString { // Max dep:4
-	int subtype; // type_index: 4
-	char _pad[4]; // type_index: 0
-	char value[1024]; // type_index: 0
-}; 
-
-struct MaterialLineArt { // Max dep:4
-	int flags; // type_index: 4
-	char transparency_mask; // type_index: 0
-	char mat_occlusion; // type_index: 0
-	char intersection_priority; // type_index: 0
-	char _pad; // type_index: 0
-}; 
-
-struct bGPDtriangle { // Max dep:4
-	int verts[3]; // type_index: 4
-}; 
-
-struct bGPDframe_Runtime { // Max dep:4
-	int frameid; // type_index: 4
-	int onion_id; // type_index: 4
-}; 
-
-struct bGPDlayer_Runtime { // Max dep:4
-	int icon_id; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct ImageTile_Runtime { // Max dep:4
-	int tilearray_layer; // type_index: 4
-	int _pad; // type_index: 4
-	int tilearray_offset[2]; // type_index: 4
-	int tilearray_size[2]; // type_index: 4
-}; 
-
-struct IDPropertyUIData { // Max dep:4
-	char *description; // type_index: 0
-	int rna_subtype; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct uiViewState { // Max dep:4
-	int custom_height; // type_index: 4
-	int scroll_offset; // type_index: 4
-	ushort flag; // type_index: 3
-	char _pad[6]; // type_index: 0
-	char search_string[256]; // type_index: 0
-}; 
-
-struct StripCrop { // Max dep:4
-	int top; // type_index: 4
-	int bottom; // type_index: 4
-	int left; // type_index: 4
-	int right; // type_index: 4
-}; 
-
-struct LightProbeBlockData { // Max dep:4
-	int offset[3]; // type_index: 4
-	int level; // type_index: 4
+struct MLoop { // Max dep:4
+	int v; // type_index: 4
+	int e; // type_index: 4
 }; 
 
 struct MPoly { // Max dep:4
@@ -1795,39 +2388,12 @@ struct MPoly { // Max dep:4
 	char _pad; // type_index: 0
 }; 
 
-struct MSelect { // Max dep:4
-	int index; // type_index: 4
-	int type; // type_index: 4
-}; 
-
-struct MIntProperty { // Max dep:4
-	int i; // type_index: 4
-}; 
-
-struct TransformOrientationSlot { // Max dep:4
-	int type; // type_index: 4
-	int index_custom; // type_index: 4
-	char flag; // type_index: 0
-	char _pad0[7]; // type_index: 0
-}; 
-
-struct SceneHydra { // Max dep:4
-	int export_method; // type_index: 4
-	int _pad0; // type_index: 4
-}; 
-
-struct SequencerToolSettings { // Max dep:4
-	int fit_method; // type_index: 4
-	short snap_mode; // type_index: 2
-	short snap_flag; // type_index: 2
-	int overlap_mode; // type_index: 4
-	int snap_distance; // type_index: 4
-	int pivot_point; // type_index: 4
-}; 
-
-struct SequencerPreviewOverlay { // Max dep:4
-	int flag; // type_index: 4
-	char _pad0[4]; // type_index: 0
+struct MEdge { // Max dep:4
+	int v1; // type_index: 4
+	int v2; // type_index: 4
+	char crease; // type_index: 0
+	char bweight; // type_index: 0
+	short flag; // type_index: 2
 }; 
 
 struct SequencerTimelineOverlay { // Max dep:4
@@ -1835,15 +2401,144 @@ struct SequencerTimelineOverlay { // Max dep:4
 	char _pad0[4]; // type_index: 0
 }; 
 
-struct GeometryNodeAssetTraits { // Max dep:4
+struct SequencerCacheOverlay { // Max dep:4
 	int flag; // type_index: 4
+	char _pad0[4]; // type_index: 0
 }; 
 
-struct NodeSimulationItem { // Max dep:4
+struct NodeClosureInput { // Max dep:4
+	int output_node_id; // type_index: 4
+}; 
+
+struct NodeCombineBundle { // Max dep:4
+	NodeCombineBundleItem *items; // type_index: 767
+	int items_num; // type_index: 4
+	int next_identifier; // type_index: 4
+	int active_index; // type_index: 4
+	uchar flag; // type_index: 1
+	char _pad[3]; // type_index: 0
+}; 
+
+struct NodeGeometryBake { // Max dep:4
+	NodeGeometryBakeItem *items; // type_index: 765
+	int items_num; // type_index: 4
+	int next_identifier; // type_index: 4
+	int active_index; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeGeometryBakeItem { // Max dep:4
 	char *name; // type_index: 0
 	short socket_type; // type_index: 2
 	short attribute_domain; // type_index: 2
 	int identifier; // type_index: 4
+	int flag; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeGeometryTransformGizmo { // Max dep:4
+	int flag; // type_index: 4
+}; 
+
+struct NodeGeometryDialGizmo { // Max dep:4
+	int color_id; // type_index: 4
+}; 
+
+struct NodeGeometryLinearGizmo { // Max dep:4
+	int color_id; // type_index: 4
+	int draw_style; // type_index: 4
+}; 
+
+struct NodeIndexSwitch { // Max dep:4
+	IndexSwitchItem *items; // type_index: 754
+	int items_num; // type_index: 4
+	int data_type; // type_index: 4
+	int next_identifier; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct IndexSwitchItem { // Max dep:4
+	int identifier; // type_index: 4
+}; 
+
+struct NodeEvaluateClosureOutputItems { // Max dep:4
+	NodeEvaluateClosureOutputItem *items; // type_index: 750
+	int items_num; // type_index: 4
+	int active_index; // type_index: 4
+	int next_identifier; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeEvaluateClosureInputItems { // Max dep:4
+	NodeEvaluateClosureInputItem *items; // type_index: 749
+	int items_num; // type_index: 4
+	int active_index; // type_index: 4
+	int next_identifier; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeClosureOutputItems { // Max dep:4
+	NodeClosureOutputItem *items; // type_index: 745
+	int items_num; // type_index: 4
+	int active_index; // type_index: 4
+	int next_identifier; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeEnumItem { // Max dep:4
+	char *name; // type_index: 0
+	char *description; // type_index: 0
+	int identifier; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeEnumDefinition { // Max dep:4
+	NodeEnumItem *items_array; // type_index: 694
+	int items_num; // type_index: 4
+	int active_index; // type_index: 4
+	int next_identifier; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeClosureInputItems { // Max dep:4
+	NodeClosureInputItem *items; // type_index: 744
+	int items_num; // type_index: 4
+	int active_index; // type_index: 4
+	int next_identifier; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeSeparateBundle { // Max dep:4
+	NodeSeparateBundleItem *items; // type_index: 769
+	int items_num; // type_index: 4
+	int next_identifier; // type_index: 4
+	int active_index; // type_index: 4
+	uchar flag; // type_index: 1
+	char _pad[3]; // type_index: 0
+}; 
+
+struct NodeForeachGeometryElementGenerationItems { // Max dep:4
+	NodeForeachGeometryElementGenerationItem *items; // type_index: 738
+	int items_num; // type_index: 4
+	int active_index; // type_index: 4
+	int next_identifier; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeForeachGeometryElementMainItems { // Max dep:4
+	NodeForeachGeometryElementMainItem *items; // type_index: 737
+	int items_num; // type_index: 4
+	int active_index; // type_index: 4
+	int next_identifier; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeForeachGeometryElementInputItems { // Max dep:4
+	NodeForeachGeometryElementInputItem *items; // type_index: 736
+	int items_num; // type_index: 4
+	int active_index; // type_index: 4
+	int next_identifier; // type_index: 4
+	char _pad[4]; // type_index: 0
 }; 
 
 struct NodeForeachGeometryElementGenerationItem { // Max dep:4
@@ -1852,13 +2547,6 @@ struct NodeForeachGeometryElementGenerationItem { // Max dep:4
 	uchar domain; // type_index: 1
 	char _pad[1]; // type_index: 0
 	int identifier; // type_index: 4
-}; 
-
-struct NodeShaderVectTransform { // Max dep:4
-	int type; // type_index: 4
-	int convert_from; // type_index: 4
-	int convert_to; // type_index: 4
-	char _pad[4]; // type_index: 0
 }; 
 
 struct NodeForeachGeometryElementMainItem { // Max dep:4
@@ -1879,6 +2567,14 @@ struct NodeGeometryForeachGeometryElementInput { // Max dep:4
 	int output_node_id; // type_index: 4
 }; 
 
+struct NodeGeometryRepeatOutput { // Max dep:4
+	NodeRepeatItem *items; // type_index: 732
+	int items_num; // type_index: 4
+	int active_index; // type_index: 4
+	int next_identifier; // type_index: 4
+	int inspection_index; // type_index: 4
+}; 
+
 struct NodeGeometryRepeatInput { // Max dep:4
 	int output_node_id; // type_index: 4
 }; 
@@ -1890,31 +2586,23 @@ struct NodeRepeatItem { // Max dep:4
 	int identifier; // type_index: 4
 }; 
 
+struct NodeGeometrySimulationOutput { // Max dep:4
+	NodeSimulationItem *items; // type_index: 729
+	int items_num; // type_index: 4
+	int active_index; // type_index: 4
+	int next_identifier; // type_index: 4
+	int _pad; // type_index: 4
+}; 
+
 struct NodeGeometrySimulationInput { // Max dep:4
 	int output_node_id; // type_index: 4
 }; 
 
-struct NodeClosureInput { // Max dep:4
-	int output_node_id; // type_index: 4
-}; 
-
-struct NodeGeometryViewerItem { // Max dep:4
+struct NodeSimulationItem { // Max dep:4
 	char *name; // type_index: 0
 	short socket_type; // type_index: 2
-	uchar flag; // type_index: 1
-	char _pad[1]; // type_index: 0
+	short attribute_domain; // type_index: 2
 	int identifier; // type_index: 4
-}; 
-
-struct NodeEnumItem { // Max dep:4
-	char *name; // type_index: 0
-	char *description; // type_index: 0
-	int identifier; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeInputInt { // Max dep:4
-	int integer; // type_index: 4
 }; 
 
 struct NodeShaderScript { // Max dep:4
@@ -1925,44 +2613,8 @@ struct NodeShaderScript { // Max dep:4
 	char *bytecode; // type_index: 0
 }; 
 
-struct NodeShaderTangent { // Max dep:4
-	int direction_type; // type_index: 4
-	int axis; // type_index: 4
-	char uv_map[64]; // type_index: 0
-}; 
-
-struct NodeShaderNormalMap { // Max dep:4
-	int space; // type_index: 4
-	char uv_map[64]; // type_index: 0
-}; 
-
-struct bUUID { // Max dep:4
-	int time_low; // type_index: 4
-	ushort time_mid; // type_index: 3
-	ushort time_hi_and_version; // type_index: 3
-	uchar clock_seq_hi_and_reserved; // type_index: 1
-	uchar clock_seq_low; // type_index: 1
-	uchar node[6]; // type_index: 1
-}; 
-
-struct NodeGeometryDialGizmo { // Max dep:4
-	int color_id; // type_index: 4
-}; 
-
-struct NodeShaderTexIES { // Max dep:4
-	int mode; // type_index: 4
-	char filepath[1024]; // type_index: 0
-}; 
-
-struct SpreadsheetTableID { // Max dep:4
-	int type; // type_index: 4
-}; 
-
-struct NodeFunctionFormatStringItem { // Max dep:4
-	char *name; // type_index: 0
-	int identifier; // type_index: 4
-	short socket_type; // type_index: 2
-	char _pad[2]; // type_index: 0
+struct GeometryNodeAssetTraits { // Max dep:4
+	int flag; // type_index: 4
 }; 
 
 struct NodeImageAnim { // Max dep:4
@@ -1979,17 +2631,13 @@ struct NodeImageLayer { // Max dep:4
 	char pass_name[64]; // type_index: 0
 }; 
 
-struct NodeGeometryBakeItem { // Max dep:4
-	char *name; // type_index: 0
-	short socket_type; // type_index: 2
-	short attribute_domain; // type_index: 2
-	int identifier; // type_index: 4
-	int flag; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeGeometryTransformGizmo { // Max dep:4
-	int flag; // type_index: 4
+struct uiPreview { // Max dep:4
+	uiPreview *next; // type_index: 878
+	uiPreview *prev; // type_index: 878
+	char preview_id[64]; // type_index: 0
+	short height; // type_index: 2
+	short tag; // type_index: 2
+	int id_session_uid; // type_index: 4
 }; 
 
 struct NodeLensDist { // Max dep:4
@@ -2000,13 +2648,30 @@ struct NodeLensDist { // Max dep:4
 	int distortion_type; // type_index: 4
 }; 
 
-struct SpreadsheetInstanceID { // Max dep:4
-	int reference_index; // type_index: 4
+struct uiViewState { // Max dep:4
+	int custom_height; // type_index: 4
+	int scroll_offset; // type_index: 4
+	ushort flag; // type_index: 3
+	char _pad[6]; // type_index: 0
+	char search_string[256]; // type_index: 0
 }; 
 
-struct NodeGeometryLinearGizmo { // Max dep:4
-	int color_id; // type_index: 4
-	int draw_style; // type_index: 4
+struct uiList { // Max dep:4
+	uiList *next; // type_index: 872
+	uiList *prev; // type_index: 872
+	uiListType *type; // type_index: 873
+	char list_id[256]; // type_index: 0
+	int layout_type; // type_index: 4
+	int flag; // type_index: 4
+	int list_scroll; // type_index: 4
+	int list_grip; // type_index: 4
+	int list_last_len; // type_index: 4
+	int list_last_activei; // type_index: 4
+	char filter_byname[256]; // type_index: 0
+	int filter_flag; // type_index: 4
+	int filter_sort_flag; // type_index: 4
+	IDProperty *properties; // type_index: 24
+	uiListDyn *dyn_data; // type_index: 874
 }; 
 
 struct NodeMask { // Max dep:4
@@ -2014,32 +2679,137 @@ struct NodeMask { // Max dep:4
 	int size_y; // type_index: 4
 }; 
 
-struct rcti { // Max dep:4
-	int xmin; // type_index: 4
-	int xmax; // type_index: 4
-	int ymin; // type_index: 4
-	int ymax; // type_index: 4
-}; 
-
-struct vec3i { // Max dep:4
-	int x; // type_index: 4
-	int y; // type_index: 4
-	int z; // type_index: 4
-}; 
-
-struct vec2i { // Max dep:4
-	int x; // type_index: 4
-	int y; // type_index: 4
-}; 
-
-struct IndexSwitchItem { // Max dep:4
-	int identifier; // type_index: 4
+struct LayoutPanelState { // Max dep:4
+	LayoutPanelState *next; // type_index: 866
+	LayoutPanelState *prev; // type_index: 866
+	char *idname; // type_index: 0
+	uchar flag; // type_index: 1
+	char _pad[3]; // type_index: 0
+	int last_used; // type_index: 4
 }; 
 
 struct NodeShaderAttribute { // Max dep:4
 	char name[256]; // type_index: 0
 	int type; // type_index: 4
 	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeShaderVectTransform { // Max dep:4
+	int type; // type_index: 4
+	int convert_from; // type_index: 4
+	int convert_to; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct TransformOrientationSlot { // Max dep:4
+	int type; // type_index: 4
+	int index_custom; // type_index: 4
+	char flag; // type_index: 0
+	char _pad0[7]; // type_index: 0
+}; 
+
+struct SceneHydra { // Max dep:4
+	int export_method; // type_index: 4
+	int _pad0; // type_index: 4
+}; 
+
+struct bNodeSocketValueMenu { // Max dep:4
+	int value; // type_index: 4
+	int runtime_flag; // type_index: 4
+	RuntimeNodeEnumItemsHandle *enum_items; // type_index: 588
+}; 
+
+struct NodeShaderTangent { // Max dep:4
+	int direction_type; // type_index: 4
+	int axis; // type_index: 4
+	char uv_map[64]; // type_index: 0
+}; 
+
+struct NodeShaderNormalMap { // Max dep:4
+	int space; // type_index: 4
+	char uv_map[64]; // type_index: 0
+}; 
+
+struct SequencerToolSettings { // Max dep:4
+	int fit_method; // type_index: 4
+	short snap_mode; // type_index: 2
+	short snap_flag; // type_index: 2
+	int overlap_mode; // type_index: 4
+	int snap_distance; // type_index: 4
+	int pivot_point; // type_index: 4
+}; 
+
+struct bUUID { // Max dep:4
+	int time_low; // type_index: 4
+	ushort time_mid; // type_index: 3
+	ushort time_hi_and_version; // type_index: 3
+	uchar clock_seq_hi_and_reserved; // type_index: 1
+	uchar clock_seq_low; // type_index: 1
+	uchar node[6]; // type_index: 1
+}; 
+
+struct TimeMarker { // Max dep:4
+	TimeMarker *next; // type_index: 821
+	TimeMarker *prev; // type_index: 821
+	int frame; // type_index: 4
+	char name[64]; // type_index: 0
+	int flag; // type_index: 4
+	Object *camera; // type_index: 51
+	IDProperty *prop; // type_index: 24
+}; 
+
+struct NodeShaderTexIES { // Max dep:4
+	int mode; // type_index: 4
+	char filepath[1024]; // type_index: 0
+}; 
+
+struct SceneRenderView { // Max dep:4
+	SceneRenderView *next; // type_index: 818
+	SceneRenderView *prev; // type_index: 818
+	char name[64]; // type_index: 0
+	char suffix[64]; // type_index: 0
+	int viewflag; // type_index: 4
+	char _pad2[4]; // type_index: 0
+}; 
+
+struct PTCacheExtra { // Max dep:4
+	PTCacheExtra *next; // type_index: 807
+	PTCacheExtra *prev; // type_index: 807
+	int type; // type_index: 4
+	int totdata; // type_index: 4
+	void *data; // type_index: 11
+}; 
+
+struct PackedFile { // Max dep:4
+	int size; // type_index: 4
+	int seek; // type_index: 4
+	void *data; // type_index: 11
+	ImplicitSharingInfoHandle *sharing_info; // type_index: 112
+}; 
+
+struct TreeStore { // Max dep:4
+	int totelem; // type_index: 4
+	int usedelem; // type_index: 4
+	TreeStoreElem *data; // type_index: 791
+}; 
+
+struct NodeInputInt { // Max dep:4
+	int integer; // type_index: 4
+}; 
+
+struct NodeFunctionFormatString { // Max dep:4
+	NodeFunctionFormatStringItem *items; // type_index: 771
+	int items_num; // type_index: 4
+	int next_identifier; // type_index: 4
+	int active_index; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeFunctionFormatStringItem { // Max dep:4
+	char *name; // type_index: 0
+	int identifier; // type_index: 4
+	short socket_type; // type_index: 2
+	char _pad[2]; // type_index: 0
 }; 
 
 struct bAnimVizSettings { // Max dep:4
@@ -2062,6 +2832,217 @@ struct AssetLibraryReference { // Max dep:4
 	int custom_library_index; // type_index: 4
 }; 
 
+struct CacheFileLayer { // Max dep:4
+	CacheFileLayer *next; // type_index: 138
+	CacheFileLayer *prev; // type_index: 138
+	char filepath[1024]; // type_index: 0
+	int flag; // type_index: 4
+	int _pad; // type_index: 4
+}; 
+
+struct AttributeStorage { // Max dep:4
+	Attribute *dna_attributes; // type_index: 114
+	int dna_attributes_num; // type_index: 4
+	char _pad[4]; // type_index: 0
+	AttributeStorageRuntimeHandle *runtime; // type_index: 116
+}; 
+
+struct bGPDframe_Runtime { // Max dep:4
+	int frameid; // type_index: 4
+	int onion_id; // type_index: 4
+}; 
+
+struct BoidRule { // Max dep:4
+	BoidRule *next; // type_index: 117
+	BoidRule *prev; // type_index: 117
+	int type; // type_index: 4
+	int flag; // type_index: 4
+	char name[32]; // type_index: 0
+}; 
+
+struct bTransLikeConstraint { // Max dep:4
+	Object *tar; // type_index: 51
+	int flag; // type_index: 4
+	char mix_mode; // type_index: 0
+	char _pad[3]; // type_index: 0
+	char subtarget[64]; // type_index: 0
+}; 
+
+struct GpencilModifierData { // Max dep:4
+	GpencilModifierData *next; // type_index: 267
+	GpencilModifierData *prev; // type_index: 267
+	int type; // type_index: 4
+	int mode; // type_index: 4
+	char _pad0[4]; // type_index: 0
+	short flag; // type_index: 2
+	short ui_expand_flag; // type_index: 2
+	char name[64]; // type_index: 0
+	char *error; // type_index: 0
+}; 
+
+struct PreviewImage { // Max dep:4
+	int w[2]; // type_index: 4
+	int h[2]; // type_index: 4
+	short flag[2]; // type_index: 2
+	short changed_timestamp[2]; // type_index: 2
+	int *rect[2]; // type_index: 4
+	PreviewImageRuntimeHandle *runtime; // type_index: 38
+}; 
+
+struct bGPDtriangle { // Max dep:4
+	int verts[3]; // type_index: 4
+}; 
+
+struct bGeometryAttributeConstraint { // Max dep:4
+	Object *target; // type_index: 51
+	char *attribute_name; // type_index: 0
+	int sample_index; // type_index: 4
+	uchar apply_target_transform; // type_index: 1
+	uchar mix_mode; // type_index: 1
+	uchar domain; // type_index: 1
+	uchar data_type; // type_index: 1
+	uchar flags; // type_index: 1
+	char _pad0[7]; // type_index: 0
+}; 
+
+struct Base { // Max dep:4
+	Base *next; // type_index: 329
+	Base *prev; // type_index: 329
+	Object *object; // type_index: 51
+	Base *base_orig; // type_index: 329
+	int lay; // type_index: 4
+	short flag; // type_index: 2
+	short flag_from_collection; // type_index: 2
+	short flag_legacy; // type_index: 2
+	short local_view_bits; // type_index: 2
+	short local_collections_bits; // type_index: 2
+	char _pad1[2]; // type_index: 0
+}; 
+
+struct CollectionExport { // Max dep:4
+	CollectionExport *next; // type_index: 160
+	CollectionExport *prev; // type_index: 160
+	char fh_idname[64]; // type_index: 0
+	char name[64]; // type_index: 0
+	IDProperty *export_properties; // type_index: 24
+	int flag; // type_index: 4
+	int _pad0; // type_index: 4
+}; 
+
+struct FMod_Generator { // Max dep:4
+	float *coefficients; // type_index: 7
+	int arraysize; // type_index: 4
+	int poly_order; // type_index: 4
+	int mode; // type_index: 4
+	int flag; // type_index: 4
+}; 
+
+struct LightCacheTexture { // Max dep:4
+	GPUTexture *tex; // type_index: 242
+	char *data; // type_index: 0
+	int tex_size[3]; // type_index: 4
+	char data_type; // type_index: 0
+	char components; // type_index: 0
+	char _pad[2]; // type_index: 0
+}; 
+
+struct ImageUser { // Max dep:4
+	Scene *scene; // type_index: 238
+	int framenr; // type_index: 4
+	int frames; // type_index: 4
+	int offset; // type_index: 4
+	int sfra; // type_index: 4
+	char cycl; // type_index: 0
+	char multiview_eye; // type_index: 0
+	short pass; // type_index: 2
+	int tile; // type_index: 4
+	short multi_index; // type_index: 2
+	short view; // type_index: 2
+	short layer; // type_index: 2
+	short flag; // type_index: 2
+}; 
+
+struct ViewLayerAOV { // Max dep:4
+	ViewLayerAOV *next; // type_index: 332
+	ViewLayerAOV *prev; // type_index: 332
+	char name[64]; // type_index: 0
+	int flag; // type_index: 4
+	int type; // type_index: 4
+}; 
+
+struct LightProbeObjectCache { // Max dep:4
+	int cache_type; // type_index: 4
+	char shared; // type_index: 0
+	char dirty; // type_index: 0
+	char _pad0[2]; // type_index: 0
+	LightProbeGridCacheFrame *grid_static_cache; // type_index: 349
+}; 
+
+struct bDampTrackConstraint { // Max dep:4
+	Object *tar; // type_index: 51
+	int trackflag; // type_index: 4
+	char _pad[4]; // type_index: 0
+	char subtarget[64]; // type_index: 0
+}; 
+
+struct CustomData { // Max dep:4
+	CustomDataLayer *layers; // type_index: 219
+	int typemap[53]; // type_index: 4
+	int totlayer; // type_index: 4
+	int maxlayer; // type_index: 4
+	int totsize; // type_index: 4
+	BLI_mempool *pool; // type_index: 221
+	CustomDataExternal *external; // type_index: 220
+}; 
+
+struct CustomDataLayer { // Max dep:4
+	int type; // type_index: 4
+	int offset; // type_index: 4
+	int flag; // type_index: 4
+	int active; // type_index: 4
+	int active_rnd; // type_index: 4
+	int active_clone; // type_index: 4
+	int active_mask; // type_index: 4
+	int uid; // type_index: 4
+	char name[68]; // type_index: 0
+	char _pad1[4]; // type_index: 0
+	void *data; // type_index: 11
+	ImplicitSharingInfoHandle *sharing_info; // type_index: 112
+}; 
+
+struct bLockTrackConstraint { // Max dep:4
+	Object *tar; // type_index: 51
+	int trackflag; // type_index: 4
+	int lockflag; // type_index: 4
+	char subtarget[64]; // type_index: 0
+}; 
+
+struct bIKParam { // Max dep:4
+	int iksolver; // type_index: 4
+}; 
+
+struct LightProbeBlockData { // Max dep:4
+	int offset[3]; // type_index: 4
+	int level; // type_index: 4
+}; 
+
+struct FreestyleLineSet { // Max dep:4
+	FreestyleLineSet *next; // type_index: 246
+	FreestyleLineSet *prev; // type_index: 246
+	char name[64]; // type_index: 0
+	int flags; // type_index: 4
+	int selection; // type_index: 4
+	short qi; // type_index: 2
+	char _pad1[2]; // type_index: 0
+	int qi_start; // type_index: 4
+	int qi_end; // type_index: 4
+	int edge_types; // type_index: 4
+	int exclude_edge_types; // type_index: 4
+	char _pad2[4]; // type_index: 0
+	Collection *group; // type_index: 66
+	FreestyleLineStyle *linestyle; // type_index: 247
+}; 
+
 struct IDPropertyUIDataEnumItem { // Max dep:4
 	char *identifier; // type_index: 0
 	char *name; // type_index: 0
@@ -2070,8 +3051,33 @@ struct IDPropertyUIDataEnumItem { // Max dep:4
 	int icon; // type_index: 4
 }; 
 
-struct bIKParam { // Max dep:4
-	int iksolver; // type_index: 4
+struct ImagePackedFile { // Max dep:4
+	ImagePackedFile *next; // type_index: 318
+	ImagePackedFile *prev; // type_index: 318
+	PackedFile *packedfile; // type_index: 35
+	int view; // type_index: 4
+	int tile_number; // type_index: 4
+	char filepath[1024]; // type_index: 0
+}; 
+
+struct bClampToConstraint { // Max dep:4
+	Object *tar; // type_index: 51
+	int flag; // type_index: 4
+	int flag2; // type_index: 4
+}; 
+
+struct ImageTile_Runtime { // Max dep:4
+	int tilearray_layer; // type_index: 4
+	int _pad; // type_index: 4
+	int tilearray_offset[2]; // type_index: 4
+	int tilearray_size[2]; // type_index: 4
+}; 
+
+struct bGPDcurve { // Max dep:4
+	bGPDcurve_point *curve_points; // type_index: 254
+	int tot_curve_points; // type_index: 4
+	short flag; // type_index: 2
+	char _pad[2]; // type_index: 0
 }; 
 
 struct SpaceActionOverlays { // Max dep:4
@@ -2079,10 +3085,2096 @@ struct SpaceActionOverlays { // Max dep:4
 	char _pad0[4]; // type_index: 0
 }; 
 
+struct bTrackToConstraint { // Max dep:4
+	Object *tar; // type_index: 51
+	int reserved1; // type_index: 4
+	int reserved2; // type_index: 4
+	int flags; // type_index: 4
+	char _pad[4]; // type_index: 0
+	char subtarget[64]; // type_index: 0
+}; 
+
+struct Nurb { // Max dep:4
+	Nurb *next; // type_index: 205
+	Nurb *prev; // type_index: 205
+	short type; // type_index: 2
+	short mat_nr; // type_index: 2
+	short hide; // type_index: 2
+	short flag; // type_index: 2
+	int pntsu; // type_index: 4
+	int pntsv; // type_index: 4
+	char _pad[4]; // type_index: 0
+	short resolu; // type_index: 2
+	short resolv; // type_index: 2
+	short orderu; // type_index: 2
+	short orderv; // type_index: 2
+	short flagu; // type_index: 2
+	short flagv; // type_index: 2
+	float *knotsu; // type_index: 7
+	float *knotsv; // type_index: 7
+	BPoint *bp; // type_index: 204
+	BezTriple *bezt; // type_index: 90
+	short tilt_interp; // type_index: 2
+	short radius_interp; // type_index: 2
+	int charidx; // type_index: 4
+}; 
+
+struct TimeGpencilModifierSegment { // Max dep:4
+	char name[64]; // type_index: 0
+	TimeGpencilModifierData *gpmd; // type_index: 272
+	int seg_start; // type_index: 4
+	int seg_end; // type_index: 4
+	int seg_mode; // type_index: 4
+	int seg_repeat; // type_index: 4
+}; 
+
+struct bRotateLikeConstraint { // Max dep:4
+	Object *tar; // type_index: 51
+	int flag; // type_index: 4
+	char euler_order; // type_index: 0
+	char mix_mode; // type_index: 0
+	char _pad[2]; // type_index: 0
+	char subtarget[64]; // type_index: 0
+}; 
+
+struct bLocateLikeConstraint { // Max dep:4
+	Object *tar; // type_index: 51
+	int flag; // type_index: 4
+	int reserved1; // type_index: 4
+	char subtarget[64]; // type_index: 0
+}; 
+
+struct IDOverrideLibraryPropertyOperation { // Max dep:4
+	IDOverrideLibraryPropertyOperation *next; // type_index: 25
+	IDOverrideLibraryPropertyOperation *prev; // type_index: 25
+	short operation; // type_index: 2
+	short flag; // type_index: 2
+	short tag; // type_index: 2
+	char _pad0[2]; // type_index: 0
+	char *subitem_reference_name; // type_index: 0
+	char *subitem_local_name; // type_index: 0
+	int subitem_reference_index; // type_index: 4
+	int subitem_local_index; // type_index: 4
+	ID *subitem_reference_id; // type_index: 26
+	ID *subitem_local_id; // type_index: 26
+}; 
+
+struct bFollowTrackConstraint { // Max dep:4
+	MovieClip *clip; // type_index: 146
+	char track[64]; // type_index: 0
+	int flag; // type_index: 4
+	int frame_method; // type_index: 4
+	char object[64]; // type_index: 0
+	Object *camera; // type_index: 51
+	Object *depth_ob; // type_index: 51
+}; 
+
+struct GreasePencilLayerFramesMapStorage { // Max dep:4
+	int *keys; // type_index: 4
+	GreasePencilFrame *values; // type_index: 305
+	int size; // type_index: 4
+	int flag; // type_index: 4
+}; 
+
+struct bGPDlayer_Runtime { // Max dep:4
+	int icon_id; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct ActionStripKeyframeData { // Max dep:4
+	ActionChannelBag **channelbag_array; // type_index: 59
+	int channelbag_array_num; // type_index: 4
+	uchar _pad[4]; // type_index: 1
+}; 
+
+struct bCameraSolverConstraint { // Max dep:4
+	MovieClip *clip; // type_index: 146
+	int flag; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct bArmature_Runtime { // Max dep:4
+	int active_collection_index; // type_index: 4
+	uchar _pad0[4]; // type_index: 1
+	BoneCollection *active_collection; // type_index: 100
+}; 
+
+struct KS_Path { // Max dep:4
+	KS_Path *next; // type_index: 93
+	KS_Path *prev; // type_index: 93
+	ID *id; // type_index: 26
+	char group[64]; // type_index: 0
+	int idtype; // type_index: 4
+	short groupmode; // type_index: 2
+	short flag; // type_index: 2
+	char *rna_path; // type_index: 0
+	int array_index; // type_index: 4
+	short keyingflag; // type_index: 2
+	short keyingoverride; // type_index: 2
+}; 
+
+struct ActionChannelBag { // Max dep:4
+	int slot_handle; // type_index: 4
+	int group_array_num; // type_index: 4
+	bActionGroup **group_array; // type_index: 58
+	uchar _pad[4]; // type_index: 1
+	int fcurve_array_num; // type_index: 4
+	FCurve **fcurve_array; // type_index: 74
+}; 
+
+struct AudioData { // Max dep:7
+	int mixrate; // type_index: 4
+	float main; // type_index: 7
+	float speed_of_sound; // type_index: 7
+	float doppler_factor; // type_index: 7
+	int distance_model; // type_index: 4
+	short flag; // type_index: 2
+	char _pad[2]; // type_index: 0
+	float volume; // type_index: 7
+	char _pad2[4]; // type_index: 0
+}; 
+
+struct NodePlaneTrackDeformData { // Max dep:7
+	char tracking_object[64]; // type_index: 0
+	char plane_track_name[64]; // type_index: 0
+	char flag; // type_index: 0
+	char motion_blur_samples; // type_index: 0
+	char _pad[2]; // type_index: 0
+	float motion_blur_shutter; // type_index: 7
+}; 
+
+struct UnifiedPaintSettings { // Max dep:7
+	int size; // type_index: 4
+	float unprojected_radius; // type_index: 7
+	float alpha; // type_index: 7
+	float weight; // type_index: 7
+	float color[3]; // type_index: 7
+	float secondary_color[3]; // type_index: 7
+	float rgb[3]; // type_index: 7
+	float secondary_rgb[3]; // type_index: 7
+	int color_jitter_flag; // type_index: 4
+	float hsv_jitter[3]; // type_index: 7
+	CurveMapping *curve_rand_hue; // type_index: 127
+	CurveMapping *curve_rand_saturation; // type_index: 127
+	CurveMapping *curve_rand_value; // type_index: 127
+	int input_samples; // type_index: 4
+	int flag; // type_index: 4
+}; 
+
+struct ParticleTarget { // Max dep:7
+	ParticleTarget *next; // type_index: 798
+	ParticleTarget *prev; // type_index: 798
+	Object *ob; // type_index: 51
+	int psys; // type_index: 4
+	short flag; // type_index: 2
+	short mode; // type_index: 2
+	float time; // type_index: 7
+	float duration; // type_index: 7
+}; 
+
+struct FFMpegCodecData { // Max dep:7
+	int type; // type_index: 4
+	int codec; // type_index: 4
+	int audio_codec; // type_index: 4
+	int video_bitrate; // type_index: 4
+	int audio_bitrate; // type_index: 4
+	int audio_mixrate; // type_index: 4
+	int audio_channels; // type_index: 4
+	float audio_volume; // type_index: 7
+	int gop_size; // type_index: 4
+	int max_b_frames; // type_index: 4
+	int flags; // type_index: 4
+	int constant_rate_factor; // type_index: 4
+	int ffmpeg_preset; // type_index: 4
+	int ffmpeg_prores_profile; // type_index: 4
+	int rc_min_rate; // type_index: 4
+	int rc_max_rate; // type_index: 4
+	int rc_buffer_size; // type_index: 4
+	int mux_packet_size; // type_index: 4
+	int mux_rate; // type_index: 4
+	int _pad; // type_index: 4
+}; 
+
+struct RigidBodyCon { // Max dep:7
+	Object *ob1; // type_index: 51
+	Object *ob2; // type_index: 51
+	short type; // type_index: 2
+	short num_solver_iterations; // type_index: 2
+	int flag; // type_index: 4
+	float breaking_threshold; // type_index: 7
+	char spring_type; // type_index: 0
+	char _pad[3]; // type_index: 0
+	float limit_lin_x_lower; // type_index: 7
+	float limit_lin_x_upper; // type_index: 7
+	float limit_lin_y_lower; // type_index: 7
+	float limit_lin_y_upper; // type_index: 7
+	float limit_lin_z_lower; // type_index: 7
+	float limit_lin_z_upper; // type_index: 7
+	float limit_ang_x_lower; // type_index: 7
+	float limit_ang_x_upper; // type_index: 7
+	float limit_ang_y_lower; // type_index: 7
+	float limit_ang_y_upper; // type_index: 7
+	float limit_ang_z_lower; // type_index: 7
+	float limit_ang_z_upper; // type_index: 7
+	float spring_stiffness_x; // type_index: 7
+	float spring_stiffness_y; // type_index: 7
+	float spring_stiffness_z; // type_index: 7
+	float spring_stiffness_ang_x; // type_index: 7
+	float spring_stiffness_ang_y; // type_index: 7
+	float spring_stiffness_ang_z; // type_index: 7
+	float spring_damping_x; // type_index: 7
+	float spring_damping_y; // type_index: 7
+	float spring_damping_z; // type_index: 7
+	float spring_damping_ang_x; // type_index: 7
+	float spring_damping_ang_y; // type_index: 7
+	float spring_damping_ang_z; // type_index: 7
+	float motor_lin_target_velocity; // type_index: 7
+	float motor_ang_target_velocity; // type_index: 7
+	float motor_lin_max_impulse; // type_index: 7
+	float motor_ang_max_impulse; // type_index: 7
+	void *physics_constraint; // type_index: 11
+}; 
+
+struct RigidBodyOb { // Max dep:7
+	short type; // type_index: 2
+	short shape; // type_index: 2
+	int flag; // type_index: 4
+	int col_groups; // type_index: 4
+	short mesh_source; // type_index: 2
+	char _pad[2]; // type_index: 0
+	float mass; // type_index: 7
+	float friction; // type_index: 7
+	float restitution; // type_index: 7
+	float margin; // type_index: 7
+	float lin_damping; // type_index: 7
+	float ang_damping; // type_index: 7
+	float lin_sleep_thresh; // type_index: 7
+	float ang_sleep_thresh; // type_index: 7
+	float orn[4]; // type_index: 7
+	float pos[3]; // type_index: 7
+	char _pad1[4]; // type_index: 0
+	RigidBodyOb_Shared *shared; // type_index: 814
+}; 
+
+struct bGPDstroke_Runtime { // Max dep:7
+	char tmp_layerinfo[128]; // type_index: 0
+	float multi_frame_falloff; // type_index: 7
+	int stroke_start; // type_index: 4
+	int fill_start; // type_index: 4
+	int vertex_start; // type_index: 4
+	int curve_start; // type_index: 4
+	int _pad0; // type_index: 4
+	bGPDstroke *gps_orig; // type_index: 257
+	void *_pad2; // type_index: 11
+}; 
+
+struct GPUDOFSettings { // Max dep:7
+	float focus_distance; // type_index: 7
+	float fstop; // type_index: 7
+	float focal_length; // type_index: 7
+	float sensor; // type_index: 7
+	float rotation; // type_index: 7
+	float ratio; // type_index: 7
+	int num_blades; // type_index: 4
+	int high_quality; // type_index: 4
+}; 
+
+struct BrushCurvesSculptSettings { // Max dep:7
+	int add_amount; // type_index: 4
+	int points_per_curve; // type_index: 4
+	int flag; // type_index: 4
+	float minimum_length; // type_index: 7
+	float curve_length; // type_index: 7
+	float minimum_distance; // type_index: 7
+	float curve_radius; // type_index: 7
+	int density_add_attempts; // type_index: 4
+	uchar density_mode; // type_index: 1
+	char _pad[7]; // type_index: 0
+	CurveMapping *curve_parameter_falloff; // type_index: 127
+}; 
+
+struct bActionModifier { // Max dep:7
+	bActionModifier *next; // type_index: 553
+	bActionModifier *prev; // type_index: 553
+	short type; // type_index: 2
+	short flag; // type_index: 2
+	char channel[32]; // type_index: 0
+	float noisesize; // type_index: 7
+	float turbul; // type_index: 7
+	short channels; // type_index: 2
+	short no_rot_axis; // type_index: 2
+	Object *ob; // type_index: 51
+}; 
+
+struct bMinMaxConstraint { // Max dep:7
+	Object *tar; // type_index: 51
+	int minmaxflag; // type_index: 4
+	float offset; // type_index: 7
+	int flag; // type_index: 4
+	char subtarget[64]; // type_index: 0
+	int _pad; // type_index: 4
+}; 
+
+struct SPHFluidSettings { // Max dep:7
+	float radius; // type_index: 7
+	float spring_k; // type_index: 7
+	float rest_length; // type_index: 7
+	float plasticity_constant; // type_index: 7
+	float yield_ratio; // type_index: 7
+	float plasticity_balance; // type_index: 7
+	float yield_balance; // type_index: 7
+	float viscosity_omega; // type_index: 7
+	float viscosity_beta; // type_index: 7
+	float stiffness_k; // type_index: 7
+	float stiffness_knear; // type_index: 7
+	float rest_density; // type_index: 7
+	float buoyancy; // type_index: 7
+	int flag; // type_index: 4
+	int spring_frames; // type_index: 4
+	short solver; // type_index: 2
+	char _pad[6]; // type_index: 0
+}; 
+
+struct AnimOverride { // Max dep:7
+	AnimOverride *next; // type_index: 95
+	AnimOverride *prev; // type_index: 95
+	char *rna_path; // type_index: 0
+	int array_index; // type_index: 4
+	float value; // type_index: 7
+}; 
+
+struct bGPDspoint { // Max dep:7
+	float x; // type_index: 7
+	float y; // type_index: 7
+	float z; // type_index: 7
+	float pressure; // type_index: 7
+	float strength; // type_index: 7
+	float time; // type_index: 7
+	int flag; // type_index: 4
+	float uv_fac; // type_index: 7
+	float uv_rot; // type_index: 7
+	float uv_fill[2]; // type_index: 7
+	float vert_color[4]; // type_index: 7
+	char _pad2[4]; // type_index: 0
+}; 
+
+struct ColorMixVars { // Max dep:7
+	int blend_effect; // type_index: 4
+	float factor; // type_index: 7
+}; 
+
+struct SDefBind { // Max dep:7
+	int *vert_inds; // type_index: 4
+	int numverts; // type_index: 4
+	int mode; // type_index: 4
+	float *vert_weights; // type_index: 7
+	float normal_dist; // type_index: 7
+	float influence; // type_index: 7
+}; 
+
+struct bActionConstraint { // Max dep:7
+	Object *tar; // type_index: 51
+	short type; // type_index: 2
+	short local; // type_index: 2
+	int start; // type_index: 4
+	int end; // type_index: 4
+	float min; // type_index: 7
+	float max; // type_index: 7
+	int flag; // type_index: 4
+	char mix_mode; // type_index: 0
+	char _pad[3]; // type_index: 0
+	float eval_time; // type_index: 7
+	bAction *act; // type_index: 61
+	int action_slot_handle; // type_index: 4
+	char action_slot_name[258]; // type_index: 0
+	char _pad1[2]; // type_index: 0
+	char subtarget[64]; // type_index: 0
+}; 
+
+struct StripColorBalance { // Max dep:7
+	int method; // type_index: 4
+	float lift[3]; // type_index: 7
+	float gamma[3]; // type_index: 7
+	float gain[3]; // type_index: 7
+	float slope[3]; // type_index: 7
+	float offset[3]; // type_index: 7
+	float power[3]; // type_index: 7
+	int flag; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct StripTransform { // Max dep:7
+	float xofs; // type_index: 7
+	float yofs; // type_index: 7
+	float scale_x; // type_index: 7
+	float scale_y; // type_index: 7
+	float rotation; // type_index: 7
+	float origin[2]; // type_index: 7
+	int filter; // type_index: 4
+}; 
+
+struct StripElem { // Max dep:7
+	char name[256]; // type_index: 0
+	int orig_width; // type_index: 4
+	int orig_height; // type_index: 4
+	float orig_fps; // type_index: 7
+}; 
+
+struct CryptomatteEntry { // Max dep:7
+	CryptomatteEntry *next; // type_index: 666
+	CryptomatteEntry *prev; // type_index: 666
+	float encoded_hash; // type_index: 7
+	char name[64]; // type_index: 0
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeSunBeams { // Max dep:7
+	float source[2]; // type_index: 7
+	float ray_length; // type_index: 7
+}; 
+
+struct FluidFlowSettings { // Max dep:7
+	FluidModifierData *fmd; // type_index: 240
+	Mesh *mesh; // type_index: 244
+	ParticleSystem *psys; // type_index: 230
+	Tex *noise_texture; // type_index: 227
+	float *verts_old; // type_index: 7
+	int numverts; // type_index: 4
+	float vel_multi; // type_index: 7
+	float vel_normal; // type_index: 7
+	float vel_random; // type_index: 7
+	float vel_coord[3]; // type_index: 7
+	char _pad1[4]; // type_index: 0
+	float density; // type_index: 7
+	float color[3]; // type_index: 7
+	float fuel_amount; // type_index: 7
+	float temperature; // type_index: 7
+	float volume_density; // type_index: 7
+	float surface_distance; // type_index: 7
+	float particle_size; // type_index: 7
+	int subframes; // type_index: 4
+	float texture_size; // type_index: 7
+	float texture_offset; // type_index: 7
+	char _pad2[4]; // type_index: 0
+	char uvlayer_name[68]; // type_index: 0
+	char _pad3[4]; // type_index: 0
+	short vgroup_density; // type_index: 2
+	short type; // type_index: 2
+	short behavior; // type_index: 2
+	short source; // type_index: 2
+	short texture_type; // type_index: 2
+	short _pad4[3]; // type_index: 2
+	int flags; // type_index: 4
+}; 
+
+struct FluidEffectorSettings { // Max dep:7
+	FluidModifierData *fmd; // type_index: 240
+	Mesh *mesh; // type_index: 244
+	float *verts_old; // type_index: 7
+	int numverts; // type_index: 4
+	float surface_distance; // type_index: 7
+	int flags; // type_index: 4
+	int subframes; // type_index: 4
+	short type; // type_index: 2
+	char _pad1[6]; // type_index: 0
+	float vel_multi; // type_index: 7
+	short guiding_mode; // type_index: 2
+	char _pad2[2]; // type_index: 0
+}; 
+
+struct TransformOrientation { // Max dep:7
+	TransformOrientation *next; // type_index: 877
+	TransformOrientation *prev; // type_index: 877
+	char name[64]; // type_index: 0
+	float mat[3][3]; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct BoidData { // Max dep:7
+	float health; // type_index: 7
+	float acc[3]; // type_index: 7
+	short state_id; // type_index: 2
+	short mode; // type_index: 2
+}; 
+
+struct SceneGpencil { // Max dep:7
+	float smaa_threshold; // type_index: 7
+	float smaa_threshold_render; // type_index: 7
+	int aa_samples; // type_index: 4
+	int motion_blur_steps; // type_index: 4
+}; 
+
+struct RaytraceEEVEE { // Max dep:7
+	float screen_trace_quality; // type_index: 7
+	float screen_trace_thickness; // type_index: 7
+	float trace_max_roughness; // type_index: 7
+	int resolution_scale; // type_index: 4
+	int flag; // type_index: 4
+	int denoise_stages; // type_index: 4
+}; 
+
+struct DisplaySafeAreas { // Max dep:7
+	float title[2]; // type_index: 7
+	float action[2]; // type_index: 7
+	float title_center[2]; // type_index: 7
+	float action_center[2]; // type_index: 7
+}; 
+
+struct PhysicsSettings { // Max dep:7
+	float gravity[3]; // type_index: 7
+	int flag; // type_index: 4
+	int quick_cache_step; // type_index: 4
+	char _pad0[4]; // type_index: 0
+}; 
+
+struct GreasePencilDashModifierSegment { // Max dep:7
+	char name[64]; // type_index: 0
+	int dash; // type_index: 4
+	int gap; // type_index: 4
+	float radius; // type_index: 7
+	float opacity; // type_index: 7
+	int mat_nr; // type_index: 4
+	int flag; // type_index: 4
+}; 
+
+struct UnitSettings { // Max dep:7
+	float scale_length; // type_index: 7
+	char system; // type_index: 0
+	char system_rotation; // type_index: 0
+	short flag; // type_index: 2
+	char length_unit; // type_index: 0
+	char mass_unit; // type_index: 0
+	char time_unit; // type_index: 0
+	char temperature_unit; // type_index: 0
+	char _pad[4]; // type_index: 0
+}; 
+
+struct MeshStatVis { // Max dep:7
+	char type; // type_index: 0
+	char _pad1[2]; // type_index: 0
+	char overhang_axis; // type_index: 0
+	float overhang_min; // type_index: 7
+	float overhang_max; // type_index: 7
+	float thickness_min; // type_index: 7
+	float thickness_max; // type_index: 7
+	char thickness_samples; // type_index: 0
+	char _pad2[3]; // type_index: 0
+	float distort_min; // type_index: 7
+	float distort_max; // type_index: 7
+	float sharp_min; // type_index: 7
+	float sharp_max; // type_index: 7
+}; 
+
+struct CurvePaintSettings { // Max dep:7
+	char curve_type; // type_index: 0
+	char flag; // type_index: 0
+	char depth_mode; // type_index: 0
+	char surface_plane; // type_index: 0
+	char fit_method; // type_index: 0
+	char _pad; // type_index: 0
+	short error_threshold; // type_index: 2
+	float radius_min; // type_index: 7
+	float radius_max; // type_index: 7
+	float radius_taper_start; // type_index: 7
+	float radius_taper_end; // type_index: 7
+	float surface_offset; // type_index: 7
+	float corner_angle; // type_index: 7
+}; 
+
+struct GP_Sculpt_Guide { // Max dep:7
+	char use_guide; // type_index: 0
+	char use_snapping; // type_index: 0
+	char reference_point; // type_index: 0
+	char type; // type_index: 0
+	char _pad2[4]; // type_index: 0
+	float angle; // type_index: 7
+	float angle_snap; // type_index: 7
+	float spacing; // type_index: 7
+	float location[3]; // type_index: 7
+	Object *reference_object; // type_index: 51
+}; 
+
+struct bGPDpalettecolor { // Max dep:7
+	bGPDpalettecolor *next; // type_index: 252
+	bGPDpalettecolor *prev; // type_index: 252
+	char info[64]; // type_index: 0
+	float color[4]; // type_index: 7
+	float fill[4]; // type_index: 7
+	short flag; // type_index: 2
+	char _pad[6]; // type_index: 0
+}; 
+
+struct ParticleBrushData { // Max dep:7
+	short size; // type_index: 2
+	short step; // type_index: 2
+	short invert; // type_index: 2
+	short count; // type_index: 2
+	int flag; // type_index: 4
+	float strength; // type_index: 7
+}; 
+
+struct NodeDefocus { // Max dep:7
+	char bktype; // type_index: 0
+	char gamco; // type_index: 0
+	char no_zbuf; // type_index: 0
+	char _pad0; // type_index: 0
+	float fstop; // type_index: 7
+	float maxblur; // type_index: 7
+	float scale; // type_index: 7
+	float rotation; // type_index: 7
+}; 
+
+struct NodeBoxMask { // Max dep:7
+	float x; // type_index: 7
+	float y; // type_index: 7
+	float rotation; // type_index: 7
+	float height; // type_index: 7
+	float width; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeEllipseMask { // Max dep:7
+	float x; // type_index: 7
+	float y; // type_index: 7
+	float rotation; // type_index: 7
+	float height; // type_index: 7
+	float width; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct ClothCollSettings { // Max dep:7
+	LinkNode *collision_list; // type_index: 154
+	float epsilon; // type_index: 7
+	float self_friction; // type_index: 7
+	float friction; // type_index: 7
+	float damping; // type_index: 7
+	float selfepsilon; // type_index: 7
+	float repel_force; // type_index: 7
+	float distance_repel; // type_index: 7
+	int flags; // type_index: 4
+	short self_loop_count; // type_index: 2
+	short loop_count; // type_index: 2
+	char _pad[4]; // type_index: 0
+	Collection *group; // type_index: 66
+	short vgroup_selfcol; // type_index: 2
+	short vgroup_objcol; // type_index: 2
+	char _pad2[4]; // type_index: 0
+	float clamp; // type_index: 7
+	float self_clamp; // type_index: 7
+}; 
+
+struct NodeBlurData { // Max dep:7
+	short sizex; // type_index: 2
+	short sizey; // type_index: 2
+	short samples; // type_index: 2
+	short maxspeed; // type_index: 2
+	short minspeed; // type_index: 2
+	short relative; // type_index: 2
+	short aspect; // type_index: 2
+	short curved; // type_index: 2
+	float fac; // type_index: 7
+	float percentx; // type_index: 7
+	float percenty; // type_index: 7
+	short filtertype; // type_index: 2
+	char bokeh; // type_index: 0
+	char gamma; // type_index: 0
+}; 
+
+struct NodeDBlurData { // Max dep:7
+	float center_x; // type_index: 7
+	float center_y; // type_index: 7
+	float distance; // type_index: 7
+	float angle; // type_index: 7
+	float spin; // type_index: 7
+	float zoom; // type_index: 7
+	short iter; // type_index: 2
+	char _pad[2]; // type_index: 0
+}; 
+
+struct NodeBilateralBlurData { // Max dep:7
+	float sigma_color; // type_index: 7
+	float sigma_space; // type_index: 7
+	short iter; // type_index: 2
+	char _pad[2]; // type_index: 0
+}; 
+
+struct NodeKuwaharaData { // Max dep:7
+	short size; // type_index: 2
+	short variation; // type_index: 2
+	int uniformity; // type_index: 4
+	float sharpness; // type_index: 7
+	float eccentricity; // type_index: 7
+	char high_precision; // type_index: 0
+	char _pad[3]; // type_index: 0
+}; 
+
+struct NodeAntiAliasingData { // Max dep:7
+	float threshold; // type_index: 7
+	float contrast_limit; // type_index: 7
+	float corner_rounding; // type_index: 7
+}; 
+
+struct NodeHueSat { // Max dep:7
+	float hue; // type_index: 7
+	float sat; // type_index: 7
+	float val; // type_index: 7
+}; 
+
+struct bSameVolumeConstraint { // Max dep:7
+	char flag; // type_index: 0
+	char mode; // type_index: 0
+	char _pad[2]; // type_index: 0
+	float volume; // type_index: 7
+}; 
+
+struct NodeChroma { // Max dep:7
+	float t1; // type_index: 7
+	float t2; // type_index: 7
+	float t3; // type_index: 7
+	float fsize; // type_index: 7
+	float fstrength; // type_index: 7
+	float falpha; // type_index: 7
+	float key[4]; // type_index: 7
+	short algorithm; // type_index: 2
+	short channel; // type_index: 2
+}; 
+
+struct NodeTwoXYs { // Max dep:7
+	short x1; // type_index: 2
+	short x2; // type_index: 2
+	short y1; // type_index: 2
+	short y2; // type_index: 2
+	float fac_x1; // type_index: 7
+	float fac_x2; // type_index: 7
+	float fac_y1; // type_index: 7
+	float fac_y2; // type_index: 7
+}; 
+
+struct NodeTwoFloats { // Max dep:7
+	float x; // type_index: 7
+	float y; // type_index: 7
+}; 
+
+struct bSizeLikeConstraint { // Max dep:7
+	Object *tar; // type_index: 51
+	int flag; // type_index: 4
+	float power; // type_index: 7
+	char subtarget[64]; // type_index: 0
+}; 
+
+struct NodeBokehImage { // Max dep:7
+	float angle; // type_index: 7
+	int flaps; // type_index: 4
+	float rounding; // type_index: 7
+	float catadioptric; // type_index: 7
+	float lensshift; // type_index: 7
+}; 
+
+struct CurveMapPoint { // Max dep:7
+	float x; // type_index: 7
+	float y; // type_index: 7
+	short flag; // type_index: 2
+	short shorty; // type_index: 2
+}; 
+
+struct NodeGlare { // Max dep:7
+	char type; // type_index: 0
+	char quality; // type_index: 0
+	char iter; // type_index: 0
+	char angle; // type_index: 0
+	char _pad0; // type_index: 0
+	char size; // type_index: 0
+	char star_45; // type_index: 0
+	char streaks; // type_index: 0
+	float colmod; // type_index: 7
+	float mix; // type_index: 7
+	float threshold; // type_index: 7
+	float fade; // type_index: 7
+	float angle_ofs; // type_index: 7
+	char _pad1[4]; // type_index: 0
+}; 
+
+struct NodeTonemap { // Max dep:7
+	float key; // type_index: 7
+	float offset; // type_index: 7
+	float gamma; // type_index: 7
+	float f; // type_index: 7
+	float m; // type_index: 7
+	float a; // type_index: 7
+	float c; // type_index: 7
+	int type; // type_index: 4
+}; 
+
+struct CurveMap { // Max dep:7
+	short totpoint; // type_index: 2
+	short flag; // type_index: 2
+	float range; // type_index: 7
+	float mintable; // type_index: 7
+	float maxtable; // type_index: 7
+	float ext_in[2]; // type_index: 7
+	float ext_out[2]; // type_index: 7
+	CurveMapPoint *curve; // type_index: 163
+	CurveMapPoint *table; // type_index: 163
+	CurveMapPoint *premultable; // type_index: 163
+	float premul_ext_in[2]; // type_index: 7
+	float premul_ext_out[2]; // type_index: 7
+	short default_handle_type; // type_index: 2
+	char _pad[6]; // type_index: 0
+}; 
+
+struct NodeColorBalance { // Max dep:7
+	float slope[3]; // type_index: 7
+	float offset[3]; // type_index: 7
+	float power[3]; // type_index: 7
+	float offset_basis; // type_index: 7
+	char _pad[4]; // type_index: 0
+	float lift[3]; // type_index: 7
+	float gamma[3]; // type_index: 7
+	float gain[3]; // type_index: 7
+	float input_temperature; // type_index: 7
+	float input_tint; // type_index: 7
+	float output_temperature; // type_index: 7
+	float output_tint; // type_index: 7
+}; 
+
+struct NodeColorspill { // Max dep:7
+	short limchan; // type_index: 2
+	short unspill; // type_index: 2
+	float limscale; // type_index: 7
+	float uspillr; // type_index: 7
+	float uspillg; // type_index: 7
+	float uspillb; // type_index: 7
+}; 
+
+struct Histogram { // Max dep:7
+	int channels; // type_index: 4
+	int x_resolution; // type_index: 4
+	float data_luma[256]; // type_index: 7
+	float data_r[256]; // type_index: 7
+	float data_g[256]; // type_index: 7
+	float data_b[256]; // type_index: 7
+	float data_a[256]; // type_index: 7
+	float xmax; // type_index: 7
+	float ymax; // type_index: 7
+	short mode; // type_index: 2
+	short flag; // type_index: 2
+	int height; // type_index: 4
+	float co[2][2]; // type_index: 7
+}; 
+
+struct bSplineIKConstraint { // Max dep:7
+	Object *tar; // type_index: 51
+	float *points; // type_index: 7
+	short numpoints; // type_index: 2
+	short chainlen; // type_index: 2
+	short flag; // type_index: 2
+	short xzScaleMode; // type_index: 2
+	short yScaleMode; // type_index: 2
+	short _pad[3]; // type_index: 2
+	float bulge; // type_index: 7
+	float bulge_min; // type_index: 7
+	float bulge_max; // type_index: 7
+	float bulge_smooth; // type_index: 7
+}; 
+
+struct ColorManagedViewSettings { // Max dep:7
+	int flag; // type_index: 4
+	char _pad[4]; // type_index: 0
+	char look[64]; // type_index: 0
+	char view_transform[64]; // type_index: 0
+	float exposure; // type_index: 7
+	float gamma; // type_index: 7
+	float temperature; // type_index: 7
+	float tint; // type_index: 7
+	CurveMapping *curve_mapping; // type_index: 127
+	void *_pad2; // type_index: 11
+}; 
+
+struct CBData { // Max dep:7
+	float r; // type_index: 7
+	float g; // type_index: 7
+	float b; // type_index: 7
+	float a; // type_index: 7
+	float pos; // type_index: 7
+	int cur; // type_index: 4
+}; 
+
+struct bConstraint { // Max dep:7
+	bConstraint *next; // type_index: 171
+	bConstraint *prev; // type_index: 171
+	void *data; // type_index: 11
+	short type; // type_index: 2
+	short flag; // type_index: 2
+	char ownspace; // type_index: 0
+	char tarspace; // type_index: 0
+	short ui_expand_flag; // type_index: 2
+	Object *space_object; // type_index: 51
+	char space_subtarget[64]; // type_index: 0
+	char name[64]; // type_index: 0
+	float enforce; // type_index: 7
+	float headtail; // type_index: 7
+	float lin_error; // type_index: 7
+	float rot_error; // type_index: 7
+}; 
+
+struct bConstraintTarget { // Max dep:7
+	bConstraintTarget *next; // type_index: 172
+	bConstraintTarget *prev; // type_index: 172
+	Object *tar; // type_index: 51
+	char subtarget[64]; // type_index: 0
+	float matrix[4][4]; // type_index: 7
+	short space; // type_index: 2
+	short flag; // type_index: 2
+	short type; // type_index: 2
+	short rotOrder; // type_index: 2
+	float weight; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct bKinematicConstraint { // Max dep:7
+	Object *tar; // type_index: 51
+	short iterations; // type_index: 2
+	short flag; // type_index: 2
+	short rootbone; // type_index: 2
+	short max_rootbone; // type_index: 2
+	char subtarget[64]; // type_index: 0
+	Object *poletar; // type_index: 51
+	char polesubtarget[64]; // type_index: 0
+	float poleangle; // type_index: 7
+	float weight; // type_index: 7
+	float orientweight; // type_index: 7
+	float grabtarget[3]; // type_index: 7
+	short type; // type_index: 2
+	short mode; // type_index: 2
+	float dist; // type_index: 7
+}; 
+
+struct bNodeSocketValueRGBA { // Max dep:7
+	float value[4]; // type_index: 7
+}; 
+
+struct ParticleSpring { // Max dep:7
+	float rest_length; // type_index: 7
+	int particle_index[2]; // type_index: 4
+	int delete_flag; // type_index: 4
+}; 
+
+struct bNodeStack { // Max dep:7
+	float vec[4]; // type_index: 7
+	float min; // type_index: 7
+	float max; // type_index: 7
+	void *data; // type_index: 11
+	short hasinput; // type_index: 2
+	short hasoutput; // type_index: 2
+	short datatype; // type_index: 2
+	short sockettype; // type_index: 2
+	short is_copy; // type_index: 2
+	short external; // type_index: 2
+	char _pad[4]; // type_index: 0
+}; 
+
+struct ParticleKey { // Max dep:7
+	float co[3]; // type_index: 7
+	float vel[3]; // type_index: 7
+	float rot[4]; // type_index: 7
+	float ave[3]; // type_index: 7
+	float time; // type_index: 7
+}; 
+
+struct HairKey { // Max dep:7
+	float co[3]; // type_index: 7
+	float time; // type_index: 7
+	float weight; // type_index: 7
+	short editflag; // type_index: 2
+	char _pad[2]; // type_index: 0
+	float world_co[3]; // type_index: 7
+}; 
+
+struct PaletteColor { // Max dep:7
+	PaletteColor *next; // type_index: 134
+	PaletteColor *prev; // type_index: 134
+	float color[3]; // type_index: 7
+	float value; // type_index: 7
+	float rgb[3]; // type_index: 7
+	float _pad; // type_index: 7
+}; 
+
+struct ObHook { // Max dep:7
+	ObHook *next; // type_index: 790
+	ObHook *prev; // type_index: 790
+	Object *parent; // type_index: 51
+	float parentinv[4][4]; // type_index: 7
+	float mat[4][4]; // type_index: 7
+	float cent[3]; // type_index: 7
+	float falloff; // type_index: 7
+	char name[64]; // type_index: 0
+	int *indexar; // type_index: 4
+	int totindex; // type_index: 4
+	int curindex; // type_index: 4
+	short type; // type_index: 2
+	short active; // type_index: 2
+	float force; // type_index: 7
+}; 
+
+struct ObjectLineArt { // Max dep:7
+	short usage; // type_index: 2
+	short flags; // type_index: 2
+	float crease_threshold; // type_index: 7
+	char intersection_priority; // type_index: 0
+	char _pad[7]; // type_index: 0
+}; 
+
+struct BoundBox { // Max dep:7
+	float vec[8][3]; // type_index: 7
+}; 
+
+struct NodeKeyingData { // Max dep:7
+	float screen_balance; // type_index: 7
+	float despill_factor; // type_index: 7
+	float despill_balance; // type_index: 7
+	int edge_kernel_radius; // type_index: 4
+	float edge_kernel_tolerance; // type_index: 7
+	float clip_black; // type_index: 7
+	float clip_white; // type_index: 7
+	int dilate_distance; // type_index: 4
+	int feather_distance; // type_index: 4
+	int feather_falloff; // type_index: 4
+	int blur_pre; // type_index: 4
+	int blur_post; // type_index: 4
+}; 
+
+struct bNodeSocketValueFloat { // Max dep:7
+	int subtype; // type_index: 4
+	float value; // type_index: 7
+	float min; // type_index: 7
+	float max; // type_index: 7
+}; 
+
+struct NodeKeyingScreenData { // Max dep:7
+	char tracking_object[64]; // type_index: 0
+	float smoothness; // type_index: 7
+}; 
+
+struct bNodeSocketValueVector { // Max dep:7
+	int subtype; // type_index: 4
+	float value[4]; // type_index: 7
+	float min; // type_index: 7
+	float max; // type_index: 7
+	int dimensions; // type_index: 4
+}; 
+
+struct bNodeSocketValueRotation { // Max dep:7
+	float value_euler[3]; // type_index: 7
+}; 
+
+struct ChildParticle { // Max dep:7
+	int num; // type_index: 4
+	int parent; // type_index: 4
+	int pa[4]; // type_index: 4
+	float w[4]; // type_index: 7
+	float fuv[4]; // type_index: 7
+	float foffset; // type_index: 7
+	char _pad0[4]; // type_index: 0
+}; 
+
+struct SBVertex { // Max dep:7
+	float vec[4]; // type_index: 7
+}; 
+
+struct EffectorWeights { // Max dep:7
+	Collection *group; // type_index: 66
+	float weight[14]; // type_index: 7
+	float global_gravity; // type_index: 7
+	short flag; // type_index: 2
+	char _pad[2]; // type_index: 0
+}; 
+
+struct PartDeflect { // Max dep:7
+	int flag; // type_index: 4
+	short deflect; // type_index: 2
+	short forcefield; // type_index: 2
+	short falloff; // type_index: 2
+	short shape; // type_index: 2
+	short tex_mode; // type_index: 2
+	short kink; // type_index: 2
+	short kink_axis; // type_index: 2
+	short zdir; // type_index: 2
+	float f_strength; // type_index: 7
+	float f_damp; // type_index: 7
+	float f_flow; // type_index: 7
+	float f_wind_factor; // type_index: 7
+	char _pad0[4]; // type_index: 0
+	float f_size; // type_index: 7
+	float f_power; // type_index: 7
+	float maxdist; // type_index: 7
+	float mindist; // type_index: 7
+	float f_power_r; // type_index: 7
+	float maxrad; // type_index: 7
+	float minrad; // type_index: 7
+	float pdef_damp; // type_index: 7
+	float pdef_rdamp; // type_index: 7
+	float pdef_perm; // type_index: 7
+	float pdef_frict; // type_index: 7
+	float pdef_rfrict; // type_index: 7
+	float pdef_stickness; // type_index: 7
+	float absorption; // type_index: 7
+	float pdef_sbdamp; // type_index: 7
+	float pdef_sbift; // type_index: 7
+	float pdef_sboft; // type_index: 7
+	float clump_fac; // type_index: 7
+	float clump_pow; // type_index: 7
+	float kink_freq; // type_index: 7
+	float kink_shape; // type_index: 7
+	float kink_amp; // type_index: 7
+	float free_end; // type_index: 7
+	float tex_nabla; // type_index: 7
+	Tex *tex; // type_index: 227
+	float f_noise; // type_index: 7
+	int seed; // type_index: 4
+	float drawvec1[4]; // type_index: 7
+	float drawvec2[4]; // type_index: 7
+	float drawvec_falloff_min[3]; // type_index: 7
+	char _pad1[4]; // type_index: 0
+	float drawvec_falloff_max[3]; // type_index: 7
+	char _pad2[4]; // type_index: 0
+	Object *f_source; // type_index: 51
+	float pdef_cfrict; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct FluidsimSettings { // Max dep:7
+	FluidsimModifierData *fmd; // type_index: 469
+	int threads; // type_index: 4
+	char _pad1[4]; // type_index: 0
+	short type; // type_index: 2
+	short show_advancedoptions; // type_index: 2
+	short resolutionxyz; // type_index: 2
+	short previewresxyz; // type_index: 2
+	float realsize; // type_index: 7
+	short guiDisplayMode; // type_index: 2
+	short renderDisplayMode; // type_index: 2
+	float viscosityValue; // type_index: 7
+	short viscosityMode; // type_index: 2
+	short viscosityExponent; // type_index: 2
+	float grav[3]; // type_index: 7
+	float animStart; // type_index: 7
+	float animEnd; // type_index: 7
+	int bakeStart; // type_index: 4
+	int bakeEnd; // type_index: 4
+	int frameOffset; // type_index: 4
+	char _pad2[4]; // type_index: 0
+	float gstar; // type_index: 7
+	int maxRefine; // type_index: 4
+	float iniVelx; // type_index: 7
+	float iniVely; // type_index: 7
+	float iniVelz; // type_index: 7
+	char surfdataPath[1024]; // type_index: 0
+	float bbStart[3]; // type_index: 7
+	float bbSize[3]; // type_index: 7
+	short typeFlags; // type_index: 2
+	char domainNovecgen; // type_index: 0
+	char volumeInitType; // type_index: 0
+	float partSlipValue; // type_index: 7
+	int generateTracers; // type_index: 4
+	float generateParticles; // type_index: 7
+	float surfaceSmoothing; // type_index: 7
+	int surfaceSubdivs; // type_index: 4
+	int flag; // type_index: 4
+	float particleInfSize; // type_index: 7
+	float particleInfAlpha; // type_index: 7
+	float farFieldSize; // type_index: 7
+	FluidVertexVelocity *meshVelocities; // type_index: 773
+	int totvert; // type_index: 4
+	float cpsTimeStart; // type_index: 7
+	float cpsTimeEnd; // type_index: 7
+	float cpsQuality; // type_index: 7
+	float attractforceStrength; // type_index: 7
+	float attractforceRadius; // type_index: 7
+	float velocityforceStrength; // type_index: 7
+	float velocityforceRadius; // type_index: 7
+	int lastgoodframe; // type_index: 4
+	float animRate; // type_index: 7
+}; 
+
+struct FluidVertexVelocity { // Max dep:7
+	float vel[3]; // type_index: 7
+}; 
+
+struct CameraStereoSettings { // Max dep:7
+	float interocular_distance; // type_index: 7
+	float convergence_distance; // type_index: 7
+	short convergence_mode; // type_index: 2
+	short pivot; // type_index: 2
+	short flag; // type_index: 2
+	char _pad[2]; // type_index: 0
+	float pole_merge_angle_from; // type_index: 7
+	float pole_merge_angle_to; // type_index: 7
+}; 
+
+struct bGPdata_Runtime { // Max dep:7
+	void *sbuffer; // type_index: 11
+	short playing; // type_index: 2
+	short matid; // type_index: 2
+	short sbuffer_sflag; // type_index: 2
+	char _pad1[2]; // type_index: 0
+	int sbuffer_used; // type_index: 4
+	int sbuffer_size; // type_index: 4
+	float vert_color_fill[4]; // type_index: 7
+	float fill_opacity_fac; // type_index: 7
+	float arrow_start[8]; // type_index: 7
+	float arrow_end[8]; // type_index: 7
+	int arrow_start_style; // type_index: 4
+	int arrow_end_style; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct CameraDOFSettings { // Max dep:7
+	Object *focus_object; // type_index: 51
+	char focus_subtarget[64]; // type_index: 0
+	float focus_distance; // type_index: 7
+	float aperture_fstop; // type_index: 7
+	float aperture_rotation; // type_index: 7
+	float aperture_ratio; // type_index: 7
+	int aperture_blades; // type_index: 4
+	short flag; // type_index: 2
+	char _pad[2]; // type_index: 0
+}; 
+
+struct DashGpencilModifierSegment { // Max dep:7
+	char name[64]; // type_index: 0
+	DashGpencilModifierData *dmd; // type_index: 282
+	int dash; // type_index: 4
+	int gap; // type_index: 4
+	float radius; // type_index: 7
+	float opacity; // type_index: 7
+	int mat_nr; // type_index: 4
+	int flag; // type_index: 4
+}; 
+
+struct bGPgrid { // Max dep:7
+	float color[3]; // type_index: 7
+	float scale[2]; // type_index: 7
+	float offset[2]; // type_index: 7
+	char _pad1[4]; // type_index: 0
+	int lines; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct Camera_Runtime { // Max dep:7
+	float drw_corners[2][4][2]; // type_index: 7
+	float drw_tria[2][2]; // type_index: 7
+	float drw_depth[2]; // type_index: 7
+	float drw_focusmat[4][4]; // type_index: 7
+	float drw_normalmat[4][4]; // type_index: 7
+}; 
+
+struct ColorCorrectionData { // Max dep:7
+	float saturation; // type_index: 7
+	float contrast; // type_index: 7
+	float gamma; // type_index: 7
+	float gain; // type_index: 7
+	float lift; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct ClothSimSettings { // Max dep:7
+	LinkNode *cache; // type_index: 154
+	float mingoal; // type_index: 7
+	float Cdis; // type_index: 7
+	float Cvi; // type_index: 7
+	float gravity[3]; // type_index: 7
+	float dt; // type_index: 7
+	float mass; // type_index: 7
+	float structural; // type_index: 7
+	float shear; // type_index: 7
+	float bending; // type_index: 7
+	float max_bend; // type_index: 7
+	float max_struct; // type_index: 7
+	float max_shear; // type_index: 7
+	float max_sewing; // type_index: 7
+	float avg_spring_len; // type_index: 7
+	float timescale; // type_index: 7
+	float time_scale; // type_index: 7
+	float maxgoal; // type_index: 7
+	float eff_force_scale; // type_index: 7
+	float eff_wind_scale; // type_index: 7
+	float sim_time_old; // type_index: 7
+	float defgoal; // type_index: 7
+	float goalspring; // type_index: 7
+	float goalfrict; // type_index: 7
+	float velocity_smooth; // type_index: 7
+	float density_target; // type_index: 7
+	float density_strength; // type_index: 7
+	float collider_friction; // type_index: 7
+	float vel_damping; // type_index: 7
+	float shrink_min; // type_index: 7
+	float shrink_max; // type_index: 7
+	float uniform_pressure_force; // type_index: 7
+	float target_volume; // type_index: 7
+	float pressure_factor; // type_index: 7
+	float fluid_density; // type_index: 7
+	short vgroup_pressure; // type_index: 2
+	char _pad7[6]; // type_index: 0
+	float bending_damping; // type_index: 7
+	float voxel_cell_size; // type_index: 7
+	int stepsPerFrame; // type_index: 4
+	int flags; // type_index: 4
+	int preroll; // type_index: 4
+	int maxspringlen; // type_index: 4
+	short solver_type; // type_index: 2
+	short vgroup_bend; // type_index: 2
+	short vgroup_mass; // type_index: 2
+	short vgroup_struct; // type_index: 2
+	short vgroup_shrink; // type_index: 2
+	short shapekey_rest; // type_index: 2
+	short presets; // type_index: 2
+	short reset; // type_index: 2
+	EffectorWeights *effector_weights; // type_index: 155
+	short bending_model; // type_index: 2
+	short vgroup_shear; // type_index: 2
+	float tension; // type_index: 7
+	float compression; // type_index: 7
+	float max_tension; // type_index: 7
+	float max_compression; // type_index: 7
+	float tension_damp; // type_index: 7
+	float compression_damp; // type_index: 7
+	float shear_damp; // type_index: 7
+	float internal_spring_max_length; // type_index: 7
+	float internal_spring_max_diversion; // type_index: 7
+	short vgroup_intern; // type_index: 2
+	char _pad1[2]; // type_index: 0
+	float internal_tension; // type_index: 7
+	float internal_compression; // type_index: 7
+	float max_internal_tension; // type_index: 7
+	float max_internal_compression; // type_index: 7
+	char _pad0[4]; // type_index: 0
+}; 
+
+struct MovieTrackingStabilization { // Max dep:7
+	int flag; // type_index: 4
+	int tot_track; // type_index: 4
+	int act_track; // type_index: 4
+	int tot_rot_track; // type_index: 4
+	int act_rot_track; // type_index: 4
+	float maxscale; // type_index: 7
+	MovieTrackingTrack *rot_track; // type_index: 552
+	int anchor_frame; // type_index: 4
+	float target_pos[2]; // type_index: 7
+	float target_rot; // type_index: 7
+	float scale; // type_index: 7
+	float locinf; // type_index: 7
+	float scaleinf; // type_index: 7
+	float rotinf; // type_index: 7
+	int filter; // type_index: 4
+	int _pad; // type_index: 4
+}; 
+
+struct LineStyleModifier { // Max dep:7
+	LineStyleModifier *next; // type_index: 351
+	LineStyleModifier *prev; // type_index: 351
+	char name[64]; // type_index: 0
+	int type; // type_index: 4
+	float influence; // type_index: 7
+	int flags; // type_index: 4
+	int blend; // type_index: 4
+}; 
+
+struct WalkNavigation { // Max dep:7
+	float mouse_speed; // type_index: 7
+	float walk_speed; // type_index: 7
+	float walk_speed_factor; // type_index: 7
+	float view_height; // type_index: 7
+	float jump_height; // type_index: 7
+	float teleport_time; // type_index: 7
+	short flag; // type_index: 2
+	char _pad0[6]; // type_index: 0
+}; 
+
+struct SolidLight { // Max dep:7
+	int flag; // type_index: 4
+	float smooth; // type_index: 7
+	float col[4]; // type_index: 7
+	float spec[4]; // type_index: 7
+	float vec[4]; // type_index: 7
+}; 
+
+struct MaskParent { // Max dep:7
+	int id_type; // type_index: 4
+	int type; // type_index: 4
+	ID *id; // type_index: 26
+	char parent[64]; // type_index: 0
+	char sub_parent[64]; // type_index: 0
+	float parent_orig[2]; // type_index: 7
+	float parent_corners_orig[4][2]; // type_index: 7
+}; 
+
+struct MaskSplinePointUW { // Max dep:7
+	float u; // type_index: 7
+	float w; // type_index: 7
+	int flag; // type_index: 4
+}; 
+
+struct BezTriple { // Max dep:7
+	float vec[3][3]; // type_index: 7
+	float alfa; // type_index: 7
+	float weight; // type_index: 7
+	float radius; // type_index: 7
+	char ipo; // type_index: 0
+	uchar h1; // type_index: 1
+	uchar h2; // type_index: 1
+	uchar f1; // type_index: 1
+	uchar f2; // type_index: 1
+	uchar f3; // type_index: 1
+	char hide; // type_index: 0
+	char easing; // type_index: 0
+	float back; // type_index: 7
+	float amplitude; // type_index: 7
+	float period; // type_index: 7
+	char auto_handle_type; // type_index: 0
+	char _pad[3]; // type_index: 0
+}; 
+
+struct bItasc { // Max dep:7
+	int iksolver; // type_index: 4
+	float precision; // type_index: 7
+	short numiter; // type_index: 2
+	short numstep; // type_index: 2
+	float minstep; // type_index: 7
+	float maxstep; // type_index: 7
+	short solver; // type_index: 2
+	short flag; // type_index: 2
+	float feedback; // type_index: 7
+	float maxvel; // type_index: 7
+	float dampmax; // type_index: 7
+	float dampeps; // type_index: 7
+}; 
+
+struct BPoint { // Max dep:7
+	float vec[4]; // type_index: 7
+	float alfa; // type_index: 7
+	float weight; // type_index: 7
+	uchar f1; // type_index: 1
+	char _pad1[1]; // type_index: 0
+	short hide; // type_index: 2
+	float radius; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct MaterialGPencilStyle { // Max dep:7
+	Image *sima; // type_index: 144
+	Image *ima; // type_index: 144
+	float stroke_rgba[4]; // type_index: 7
+	float fill_rgba[4]; // type_index: 7
+	float mix_rgba[4]; // type_index: 7
+	short flag; // type_index: 2
+	short index; // type_index: 2
+	short stroke_style; // type_index: 2
+	short fill_style; // type_index: 2
+	float mix_factor; // type_index: 7
+	float gradient_angle; // type_index: 7
+	float gradient_radius; // type_index: 7
+	char _pad2[4]; // type_index: 0
+	float gradient_scale[2]; // type_index: 7
+	float gradient_shift[2]; // type_index: 7
+	float texture_angle; // type_index: 7
+	float texture_scale[2]; // type_index: 7
+	float texture_offset[2]; // type_index: 7
+	float texture_opacity; // type_index: 7
+	float texture_pixsize; // type_index: 7
+	int mode; // type_index: 4
+	int gradient_type; // type_index: 4
+	float mix_stroke_factor; // type_index: 7
+	int alignment_mode; // type_index: 4
+	float alignment_rotation; // type_index: 7
+}; 
+
+struct TFace { // Max dep:7
+	void *tpage; // type_index: 11
+	float uv[4][2]; // type_index: 7
+	int col[4]; // type_index: 4
+	char flag; // type_index: 0
+	char transp; // type_index: 0
+	short mode; // type_index: 2
+	short tile; // type_index: 2
+	short unwrap; // type_index: 2
+}; 
+
+struct LightGridCache { // Max dep:7
+	float mat[4][4]; // type_index: 7
+	int resolution[3]; // type_index: 4
+	int offset; // type_index: 4
+	float corner[3]; // type_index: 7
+	float attenuation_scale; // type_index: 7
+	float increment_x[3]; // type_index: 7
+	float attenuation_bias; // type_index: 7
+	float increment_y[3]; // type_index: 7
+	float level_bias; // type_index: 7
+	float increment_z[3]; // type_index: 7
+	float _pad4; // type_index: 7
+	float visibility_bias; // type_index: 7
+	float visibility_bleed; // type_index: 7
+	float visibility_range; // type_index: 7
+	float _pad5; // type_index: 7
+}; 
+
+struct MFloatProperty { // Max dep:7
+	float f; // type_index: 7
+}; 
+
+struct LightProbeCache { // Max dep:7
+	float position[3]; // type_index: 7
+	float parallax_type; // type_index: 7
+	float attenuation_fac; // type_index: 7
+	float attenuation_type; // type_index: 7
+	float _pad3[2]; // type_index: 7
+	float attenuationmat[4][4]; // type_index: 7
+	float parallaxmat[4][4]; // type_index: 7
+}; 
+
+struct MovieTrackingReconstruction { // Max dep:7
+	int flag; // type_index: 4
+	float error; // type_index: 7
+	int last_camera; // type_index: 4
+	int camnr; // type_index: 4
+	MovieReconstructedCamera *cameras; // type_index: 1020
+}; 
+
+struct XrNavigation { // Max dep:7
+	float vignette_intensity; // type_index: 7
+	float turn_speed; // type_index: 7
+	float turn_amount; // type_index: 7
+	short flag; // type_index: 2
+	char _pad0[2]; // type_index: 0
+}; 
+
+struct CharInfo { // Max dep:7
+	float kern; // type_index: 7
+	short mat_nr; // type_index: 2
+	char flag; // type_index: 0
+	char _pad[1]; // type_index: 0
+}; 
+
+struct MDeformWeight { // Max dep:7
+	int def_nr; // type_index: 4
+	float weight; // type_index: 7
+}; 
+
+struct MovieTrackingSettings { // Max dep:7
+	short default_motion_model; // type_index: 2
+	short default_algorithm_flag; // type_index: 2
+	float default_minimum_correlation; // type_index: 7
+	short default_pattern_size; // type_index: 2
+	short default_search_size; // type_index: 2
+	short default_frames_limit; // type_index: 2
+	short default_margin; // type_index: 2
+	short default_pattern_match; // type_index: 2
+	short default_flag; // type_index: 2
+	float default_weight; // type_index: 7
+	short motion_flag; // type_index: 2
+	short speed; // type_index: 2
+	int keyframe1; // type_index: 4
+	int keyframe2; // type_index: 4
+	int reconstruction_flag; // type_index: 4
+	int refine_camera_intrinsics; // type_index: 4
+	float dist; // type_index: 7
+	int clean_frames; // type_index: 4
+	int clean_action; // type_index: 4
+	float clean_error; // type_index: 7
+	float object_distance; // type_index: 7
+}; 
+
+struct MVertSkin { // Max dep:7
+	float radius[3]; // type_index: 7
+	int flag; // type_index: 4
+}; 
+
+struct MPropCol { // Max dep:7
+	float color[4]; // type_index: 7
+}; 
+
+struct ViewLayerEEVEE { // Max dep:7
+	int render_passes; // type_index: 4
+	float ambient_occlusion_distance; // type_index: 7
+}; 
+
+struct MovieTrackingPlaneTrack { // Max dep:7
+	MovieTrackingPlaneTrack *next; // type_index: 1023
+	MovieTrackingPlaneTrack *prev; // type_index: 1023
+	char name[64]; // type_index: 0
+	MovieTrackingTrack **point_tracks; // type_index: 552
+	int point_tracksnr; // type_index: 4
+	char _pad[4]; // type_index: 0
+	MovieTrackingPlaneMarker *markers; // type_index: 1022
+	int markersnr; // type_index: 4
+	int flag; // type_index: 4
+	Image *image; // type_index: 144
+	float image_opacity; // type_index: 7
+	int last_marker; // type_index: 4
+}; 
+
 struct MovieTrackingPlaneMarker { // Max dep:7
 	float corners[4][2]; // type_index: 7
 	int framenr; // type_index: 4
 	int flag; // type_index: 4
+}; 
+
+struct MovieTrackingTrack { // Max dep:7
+	MovieTrackingTrack *next; // type_index: 552
+	MovieTrackingTrack *prev; // type_index: 552
+	char name[64]; // type_index: 0
+	float pat_min[2]; // type_index: 7
+	float pat_max[2]; // type_index: 7
+	float search_min[2]; // type_index: 7
+	float search_max[2]; // type_index: 7
+	float offset[2]; // type_index: 7
+	int markersnr; // type_index: 4
+	int _pad; // type_index: 4
+	MovieTrackingMarker *markers; // type_index: 550
+	float bundle_pos[3]; // type_index: 7
+	float error; // type_index: 7
+	int flag; // type_index: 4
+	int pat_flag; // type_index: 4
+	int search_flag; // type_index: 4
+	float color[3]; // type_index: 7
+	short frames_limit; // type_index: 2
+	short margin; // type_index: 2
+	short pattern_match; // type_index: 2
+	short motion_model; // type_index: 2
+	int algorithm_flag; // type_index: 4
+	float minimum_correlation; // type_index: 7
+	bGPdata *gpd; // type_index: 266
+	float weight; // type_index: 7
+	float weight_stab; // type_index: 7
+}; 
+
+struct KeyBlock { // Max dep:7
+	KeyBlock *next; // type_index: 326
+	KeyBlock *prev; // type_index: 326
+	float pos; // type_index: 7
+	float curval; // type_index: 7
+	short type; // type_index: 2
+	char _pad1[2]; // type_index: 0
+	short relative; // type_index: 2
+	short flag; // type_index: 2
+	int totelem; // type_index: 4
+	int uid; // type_index: 4
+	void *data; // type_index: 11
+	char name[64]; // type_index: 0
+	char vgroup[64]; // type_index: 0
+	float slidermin; // type_index: 7
+	float slidermax; // type_index: 7
+}; 
+
+struct MLoopUV { // Max dep:7
+	float uv[2]; // type_index: 7
+	int flag; // type_index: 4
+}; 
+
+struct MVert { // Max dep:7
+	float co[3]; // type_index: 7
+	char flag; // type_index: 0
+	char bweight; // type_index: 0
+	char _pad[2]; // type_index: 0
+}; 
+
+struct WipeVars { // Max dep:7
+	float edgeWidth; // type_index: 7
+	float angle; // type_index: 7
+	short forward; // type_index: 2
+	short wipetype; // type_index: 2
+}; 
+
+struct MovieTrackingCamera { // Max dep:7
+	void *intrinsics; // type_index: 11
+	short distortion_model; // type_index: 2
+	char _pad[2]; // type_index: 0
+	float sensor_width; // type_index: 7
+	float pixel_aspect; // type_index: 7
+	float focal; // type_index: 7
+	short units; // type_index: 2
+	char _pad1[2]; // type_index: 0
+	float principal_point[2]; // type_index: 7
+	float principal[2]; // type_index: 7
+	float k1; // type_index: 7
+	float k2; // type_index: 7
+	float k3; // type_index: 7
+	float division_k1; // type_index: 7
+	float division_k2; // type_index: 7
+	float nuke_k1; // type_index: 7
+	float nuke_k2; // type_index: 7
+	float brown_k1; // type_index: 7
+	float brown_k2; // type_index: 7
+	float brown_k3; // type_index: 7
+	float brown_k4; // type_index: 7
+	float brown_p1; // type_index: 7
+	float brown_p2; // type_index: 7
+}; 
+
+struct View3DOverlay { // Max dep:7
+	int flag; // type_index: 4
+	int edit_flag; // type_index: 4
+	float normals_length; // type_index: 7
+	float normals_constant_screen_size; // type_index: 7
+	int paint_flag; // type_index: 4
+	int wpaint_flag; // type_index: 4
+	float texture_paint_mode_opacity; // type_index: 7
+	float vertex_paint_mode_opacity; // type_index: 7
+	float weight_paint_mode_opacity; // type_index: 7
+	float sculpt_mode_mask_opacity; // type_index: 7
+	float sculpt_mode_face_sets_opacity; // type_index: 7
+	float viewer_attribute_opacity; // type_index: 7
+	float xray_alpha_bone; // type_index: 7
+	float bone_wire_alpha; // type_index: 7
+	float fade_alpha; // type_index: 7
+	float wireframe_threshold; // type_index: 7
+	float wireframe_opacity; // type_index: 7
+	float retopology_offset; // type_index: 7
+	float gpencil_paper_opacity; // type_index: 7
+	float gpencil_grid_opacity; // type_index: 7
+	float gpencil_fade_layer; // type_index: 7
+	float gpencil_grid_color[3]; // type_index: 7
+	float gpencil_grid_scale[2]; // type_index: 7
+	float gpencil_grid_offset[2]; // type_index: 7
+	int gpencil_grid_subdivisions; // type_index: 4
+	float gpencil_vertex_paint_opacity; // type_index: 7
+	int handle_display; // type_index: 4
+	float sculpt_curves_cage_opacity; // type_index: 7
+}; 
+
+struct bFollowPathConstraint { // Max dep:7
+	Object *tar; // type_index: 51
+	float offset; // type_index: 7
+	float offset_fac; // type_index: 7
+	int followflag; // type_index: 4
+	short trackflag; // type_index: 2
+	short upflag; // type_index: 2
+}; 
+
+struct bStretchToConstraint { // Max dep:7
+	Object *tar; // type_index: 51
+	int flag; // type_index: 4
+	int volmode; // type_index: 4
+	int plane; // type_index: 4
+	float orglength; // type_index: 7
+	float bulge; // type_index: 7
+	float bulge_min; // type_index: 7
+	float bulge_max; // type_index: 7
+	float bulge_smooth; // type_index: 7
+	char subtarget[64]; // type_index: 0
+}; 
+
+struct bRigidBodyJointConstraint { // Max dep:7
+	Object *tar; // type_index: 51
+	Object *child; // type_index: 51
+	int type; // type_index: 4
+	float pivX; // type_index: 7
+	float pivY; // type_index: 7
+	float pivZ; // type_index: 7
+	float axX; // type_index: 7
+	float axY; // type_index: 7
+	float axZ; // type_index: 7
+	float minLimit[6]; // type_index: 7
+	float maxLimit[6]; // type_index: 7
+	float extraFz; // type_index: 7
+	short flag; // type_index: 2
+	char _pad[6]; // type_index: 0
+}; 
+
+struct bChildOfConstraint { // Max dep:7
+	Object *tar; // type_index: 51
+	int flag; // type_index: 4
+	char _pad[4]; // type_index: 0
+	float invmat[4][4]; // type_index: 7
+	char subtarget[64]; // type_index: 0
+}; 
+
+struct bTransformConstraint { // Max dep:7
+	Object *tar; // type_index: 51
+	char subtarget[64]; // type_index: 0
+	short from; // type_index: 2
+	short to; // type_index: 2
+	char map[3]; // type_index: 0
+	char expo; // type_index: 0
+	char from_rotation_mode; // type_index: 0
+	char to_euler_order; // type_index: 0
+	char mix_mode_loc; // type_index: 0
+	char mix_mode_rot; // type_index: 0
+	char mix_mode_scale; // type_index: 0
+	char _pad[3]; // type_index: 0
+	float from_min[3]; // type_index: 7
+	float from_max[3]; // type_index: 7
+	float to_min[3]; // type_index: 7
+	float to_max[3]; // type_index: 7
+	float from_min_rot[3]; // type_index: 7
+	float from_max_rot[3]; // type_index: 7
+	float to_min_rot[3]; // type_index: 7
+	float to_max_rot[3]; // type_index: 7
+	float from_min_scale[3]; // type_index: 7
+	float from_max_scale[3]; // type_index: 7
+	float to_min_scale[3]; // type_index: 7
+	float to_max_scale[3]; // type_index: 7
+}; 
+
+struct bPivotConstraint { // Max dep:7
+	Object *tar; // type_index: 51
+	char subtarget[64]; // type_index: 0
+	float offset[3]; // type_index: 7
+	short rotAxis; // type_index: 2
+	short flag; // type_index: 2
+}; 
+
+struct bLocLimitConstraint { // Max dep:7
+	float xmin; // type_index: 7
+	float xmax; // type_index: 7
+	float ymin; // type_index: 7
+	float ymax; // type_index: 7
+	float zmin; // type_index: 7
+	float zmax; // type_index: 7
+	short flag; // type_index: 2
+	short flag2; // type_index: 2
+}; 
+
+struct bRotLimitConstraint { // Max dep:7
+	float xmin; // type_index: 7
+	float xmax; // type_index: 7
+	float ymin; // type_index: 7
+	float ymax; // type_index: 7
+	float zmin; // type_index: 7
+	float zmax; // type_index: 7
+	short flag; // type_index: 2
+	short flag2; // type_index: 2
+	char euler_order; // type_index: 0
+	char _pad[3]; // type_index: 0
+}; 
+
+struct bSizeLimitConstraint { // Max dep:7
+	float xmin; // type_index: 7
+	float xmax; // type_index: 7
+	float ymin; // type_index: 7
+	float ymax; // type_index: 7
+	float zmin; // type_index: 7
+	float zmax; // type_index: 7
+	short flag; // type_index: 2
+	short flag2; // type_index: 2
+}; 
+
+struct bDistLimitConstraint { // Max dep:7
+	Object *tar; // type_index: 51
+	char subtarget[64]; // type_index: 0
+	float dist; // type_index: 7
+	float soft; // type_index: 7
+	short flag; // type_index: 2
+	short mode; // type_index: 2
+	char _pad[4]; // type_index: 0
+}; 
+
+struct bShrinkwrapConstraint { // Max dep:7
+	Object *target; // type_index: 51
+	float dist; // type_index: 7
+	short shrinkType; // type_index: 2
+	char projAxis; // type_index: 0
+	char projAxisSpace; // type_index: 0
+	float projLimit; // type_index: 7
+	char shrinkMode; // type_index: 0
+	char flag; // type_index: 0
+	char trackAxis; // type_index: 0
+	char _pad; // type_index: 0
+}; 
+
+struct VolumeRender { // Max dep:7
+	int precision; // type_index: 4
+	int space; // type_index: 4
+	float step_size; // type_index: 7
+	float clipping; // type_index: 7
+}; 
+
+struct VolumeDisplay { // Max dep:7
+	float density; // type_index: 7
+	int wireframe_type; // type_index: 4
+	int wireframe_detail; // type_index: 4
+	int interpolation_method; // type_index: 4
+	int axis_slice_method; // type_index: 4
+	int slice_axis; // type_index: 4
+	float slice_depth; // type_index: 7
+	int _pad[1]; // type_index: 4
+}; 
+
+struct View3D_Runtime { // Max dep:7
+	void *properties_storage; // type_index: 11
+	void (*properties_storage_free)(); // type_index: 11
+	int flag; // type_index: 4
+	float ofs_last_center[3]; // type_index: 7
+	SceneStats *local_stats; // type_index: 335
+}; 
+
+struct MovieTrackingMarker { // Max dep:7
+	float pos[2]; // type_index: 7
+	float pattern_corners[4][2]; // type_index: 7
+	float search_min[2]; // type_index: 7
+	float search_max[2]; // type_index: 7
+	int framenr; // type_index: 4
+	int flag; // type_index: 4
+}; 
+
+struct View3DShading { // Max dep:7
+	char type; // type_index: 0
+	char prev_type; // type_index: 0
+	char prev_type_wire; // type_index: 0
+	char color_type; // type_index: 0
+	short flag; // type_index: 2
+	char light; // type_index: 0
+	char background_type; // type_index: 0
+	char cavity_type; // type_index: 0
+	char wire_color_type; // type_index: 0
+	char use_compositor; // type_index: 0
+	char _pad; // type_index: 0
+	char studio_light[256]; // type_index: 0
+	char lookdev_light[256]; // type_index: 0
+	char matcap[256]; // type_index: 0
+	float shadow_intensity; // type_index: 7
+	float single_color[3]; // type_index: 7
+	float studiolight_rot_z; // type_index: 7
+	float studiolight_background; // type_index: 7
+	float studiolight_intensity; // type_index: 7
+	float studiolight_blur; // type_index: 7
+	float object_outline_color[3]; // type_index: 7
+	float xray_alpha; // type_index: 7
+	float xray_alpha_wire; // type_index: 7
+	float cavity_valley_factor; // type_index: 7
+	float cavity_ridge_factor; // type_index: 7
+	float background_color[3]; // type_index: 7
+	float curvature_ridge_factor; // type_index: 7
+	float curvature_valley_factor; // type_index: 7
+	int render_pass; // type_index: 4
+	char aov_name[64]; // type_index: 0
+	IDProperty *prop; // type_index: 24
+	void *_pad2; // type_index: 11
+}; 
+
+struct View3DCursor { // Max dep:7
+	float location[3]; // type_index: 7
+	float rotation_quaternion[4]; // type_index: 7
+	float rotation_euler[3]; // type_index: 7
+	float rotation_axis[3]; // type_index: 7
+	float rotation_angle; // type_index: 7
+	short rotation_mode; // type_index: 2
+	char _pad[6]; // type_index: 0
+}; 
+
+struct RegionView3D { // Max dep:7
+	float winmat[4][4]; // type_index: 7
+	float viewmat[4][4]; // type_index: 7
+	float viewinv[4][4]; // type_index: 7
+	float persmat[4][4]; // type_index: 7
+	float persinv[4][4]; // type_index: 7
+	float viewcamtexcofac[4]; // type_index: 7
+	float viewmatob[4][4]; // type_index: 7
+	float persmatob[4][4]; // type_index: 7
+	float clip[6][4]; // type_index: 7
+	float clip_local[6][4]; // type_index: 7
+	BoundBox *clipbb; // type_index: 430
+	RegionView3D *localvd; // type_index: 1060
+	ViewRender *view_render; // type_index: 1061
+	SmoothView3DStore *sms; // type_index: 1062
+	wmTimer *smooth_timer; // type_index: 860
+	float twmat[4][4]; // type_index: 7
+	float tw_axis_min[3]; // type_index: 7
+	float tw_axis_max[3]; // type_index: 7
+	float tw_axis_matrix[3][3]; // type_index: 7
+	float gridview; // type_index: 7
+	float viewquat[4]; // type_index: 7
+	float dist; // type_index: 7
+	float camdx; // type_index: 7
+	float camdy; // type_index: 7
+	float pixsize; // type_index: 7
+	float ofs[3]; // type_index: 7
+	float camzoom; // type_index: 7
+	char is_persp; // type_index: 0
+	char persp; // type_index: 0
+	char view; // type_index: 0
+	char view_axis_roll; // type_index: 0
+	char viewlock; // type_index: 0
+	char runtime_viewlock; // type_index: 0
+	char viewlock_quad; // type_index: 0
+	char _pad[1]; // type_index: 0
+	float ofs_lock[2]; // type_index: 7
+	short twdrawflag; // type_index: 2
+	short rflag; // type_index: 2
+	float lviewquat[4]; // type_index: 7
+	char lpersp; // type_index: 0
+	char lview; // type_index: 0
+	char lview_axis_roll; // type_index: 0
+	char _pad8[4]; // type_index: 0
+	char ndof_flag; // type_index: 0
+	float ndof_ofs[3]; // type_index: 7
+	float ndof_rot_angle; // type_index: 7
+	float ndof_rot_axis[3]; // type_index: 7
+}; 
+
+struct DualQuat { // Max dep:7
+	float quat[4]; // type_index: 7
+	float trans[4]; // type_index: 7
+	float scale[4][4]; // type_index: 7
+	float scale_weight; // type_index: 7
+}; 
+
+struct rctf { // Max dep:7
+	float xmin; // type_index: 7
+	float xmax; // type_index: 7
+	float ymin; // type_index: 7
+	float ymax; // type_index: 7
+}; 
+
+struct bObjectSolverConstraint { // Max dep:7
+	MovieClip *clip; // type_index: 146
+	int flag; // type_index: 4
+	char _pad[4]; // type_index: 0
+	char object[64]; // type_index: 0
+	float invmat[4][4]; // type_index: 7
+	Object *camera; // type_index: 51
+}; 
+
+struct mat4x4f { // Max dep:7
+	float value[4][4]; // type_index: 7
+}; 
+
+struct vec4f { // Max dep:7
+	float x; // type_index: 7
+	float y; // type_index: 7
+	float z; // type_index: 7
+	float w; // type_index: 7
+}; 
+
+struct vec3f { // Max dep:7
+	float x; // type_index: 7
+	float y; // type_index: 7
+	float z; // type_index: 7
+}; 
+
+struct vec2f { // Max dep:7
+	float x; // type_index: 7
+	float y; // type_index: 7
+}; 
+
+struct bMotionPathVert { // Max dep:7
+	float co[3]; // type_index: 7
+	int flag; // type_index: 4
+}; 
+
+struct bMotionPath { // Max dep:7
+	bMotionPathVert *points; // type_index: 39
+	int length; // type_index: 4
+	int start_frame; // type_index: 4
+	int end_frame; // type_index: 4
+	float color[3]; // type_index: 7
+	float color_post[3]; // type_index: 7
+	int line_thickness; // type_index: 4
+	int flag; // type_index: 4
+	char _pad2[4]; // type_index: 0
+	GPUVertBufHandle *points_vbo; // type_index: 41
+	GPUBatchHandle *batch_line; // type_index: 42
+	GPUBatchHandle *batch_points; // type_index: 42
+	void *_pad; // type_index: 11
 }; 
 
 struct bPoseChannel_BBoneSegmentBoundary { // Max dep:7
@@ -2092,46 +5184,326 @@ struct bPoseChannel_BBoneSegmentBoundary { // Max dep:7
 	float depth_scale; // type_index: 7
 }; 
 
-struct SBVertex { // Max dep:7
-	float vec[4]; // type_index: 7
+struct ShaderFxData_Runtime { // Max dep:7
+	float loc[3]; // type_index: 7
+	char _pad[4]; // type_index: 0
+	DRWShadingGroup *fx_sh; // type_index: 938
+	DRWShadingGroup *fx_sh_b; // type_index: 938
+	DRWShadingGroup *fx_sh_c; // type_index: 938
 }; 
 
-struct FluidVertexVelocity { // Max dep:7
-	float vel[3]; // type_index: 7
+struct FMod_Envelope { // Max dep:7
+	FCM_EnvelopeData *data; // type_index: 78
+	int totvert; // type_index: 4
+	float midval; // type_index: 7
+	float min; // type_index: 7
+	float max; // type_index: 7
 }; 
 
-struct uiWidgetColors { // Max dep:7
-	char outline[4]; // type_index: 0
-	char outline_sel[4]; // type_index: 0
-	char inner[4]; // type_index: 0
-	char inner_sel[4]; // type_index: 0
-	char item[4]; // type_index: 0
-	char text[4]; // type_index: 0
-	char text_sel[4]; // type_index: 0
-	char shaded; // type_index: 0
+struct FMod_Noise { // Max dep:7
+	float size; // type_index: 7
+	float strength; // type_index: 7
+	float phase; // type_index: 7
+	float offset; // type_index: 7
+	float roughness; // type_index: 7
+	float lacunarity; // type_index: 7
+	short depth; // type_index: 2
+	short modification; // type_index: 2
+	char legacy_noise; // type_index: 0
+	char _pad[3]; // type_index: 0
+}; 
+
+struct FMod_Stepped { // Max dep:7
+	float step_size; // type_index: 7
+	float offset; // type_index: 7
+	float start_frame; // type_index: 7
+	float end_frame; // type_index: 7
+	int flag; // type_index: 4
+}; 
+
+struct CorrectiveSmoothDeltaCache { // Max dep:7
+	float (*deltas)(); // type_index: 7
+	int deltas_num; // type_index: 4
+	float lambda; // type_index: 7
+	float scale; // type_index: 7
+	short repeat; // type_index: 2
+	short flag; // type_index: 2
+	char smooth_type; // type_index: 0
+	char rest_source; // type_index: 0
+	char _pad[6]; // type_index: 0
+}; 
+
+struct SpreadsheetColumn { // Max dep:7
+	SpreadsheetColumnID *id; // type_index: 988
+	uchar data_type; // type_index: 1
 	char _pad0[3]; // type_index: 0
-	short shadetop; // type_index: 2
-	short shadedown; // type_index: 2
-	float roundness; // type_index: 7
+	int flag; // type_index: 4
+	float width; // type_index: 7
+	int last_used; // type_index: 4
+	char *display_name; // type_index: 0
+	SpreadsheetColumnRuntime *runtime; // type_index: 990
 }; 
 
-struct uiWidgetStateColors { // Max dep:7
-	char error[4]; // type_index: 0
-	char warning[4]; // type_index: 0
-	char info[4]; // type_index: 0
-	char success[4]; // type_index: 0
-	char inner_anim[4]; // type_index: 0
-	char inner_anim_sel[4]; // type_index: 0
-	char inner_key[4]; // type_index: 0
-	char inner_key_sel[4]; // type_index: 0
-	char inner_driven[4]; // type_index: 0
-	char inner_driven_sel[4]; // type_index: 0
-	char inner_overridden[4]; // type_index: 0
-	char inner_overridden_sel[4]; // type_index: 0
-	char inner_changed[4]; // type_index: 0
-	char inner_changed_sel[4]; // type_index: 0
-	float blend; // type_index: 7
-	char _pad0[4]; // type_index: 0
+struct DriverTarget { // Max dep:7
+	ID *id; // type_index: 26
+	char *rna_path; // type_index: 0
+	char pchan_name[64]; // type_index: 0
+	short transChan; // type_index: 2
+	char rotation_mode; // type_index: 0
+	char _pad[5]; // type_index: 0
+	short flag; // type_index: 2
+	short options; // type_index: 2
+	int idtype; // type_index: 4
+	int context_property; // type_index: 4
+	float fallback_value; // type_index: 7
+}; 
+
+struct TextVars { // Max dep:7
+	char *text_ptr; // type_index: 0
+	int text_len_bytes; // type_index: 4
+	char _pad2[4]; // type_index: 0
+	VFont *text_font; // type_index: 213
+	int text_blf_id; // type_index: 4
+	float text_size; // type_index: 7
+	float color[4]; // type_index: 7
+	float shadow_color[4]; // type_index: 7
+	float box_color[4]; // type_index: 7
+	float outline_color[4]; // type_index: 7
+	float loc[2]; // type_index: 7
+	float wrap_width; // type_index: 7
+	float box_margin; // type_index: 7
+	float box_roundness; // type_index: 7
+	float shadow_angle; // type_index: 7
+	float shadow_offset; // type_index: 7
+	float shadow_blur; // type_index: 7
+	float outline_width; // type_index: 7
+	char flag; // type_index: 0
+	char align; // type_index: 0
+	char _pad[2]; // type_index: 0
+	int cursor_offset; // type_index: 4
+	int selection_start_offset; // type_index: 4
+	int selection_end_offset; // type_index: 4
+	char align_y; // type_index: 0
+	char anchor_x; // type_index: 0
+	char anchor_y; // type_index: 0
+	char _pad1; // type_index: 0
+	TextVarsRuntime *runtime; // type_index: 922
+	char text[512]; // type_index: 0
+}; 
+
+struct MDefInfluence { // Max dep:7
+	int vertex; // type_index: 4
+	float weight; // type_index: 7
+}; 
+
+struct FPoint { // Max dep:7
+	float vec[2]; // type_index: 7
+	int flag; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct MTFace { // Max dep:7
+	float uv[4][2]; // type_index: 7
+}; 
+
+struct MetaElem { // Max dep:7
+	MetaElem *next; // type_index: 429
+	MetaElem *prev; // type_index: 429
+	BoundBox *bb; // type_index: 430
+	short type; // type_index: 2
+	short flag; // type_index: 2
+	char _pad[4]; // type_index: 0
+	float x; // type_index: 7
+	float y; // type_index: 7
+	float z; // type_index: 7
+	float quat[4]; // type_index: 7
+	float expx; // type_index: 7
+	float expy; // type_index: 7
+	float expz; // type_index: 7
+	float rad; // type_index: 7
+	float rad2; // type_index: 7
+	float s; // type_index: 7
+	float len; // type_index: 7
+	float *mat; // type_index: 7
+	float *imat; // type_index: 7
+}; 
+
+struct SpaceImageOverlay { // Max dep:7
+	int flag; // type_index: 4
+	float passepartout_alpha; // type_index: 7
+}; 
+
+struct NodeInputColor { // Max dep:7
+	float color[4]; // type_index: 7
+}; 
+
+struct WaveEff { // Max dep:7
+	WaveEff *next; // type_index: 235
+	WaveEff *prev; // type_index: 235
+	short type; // type_index: 2
+	short flag; // type_index: 2
+	short buttype; // type_index: 2
+	short stype; // type_index: 2
+	float startx; // type_index: 7
+	float starty; // type_index: 7
+	float height; // type_index: 7
+	float width; // type_index: 7
+	float narrow; // type_index: 7
+	float speed; // type_index: 7
+	float minfac; // type_index: 7
+	float damp; // type_index: 7
+	float timeoffs; // type_index: 7
+	float lifetime; // type_index: 7
+}; 
+
+struct NodeInputVector { // Max dep:7
+	float vector[3]; // type_index: 7
+}; 
+
+struct PartEff { // Max dep:7
+	PartEff *next; // type_index: 233
+	PartEff *prev; // type_index: 233
+	short type; // type_index: 2
+	short flag; // type_index: 2
+	short buttype; // type_index: 2
+	short stype; // type_index: 2
+	short vertgroup; // type_index: 2
+	short userjit; // type_index: 2
+	float sta; // type_index: 7
+	float end; // type_index: 7
+	float lifetime; // type_index: 7
+	int totpart; // type_index: 4
+	int totkey; // type_index: 4
+	int seed; // type_index: 4
+	float normfac; // type_index: 7
+	float obfac; // type_index: 7
+	float randfac; // type_index: 7
+	float texfac; // type_index: 7
+	float randlife; // type_index: 7
+	float force[3]; // type_index: 7
+	float damp; // type_index: 7
+	float nabla; // type_index: 7
+	float vectsize; // type_index: 7
+	float maxlen; // type_index: 7
+	float defvec[3]; // type_index: 7
+	char _pad[4]; // type_index: 0
+	float mult[4]; // type_index: 7
+	float life[4]; // type_index: 7
+	short child[4]; // type_index: 2
+	short mat[4]; // type_index: 2
+	short texmap; // type_index: 2
+	short curmult; // type_index: 2
+	short staticstep; // type_index: 2
+	short omat; // type_index: 2
+	short timetex; // type_index: 2
+	short speedtex; // type_index: 2
+	short flag2; // type_index: 2
+	short flag2neg; // type_index: 2
+	short disp; // type_index: 2
+	short vertgroup_v; // type_index: 2
+	char vgroupname[64]; // type_index: 0
+	char vgroupname_v[64]; // type_index: 0
+	float imat[4][4]; // type_index: 7
+	Particle *keys; // type_index: 234
+	Collection *group; // type_index: 66
+}; 
+
+struct MaskSpaceInfo { // Max dep:7
+	Mask *mask; // type_index: 394
+	char draw_flag; // type_index: 0
+	char draw_type; // type_index: 0
+	char overlay_mode; // type_index: 0
+	char _pad3[1]; // type_index: 0
+	float blend_factor; // type_index: 7
+}; 
+
+struct NodeInputRotation { // Max dep:7
+	float rotation_euler[3]; // type_index: 7
+}; 
+
+struct BuildEff { // Max dep:7
+	BuildEff *next; // type_index: 232
+	BuildEff *prev; // type_index: 232
+	short type; // type_index: 2
+	short flag; // type_index: 2
+	short buttype; // type_index: 2
+	char _pad0[2]; // type_index: 0
+	float len; // type_index: 7
+	float sfra; // type_index: 7
+}; 
+
+struct DynamicPaintBrushSettings { // Max dep:7
+	DynamicPaintModifierData *pmd; // type_index: 228
+	ParticleSystem *psys; // type_index: 230
+	int flags; // type_index: 4
+	int collision; // type_index: 4
+	float r; // type_index: 7
+	float g; // type_index: 7
+	float b; // type_index: 7
+	float alpha; // type_index: 7
+	float wetness; // type_index: 7
+	float particle_radius; // type_index: 7
+	float particle_smooth; // type_index: 7
+	float paint_distance; // type_index: 7
+	ColorBand *paint_ramp; // type_index: 132
+	ColorBand *vel_ramp; // type_index: 132
+	short proximity_falloff; // type_index: 2
+	short wave_type; // type_index: 2
+	short ray_dir; // type_index: 2
+	char _pad[2]; // type_index: 0
+	float wave_factor; // type_index: 7
+	float wave_clamp; // type_index: 7
+	float max_velocity; // type_index: 7
+	float smudge_strength; // type_index: 7
+}; 
+
+struct FModifier { // Max dep:7
+	FModifier *next; // type_index: 75
+	FModifier *prev; // type_index: 75
+	FCurve *curve; // type_index: 74
+	void *data; // type_index: 11
+	char name[64]; // type_index: 0
+	short type; // type_index: 2
+	short flag; // type_index: 2
+	short ui_expand_flag; // type_index: 2
+	char _pad[6]; // type_index: 0
+	float influence; // type_index: 7
+	float sfra; // type_index: 7
+	float efra; // type_index: 7
+	float blendin; // type_index: 7
+	float blendout; // type_index: 7
+}; 
+
+struct ModifierData { // Max dep:7
+	ModifierData *next; // type_index: 432
+	ModifierData *prev; // type_index: 432
+	int type; // type_index: 4
+	int mode; // type_index: 4
+	float execution_time; // type_index: 7
+	short flag; // type_index: 2
+	short ui_expand_flag; // type_index: 2
+	ushort layout_panel_open_flag; // type_index: 3
+	char _pad[2]; // type_index: 0
+	int persistent_uid; // type_index: 4
+	char name[64]; // type_index: 0
+	char *error; // type_index: 0
+	void *runtime; // type_index: 11
+}; 
+
+struct TextBox { // Max dep:7
+	float x; // type_index: 7
+	float y; // type_index: 7
+	float w; // type_index: 7
+	float h; // type_index: 7
+}; 
+
+struct GlowVars { // Max dep:7
+	float fMini; // type_index: 7
+	float fClamp; // type_index: 7
+	float fBoost; // type_index: 7
+	float dDist; // type_index: 7
+	int dQuality; // type_index: 4
+	int bNoComp; // type_index: 4
 }; 
 
 struct ThemeSpace { // Max dep:7
@@ -2316,24 +5688,50 @@ struct ThemeSpace { // Max dep:7
 	char metadatatext[4]; // type_index: 0
 }; 
 
-struct bItasc { // Max dep:7
-	int iksolver; // type_index: 4
-	float precision; // type_index: 7
-	short numiter; // type_index: 2
-	short numstep; // type_index: 2
-	float minstep; // type_index: 7
-	float maxstep; // type_index: 7
-	short solver; // type_index: 2
-	short flag; // type_index: 2
-	float feedback; // type_index: 7
-	float maxvel; // type_index: 7
-	float dampmax; // type_index: 7
-	float dampeps; // type_index: 7
+struct uiWidgetStateColors { // Max dep:7
+	char error[4]; // type_index: 0
+	char warning[4]; // type_index: 0
+	char info[4]; // type_index: 0
+	char success[4]; // type_index: 0
+	char inner_anim[4]; // type_index: 0
+	char inner_anim_sel[4]; // type_index: 0
+	char inner_key[4]; // type_index: 0
+	char inner_key_sel[4]; // type_index: 0
+	char inner_driven[4]; // type_index: 0
+	char inner_driven_sel[4]; // type_index: 0
+	char inner_overridden[4]; // type_index: 0
+	char inner_overridden_sel[4]; // type_index: 0
+	char inner_changed[4]; // type_index: 0
+	char inner_changed_sel[4]; // type_index: 0
+	float blend; // type_index: 7
+	char _pad0[4]; // type_index: 0
 }; 
 
-struct MDefInfluence { // Max dep:7
-	int vertex; // type_index: 4
-	float weight; // type_index: 7
+struct uiWidgetColors { // Max dep:7
+	char outline[4]; // type_index: 0
+	char outline_sel[4]; // type_index: 0
+	char inner[4]; // type_index: 0
+	char inner_sel[4]; // type_index: 0
+	char item[4]; // type_index: 0
+	char text[4]; // type_index: 0
+	char text_sel[4]; // type_index: 0
+	char shaded; // type_index: 0
+	char _pad0[3]; // type_index: 0
+	short shadetop; // type_index: 2
+	short shadedown; // type_index: 2
+	float roundness; // type_index: 7
+}; 
+
+struct CurveProfilePoint { // Max dep:7
+	float x; // type_index: 7
+	float y; // type_index: 7
+	short flag; // type_index: 2
+	char h1; // type_index: 0
+	char h2; // type_index: 0
+	float h1_loc[2]; // type_index: 7
+	float h2_loc[2]; // type_index: 7
+	char _pad[4]; // type_index: 0
+	CurveProfile *profile; // type_index: 211
 }; 
 
 struct MovieReconstructedCamera { // Max dep:7
@@ -2342,49 +5740,15 @@ struct MovieReconstructedCamera { // Max dep:7
 	float mat[4][4]; // type_index: 7
 }; 
 
-struct MovieTrackingMarker { // Max dep:7
-	float pos[2]; // type_index: 7
-	float pattern_corners[4][2]; // type_index: 7
-	float search_min[2]; // type_index: 7
-	float search_max[2]; // type_index: 7
-	int framenr; // type_index: 4
-	int flag; // type_index: 4
-}; 
-
-struct BoundBox { // Max dep:7
-	float vec[8][3]; // type_index: 7
-}; 
-
-struct MovieTrackingSettings { // Max dep:7
-	short default_motion_model; // type_index: 2
-	short default_algorithm_flag; // type_index: 2
-	float default_minimum_correlation; // type_index: 7
-	short default_pattern_size; // type_index: 2
-	short default_search_size; // type_index: 2
-	short default_frames_limit; // type_index: 2
-	short default_margin; // type_index: 2
-	short default_pattern_match; // type_index: 2
-	short default_flag; // type_index: 2
-	float default_weight; // type_index: 7
-	short motion_flag; // type_index: 2
-	short speed; // type_index: 2
-	int keyframe1; // type_index: 4
-	int keyframe2; // type_index: 4
-	int reconstruction_flag; // type_index: 4
-	int refine_camera_intrinsics; // type_index: 4
-	float dist; // type_index: 7
-	int clean_frames; // type_index: 4
-	int clean_action; // type_index: 4
-	float clean_error; // type_index: 7
-	float object_distance; // type_index: 7
-}; 
-
-struct FMod_Generator { // Max dep:7
-	float *coefficients; // type_index: 7
-	int arraysize; // type_index: 4
-	int poly_order; // type_index: 4
-	int mode; // type_index: 4
-	int flag; // type_index: 4
+struct TransformVars { // Max dep:7
+	float ScalexIni; // type_index: 7
+	float ScaleyIni; // type_index: 7
+	float xIni; // type_index: 7
+	float yIni; // type_index: 7
+	float rotIni; // type_index: 7
+	int percent; // type_index: 4
+	int interpolation; // type_index: 4
+	int uniform_scale; // type_index: 4
 }; 
 
 struct FMod_FunctionGenerator { // Max dep:7
@@ -2396,199 +5760,14 @@ struct FMod_FunctionGenerator { // Max dep:7
 	int flag; // type_index: 4
 }; 
 
-struct FCM_EnvelopeData { // Max dep:7
-	float min; // type_index: 7
-	float max; // type_index: 7
-	float time; // type_index: 7
-	short f1; // type_index: 2
-	short f2; // type_index: 2
+struct GaussianBlurVars { // Max dep:7
+	float size_x; // type_index: 7
+	float size_y; // type_index: 7
 }; 
 
-struct SolidLight { // Max dep:7
-	int flag; // type_index: 4
-	float smooth; // type_index: 7
-	float col[4]; // type_index: 7
-	float spec[4]; // type_index: 7
-	float vec[4]; // type_index: 7
-}; 
-
-struct WalkNavigation { // Max dep:7
-	float mouse_speed; // type_index: 7
-	float walk_speed; // type_index: 7
-	float walk_speed_factor; // type_index: 7
-	float view_height; // type_index: 7
-	float jump_height; // type_index: 7
-	float teleport_time; // type_index: 7
-	short flag; // type_index: 2
-	char _pad0[6]; // type_index: 0
-}; 
-
-struct CorrectiveSmoothDeltaCache { // Max dep:7
-	float (*deltas)(); // type_index: 7
-	int deltas_num; // type_index: 4
-	float lambda; // type_index: 7
-	float scale; // type_index: 7
-	short repeat; // type_index: 2
-	short flag; // type_index: 2
-	char smooth_type; // type_index: 0
-	char rest_source; // type_index: 0
-	char _pad[6]; // type_index: 0
-}; 
-
-struct FMod_Noise { // Max dep:7
-	float size; // type_index: 7
-	float strength; // type_index: 7
-	float phase; // type_index: 7
-	float offset; // type_index: 7
-	float roughness; // type_index: 7
-	float lacunarity; // type_index: 7
-	short depth; // type_index: 2
-	short modification; // type_index: 2
-	char legacy_noise; // type_index: 0
-	char _pad[3]; // type_index: 0
-}; 
-
-struct FMod_Stepped { // Max dep:7
-	float step_size; // type_index: 7
-	float offset; // type_index: 7
-	float start_frame; // type_index: 7
-	float end_frame; // type_index: 7
-	int flag; // type_index: 4
-}; 
-
-struct XrNavigation { // Max dep:7
-	float vignette_intensity; // type_index: 7
-	float turn_speed; // type_index: 7
-	float turn_amount; // type_index: 7
-	short flag; // type_index: 2
-	char _pad0[2]; // type_index: 0
-}; 
-
-struct SDefBind { // Max dep:7
-	int *vert_inds; // type_index: 4
-	int numverts; // type_index: 4
-	int mode; // type_index: 4
-	float *vert_weights; // type_index: 7
-	float normal_dist; // type_index: 7
-	float influence; // type_index: 7
-}; 
-
-struct MDeformWeight { // Max dep:7
-	int def_nr; // type_index: 4
-	float weight; // type_index: 7
-}; 
-
-struct ParticleBrushData { // Max dep:7
-	short size; // type_index: 2
-	short step; // type_index: 2
-	short invert; // type_index: 2
-	short count; // type_index: 2
-	int flag; // type_index: 4
-	float strength; // type_index: 7
-}; 
-
-struct SpaceImageOverlay { // Max dep:7
-	int flag; // type_index: 4
-	float passepartout_alpha; // type_index: 7
-}; 
-
-struct AudioData { // Max dep:7
-	int mixrate; // type_index: 4
-	float main; // type_index: 7
-	float speed_of_sound; // type_index: 7
-	float doppler_factor; // type_index: 7
-	int distance_model; // type_index: 4
-	short flag; // type_index: 2
-	char _pad[2]; // type_index: 0
-	float volume; // type_index: 7
-	char _pad2[4]; // type_index: 0
-}; 
-
-struct FFMpegCodecData { // Max dep:7
-	int type; // type_index: 4
-	int codec; // type_index: 4
-	int audio_codec; // type_index: 4
-	int video_bitrate; // type_index: 4
-	int audio_bitrate; // type_index: 4
-	int audio_mixrate; // type_index: 4
-	int audio_channels; // type_index: 4
-	float audio_volume; // type_index: 7
-	int gop_size; // type_index: 4
-	int max_b_frames; // type_index: 4
-	int flags; // type_index: 4
-	int constant_rate_factor; // type_index: 4
-	int ffmpeg_preset; // type_index: 4
-	int ffmpeg_prores_profile; // type_index: 4
-	int rc_min_rate; // type_index: 4
-	int rc_max_rate; // type_index: 4
-	int rc_buffer_size; // type_index: 4
-	int mux_packet_size; // type_index: 4
-	int mux_rate; // type_index: 4
-	int _pad; // type_index: 4
-}; 
-
-struct SPHFluidSettings { // Max dep:7
-	float radius; // type_index: 7
-	float spring_k; // type_index: 7
-	float rest_length; // type_index: 7
-	float plasticity_constant; // type_index: 7
-	float yield_ratio; // type_index: 7
-	float plasticity_balance; // type_index: 7
-	float yield_balance; // type_index: 7
-	float viscosity_omega; // type_index: 7
-	float viscosity_beta; // type_index: 7
-	float stiffness_k; // type_index: 7
-	float stiffness_knear; // type_index: 7
-	float rest_density; // type_index: 7
-	float buoyancy; // type_index: 7
-	int flag; // type_index: 4
-	int spring_frames; // type_index: 4
-	short solver; // type_index: 2
-	char _pad[6]; // type_index: 0
-}; 
-
-struct bMotionPathVert { // Max dep:7
-	float co[3]; // type_index: 7
-	int flag; // type_index: 4
-}; 
-
-struct ChildParticle { // Max dep:7
-	int num; // type_index: 4
-	int parent; // type_index: 4
-	int pa[4]; // type_index: 4
-	float w[4]; // type_index: 7
-	float fuv[4]; // type_index: 7
-	float foffset; // type_index: 7
-	char _pad0[4]; // type_index: 0
-}; 
-
-struct ParticleSpring { // Max dep:7
-	float rest_length; // type_index: 7
-	int particle_index[2]; // type_index: 4
-	int delete_flag; // type_index: 4
-}; 
-
-struct ParticleKey { // Max dep:7
-	float co[3]; // type_index: 7
-	float vel[3]; // type_index: 7
-	float rot[4]; // type_index: 7
-	float ave[3]; // type_index: 7
-	float time; // type_index: 7
-}; 
-
-struct HairKey { // Max dep:7
-	float co[3]; // type_index: 7
-	float time; // type_index: 7
-	float weight; // type_index: 7
-	short editflag; // type_index: 2
-	char _pad[2]; // type_index: 0
-	float world_co[3]; // type_index: 7
-}; 
-
-struct MaskSplinePointUW { // Max dep:7
-	float u; // type_index: 7
-	float w; // type_index: 7
-	int flag; // type_index: 4
+struct SolidColorVars { // Max dep:7
+	float col[3]; // type_index: 7
+	char _pad[4]; // type_index: 0
 }; 
 
 struct uiFontStyle { // Max dep:7
@@ -2606,647 +5785,20 @@ struct uiFontStyle { // Max dep:7
 	int character_weight; // type_index: 4
 }; 
 
-struct MFloatProperty { // Max dep:7
-	float f; // type_index: 7
-}; 
-
-struct GreasePencilDashModifierSegment { // Max dep:7
-	char name[64]; // type_index: 0
-	int dash; // type_index: 4
-	int gap; // type_index: 4
-	float radius; // type_index: 7
-	float opacity; // type_index: 7
-	int mat_nr; // type_index: 4
+struct TexMapping { // Max dep:7
+	float loc[3]; // type_index: 7
+	float rot[3]; // type_index: 7
+	float size[3]; // type_index: 7
 	int flag; // type_index: 4
-}; 
-
-struct ObjectLineArt { // Max dep:7
-	short usage; // type_index: 2
-	short flags; // type_index: 2
-	float crease_threshold; // type_index: 7
-	char intersection_priority; // type_index: 0
-	char _pad[7]; // type_index: 0
-}; 
-
-struct MVertSkin { // Max dep:7
-	float radius[3]; // type_index: 7
-	int flag; // type_index: 4
-}; 
-
-struct TextBox { // Max dep:7
-	float x; // type_index: 7
-	float y; // type_index: 7
-	float w; // type_index: 7
-	float h; // type_index: 7
-}; 
-
-struct MPropCol { // Max dep:7
-	float color[4]; // type_index: 7
-}; 
-
-struct MDisps { // Max dep:7
-	int totdisp; // type_index: 4
-	int level; // type_index: 4
-	float (*disps)(); // type_index: 7
-	int *hidden; // type_index: 4
-}; 
-
-struct GridPaintMask { // Max dep:7
-	float *data; // type_index: 7
-	int level; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct CharInfo { // Max dep:7
-	float kern; // type_index: 7
-	short mat_nr; // type_index: 2
-	char flag; // type_index: 0
-	char _pad[1]; // type_index: 0
-}; 
-
-struct BPoint { // Max dep:7
-	float vec[4]; // type_index: 7
-	float alfa; // type_index: 7
-	float weight; // type_index: 7
-	uchar f1; // type_index: 1
-	char _pad1[1]; // type_index: 0
-	short hide; // type_index: 2
-	float radius; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct BezTriple { // Max dep:7
-	float vec[3][3]; // type_index: 7
-	float alfa; // type_index: 7
-	float weight; // type_index: 7
-	float radius; // type_index: 7
-	char ipo; // type_index: 0
-	uchar h1; // type_index: 1
-	uchar h2; // type_index: 1
-	uchar f1; // type_index: 1
-	uchar f2; // type_index: 1
-	uchar f3; // type_index: 1
-	char hide; // type_index: 0
-	char easing; // type_index: 0
-	float back; // type_index: 7
-	float amplitude; // type_index: 7
-	float period; // type_index: 7
-	char auto_handle_type; // type_index: 0
-	char _pad[3]; // type_index: 0
-}; 
-
-struct MLoopUV { // Max dep:7
-	float uv[2]; // type_index: 7
-	int flag; // type_index: 4
-}; 
-
-struct MVert { // Max dep:7
-	float co[3]; // type_index: 7
-	char flag; // type_index: 0
-	char bweight; // type_index: 0
-	char _pad[2]; // type_index: 0
-}; 
-
-struct MTFace { // Max dep:7
-	float uv[4][2]; // type_index: 7
-}; 
-
-struct vec2f { // Max dep:7
-	float x; // type_index: 7
-	float y; // type_index: 7
-}; 
-
-struct bSameVolumeConstraint { // Max dep:7
-	char flag; // type_index: 0
-	char mode; // type_index: 0
-	char _pad[2]; // type_index: 0
-	float volume; // type_index: 7
-}; 
-
-struct NodeDefocus { // Max dep:7
-	char bktype; // type_index: 0
-	char gamco; // type_index: 0
-	char no_zbuf; // type_index: 0
-	char _pad0; // type_index: 0
-	float fstop; // type_index: 7
-	float maxblur; // type_index: 7
-	float scale; // type_index: 7
-	float rotation; // type_index: 7
-}; 
-
-struct NodeGlare { // Max dep:7
-	char type; // type_index: 0
-	char quality; // type_index: 0
-	char iter; // type_index: 0
-	char angle; // type_index: 0
-	char _pad0; // type_index: 0
-	char size; // type_index: 0
-	char star_45; // type_index: 0
-	char streaks; // type_index: 0
-	float colmod; // type_index: 7
-	float mix; // type_index: 7
-	float threshold; // type_index: 7
-	float fade; // type_index: 7
-	float angle_ofs; // type_index: 7
-	char _pad1[4]; // type_index: 0
-}; 
-
-struct NodeTonemap { // Max dep:7
-	float key; // type_index: 7
-	float offset; // type_index: 7
-	float gamma; // type_index: 7
-	float f; // type_index: 7
-	float m; // type_index: 7
-	float a; // type_index: 7
-	float c; // type_index: 7
+	char projx; // type_index: 0
+	char projy; // type_index: 0
+	char projz; // type_index: 0
+	char mapping; // type_index: 0
 	int type; // type_index: 4
-}; 
-
-struct NodeColorBalance { // Max dep:7
-	float slope[3]; // type_index: 7
-	float offset[3]; // type_index: 7
-	float power[3]; // type_index: 7
-	float offset_basis; // type_index: 7
-	char _pad[4]; // type_index: 0
-	float lift[3]; // type_index: 7
-	float gamma[3]; // type_index: 7
-	float gain[3]; // type_index: 7
-	float input_temperature; // type_index: 7
-	float input_tint; // type_index: 7
-	float output_temperature; // type_index: 7
-	float output_tint; // type_index: 7
-}; 
-
-struct NodeColorspill { // Max dep:7
-	short limchan; // type_index: 2
-	short unspill; // type_index: 2
-	float limscale; // type_index: 7
-	float uspillr; // type_index: 7
-	float uspillg; // type_index: 7
-	float uspillb; // type_index: 7
-}; 
-
-struct View3DOverlay { // Max dep:7
-	int flag; // type_index: 4
-	int edit_flag; // type_index: 4
-	float normals_length; // type_index: 7
-	float normals_constant_screen_size; // type_index: 7
-	int paint_flag; // type_index: 4
-	int wpaint_flag; // type_index: 4
-	float texture_paint_mode_opacity; // type_index: 7
-	float vertex_paint_mode_opacity; // type_index: 7
-	float weight_paint_mode_opacity; // type_index: 7
-	float sculpt_mode_mask_opacity; // type_index: 7
-	float sculpt_mode_face_sets_opacity; // type_index: 7
-	float viewer_attribute_opacity; // type_index: 7
-	float xray_alpha_bone; // type_index: 7
-	float bone_wire_alpha; // type_index: 7
-	float fade_alpha; // type_index: 7
-	float wireframe_threshold; // type_index: 7
-	float wireframe_opacity; // type_index: 7
-	float retopology_offset; // type_index: 7
-	float gpencil_paper_opacity; // type_index: 7
-	float gpencil_grid_opacity; // type_index: 7
-	float gpencil_fade_layer; // type_index: 7
-	float gpencil_grid_color[3]; // type_index: 7
-	float gpencil_grid_scale[2]; // type_index: 7
-	float gpencil_grid_offset[2]; // type_index: 7
-	int gpencil_grid_subdivisions; // type_index: 4
-	float gpencil_vertex_paint_opacity; // type_index: 7
-	int handle_display; // type_index: 4
-	float sculpt_curves_cage_opacity; // type_index: 7
-}; 
-
-struct View3DCursor { // Max dep:7
-	float location[3]; // type_index: 7
-	float rotation_quaternion[4]; // type_index: 7
-	float rotation_euler[3]; // type_index: 7
-	float rotation_axis[3]; // type_index: 7
-	float rotation_angle; // type_index: 7
-	short rotation_mode; // type_index: 2
-	char _pad[6]; // type_index: 0
-}; 
-
-struct DualQuat { // Max dep:7
-	float quat[4]; // type_index: 7
-	float trans[4]; // type_index: 7
-	float scale[4][4]; // type_index: 7
-	float scale_weight; // type_index: 7
-}; 
-
-struct rctf { // Max dep:7
-	float xmin; // type_index: 7
-	float xmax; // type_index: 7
-	float ymin; // type_index: 7
-	float ymax; // type_index: 7
-}; 
-
-struct mat4x4f { // Max dep:7
-	float value[4][4]; // type_index: 7
-}; 
-
-struct vec4f { // Max dep:7
-	float x; // type_index: 7
-	float y; // type_index: 7
-	float z; // type_index: 7
-	float w; // type_index: 7
-}; 
-
-struct vec3f { // Max dep:7
-	float x; // type_index: 7
-	float y; // type_index: 7
-	float z; // type_index: 7
-}; 
-
-struct NodeTwoFloats { // Max dep:7
-	float x; // type_index: 7
-	float y; // type_index: 7
-}; 
-
-struct CBData { // Max dep:7
-	float r; // type_index: 7
-	float g; // type_index: 7
-	float b; // type_index: 7
-	float a; // type_index: 7
-	float pos; // type_index: 7
-	int cur; // type_index: 4
-}; 
-
-struct Histogram { // Max dep:7
-	int channels; // type_index: 4
-	int x_resolution; // type_index: 4
-	float data_luma[256]; // type_index: 7
-	float data_r[256]; // type_index: 7
-	float data_g[256]; // type_index: 7
-	float data_b[256]; // type_index: 7
-	float data_a[256]; // type_index: 7
-	float xmax; // type_index: 7
-	float ymax; // type_index: 7
-	short mode; // type_index: 2
-	short flag; // type_index: 2
-	int height; // type_index: 4
-	float co[2][2]; // type_index: 7
-}; 
-
-struct NodeKeyingScreenData { // Max dep:7
-	char tracking_object[64]; // type_index: 0
-	float smoothness; // type_index: 7
-}; 
-
-struct NodeKeyingData { // Max dep:7
-	float screen_balance; // type_index: 7
-	float despill_factor; // type_index: 7
-	float despill_balance; // type_index: 7
-	int edge_kernel_radius; // type_index: 4
-	float edge_kernel_tolerance; // type_index: 7
-	float clip_black; // type_index: 7
-	float clip_white; // type_index: 7
-	int dilate_distance; // type_index: 4
-	int feather_distance; // type_index: 4
-	int feather_falloff; // type_index: 4
-	int blur_pre; // type_index: 4
-	int blur_post; // type_index: 4
-}; 
-
-struct CurveMapPoint { // Max dep:7
-	float x; // type_index: 7
-	float y; // type_index: 7
-	short flag; // type_index: 2
-	short shorty; // type_index: 2
-}; 
-
-struct NodePlaneTrackDeformData { // Max dep:7
-	char tracking_object[64]; // type_index: 0
-	char plane_track_name[64]; // type_index: 0
-	char flag; // type_index: 0
-	char motion_blur_samples; // type_index: 0
-	char _pad[2]; // type_index: 0
-	float motion_blur_shutter; // type_index: 7
-}; 
-
-struct Camera_Runtime { // Max dep:7
-	float drw_corners[2][4][2]; // type_index: 7
-	float drw_tria[2][2]; // type_index: 7
-	float drw_depth[2]; // type_index: 7
-	float drw_focusmat[4][4]; // type_index: 7
-	float drw_normalmat[4][4]; // type_index: 7
-}; 
-
-struct CameraStereoSettings { // Max dep:7
-	float interocular_distance; // type_index: 7
-	float convergence_distance; // type_index: 7
-	short convergence_mode; // type_index: 2
-	short pivot; // type_index: 2
-	short flag; // type_index: 2
-	char _pad[2]; // type_index: 0
-	float pole_merge_angle_from; // type_index: 7
-	float pole_merge_angle_to; // type_index: 7
-}; 
-
-struct NodeSunBeams { // Max dep:7
-	float source[2]; // type_index: 7
-	float ray_length; // type_index: 7
-}; 
-
-struct NodeInputRotation { // Max dep:7
-	float rotation_euler[3]; // type_index: 7
-}; 
-
-struct NodeInputVector { // Max dep:7
-	float vector[3]; // type_index: 7
-}; 
-
-struct NodeInputColor { // Max dep:7
-	float color[4]; // type_index: 7
-}; 
-
-struct NodeBokehImage { // Max dep:7
-	float angle; // type_index: 7
-	int flaps; // type_index: 4
-	float rounding; // type_index: 7
-	float catadioptric; // type_index: 7
-	float lensshift; // type_index: 7
-}; 
-
-struct BoidData { // Max dep:7
-	float health; // type_index: 7
-	float acc[3]; // type_index: 7
-	short state_id; // type_index: 2
-	short mode; // type_index: 2
-}; 
-
-struct bSizeLimitConstraint { // Max dep:7
-	float xmin; // type_index: 7
-	float xmax; // type_index: 7
-	float ymin; // type_index: 7
-	float ymax; // type_index: 7
-	float zmin; // type_index: 7
-	float zmax; // type_index: 7
-	short flag; // type_index: 2
-	short flag2; // type_index: 2
-}; 
-
-struct bRotLimitConstraint { // Max dep:7
-	float xmin; // type_index: 7
-	float xmax; // type_index: 7
-	float ymin; // type_index: 7
-	float ymax; // type_index: 7
-	float zmin; // type_index: 7
-	float zmax; // type_index: 7
-	short flag; // type_index: 2
-	short flag2; // type_index: 2
-	char euler_order; // type_index: 0
-	char _pad[3]; // type_index: 0
-}; 
-
-struct bLocLimitConstraint { // Max dep:7
-	float xmin; // type_index: 7
-	float xmax; // type_index: 7
-	float ymin; // type_index: 7
-	float ymax; // type_index: 7
-	float zmin; // type_index: 7
-	float zmax; // type_index: 7
-	short flag; // type_index: 2
-	short flag2; // type_index: 2
-}; 
-
-struct StripElem { // Max dep:7
-	char name[256]; // type_index: 0
-	int orig_width; // type_index: 4
-	int orig_height; // type_index: 4
-	float orig_fps; // type_index: 7
-}; 
-
-struct StripTransform { // Max dep:7
-	float xofs; // type_index: 7
-	float yofs; // type_index: 7
-	float scale_x; // type_index: 7
-	float scale_y; // type_index: 7
-	float rotation; // type_index: 7
-	float origin[2]; // type_index: 7
-	int filter; // type_index: 4
-}; 
-
-struct StripColorBalance { // Max dep:7
-	int method; // type_index: 4
-	float lift[3]; // type_index: 7
-	float gamma[3]; // type_index: 7
-	float gain[3]; // type_index: 7
-	float slope[3]; // type_index: 7
-	float offset[3]; // type_index: 7
-	float power[3]; // type_index: 7
-	int flag; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct bNodeSocketValueFloat { // Max dep:7
-	int subtype; // type_index: 4
-	float value; // type_index: 7
-	float min; // type_index: 7
-	float max; // type_index: 7
-}; 
-
-struct bNodeSocketValueVector { // Max dep:7
-	int subtype; // type_index: 4
-	float value[4]; // type_index: 7
-	float min; // type_index: 7
-	float max; // type_index: 7
-	int dimensions; // type_index: 4
-}; 
-
-struct bNodeSocketValueRotation { // Max dep:7
-	float value_euler[3]; // type_index: 7
-}; 
-
-struct bNodeSocketValueRGBA { // Max dep:7
-	float value[4]; // type_index: 7
-}; 
-
-struct ColorCorrectionData { // Max dep:7
-	float saturation; // type_index: 7
-	float contrast; // type_index: 7
-	float gamma; // type_index: 7
-	float gain; // type_index: 7
-	float lift; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct FPoint { // Max dep:7
-	float vec[2]; // type_index: 7
-	int flag; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeBoxMask { // Max dep:7
-	float x; // type_index: 7
-	float y; // type_index: 7
-	float rotation; // type_index: 7
-	float height; // type_index: 7
-	float width; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeEllipseMask { // Max dep:7
-	float x; // type_index: 7
-	float y; // type_index: 7
-	float rotation; // type_index: 7
-	float height; // type_index: 7
-	float width; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeBlurData { // Max dep:7
-	short sizex; // type_index: 2
-	short sizey; // type_index: 2
-	short samples; // type_index: 2
-	short maxspeed; // type_index: 2
-	short minspeed; // type_index: 2
-	short relative; // type_index: 2
-	short aspect; // type_index: 2
-	short curved; // type_index: 2
-	float fac; // type_index: 7
-	float percentx; // type_index: 7
-	float percenty; // type_index: 7
-	short filtertype; // type_index: 2
-	char bokeh; // type_index: 0
-	char gamma; // type_index: 0
-}; 
-
-struct NodeDBlurData { // Max dep:7
-	float center_x; // type_index: 7
-	float center_y; // type_index: 7
-	float distance; // type_index: 7
-	float angle; // type_index: 7
-	float spin; // type_index: 7
-	float zoom; // type_index: 7
-	short iter; // type_index: 2
-	char _pad[2]; // type_index: 0
-}; 
-
-struct NodeBilateralBlurData { // Max dep:7
-	float sigma_color; // type_index: 7
-	float sigma_space; // type_index: 7
-	short iter; // type_index: 2
-	char _pad[2]; // type_index: 0
-}; 
-
-struct NodeKuwaharaData { // Max dep:7
-	short size; // type_index: 2
-	short variation; // type_index: 2
-	int uniformity; // type_index: 4
-	float sharpness; // type_index: 7
-	float eccentricity; // type_index: 7
-	char high_precision; // type_index: 0
-	char _pad[3]; // type_index: 0
-}; 
-
-struct NodeAntiAliasingData { // Max dep:7
-	float threshold; // type_index: 7
-	float contrast_limit; // type_index: 7
-	float corner_rounding; // type_index: 7
-}; 
-
-struct NodeHueSat { // Max dep:7
-	float hue; // type_index: 7
-	float sat; // type_index: 7
-	float val; // type_index: 7
-}; 
-
-struct VolumeRender { // Max dep:7
-	int precision; // type_index: 4
-	int space; // type_index: 4
-	float step_size; // type_index: 7
-	float clipping; // type_index: 7
-}; 
-
-struct VolumeDisplay { // Max dep:7
-	float density; // type_index: 7
-	int wireframe_type; // type_index: 4
-	int wireframe_detail; // type_index: 4
-	int interpolation_method; // type_index: 4
-	int axis_slice_method; // type_index: 4
-	int slice_axis; // type_index: 4
-	float slice_depth; // type_index: 7
-	int _pad[1]; // type_index: 4
-}; 
-
-struct NodeChroma { // Max dep:7
-	float t1; // type_index: 7
-	float t2; // type_index: 7
-	float t3; // type_index: 7
-	float fsize; // type_index: 7
-	float fstrength; // type_index: 7
-	float falpha; // type_index: 7
-	float key[4]; // type_index: 7
-	short algorithm; // type_index: 2
-	short channel; // type_index: 2
-}; 
-
-struct NodeTwoXYs { // Max dep:7
-	short x1; // type_index: 2
-	short x2; // type_index: 2
-	short y1; // type_index: 2
-	short y2; // type_index: 2
-	float fac_x1; // type_index: 7
-	float fac_x2; // type_index: 7
-	float fac_y1; // type_index: 7
-	float fac_y2; // type_index: 7
-}; 
-
-struct DisplaySafeAreas { // Max dep:7
-	float title[2]; // type_index: 7
-	float action[2]; // type_index: 7
-	float title_center[2]; // type_index: 7
-	float action_center[2]; // type_index: 7
-}; 
-
-struct GaussianBlurVars { // Max dep:7
-	float size_x; // type_index: 7
-	float size_y; // type_index: 7
-}; 
-
-struct LightProbeVisibilityData { // Max dep:7
-	float *L0; // type_index: 7
-	float *L1_a; // type_index: 7
-	float *L1_b; // type_index: 7
-	float *L1_c; // type_index: 7
-}; 
-
-struct ColorMixVars { // Max dep:7
-	int blend_effect; // type_index: 4
-	float factor; // type_index: 7
-}; 
-
-struct LightProbeIrradianceData { // Max dep:7
-	float (*L0)(); // type_index: 7
-	float (*L1_a)(); // type_index: 7
-	float (*L1_b)(); // type_index: 7
-	float (*L1_c)(); // type_index: 7
-}; 
-
-struct LightProbeBakingData { // Max dep:7
-	float (*L0)(); // type_index: 7
-	float (*L1_a)(); // type_index: 7
-	float (*L1_b)(); // type_index: 7
-	float (*L1_c)(); // type_index: 7
-	float *validity; // type_index: 7
-	float (*virtual_offset)(); // type_index: 7
-}; 
-
-struct CurvePaintSettings { // Max dep:7
-	char curve_type; // type_index: 0
-	char flag; // type_index: 0
-	char depth_mode; // type_index: 0
-	char surface_plane; // type_index: 0
-	char fit_method; // type_index: 0
-	char _pad; // type_index: 0
-	short error_threshold; // type_index: 2
-	float radius_min; // type_index: 7
-	float radius_max; // type_index: 7
-	float radius_taper_start; // type_index: 7
-	float radius_taper_end; // type_index: 7
-	float surface_offset; // type_index: 7
-	float corner_angle; // type_index: 7
+	float mat[4][4]; // type_index: 7
+	float min[3]; // type_index: 7
+	float max[3]; // type_index: 7
+	Object *ob; // type_index: 51
 }; 
 
 struct SpeedControlVars { // Max dep:7
@@ -3259,155 +5811,73 @@ struct SpeedControlVars { // Max dep:7
 	float speed_fader_frame_number; // type_index: 7
 }; 
 
-struct LightGridCache { // Max dep:7
-	float mat[4][4]; // type_index: 7
-	int resolution[3]; // type_index: 4
-	int offset; // type_index: 4
-	float corner[3]; // type_index: 7
-	float attenuation_scale; // type_index: 7
-	float increment_x[3]; // type_index: 7
-	float attenuation_bias; // type_index: 7
-	float increment_y[3]; // type_index: 7
-	float level_bias; // type_index: 7
-	float increment_z[3]; // type_index: 7
-	float _pad4; // type_index: 7
-	float visibility_bias; // type_index: 7
-	float visibility_bleed; // type_index: 7
-	float visibility_range; // type_index: 7
-	float _pad5; // type_index: 7
+struct MTex { // Max dep:7
+	short texco; // type_index: 2
+	short mapto; // type_index: 2
+	short blendtype; // type_index: 2
+	char _pad2[2]; // type_index: 0
+	Object *object; // type_index: 51
+	Tex *tex; // type_index: 227
+	char uvname[68]; // type_index: 0
+	char projx; // type_index: 0
+	char projy; // type_index: 0
+	char projz; // type_index: 0
+	char mapping; // type_index: 0
+	char brush_map_mode; // type_index: 0
+	char brush_angle_mode; // type_index: 0
+	short which_output; // type_index: 2
+	float ofs[3]; // type_index: 7
+	float size[3]; // type_index: 7
+	float rot; // type_index: 7
+	float random_angle; // type_index: 7
+	float r; // type_index: 7
+	float g; // type_index: 7
+	float b; // type_index: 7
+	float k; // type_index: 7
+	float def_var; // type_index: 7
+	float colfac; // type_index: 7
+	float alphafac; // type_index: 7
+	float timefac; // type_index: 7
+	float lengthfac; // type_index: 7
+	float clumpfac; // type_index: 7
+	float dampfac; // type_index: 7
+	float kinkfac; // type_index: 7
+	float kinkampfac; // type_index: 7
+	float roughfac; // type_index: 7
+	float padensfac; // type_index: 7
+	float gravityfac; // type_index: 7
+	float lifefac; // type_index: 7
+	float sizefac; // type_index: 7
+	float ivelfac; // type_index: 7
+	float fieldfac; // type_index: 7
+	float twistfac; // type_index: 7
 }; 
 
-struct LightProbeCache { // Max dep:7
-	float position[3]; // type_index: 7
-	float parallax_type; // type_index: 7
-	float attenuation_fac; // type_index: 7
-	float attenuation_type; // type_index: 7
-	float _pad3[2]; // type_index: 7
-	float attenuationmat[4][4]; // type_index: 7
-	float parallaxmat[4][4]; // type_index: 7
-}; 
-
-struct MeshStatVis { // Max dep:7
-	char type; // type_index: 0
-	char _pad1[2]; // type_index: 0
-	char overhang_axis; // type_index: 0
-	float overhang_min; // type_index: 7
-	float overhang_max; // type_index: 7
-	float thickness_min; // type_index: 7
-	float thickness_max; // type_index: 7
-	char thickness_samples; // type_index: 0
-	char _pad2[3]; // type_index: 0
-	float distort_min; // type_index: 7
-	float distort_max; // type_index: 7
-	float sharp_min; // type_index: 7
-	float sharp_max; // type_index: 7
-}; 
-
-struct GPUDOFSettings { // Max dep:7
-	float focus_distance; // type_index: 7
-	float fstop; // type_index: 7
-	float focal_length; // type_index: 7
-	float sensor; // type_index: 7
-	float rotation; // type_index: 7
-	float ratio; // type_index: 7
-	int num_blades; // type_index: 4
-	int high_quality; // type_index: 4
-}; 
-
-struct WipeVars { // Max dep:7
-	float edgeWidth; // type_index: 7
-	float angle; // type_index: 7
-	short forward; // type_index: 2
-	short wipetype; // type_index: 2
-}; 
-
-struct SceneGpencil { // Max dep:7
-	float smaa_threshold; // type_index: 7
-	float smaa_threshold_render; // type_index: 7
-	int aa_samples; // type_index: 4
-	int motion_blur_steps; // type_index: 4
-}; 
-
-struct bGPDspoint { // Max dep:7
-	float x; // type_index: 7
-	float y; // type_index: 7
-	float z; // type_index: 7
-	float pressure; // type_index: 7
-	float strength; // type_index: 7
+struct FCM_EnvelopeData { // Max dep:7
+	float min; // type_index: 7
+	float max; // type_index: 7
 	float time; // type_index: 7
-	int flag; // type_index: 4
-	float uv_fac; // type_index: 7
-	float uv_rot; // type_index: 7
-	float uv_fill[2]; // type_index: 7
-	float vert_color[4]; // type_index: 7
-	char _pad2[4]; // type_index: 0
+	short f1; // type_index: 2
+	short f2; // type_index: 2
 }; 
 
-struct TransformVars { // Max dep:7
-	float ScalexIni; // type_index: 7
-	float ScaleyIni; // type_index: 7
-	float xIni; // type_index: 7
-	float yIni; // type_index: 7
-	float rotIni; // type_index: 7
-	int percent; // type_index: 4
-	int interpolation; // type_index: 4
-	int uniform_scale; // type_index: 4
-}; 
-
-struct RaytraceEEVEE { // Max dep:7
-	float screen_trace_quality; // type_index: 7
-	float screen_trace_thickness; // type_index: 7
-	float trace_max_roughness; // type_index: 7
-	int resolution_scale; // type_index: 4
-	int flag; // type_index: 4
-	int denoise_stages; // type_index: 4
-}; 
-
-struct PhysicsSettings { // Max dep:7
-	float gravity[3]; // type_index: 7
-	int flag; // type_index: 4
-	int quick_cache_step; // type_index: 4
-	char _pad0[4]; // type_index: 0
-}; 
-
-struct ViewLayerEEVEE { // Max dep:7
-	int render_passes; // type_index: 4
-	float ambient_occlusion_distance; // type_index: 7
-}; 
-
-struct UnitSettings { // Max dep:7
-	float scale_length; // type_index: 7
-	char system; // type_index: 0
-	char system_rotation; // type_index: 0
-	short flag; // type_index: 2
-	char length_unit; // type_index: 0
-	char mass_unit; // type_index: 0
-	char time_unit; // type_index: 0
-	char temperature_unit; // type_index: 0
-	char _pad[4]; // type_index: 0
-}; 
-
-struct bGPgrid { // Max dep:7
-	float color[3]; // type_index: 7
-	float scale[2]; // type_index: 7
-	float offset[2]; // type_index: 7
+struct SpreadsheetRowFilter { // Max dep:7
+	SpreadsheetRowFilter *next; // type_index: 999
+	SpreadsheetRowFilter *prev; // type_index: 999
+	char column_name[64]; // type_index: 0
+	uchar operation; // type_index: 1
+	uchar flag; // type_index: 1
+	char _pad0[6]; // type_index: 0
+	int value_int; // type_index: 4
+	int value_int2[2]; // type_index: 4
+	int value_int3[3]; // type_index: 4
+	char *value_string; // type_index: 0
+	float value_float; // type_index: 7
+	float threshold; // type_index: 7
+	float value_float2[2]; // type_index: 7
+	float value_float3[3]; // type_index: 7
+	float value_color[4]; // type_index: 7
 	char _pad1[4]; // type_index: 0
-	int lines; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct GlowVars { // Max dep:7
-	float fMini; // type_index: 7
-	float fClamp; // type_index: 7
-	float fBoost; // type_index: 7
-	float dDist; // type_index: 7
-	int dQuality; // type_index: 4
-	int bNoComp; // type_index: 4
-}; 
-
-struct SolidColorVars { // Max dep:7
-	float col[3]; // type_index: 7
-	char _pad[4]; // type_index: 0
 }; 
 
 struct SeqRetimingHandle { // Max dep:8
@@ -3419,14 +5889,14 @@ struct SeqRetimingHandle { // Max dep:8
 	char _pad[4]; // type_index: 0
 }; 
 
-struct UserDef_FileSpaceData { // Max dep:10
-	int display_type; // type_index: 4
-	int thumbnail_size; // type_index: 4
-	int sort_type; // type_index: 4
-	int details_flags; // type_index: 4
-	int flag; // type_index: 4
-	int _pad0; // type_index: 4
-	uint64_t filter_id; // type_index: 10
+struct AttributeArray { // Max dep:9
+	void *data; // type_index: 11
+	ImplicitSharingInfoHandle *sharing_info; // type_index: 112
+	int64_t size; // type_index: 9
+}; 
+
+struct SessionUID { // Max dep:10
+	uint64_t uid_; // type_index: 10
 }; 
 
 struct CustomData_MeshMasks { // Max dep:10
@@ -3437,551 +5907,27 @@ struct CustomData_MeshMasks { // Max dep:10
 	uint64_t lmask; // type_index: 10
 }; 
 
-struct SessionUID { // Max dep:10
-	uint64_t uid_; // type_index: 10
-}; 
-
-struct LightLinkingRuntime { // Max dep:10
-	uint64_t light_set_membership; // type_index: 10
-	uint64_t shadow_set_membership; // type_index: 10
-	uchar receiver_light_set; // type_index: 1
-	uchar blocker_shadow_set; // type_index: 1
-	uchar _pad[6]; // type_index: 1
-}; 
-
-struct Tex_Runtime { // Max dep:10
-	uint64_t last_update; // type_index: 10
-}; 
-
-struct Mask_Runtime { // Max dep:10
-	uint64_t last_update; // type_index: 10
-}; 
-
-struct TFace { // Max dep:11
-	void *tpage; // type_index: 11
-	float uv[4][2]; // type_index: 7
-	int col[4]; // type_index: 4
-	char flag; // type_index: 0
-	char transp; // type_index: 0
-	short mode; // type_index: 2
-	short tile; // type_index: 2
-	short unwrap; // type_index: 2
-}; 
-
-struct MovieTrackingCamera { // Max dep:11
-	void *intrinsics; // type_index: 11
-	short distortion_model; // type_index: 2
-	char _pad[2]; // type_index: 0
-	float sensor_width; // type_index: 7
-	float pixel_aspect; // type_index: 7
-	float focal; // type_index: 7
-	short units; // type_index: 2
-	char _pad1[2]; // type_index: 0
-	float principal_point[2]; // type_index: 7
-	float principal[2]; // type_index: 7
-	float k1; // type_index: 7
-	float k2; // type_index: 7
-	float k3; // type_index: 7
-	float division_k1; // type_index: 7
-	float division_k2; // type_index: 7
-	float nuke_k1; // type_index: 7
-	float nuke_k2; // type_index: 7
-	float brown_k1; // type_index: 7
-	float brown_k2; // type_index: 7
-	float brown_k3; // type_index: 7
-	float brown_k4; // type_index: 7
-	float brown_p1; // type_index: 7
-	float brown_p2; // type_index: 7
-}; 
-
-struct ListBase { // Max dep:11
-	void *first; // type_index: 11
-	void *last; // type_index: 11
-}; 
-
-struct StripModifierDataRuntime { // Max dep:11
-	float *last_buf; // type_index: 7
-	void *last_sound_in; // type_index: 11
-	void *last_sound_out; // type_index: 11
-}; 
-
-struct bGPdata_Runtime { // Max dep:11
-	void *sbuffer; // type_index: 11
-	short playing; // type_index: 2
-	short matid; // type_index: 2
-	short sbuffer_sflag; // type_index: 2
-	char _pad1[2]; // type_index: 0
-	int sbuffer_used; // type_index: 4
-	int sbuffer_size; // type_index: 4
-	float vert_color_fill[4]; // type_index: 7
-	float fill_opacity_fac; // type_index: 7
-	float arrow_start[8]; // type_index: 7
-	float arrow_end[8]; // type_index: 7
-	int arrow_start_style; // type_index: 4
-	int arrow_end_style; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeScriptDict { // Max dep:11
-	void *dict; // type_index: 11
-	void *node; // type_index: 11
-}; 
-
-struct bNodeStack { // Max dep:11
-	float vec[4]; // type_index: 7
-	float min; // type_index: 7
-	float max; // type_index: 7
-	void *data; // type_index: 11
-	short hasinput; // type_index: 2
-	short hasoutput; // type_index: 2
-	short datatype; // type_index: 2
-	short sockettype; // type_index: 2
-	short is_copy; // type_index: 2
-	short external; // type_index: 2
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeCombSepColor { // Max dep:12
-	int8_t mode; // type_index: 12
-}; 
-
-struct MInt8Property { // Max dep:12
-	int8_t i; // type_index: 12
-}; 
-
-struct NodeFunctionCompare { // Max dep:12
-	int8_t operation; // type_index: 12
-	int8_t data_type; // type_index: 12
-	int8_t mode; // type_index: 12
-	char _pad[1]; // type_index: 0
-}; 
-
-struct NodeShaderMix { // Max dep:12
-	int8_t data_type; // type_index: 12
-	int8_t factor_mode; // type_index: 12
-	int8_t clamp_factor; // type_index: 12
-	int8_t clamp_result; // type_index: 12
-	int8_t blend_type; // type_index: 12
-	char _pad[3]; // type_index: 0
-}; 
-
-struct GeometryNodeFieldToGridItem { // Max dep:12
-	int8_t data_type; // type_index: 12
-	char _pad[3]; // type_index: 0
-	int identifier; // type_index: 4
-	char *name; // type_index: 0
-}; 
-
-struct NodeCombineBundleItem { // Max dep:12
-	char *name; // type_index: 0
-	int identifier; // type_index: 4
-	short socket_type; // type_index: 2
-	int8_t structure_type; // type_index: 12
-	char _pad[1]; // type_index: 0
-}; 
-
-struct NodeSeparateBundleItem { // Max dep:12
-	char *name; // type_index: 0
-	int identifier; // type_index: 4
-	short socket_type; // type_index: 2
-	int8_t structure_type; // type_index: 12
-	char _pad[1]; // type_index: 0
-}; 
-
-struct NodeClosureInputItem { // Max dep:12
-	char *name; // type_index: 0
-	short socket_type; // type_index: 2
-	int8_t structure_type; // type_index: 12
-	char _pad[1]; // type_index: 0
-	int identifier; // type_index: 4
-}; 
-
-struct NodeEvaluateClosureOutputItem { // Max dep:12
-	char *name; // type_index: 0
-	short socket_type; // type_index: 2
-	int8_t structure_type; // type_index: 12
-	char _pad[1]; // type_index: 0
-	int identifier; // type_index: 4
-}; 
-
-struct Attribute { // Max dep:12
-	char *name; // type_index: 0
-	short data_type; // type_index: 2
-	int8_t domain; // type_index: 12
-	int8_t storage_type; // type_index: 12
-	char _pad[4]; // type_index: 0
-	void *data; // type_index: 11
-}; 
-
-struct NodeGeometryCurveSample { // Max dep:12
-	uchar mode; // type_index: 1
-	int8_t use_all_curves; // type_index: 12
-	int8_t data_type; // type_index: 12
-	char _pad[1]; // type_index: 0
-}; 
-
-struct NodeGeometryTransferAttribute { // Max dep:12
-	int8_t data_type; // type_index: 12
-	int8_t domain; // type_index: 12
-	uchar mode; // type_index: 1
-	char _pad[1]; // type_index: 0
-}; 
-
-struct NodeGeometrySampleIndex { // Max dep:12
-	int8_t data_type; // type_index: 12
-	int8_t domain; // type_index: 12
-	int8_t clamp; // type_index: 12
-	char _pad[1]; // type_index: 0
-}; 
-
-struct NodeGeometryRaycast { // Max dep:12
-	uchar mapping; // type_index: 1
-	int8_t data_type; // type_index: 12
-}; 
-
-struct NodeGeometryAttributeCaptureItem { // Max dep:12
-	int8_t data_type; // type_index: 12
-	char _pad[3]; // type_index: 0
-	int identifier; // type_index: 4
-	char *name; // type_index: 0
-}; 
-
-struct NodeGeometryStoreNamedAttribute { // Max dep:12
-	int8_t data_type; // type_index: 12
-	int8_t domain; // type_index: 12
-}; 
-
-struct NodeGeometryInputNamedAttribute { // Max dep:12
-	int8_t data_type; // type_index: 12
-}; 
-
-struct NodeGeometryDeleteGeometry { // Max dep:12
-	int8_t domain; // type_index: 12
-	int8_t mode; // type_index: 12
-}; 
-
-struct GreasePencilDrawingBase { // Max dep:12
-	int8_t type; // type_index: 12
-	char _pad[3]; // type_index: 0
-	int flag; // type_index: 4
-}; 
-
-struct NodeGeometryDuplicateElements { // Max dep:12
-	int8_t domain; // type_index: 12
-}; 
-
-struct NodeGeometrySeparateGeometry { // Max dep:12
-	int8_t domain; // type_index: 12
-}; 
-
-struct NodeGeometryImageTexture { // Max dep:12
-	int8_t interpolation; // type_index: 12
-	int8_t extension; // type_index: 12
-}; 
-
-struct GreasePencilFrame { // Max dep:12
-	int drawing_index; // type_index: 4
-	int flag; // type_index: 4
-	int8_t type; // type_index: 12
-	char _pad[3]; // type_index: 0
-}; 
-
-struct NodeGeometryMergeLayers { // Max dep:12
-	int8_t mode; // type_index: 12
-}; 
-
-struct GreasePencilOnionSkinningSettings { // Max dep:12
-	float opacity; // type_index: 7
-	int8_t mode; // type_index: 12
-	uchar flag; // type_index: 1
-	uchar filter; // type_index: 1
-	char _pad[1]; // type_index: 0
-	short num_frames_before; // type_index: 2
-	short num_frames_after; // type_index: 2
-	float color_before[3]; // type_index: 7
-	float color_after[3]; // type_index: 7
-	char _pad2[4]; // type_index: 0
-}; 
-
-struct NodeClosureOutputItem { // Max dep:12
-	char *name; // type_index: 0
-	short socket_type; // type_index: 2
-	int8_t structure_type; // type_index: 12
-	char _pad[1]; // type_index: 0
-	int identifier; // type_index: 4
-}; 
-
-struct NodeEvaluateClosureInputItem { // Max dep:12
-	char *name; // type_index: 0
-	short socket_type; // type_index: 2
-	int8_t structure_type; // type_index: 12
-	char _pad[1]; // type_index: 0
-	int identifier; // type_index: 4
-}; 
-
-struct ActionStrip { // Max dep:12
-	int8_t strip_type; // type_index: 12
-	uchar _pad0[3]; // type_index: 1
-	int data_index; // type_index: 4
-	float frame_start; // type_index: 7
-	float frame_end; // type_index: 7
-	float frame_offset; // type_index: 7
-	uchar _pad1[4]; // type_index: 1
-}; 
-
-struct IDPropertyUIDataFloat { // Max dep:14
-	IDPropertyUIData base; // type_index: 14
-	double *default_array; // type_index: 8
-	int default_array_len; // type_index: 4
-	char _pad[4]; // type_index: 0
-	float step; // type_index: 7
-	int precision; // type_index: 4
-	double min; // type_index: 8
-	double max; // type_index: 8
-	double soft_min; // type_index: 8
-	double soft_max; // type_index: 8
-	double default_value; // type_index: 8
-}; 
-
-struct IDPropertyUIDataString { // Max dep:14
-	IDPropertyUIData base; // type_index: 14
-	char *default_value; // type_index: 0
-}; 
-
-struct IDPropertyUIDataBool { // Max dep:14
-	IDPropertyUIData base; // type_index: 14
-	int8_t *default_array; // type_index: 12
-	int default_array_len; // type_index: 4
-	char _pad[3]; // type_index: 0
-	int8_t default_value; // type_index: 12
-}; 
-
-struct IDPropertyUIDataID { // Max dep:14
-	IDPropertyUIData base; // type_index: 14
-	short id_type; // type_index: 2
+struct FileGlobal { // Max dep:10
+	char subvstr[4]; // type_index: 0
+	short subversion; // type_index: 2
+	short minversion; // type_index: 2
+	short minsubversion; // type_index: 2
 	char _pad[6]; // type_index: 0
+	bScreen *curscreen; // type_index: 237
+	Scene *curscene; // type_index: 238
+	ViewLayer *cur_view_layer; // type_index: 161
+	void *_pad1; // type_index: 11
+	int fileflags; // type_index: 4
+	int globalf; // type_index: 4
+	uint64_t build_commit_timestamp; // type_index: 10
+	char build_hash[16]; // type_index: 0
+	char filename[1024]; // type_index: 0
+	char colorspace_scene_linear_name[64]; // type_index: 0
+	float colorspace_scene_linear_to_xyz[3][3]; // type_index: 7
+	int _pad2[3]; // type_index: 4
 }; 
 
-struct IDPropertyUIDataInt { // Max dep:15
-	IDPropertyUIData base; // type_index: 14
-	int *default_array; // type_index: 4
-	int default_array_len; // type_index: 4
-	int min; // type_index: 4
-	int max; // type_index: 4
-	int soft_min; // type_index: 4
-	int soft_max; // type_index: 4
-	int step; // type_index: 4
-	int default_value; // type_index: 4
-	int enum_items_num; // type_index: 4
-	IDPropertyUIDataEnumItem *enum_items; // type_index: 15
-}; 
-
-struct ScrAreaMap { // Max dep:22
-	ListBase vertbase; // type_index: 22
-	ListBase edgebase; // type_index: 22
-	ListBase areabase; // type_index: 22
-}; 
-
-struct ViewerPath { // Max dep:22
-	ListBase path; // type_index: 22
-}; 
-
-struct MovieClip_Runtime { // Max dep:22
-	ListBase gputextures; // type_index: 22
-	uint64_t last_update; // type_index: 10
-}; 
-
-struct Bone_Runtime { // Max dep:22
-	ListBase collections; // type_index: 22
-}; 
-
-struct SpaceGraph_Runtime { // Max dep:22
-	char flag; // type_index: 0
-	char _pad[7]; // type_index: 0
-	ListBase ghost_curves; // type_index: 22
-}; 
-
-struct MovieTrackingDopesheet { // Max dep:22
-	int ok; // type_index: 4
-	short sort_method; // type_index: 2
-	short flag; // type_index: 2
-	ListBase coverage_segments; // type_index: 22
-	ListBase channels; // type_index: 22
-	int tot_channel; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct FreestyleConfig { // Max dep:22
-	ListBase modules; // type_index: 22
-	int mode; // type_index: 4
-	int raycasting_algorithm; // type_index: 4
-	int flags; // type_index: 4
-	float sphere_radius; // type_index: 7
-	float dkr_epsilon; // type_index: 7
-	float crease_angle; // type_index: 7
-	ListBase linesets; // type_index: 22
-}; 
-
-struct bArmatureConstraint { // Max dep:22
-	int flag; // type_index: 4
-	char _pad[4]; // type_index: 0
-	ListBase targets; // type_index: 22
-}; 
-
-struct BoidSettings { // Max dep:22
-	int options; // type_index: 4
-	int last_state_id; // type_index: 4
-	float landing_smoothness; // type_index: 7
-	float height; // type_index: 7
-	float banking; // type_index: 7
-	float pitch; // type_index: 7
-	float health; // type_index: 7
-	float aggression; // type_index: 7
-	float strength; // type_index: 7
-	float accuracy; // type_index: 7
-	float range; // type_index: 7
-	float air_min_speed; // type_index: 7
-	float air_max_speed; // type_index: 7
-	float air_max_acc; // type_index: 7
-	float air_max_ave; // type_index: 7
-	float air_personal_space; // type_index: 7
-	float land_jump_speed; // type_index: 7
-	float land_max_speed; // type_index: 7
-	float land_max_acc; // type_index: 7
-	float land_max_ave; // type_index: 7
-	float land_personal_space; // type_index: 7
-	float land_stick_force; // type_index: 7
-	ListBase states; // type_index: 22
-}; 
-
-struct NodeCryptomatte_Runtime { // Max dep:22
-	ListBase layers; // type_index: 22
-	float add[3]; // type_index: 7
-	float remove[3]; // type_index: 7
-}; 
-
-struct IDPropertyData { // Max dep:23
-	void *pointer; // type_index: 11
-	ListBase group; // type_index: 22
-	IDPropertyGroupChildrenSet *children_map; // type_index: 23
-	int val; // type_index: 4
-	int val2; // type_index: 4
-}; 
-
-struct View3DShading { // Max dep:24
-	char type; // type_index: 0
-	char prev_type; // type_index: 0
-	char prev_type_wire; // type_index: 0
-	char color_type; // type_index: 0
-	short flag; // type_index: 2
-	char light; // type_index: 0
-	char background_type; // type_index: 0
-	char cavity_type; // type_index: 0
-	char wire_color_type; // type_index: 0
-	char use_compositor; // type_index: 0
-	char _pad; // type_index: 0
-	char studio_light[256]; // type_index: 0
-	char lookdev_light[256]; // type_index: 0
-	char matcap[256]; // type_index: 0
-	float shadow_intensity; // type_index: 7
-	float single_color[3]; // type_index: 7
-	float studiolight_rot_z; // type_index: 7
-	float studiolight_background; // type_index: 7
-	float studiolight_intensity; // type_index: 7
-	float studiolight_blur; // type_index: 7
-	float object_outline_color[3]; // type_index: 7
-	float xray_alpha; // type_index: 7
-	float xray_alpha_wire; // type_index: 7
-	float cavity_valley_factor; // type_index: 7
-	float cavity_ridge_factor; // type_index: 7
-	float background_color[3]; // type_index: 7
-	float curvature_ridge_factor; // type_index: 7
-	float curvature_valley_factor; // type_index: 7
-	int render_pass; // type_index: 4
-	char aov_name[64]; // type_index: 0
-	IDProperty *prop; // type_index: 24
-	void *_pad2; // type_index: 11
-}; 
-
-struct IDProperty { // Max dep:24
-	IDProperty *next; // type_index: 24
-	IDProperty *prev; // type_index: 24
-	char type; // type_index: 0
-	char subtype; // type_index: 0
-	short flag; // type_index: 2
-	char name[64]; // type_index: 0
-	char _pad0[4]; // type_index: 0
-	IDPropertyData data; // type_index: 21
-	int len; // type_index: 4
-	int totallen; // type_index: 4
-	IDPropertyUIData *ui_data; // type_index: 14
-}; 
-
-struct NodesModifierSettings { // Max dep:24
-	IDProperty *properties; // type_index: 24
-}; 
-
-struct Script { // Max dep:26
-	ID id; // type_index: 26
-	void *py_draw; // type_index: 11
-	void *py_event; // type_index: 11
-	void *py_button; // type_index: 11
-	void *py_browsercallback; // type_index: 11
-	void *py_globaldict; // type_index: 11
-	int flags; // type_index: 4
-	int lastspace; // type_index: 4
-	char scriptname[1024]; // type_index: 0
-	char scriptarg[256]; // type_index: 0
-}; 
-
-struct NodesModifierDataBlock { // Max dep:26
-	char *id_name; // type_index: 0
-	char *lib_name; // type_index: 0
-	ID *id; // type_index: 26
-	int id_type; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct DriverTarget { // Max dep:26
-	ID *id; // type_index: 26
-	char *rna_path; // type_index: 0
-	char pchan_name[64]; // type_index: 0
-	short transChan; // type_index: 2
-	char rotation_mode; // type_index: 0
-	char _pad[5]; // type_index: 0
-	short flag; // type_index: 2
-	short options; // type_index: 2
-	int idtype; // type_index: 4
-	int context_property; // type_index: 4
-	float fallback_value; // type_index: 7
-}; 
-
-struct MaskParent { // Max dep:26
-	int id_type; // type_index: 4
-	int type; // type_index: 4
-	ID *id; // type_index: 26
-	char parent[64]; // type_index: 0
-	char sub_parent[64]; // type_index: 0
-	float parent_orig[2]; // type_index: 7
-	float parent_corners_orig[4][2]; // type_index: 7
-}; 
-
-struct IDOverrideLibraryPropertyOperation { // Max dep:26
-	IDOverrideLibraryPropertyOperation *next; // type_index: 25
-	IDOverrideLibraryPropertyOperation *prev; // type_index: 25
-	short operation; // type_index: 2
-	short flag; // type_index: 2
-	short tag; // type_index: 2
-	char _pad0[2]; // type_index: 0
-	char *subitem_reference_name; // type_index: 0
-	char *subitem_local_name; // type_index: 0
-	int subitem_reference_index; // type_index: 4
-	int subitem_local_index; // type_index: 4
-	ID *subitem_reference_id; // type_index: 26
-	ID *subitem_local_id; // type_index: 26
-}; 
-
-struct FileSelectParams { // Max dep:26
+struct FileSelectParams { // Max dep:10
 	char title[96]; // type_index: 0
 	char dir[1282]; // type_index: 0
 	char file[256]; // type_index: 0
@@ -4011,742 +5957,133 @@ struct FileSelectParams { // Max dep:26
 	char _pad2[2]; // type_index: 0
 }; 
 
-struct Palette { // Max dep:26
-	ID id; // type_index: 26
-	ListBase colors; // type_index: 22
-	int active_color; // type_index: 4
-	char _pad[4]; // type_index: 0
+struct LightLinkingRuntime { // Max dep:10
+	uint64_t light_set_membership; // type_index: 10
+	uint64_t shadow_set_membership; // type_index: 10
+	uchar receiver_light_set; // type_index: 1
+	uchar blocker_shadow_set; // type_index: 1
+	uchar _pad[6]; // type_index: 1
 }; 
 
-struct TreeStoreElem { // Max dep:26
-	short type; // type_index: 2
-	short nr; // type_index: 2
-	short flag; // type_index: 2
-	short used; // type_index: 2
-	ID *id; // type_index: 26
-}; 
-
-struct IDOverrideLibraryProperty { // Max dep:27
-	IDOverrideLibraryProperty *next; // type_index: 27
-	IDOverrideLibraryProperty *prev; // type_index: 27
-	char *rna_path; // type_index: 0
-	ListBase operations; // type_index: 22
-	short tag; // type_index: 2
-	char _pad[2]; // type_index: 0
-	int rna_prop_type; // type_index: 4
-}; 
-
-struct IDOverrideLibrary { // Max dep:29
-	ID *reference; // type_index: 26
-	ListBase properties; // type_index: 22
-	ID *hierarchy_root; // type_index: 26
-	IDOverrideLibraryRuntime *runtime; // type_index: 29
+struct UserDef_FileSpaceData { // Max dep:10
+	int display_type; // type_index: 4
+	int thumbnail_size; // type_index: 4
+	int sort_type; // type_index: 4
+	int details_flags; // type_index: 4
 	int flag; // type_index: 4
-	char _pad_1[4]; // type_index: 0
+	int _pad0; // type_index: 4
+	uint64_t filter_id; // type_index: 10
 }; 
 
-struct ID { // Max dep:34
-	void *next; // type_index: 11
-	void *prev; // type_index: 11
-	ID *newid; // type_index: 26
-	Library *lib; // type_index: 31
-	AssetMetaData *asset_data; // type_index: 32
-	char name[258]; // type_index: 0
-	short flag; // type_index: 2
-	int tag; // type_index: 4
-	int us; // type_index: 4
-	int icon_id; // type_index: 4
-	int recalc; // type_index: 4
-	int recalc_up_to_undo_push; // type_index: 4
-	int recalc_after_undo_push; // type_index: 4
-	int session_uid; // type_index: 4
-	IDHash deep_hash; // type_index: 30
-	IDProperty *properties; // type_index: 24
-	IDProperty *system_properties; // type_index: 24
-	void *_pad1; // type_index: 11
-	IDOverrideLibrary *override_library; // type_index: 28
-	ID *orig_id; // type_index: 26
-	void *py_instance; // type_index: 11
-	LibraryWeakReference *library_weak_reference; // type_index: 33
-	ID_RuntimeHandle *runtime; // type_index: 34
+struct Mask_Runtime { // Max dep:10
+	uint64_t last_update; // type_index: 10
 }; 
 
-struct bSound { // Max dep:35
-	ID id; // type_index: 26
-	void *_pad1; // type_index: 11
-	char name[1024]; // type_index: 0
-	PackedFile *packedfile; // type_index: 35
-	void *handle; // type_index: 11
-	PackedFile *newpackedfile; // type_index: 35
-	void *_pad0; // type_index: 11
-	float volume; // type_index: 7
-	float attenuation; // type_index: 7
-	float pitch; // type_index: 7
-	float min_gain; // type_index: 7
-	float max_gain; // type_index: 7
-	float distance; // type_index: 7
-	short flags; // type_index: 2
-	short tags; // type_index: 2
-	char _pad[4]; // type_index: 0
-	double offset_time; // type_index: 8
-	void *cache; // type_index: 11
-	void *waveform; // type_index: 11
-	void *playback_handle; // type_index: 11
-	void *spinlock; // type_index: 11
-	int audio_channels; // type_index: 4
-	int samplerate; // type_index: 4
+struct Tex_Runtime { // Max dep:10
+	uint64_t last_update; // type_index: 10
 }; 
 
-struct NodesModifierBakeFile { // Max dep:35
+struct NodeGeometryRaycast { // Max dep:12
+	uchar mapping; // type_index: 1
+	int8_t data_type; // type_index: 12
+}; 
+
+struct NodeGeometryStoreNamedAttribute { // Max dep:12
+	int8_t data_type; // type_index: 12
+	int8_t domain; // type_index: 12
+}; 
+
+struct NodeGeometrySampleIndex { // Max dep:12
+	int8_t data_type; // type_index: 12
+	int8_t domain; // type_index: 12
+	int8_t clamp; // type_index: 12
+	char _pad[1]; // type_index: 0
+}; 
+
+struct NodeGeometryInputNamedAttribute { // Max dep:12
+	int8_t data_type; // type_index: 12
+}; 
+
+struct NodeGeometryImageTexture { // Max dep:12
+	int8_t interpolation; // type_index: 12
+	int8_t extension; // type_index: 12
+}; 
+
+struct NodeGeometrySeparateGeometry { // Max dep:12
+	int8_t domain; // type_index: 12
+}; 
+
+struct NodeGeometryMergeLayers { // Max dep:12
+	int8_t mode; // type_index: 12
+}; 
+
+struct NodeGeometryDuplicateElements { // Max dep:12
+	int8_t domain; // type_index: 12
+}; 
+
+struct NodeGeometryDeleteGeometry { // Max dep:12
+	int8_t domain; // type_index: 12
+	int8_t mode; // type_index: 12
+}; 
+
+struct NodeGeometryCurveSample { // Max dep:12
+	uchar mode; // type_index: 1
+	int8_t use_all_curves; // type_index: 12
+	int8_t data_type; // type_index: 12
+	char _pad[1]; // type_index: 0
+}; 
+
+struct NodeGeometryAttributeCaptureItem { // Max dep:12
+	int8_t data_type; // type_index: 12
+	char _pad[3]; // type_index: 0
+	int identifier; // type_index: 4
 	char *name; // type_index: 0
-	PackedFile *packed_file; // type_index: 35
 }; 
 
-struct Library { // Max dep:36
-	ID id; // type_index: 26
-	char name[1024]; // type_index: 0
-	ushort flag; // type_index: 3
-	char _pad[6]; // type_index: 0
-	Library *archive_parent_library; // type_index: 31
-	PackedFile *packedfile; // type_index: 35
-	LibraryRuntimeHandle *runtime; // type_index: 36
-	void *_pad2; // type_index: 11
+struct NodeGeometryTransferAttribute { // Max dep:12
+	int8_t data_type; // type_index: 12
+	int8_t domain; // type_index: 12
+	uchar mode; // type_index: 1
+	char _pad[1]; // type_index: 0
 }; 
 
-struct PreviewImage { // Max dep:38
-	int w[2]; // type_index: 4
-	int h[2]; // type_index: 4
-	short flag[2]; // type_index: 2
-	short changed_timestamp[2]; // type_index: 2
-	int *rect[2]; // type_index: 4
-	PreviewImageRuntimeHandle *runtime; // type_index: 38
-}; 
-
-struct bMotionPath { // Max dep:42
-	bMotionPathVert *points; // type_index: 39
-	int length; // type_index: 4
-	int start_frame; // type_index: 4
-	int end_frame; // type_index: 4
-	float color[3]; // type_index: 7
-	float color_post[3]; // type_index: 7
-	int line_thickness; // type_index: 4
-	int flag; // type_index: 4
-	char _pad2[4]; // type_index: 0
-	GPUVertBufHandle *points_vbo; // type_index: 41
-	GPUBatchHandle *batch_line; // type_index: 42
-	GPUBatchHandle *batch_points; // type_index: 42
-	void *_pad; // type_index: 11
-}; 
-
-struct StripRuntime { // Max dep:46
-	SessionUID session_uid; // type_index: 46
-	int flag; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct bPoseChannel_Runtime { // Max dep:48
-	SessionUID session_uid; // type_index: 46
-	DualQuat deform_dual_quat; // type_index: 47
-	int bbone_segments; // type_index: 4
-	float bbone_arc_length_reciprocal; // type_index: 7
-	uchar flag; // type_index: 1
-	char _pad1[3]; // type_index: 0
-	Mat4 *bbone_rest_mats; // type_index: 48
-	Mat4 *bbone_pose_mats; // type_index: 48
-	Mat4 *bbone_deform_mats; // type_index: 48
-	DualQuat *bbone_dual_quats; // type_index: 47
-	bPoseChannel_BBoneSegmentBoundary *bbone_segment_boundaries; // type_index: 44
-	void *_pad; // type_index: 11
-}; 
-
-struct bLocateLikeConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	int flag; // type_index: 4
-	int reserved1; // type_index: 4
-	char subtarget[64]; // type_index: 0
-}; 
-
-struct bRotateLikeConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	int flag; // type_index: 4
-	char euler_order; // type_index: 0
-	char mix_mode; // type_index: 0
-	char _pad[2]; // type_index: 0
-	char subtarget[64]; // type_index: 0
-}; 
-
-struct GP_Sculpt_Guide { // Max dep:51
-	char use_guide; // type_index: 0
-	char use_snapping; // type_index: 0
-	char reference_point; // type_index: 0
-	char type; // type_index: 0
-	char _pad2[4]; // type_index: 0
-	float angle; // type_index: 7
-	float angle_snap; // type_index: 7
-	float spacing; // type_index: 7
-	float location[3]; // type_index: 7
-	Object *reference_object; // type_index: 51
-}; 
-
-struct CameraDOFSettings { // Max dep:51
-	Object *focus_object; // type_index: 51
-	char focus_subtarget[64]; // type_index: 0
-	float focus_distance; // type_index: 7
-	float aperture_fstop; // type_index: 7
-	float aperture_rotation; // type_index: 7
-	float aperture_ratio; // type_index: 7
-	int aperture_blades; // type_index: 4
-	short flag; // type_index: 2
+struct NodeGeometryViewer { // Max dep:12
+	NodeGeometryViewerItem *items; // type_index: 726
+	int items_num; // type_index: 4
+	int active_index; // type_index: 4
+	int next_identifier; // type_index: 4
+	int8_t data_type; // type_index: 12
+	int8_t domain; // type_index: 12
 	char _pad[2]; // type_index: 0
 }; 
 
-struct bTrackToConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	int reserved1; // type_index: 4
-	int reserved2; // type_index: 4
-	int flags; // type_index: 4
-	char _pad[4]; // type_index: 0
-	char subtarget[64]; // type_index: 0
-}; 
-
-struct bShrinkwrapConstraint { // Max dep:51
-	Object *target; // type_index: 51
-	float dist; // type_index: 7
-	short shrinkType; // type_index: 2
-	char projAxis; // type_index: 0
-	char projAxisSpace; // type_index: 0
-	float projLimit; // type_index: 7
-	char shrinkMode; // type_index: 0
-	char flag; // type_index: 0
-	char trackAxis; // type_index: 0
-	char _pad; // type_index: 0
-}; 
-
-struct RigidBodyCon { // Max dep:51
-	Object *ob1; // type_index: 51
-	Object *ob2; // type_index: 51
-	short type; // type_index: 2
-	short num_solver_iterations; // type_index: 2
-	int flag; // type_index: 4
-	float breaking_threshold; // type_index: 7
-	char spring_type; // type_index: 0
-	char _pad[3]; // type_index: 0
-	float limit_lin_x_lower; // type_index: 7
-	float limit_lin_x_upper; // type_index: 7
-	float limit_lin_y_lower; // type_index: 7
-	float limit_lin_y_upper; // type_index: 7
-	float limit_lin_z_lower; // type_index: 7
-	float limit_lin_z_upper; // type_index: 7
-	float limit_ang_x_lower; // type_index: 7
-	float limit_ang_x_upper; // type_index: 7
-	float limit_ang_y_lower; // type_index: 7
-	float limit_ang_y_upper; // type_index: 7
-	float limit_ang_z_lower; // type_index: 7
-	float limit_ang_z_upper; // type_index: 7
-	float spring_stiffness_x; // type_index: 7
-	float spring_stiffness_y; // type_index: 7
-	float spring_stiffness_z; // type_index: 7
-	float spring_stiffness_ang_x; // type_index: 7
-	float spring_stiffness_ang_y; // type_index: 7
-	float spring_stiffness_ang_z; // type_index: 7
-	float spring_damping_x; // type_index: 7
-	float spring_damping_y; // type_index: 7
-	float spring_damping_z; // type_index: 7
-	float spring_damping_ang_x; // type_index: 7
-	float spring_damping_ang_y; // type_index: 7
-	float spring_damping_ang_z; // type_index: 7
-	float motor_lin_target_velocity; // type_index: 7
-	float motor_ang_target_velocity; // type_index: 7
-	float motor_lin_max_impulse; // type_index: 7
-	float motor_ang_max_impulse; // type_index: 7
-	void *physics_constraint; // type_index: 11
-}; 
-
-struct bDistLimitConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	char subtarget[64]; // type_index: 0
-	float dist; // type_index: 7
-	float soft; // type_index: 7
-	short flag; // type_index: 2
-	short mode; // type_index: 2
-	char _pad[4]; // type_index: 0
-}; 
-
-struct bSizeLikeConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	int flag; // type_index: 4
-	float power; // type_index: 7
-	char subtarget[64]; // type_index: 0
-}; 
-
-struct bTransLikeConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	int flag; // type_index: 4
-	char mix_mode; // type_index: 0
-	char _pad[3]; // type_index: 0
-	char subtarget[64]; // type_index: 0
-}; 
-
-struct bMinMaxConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	int minmaxflag; // type_index: 4
-	float offset; // type_index: 7
-	int flag; // type_index: 4
-	char subtarget[64]; // type_index: 0
-	int _pad; // type_index: 4
-}; 
-
-struct bPivotConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	char subtarget[64]; // type_index: 0
-	float offset[3]; // type_index: 7
-	short rotAxis; // type_index: 2
-	short flag; // type_index: 2
-}; 
-
-struct bTransformConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	char subtarget[64]; // type_index: 0
-	short from; // type_index: 2
-	short to; // type_index: 2
-	char map[3]; // type_index: 0
-	char expo; // type_index: 0
-	char from_rotation_mode; // type_index: 0
-	char to_euler_order; // type_index: 0
-	char mix_mode_loc; // type_index: 0
-	char mix_mode_rot; // type_index: 0
-	char mix_mode_scale; // type_index: 0
-	char _pad[3]; // type_index: 0
-	float from_min[3]; // type_index: 7
-	float from_max[3]; // type_index: 7
-	float to_min[3]; // type_index: 7
-	float to_max[3]; // type_index: 7
-	float from_min_rot[3]; // type_index: 7
-	float from_max_rot[3]; // type_index: 7
-	float to_min_rot[3]; // type_index: 7
-	float to_max_rot[3]; // type_index: 7
-	float from_min_scale[3]; // type_index: 7
-	float from_max_scale[3]; // type_index: 7
-	float to_min_scale[3]; // type_index: 7
-	float to_max_scale[3]; // type_index: 7
-}; 
-
-struct bChildOfConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	int flag; // type_index: 4
-	char _pad[4]; // type_index: 0
-	float invmat[4][4]; // type_index: 7
-	char subtarget[64]; // type_index: 0
-}; 
-
-struct bLockTrackConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	int trackflag; // type_index: 4
-	int lockflag; // type_index: 4
-	char subtarget[64]; // type_index: 0
-}; 
-
-struct bClampToConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	int flag; // type_index: 4
-	int flag2; // type_index: 4
-}; 
-
-struct bDampTrackConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	int trackflag; // type_index: 4
-	char _pad[4]; // type_index: 0
-	char subtarget[64]; // type_index: 0
-}; 
-
-struct bRigidBodyJointConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	Object *child; // type_index: 51
-	int type; // type_index: 4
-	float pivX; // type_index: 7
-	float pivY; // type_index: 7
-	float pivZ; // type_index: 7
-	float axX; // type_index: 7
-	float axY; // type_index: 7
-	float axZ; // type_index: 7
-	float minLimit[6]; // type_index: 7
-	float maxLimit[6]; // type_index: 7
-	float extraFz; // type_index: 7
-	short flag; // type_index: 2
-	char _pad[6]; // type_index: 0
-}; 
-
-struct bFollowPathConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	float offset; // type_index: 7
-	float offset_fac; // type_index: 7
-	int followflag; // type_index: 4
-	short trackflag; // type_index: 2
-	short upflag; // type_index: 2
-}; 
-
-struct bStretchToConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	int flag; // type_index: 4
-	int volmode; // type_index: 4
-	int plane; // type_index: 4
-	float orglength; // type_index: 7
-	float bulge; // type_index: 7
-	float bulge_min; // type_index: 7
-	float bulge_max; // type_index: 7
-	float bulge_smooth; // type_index: 7
-	char subtarget[64]; // type_index: 0
-}; 
-
-struct bNodeSocketValueObject { // Max dep:51
-	Object *value; // type_index: 51
-}; 
-
-struct TexMapping { // Max dep:51
-	float loc[3]; // type_index: 7
-	float rot[3]; // type_index: 7
-	float size[3]; // type_index: 7
-	int flag; // type_index: 4
-	char projx; // type_index: 0
-	char projy; // type_index: 0
-	char projz; // type_index: 0
-	char mapping; // type_index: 0
-	int type; // type_index: 4
-	float mat[4][4]; // type_index: 7
-	float min[3]; // type_index: 7
-	float max[3]; // type_index: 7
-	Object *ob; // type_index: 51
-}; 
-
-struct bGeometryAttributeConstraint { // Max dep:51
-	Object *target; // type_index: 51
-	char *attribute_name; // type_index: 0
-	int sample_index; // type_index: 4
-	uchar apply_target_transform; // type_index: 1
-	uchar mix_mode; // type_index: 1
-	uchar domain; // type_index: 1
-	uchar data_type; // type_index: 1
-	uchar flags; // type_index: 1
-	char _pad0[7]; // type_index: 0
-}; 
-
-struct bKinematicConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	short iterations; // type_index: 2
-	short flag; // type_index: 2
-	short rootbone; // type_index: 2
-	short max_rootbone; // type_index: 2
-	char subtarget[64]; // type_index: 0
-	Object *poletar; // type_index: 51
-	char polesubtarget[64]; // type_index: 0
-	float poleangle; // type_index: 7
-	float weight; // type_index: 7
-	float orientweight; // type_index: 7
-	float grabtarget[3]; // type_index: 7
-	short type; // type_index: 2
-	short mode; // type_index: 2
-	float dist; // type_index: 7
-}; 
-
-struct bSplineIKConstraint { // Max dep:51
-	Object *tar; // type_index: 51
-	float *points; // type_index: 7
-	short numpoints; // type_index: 2
-	short chainlen; // type_index: 2
-	short flag; // type_index: 2
-	short xzScaleMode; // type_index: 2
-	short yScaleMode; // type_index: 2
-	short _pad[3]; // type_index: 2
-	float bulge; // type_index: 7
-	float bulge_min; // type_index: 7
-	float bulge_max; // type_index: 7
-	float bulge_smooth; // type_index: 7
-}; 
-
-struct bPoseChannel { // Max dep:53
-	bPoseChannel *next; // type_index: 49
-	bPoseChannel *prev; // type_index: 49
-	IDProperty *prop; // type_index: 24
-	IDProperty *system_properties; // type_index: 24
-	ListBase constraints; // type_index: 22
-	char name[64]; // type_index: 0
-	short flag; // type_index: 2
-	short ikflag; // type_index: 2
-	short protectflag; // type_index: 2
-	short agrp_index; // type_index: 2
-	char constflag; // type_index: 0
-	char selectflag; // type_index: 0
-	char drawflag; // type_index: 0
-	char bboneflag; // type_index: 0
-	char _pad0[4]; // type_index: 0
-	Bone *bone; // type_index: 50
-	bPoseChannel *parent; // type_index: 49
-	bPoseChannel *child; // type_index: 49
-	ListBase iktree; // type_index: 22
-	ListBase siktree; // type_index: 22
-	bMotionPath *mpath; // type_index: 40
-	Object *custom; // type_index: 51
-	bPoseChannel *custom_tx; // type_index: 49
-	float custom_scale; // type_index: 7
-	float custom_scale_xyz[3]; // type_index: 7
-	float custom_translation[3]; // type_index: 7
-	float custom_rotation_euler[3]; // type_index: 7
-	float custom_shape_wire_width; // type_index: 7
-	float loc[3]; // type_index: 7
-	float size[3]; // type_index: 7
-	float eul[3]; // type_index: 7
-	float quat[4]; // type_index: 7
-	float rotAxis[3]; // type_index: 7
-	float rotAngle; // type_index: 7
-	short rotmode; // type_index: 2
-	char _pad[6]; // type_index: 0
-	float chan_mat[4][4]; // type_index: 7
-	float pose_mat[4][4]; // type_index: 7
-	float disp_mat[4][4]; // type_index: 7
-	float disp_tail_mat[4][4]; // type_index: 7
-	float constinv[4][4]; // type_index: 7
-	float pose_head[3]; // type_index: 7
-	float pose_tail[3]; // type_index: 7
-	float limitmin[3]; // type_index: 7
-	float limitmax[3]; // type_index: 7
-	float stiffness[3]; // type_index: 7
-	float ikstretch; // type_index: 7
-	float ikrotweight; // type_index: 7
-	float iklinweight; // type_index: 7
-	float roll1; // type_index: 7
-	float roll2; // type_index: 7
-	float curveInX; // type_index: 7
-	float curveInY; // type_index: 7
-	float curveOutX; // type_index: 7
-	float curveOutY; // type_index: 7
-	float ease1; // type_index: 7
-	float ease2; // type_index: 7
-	float scaleIn; // type_index: 7
-	float scale_in_y; // type_index: 7
-	float scaleOut; // type_index: 7
-	float scale_out_y; // type_index: 7
-	float scale_in[3]; // type_index: 7
-	float scale_out[3]; // type_index: 7
-	bPoseChannel *bbone_prev; // type_index: 49
-	bPoseChannel *bbone_next; // type_index: 49
-	void *temp; // type_index: 11
-	bPoseChannelDrawData *draw_data; // type_index: 52
-	bPoseChannel *orig_pchan; // type_index: 49
-	BoneColor color; // type_index: 53
-	void *_pad2; // type_index: 11
-	bPoseChannel_Runtime runtime; // type_index: 45
-}; 
-
-struct bPose { // Max dep:55
-	ListBase chanbase; // type_index: 22
-	GHash *chanhash; // type_index: 55
-	bPoseChannel **chan_array; // type_index: 49
-	short flag; // type_index: 2
+struct NodeGeometryAttributeCapture { // Max dep:12
+	int8_t data_type; // type_index: 12
+	int8_t domain; // type_index: 12
 	char _pad[2]; // type_index: 0
-	float ctime; // type_index: 7
-	float stride_offset[3]; // type_index: 7
-	float cyclic_offset[3]; // type_index: 7
-	ListBase agroups; // type_index: 22
-	int active_group; // type_index: 4
-	int iksolver; // type_index: 4
-	void *ikdata; // type_index: 11
-	void *ikparam; // type_index: 11
-	bAnimVizSettings avs; // type_index: 43
+	int next_identifier; // type_index: 4
+	NodeGeometryAttributeCaptureItem *capture_items; // type_index: 716
+	int capture_items_num; // type_index: 4
+	int active_index; // type_index: 4
 }; 
 
-struct ActionStripKeyframeData { // Max dep:59
-	ActionChannelBag **channelbag_array; // type_index: 59
-	int channelbag_array_num; // type_index: 4
-	uchar _pad[4]; // type_index: 1
+struct NodeClosureInputItem { // Max dep:12
+	char *name; // type_index: 0
+	short socket_type; // type_index: 2
+	int8_t structure_type; // type_index: 12
+	char _pad[1]; // type_index: 0
+	int identifier; // type_index: 4
 }; 
 
-struct BoneColor { // Max dep:60
-	int8_t palette_index; // type_index: 12
-	uchar _pad0[7]; // type_index: 1
-	ThemeWireColor custom; // type_index: 60
-}; 
-
-struct bActionGroup { // Max dep:60
-	bActionGroup *next; // type_index: 58
-	bActionGroup *prev; // type_index: 58
-	ListBase channels; // type_index: 22
-	int fcurve_range_start; // type_index: 4
-	int fcurve_range_length; // type_index: 4
-	ActionChannelBag *channel_bag; // type_index: 59
-	int flag; // type_index: 4
-	int customCol; // type_index: 4
-	char name[64]; // type_index: 0
-	ThemeWireColor cs; // type_index: 60
-}; 
-
-struct bActionConstraint { // Max dep:61
-	Object *tar; // type_index: 51
-	short type; // type_index: 2
-	short local; // type_index: 2
-	int start; // type_index: 4
-	int end; // type_index: 4
-	float min; // type_index: 7
-	float max; // type_index: 7
-	int flag; // type_index: 4
-	char mix_mode; // type_index: 0
-	char _pad[3]; // type_index: 0
-	float eval_time; // type_index: 7
-	bAction *act; // type_index: 61
-	int action_slot_handle; // type_index: 4
-	char action_slot_name[258]; // type_index: 0
-	char _pad1[2]; // type_index: 0
-	char subtarget[64]; // type_index: 0
-}; 
-
-struct bAction { // Max dep:64
-	ID id; // type_index: 26
-	ActionLayer **layer_array; // type_index: 62
-	int layer_array_num; // type_index: 4
-	int layer_active_index; // type_index: 4
-	ActionSlot **slot_array; // type_index: 63
-	int slot_array_num; // type_index: 4
-	int last_slot_handle; // type_index: 4
-	ActionStripKeyframeData **strip_keyframe_data_array; // type_index: 64
-	int strip_keyframe_data_array_num; // type_index: 4
-	char _pad0[4]; // type_index: 0
-	ListBase curves; // type_index: 22
-	ListBase groups; // type_index: 22
-	ListBase markers; // type_index: 22
-	int flag; // type_index: 4
-	int active_marker; // type_index: 4
-	int idroot; // type_index: 4
-	char _pad1[4]; // type_index: 0
-	float frame_start; // type_index: 7
-	float frame_end; // type_index: 7
-	PreviewImage *preview; // type_index: 37
-}; 
-
-struct EffectorWeights { // Max dep:66
-	Collection *group; // type_index: 66
-	float weight[14]; // type_index: 7
-	float global_gravity; // type_index: 7
-	short flag; // type_index: 2
-	char _pad[2]; // type_index: 0
-}; 
-
-struct bDopeSheet { // Max dep:66
-	ID *source; // type_index: 26
-	ListBase chanbase; // type_index: 22
-	Collection *filter_grp; // type_index: 66
-	char searchstr[64]; // type_index: 0
-	int filterflag; // type_index: 4
-	int filterflag2; // type_index: 4
-	int flag; // type_index: 4
-	int renameIndex; // type_index: 4
-}; 
-
-struct bNodeSocketValueCollection { // Max dep:66
-	Collection *value; // type_index: 66
-}; 
-
-struct SpaceConsole { // Max dep:70
-	SpaceLink *next; // type_index: 70
-	SpaceLink *prev; // type_index: 70
-	ListBase regionbase; // type_index: 22
-	char spacetype; // type_index: 0
-	char link_flag; // type_index: 0
-	char _pad0[6]; // type_index: 0
-	ListBase scrollback; // type_index: 22
-	ListBase history; // type_index: 22
-	char prompt[256]; // type_index: 0
-	char language[32]; // type_index: 0
-	int lheight; // type_index: 4
-	int history_index; // type_index: 4
-	int sel_start; // type_index: 4
-	int sel_end; // type_index: 4
-}; 
-
-struct SpaceLink { // Max dep:70
-	SpaceLink *next; // type_index: 70
-	SpaceLink *prev; // type_index: 70
-	ListBase regionbase; // type_index: 22
-	char spacetype; // type_index: 0
-	char link_flag; // type_index: 0
-	char _pad0[6]; // type_index: 0
-}; 
-
-struct SpaceStatusBar { // Max dep:70
-	SpaceLink *next; // type_index: 70
-	SpaceLink *prev; // type_index: 70
-	ListBase regionbase; // type_index: 22
-	char spacetype; // type_index: 0
-	char link_flag; // type_index: 0
-	char _pad0[6]; // type_index: 0
-}; 
-
-struct SpaceUserPref { // Max dep:70
-	SpaceLink *next; // type_index: 70
-	SpaceLink *prev; // type_index: 70
-	ListBase regionbase; // type_index: 22
-	char spacetype; // type_index: 0
-	char link_flag; // type_index: 0
-	char _pad0[6]; // type_index: 0
-	char _pad1[7]; // type_index: 0
-	char filter_type; // type_index: 0
-	char filter[64]; // type_index: 0
-}; 
-
-struct SpaceTopBar { // Max dep:70
-	SpaceLink *next; // type_index: 70
-	SpaceLink *prev; // type_index: 70
-	ListBase regionbase; // type_index: 22
-	char spacetype; // type_index: 0
-	char link_flag; // type_index: 0
-	char _pad0[6]; // type_index: 0
-}; 
-
-struct SpaceInfo { // Max dep:70
-	SpaceLink *next; // type_index: 70
-	SpaceLink *prev; // type_index: 70
-	ListBase regionbase; // type_index: 22
-	char spacetype; // type_index: 0
-	char link_flag; // type_index: 0
-	char _pad0[6]; // type_index: 0
-	char rpt_mask; // type_index: 0
+struct UvSculpt { // Max dep:12
+	CurveMapping *strength_curve; // type_index: 127
+	int size; // type_index: 4
+	float strength; // type_index: 7
+	int8_t curve_preset; // type_index: 12
 	char _pad[7]; // type_index: 0
 }; 
 
-struct SpaceAction { // Max dep:71
-	SpaceLink *next; // type_index: 70
-	SpaceLink *prev; // type_index: 70
-	ListBase regionbase; // type_index: 22
-	char spacetype; // type_index: 0
-	char link_flag; // type_index: 0
-	char _pad0[6]; // type_index: 0
-	View2D v2d; // type_index: 71
-	bAction *action; // type_index: 61
-	bDopeSheet ads; // type_index: 65
-	float timeslide; // type_index: 7
-	short flag; // type_index: 2
-	char mode; // type_index: 0
-	char mode_prev; // type_index: 0
-	char autosnap; // type_index: 0
-	char cache_display; // type_index: 0
-	char _pad1[6]; // type_index: 0
-	SpaceActionOverlays overlays; // type_index: 68
-	SpaceAction_Runtime runtime; // type_index: 67
-}; 
-
-struct SpaceNla { // Max dep:71
-	SpaceLink *next; // type_index: 70
-	SpaceLink *prev; // type_index: 70
-	ListBase regionbase; // type_index: 22
-	char spacetype; // type_index: 0
-	char link_flag; // type_index: 0
-	char _pad0[6]; // type_index: 0
-	short autosnap; // type_index: 2
-	short flag; // type_index: 2
-	char _pad[4]; // type_index: 0
-	bDopeSheet *ads; // type_index: 65
-	View2D v2d; // type_index: 71
-}; 
-
-struct ActionLayer { // Max dep:72
+struct ActionLayer { // Max dep:12
 	char name[64]; // type_index: 0
 	float influence; // type_index: 7
 	uchar layer_flags; // type_index: 1
@@ -4757,7 +6094,7 @@ struct ActionLayer { // Max dep:72
 	uchar _pad1[4]; // type_index: 1
 }; 
 
-struct ActionSlot { // Max dep:73
+struct ActionSlot { // Max dep:12
 	char name[258]; // type_index: 0
 	short idtype; // type_index: 2
 	int handle; // type_index: 4
@@ -4766,603 +6103,17 @@ struct ActionSlot { // Max dep:73
 	ActionSlotRuntimeHandle *runtime; // type_index: 73
 }; 
 
-struct ActionChannelBag { // Max dep:74
-	int slot_handle; // type_index: 4
-	int group_array_num; // type_index: 4
-	bActionGroup **group_array; // type_index: 58
-	uchar _pad[4]; // type_index: 1
-	int fcurve_array_num; // type_index: 4
-	FCurve **fcurve_array; // type_index: 74
+struct ActionStrip { // Max dep:12
+	int8_t strip_type; // type_index: 12
+	uchar _pad0[3]; // type_index: 1
+	int data_index; // type_index: 4
+	float frame_start; // type_index: 7
+	float frame_end; // type_index: 7
+	float frame_offset; // type_index: 7
+	uchar _pad1[4]; // type_index: 1
 }; 
 
-struct FModifier { // Max dep:75
-	FModifier *next; // type_index: 75
-	FModifier *prev; // type_index: 75
-	FCurve *curve; // type_index: 74
-	void *data; // type_index: 11
-	char name[64]; // type_index: 0
-	short type; // type_index: 2
-	short flag; // type_index: 2
-	short ui_expand_flag; // type_index: 2
-	char _pad[6]; // type_index: 0
-	float influence; // type_index: 7
-	float sfra; // type_index: 7
-	float efra; // type_index: 7
-	float blendin; // type_index: 7
-	float blendout; // type_index: 7
-}; 
-
-struct FMod_Envelope { // Max dep:78
-	FCM_EnvelopeData *data; // type_index: 78
-	int totvert; // type_index: 4
-	float midval; // type_index: 7
-	float min; // type_index: 7
-	float max; // type_index: 7
-}; 
-
-struct FMod_Limits { // Max dep:82
-	rctf rect; // type_index: 82
-	int flag; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct UserDef_TempWinBounds { // Max dep:82
-	rctf file; // type_index: 82
-	rctf userpref; // type_index: 82
-	rctf image; // type_index: 82
-	rctf graph; // type_index: 82
-	rctf info; // type_index: 82
-	rctf outliner; // type_index: 82
-}; 
-
-struct DriverVar { // Max dep:86
-	DriverVar *next; // type_index: 86
-	DriverVar *prev; // type_index: 86
-	char name[64]; // type_index: 0
-	DriverTarget targets[8]; // type_index: 85
-	char num_targets; // type_index: 0
-	char type; // type_index: 0
-	short flag; // type_index: 2
-	float curval; // type_index: 7
-}; 
-
-struct ChannelDriver { // Max dep:88
-	ListBase variables; // type_index: 22
-	char expression[256]; // type_index: 0
-	void *expr_comp; // type_index: 11
-	ExprPyLike_Parsed *expr_simple; // type_index: 88
-	float curval; // type_index: 7
-	float influence; // type_index: 7
-	int type; // type_index: 4
-	int flag; // type_index: 4
-}; 
-
-struct PaintCurvePoint { // Max dep:90
-	BezTriple bez; // type_index: 90
-	float pressure; // type_index: 7
-}; 
-
-struct FCurve { // Max dep:90
-	FCurve *next; // type_index: 74
-	FCurve *prev; // type_index: 74
-	bActionGroup *grp; // type_index: 58
-	ChannelDriver *driver; // type_index: 87
-	ListBase modifiers; // type_index: 22
-	BezTriple *bezt; // type_index: 90
-	FPoint *fpt; // type_index: 89
-	int totvert; // type_index: 4
-	int active_keyframe_index; // type_index: 4
-	float curval; // type_index: 7
-	short flag; // type_index: 2
-	short extend; // type_index: 2
-	char auto_smoothing; // type_index: 0
-	char _pad[3]; // type_index: 0
-	int array_index; // type_index: 4
-	char *rna_path; // type_index: 0
-	int color_mode; // type_index: 4
-	float color[3]; // type_index: 7
-	float prev_norm_factor; // type_index: 7
-	float prev_offset; // type_index: 7
-}; 
-
-struct bGPDcurve_point { // Max dep:90
-	BezTriple bezt; // type_index: 90
-	float pressure; // type_index: 7
-	float strength; // type_index: 7
-	int point_index; // type_index: 4
-	int flag; // type_index: 4
-	float uv_fac; // type_index: 7
-	float uv_rot; // type_index: 7
-	float uv_fill[2]; // type_index: 7
-	float vert_color[4]; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NlaStrip { // Max dep:91
-	NlaStrip *next; // type_index: 91
-	NlaStrip *prev; // type_index: 91
-	ListBase strips; // type_index: 22
-	bAction *act; // type_index: 61
-	int action_slot_handle; // type_index: 4
-	char action_slot_name[258]; // type_index: 0
-	char _pad0[2]; // type_index: 0
-	ListBase fcurves; // type_index: 22
-	ListBase modifiers; // type_index: 22
-	char name[64]; // type_index: 0
-	float influence; // type_index: 7
-	float strip_time; // type_index: 7
-	float start; // type_index: 7
-	float end; // type_index: 7
-	float actstart; // type_index: 7
-	float actend; // type_index: 7
-	float repeat; // type_index: 7
-	float scale; // type_index: 7
-	float blendin; // type_index: 7
-	float blendout; // type_index: 7
-	short blendmode; // type_index: 2
-	short extendmode; // type_index: 2
-	char _pad1[2]; // type_index: 0
-	short type; // type_index: 2
-	void *speaker_handle; // type_index: 11
-	int flag; // type_index: 4
-	char _pad2[4]; // type_index: 0
-	NlaStrip *orig_strip; // type_index: 91
-	void *_pad3; // type_index: 11
-}; 
-
-struct AnimData { // Max dep:92
-	bAction *action; // type_index: 61
-	int slot_handle; // type_index: 4
-	char slot_name[258]; // type_index: 0
-	uchar _pad0[2]; // type_index: 1
-	bAction *tmpact; // type_index: 61
-	int tmp_slot_handle; // type_index: 4
-	char tmp_slot_name[258]; // type_index: 0
-	uchar _pad1[2]; // type_index: 1
-	ListBase nla_tracks; // type_index: 22
-	NlaTrack *act_track; // type_index: 92
-	NlaStrip *actstrip; // type_index: 91
-	ListBase drivers; // type_index: 22
-	ListBase overrides; // type_index: 22
-	FCurve **driver_array; // type_index: 74
-	int flag; // type_index: 4
-	short act_blendmode; // type_index: 2
-	short act_extendmode; // type_index: 2
-	float act_influence; // type_index: 7
-	uchar _pad2[4]; // type_index: 1
-}; 
-
-struct NlaTrack { // Max dep:92
-	NlaTrack *next; // type_index: 92
-	NlaTrack *prev; // type_index: 92
-	ListBase strips; // type_index: 22
-	int flag; // type_index: 4
-	int index; // type_index: 4
-	char name[64]; // type_index: 0
-}; 
-
-struct KS_Path { // Max dep:93
-	KS_Path *next; // type_index: 93
-	KS_Path *prev; // type_index: 93
-	ID *id; // type_index: 26
-	char group[64]; // type_index: 0
-	int idtype; // type_index: 4
-	short groupmode; // type_index: 2
-	short flag; // type_index: 2
-	char *rna_path; // type_index: 0
-	int array_index; // type_index: 4
-	short keyingflag; // type_index: 2
-	short keyingoverride; // type_index: 2
-}; 
-
-struct KeyingSet { // Max dep:94
-	KeyingSet *next; // type_index: 94
-	KeyingSet *prev; // type_index: 94
-	ListBase paths; // type_index: 22
-	char idname[64]; // type_index: 0
-	char name[64]; // type_index: 0
-	char description[1024]; // type_index: 0
-	char typeinfo[64]; // type_index: 0
-	int active_path; // type_index: 4
-	short flag; // type_index: 2
-	short keyingflag; // type_index: 2
-	short keyingoverride; // type_index: 2
-	char _pad[6]; // type_index: 0
-}; 
-
-struct AnimOverride { // Max dep:95
-	AnimOverride *next; // type_index: 95
-	AnimOverride *prev; // type_index: 95
-	char *rna_path; // type_index: 0
-	int array_index; // type_index: 4
-	float value; // type_index: 7
-}; 
-
-struct IdAdtTemplate { // Max dep:96
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-}; 
-
-struct LightProbe { // Max dep:96
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	char type; // type_index: 0
-	char flag; // type_index: 0
-	char attenuation_type; // type_index: 0
-	char parallax_type; // type_index: 0
-	char grid_flag; // type_index: 0
-	char _pad0[3]; // type_index: 0
-	float distinf; // type_index: 7
-	float distpar; // type_index: 7
-	float falloff; // type_index: 7
-	float clipsta; // type_index: 7
-	float clipend; // type_index: 7
-	float vis_bias; // type_index: 7
-	float vis_bleedbias; // type_index: 7
-	float vis_blur; // type_index: 7
-	float intensity; // type_index: 7
-	int grid_resolution_x; // type_index: 4
-	int grid_resolution_y; // type_index: 4
-	int grid_resolution_z; // type_index: 4
-	int grid_bake_samples; // type_index: 4
-	float grid_surface_bias; // type_index: 7
-	float grid_escape_bias; // type_index: 7
-	float grid_normal_bias; // type_index: 7
-	float grid_view_bias; // type_index: 7
-	float grid_facing_bias; // type_index: 7
-	float grid_validity_threshold; // type_index: 7
-	float grid_dilation_threshold; // type_index: 7
-	float grid_dilation_radius; // type_index: 7
-	float grid_clamp_direct; // type_index: 7
-	float grid_clamp_indirect; // type_index: 7
-	int grid_surfel_density; // type_index: 4
-	Collection *visibility_grp; // type_index: 66
-	float data_display_size; // type_index: 7
-	char _pad1[4]; // type_index: 0
-}; 
-
-struct Bone { // Max dep:98
-	Bone *next; // type_index: 50
-	Bone *prev; // type_index: 50
-	IDProperty *prop; // type_index: 24
-	IDProperty *system_properties; // type_index: 24
-	void *_pad0; // type_index: 11
-	Bone *parent; // type_index: 50
-	ListBase childbase; // type_index: 22
-	char name[64]; // type_index: 0
-	float roll; // type_index: 7
-	float head[3]; // type_index: 7
-	float tail[3]; // type_index: 7
-	float bone_mat[3][3]; // type_index: 7
-	int flag; // type_index: 4
-	int8_t drawtype; // type_index: 12
-	char _pad1[3]; // type_index: 0
-	BoneColor color; // type_index: 53
-	char inherit_scale_mode; // type_index: 0
-	char _pad[3]; // type_index: 0
-	float arm_head[3]; // type_index: 7
-	float arm_tail[3]; // type_index: 7
-	float arm_mat[4][4]; // type_index: 7
-	float arm_roll; // type_index: 7
-	float dist; // type_index: 7
-	float weight; // type_index: 7
-	float xwidth; // type_index: 7
-	float length; // type_index: 7
-	float zwidth; // type_index: 7
-	float rad_head; // type_index: 7
-	float rad_tail; // type_index: 7
-	float roll1; // type_index: 7
-	float roll2; // type_index: 7
-	float curveInX; // type_index: 7
-	float curveInY; // type_index: 7
-	float curveOutX; // type_index: 7
-	float curveOutY; // type_index: 7
-	float ease1; // type_index: 7
-	float ease2; // type_index: 7
-	float scaleIn; // type_index: 7
-	float scale_in_y; // type_index: 7
-	float scaleOut; // type_index: 7
-	float scale_out_y; // type_index: 7
-	float scale_in[3]; // type_index: 7
-	float scale_out[3]; // type_index: 7
-	float size[3]; // type_index: 7
-	int layer; // type_index: 4
-	short segments; // type_index: 2
-	char bbone_mapping_mode; // type_index: 0
-	char _pad2[7]; // type_index: 0
-	char bbone_prev_type; // type_index: 0
-	char bbone_next_type; // type_index: 0
-	int bbone_flag; // type_index: 4
-	short bbone_prev_flag; // type_index: 2
-	short bbone_next_flag; // type_index: 2
-	Bone *bbone_prev; // type_index: 50
-	Bone *bbone_next; // type_index: 50
-	Bone_Runtime runtime; // type_index: 98
-}; 
-
-struct BoneCollection { // Max dep:100
-	BoneCollection *next; // type_index: 100
-	BoneCollection *prev; // type_index: 100
-	char name[64]; // type_index: 0
-	ListBase bones; // type_index: 22
-	uchar flags; // type_index: 1
-	uchar _pad0[7]; // type_index: 1
-	int child_index; // type_index: 4
-	int child_count; // type_index: 4
-	IDProperty *prop; // type_index: 24
-	IDProperty *system_properties; // type_index: 24
-}; 
-
-struct bArmature_Runtime { // Max dep:100
-	int active_collection_index; // type_index: 4
-	uchar _pad0[4]; // type_index: 1
-	BoneCollection *active_collection; // type_index: 100
-}; 
-
-struct bArmature { // Max dep:102
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	ListBase bonebase; // type_index: 22
-	GHash *bonehash; // type_index: 55
-	void *_pad1; // type_index: 11
-	ListBase *edbo; // type_index: 22
-	Bone *act_bone; // type_index: 50
-	EditBone *act_edbone; // type_index: 102
-	char needs_flush_to_id; // type_index: 0
-	char _pad0[3]; // type_index: 0
-	int flag; // type_index: 4
-	int drawtype; // type_index: 4
-	short deformflag; // type_index: 2
-	short pathflag; // type_index: 2
-	ListBase collections; // type_index: 22
-	BoneCollection **collection_array; // type_index: 100
-	int collection_array_num; // type_index: 4
-	int collection_root_count; // type_index: 4
-	char active_collection_name[64]; // type_index: 0
-	int layer_used; // type_index: 4
-	int layer; // type_index: 4
-	int layer_protected; // type_index: 4
-	float axes_position; // type_index: 7
-	bArmature_Runtime runtime; // type_index: 99
-}; 
-
-struct BoneCollectionMember { // Max dep:103
-	BoneCollectionMember *next; // type_index: 103
-	BoneCollectionMember *prev; // type_index: 103
-	Bone *bone; // type_index: 50
-}; 
-
-struct BoneCollectionReference { // Max dep:104
-	BoneCollectionReference *next; // type_index: 104
-	BoneCollectionReference *prev; // type_index: 104
-	BoneCollection *bcoll; // type_index: 100
-}; 
-
-struct AssetTag { // Max dep:105
-	AssetTag *next; // type_index: 105
-	AssetTag *prev; // type_index: 105
-	char name[64]; // type_index: 0
-}; 
-
-struct AssetMetaData { // Max dep:107
-	AssetTypeInfo *local_type_info; // type_index: 106
-	IDProperty *properties; // type_index: 24
-	bUUID catalog_id; // type_index: 107
-	char catalog_simple_name[64]; // type_index: 0
-	char *author; // type_index: 0
-	char *description; // type_index: 0
-	char *copyright; // type_index: 0
-	char *license; // type_index: 0
-	ListBase tags; // type_index: 22
-	short active_tag; // type_index: 2
-	short tot_tags; // type_index: 2
-	char _pad[4]; // type_index: 0
-}; 
-
-struct AssetShelfSettings { // Max dep:108
-	AssetLibraryReference asset_library_reference; // type_index: 108
-	ListBase enabled_catalog_paths; // type_index: 22
-	char *active_catalog_path; // type_index: 0
-	char search_string[64]; // type_index: 0
-	short preview_size; // type_index: 2
-	short display_flag; // type_index: 2
-	char _pad1[4]; // type_index: 0
-}; 
-
-struct ToolSystemBrushBindings { // Max dep:109
-	AssetWeakReference *main_brush_asset_reference; // type_index: 109
-	ListBase active_brush_per_brush_type; // type_index: 22
-}; 
-
-struct AssetCatalogPathLink { // Max dep:110
-	AssetCatalogPathLink *next; // type_index: 110
-	AssetCatalogPathLink *prev; // type_index: 110
-	char *path; // type_index: 0
-}; 
-
-struct AttributeArray { // Max dep:112
-	void *data; // type_index: 11
-	ImplicitSharingInfoHandle *sharing_info; // type_index: 112
-	int64_t size; // type_index: 9
-}; 
-
-struct AttributeSingle { // Max dep:112
-	void *data; // type_index: 11
-	ImplicitSharingInfoHandle *sharing_info; // type_index: 112
-}; 
-
-struct CustomDataLayer { // Max dep:112
-	int type; // type_index: 4
-	int offset; // type_index: 4
-	int flag; // type_index: 4
-	int active; // type_index: 4
-	int active_rnd; // type_index: 4
-	int active_clone; // type_index: 4
-	int active_mask; // type_index: 4
-	int uid; // type_index: 4
-	char name[68]; // type_index: 0
-	char _pad1[4]; // type_index: 0
-	void *data; // type_index: 11
-	ImplicitSharingInfoHandle *sharing_info; // type_index: 112
-}; 
-
-struct PackedFile { // Max dep:112
-	int size; // type_index: 4
-	int seek; // type_index: 4
-	void *data; // type_index: 11
-	ImplicitSharingInfoHandle *sharing_info; // type_index: 112
-}; 
-
-struct AttributeStorage { // Max dep:116
-	Attribute *dna_attributes; // type_index: 114
-	int dna_attributes_num; // type_index: 4
-	char _pad[4]; // type_index: 0
-	AttributeStorageRuntimeHandle *runtime; // type_index: 116
-}; 
-
-struct BoidRuleFollowLeader { // Max dep:117
-	BoidRule rule; // type_index: 117
-	Object *ob; // type_index: 51
-	float loc[3]; // type_index: 7
-	float oloc[3]; // type_index: 7
-	float cfra; // type_index: 7
-	float distance; // type_index: 7
-	int options; // type_index: 4
-	int queue_size; // type_index: 4
-}; 
-
-struct BoidRuleAverageSpeed { // Max dep:117
-	BoidRule rule; // type_index: 117
-	float wander; // type_index: 7
-	float level; // type_index: 7
-	float speed; // type_index: 7
-	char _pad0[4]; // type_index: 0
-}; 
-
-struct BoidRuleAvoidCollision { // Max dep:117
-	BoidRule rule; // type_index: 117
-	int options; // type_index: 4
-	float look_ahead; // type_index: 7
-}; 
-
-struct BoidRuleGoalAvoid { // Max dep:117
-	BoidRule rule; // type_index: 117
-	Object *ob; // type_index: 51
-	int options; // type_index: 4
-	float fear_factor; // type_index: 7
-	int signal_id; // type_index: 4
-	int channels; // type_index: 4
-}; 
-
-struct BoidRule { // Max dep:117
-	BoidRule *next; // type_index: 117
-	BoidRule *prev; // type_index: 117
-	int type; // type_index: 4
-	int flag; // type_index: 4
-	char name[32]; // type_index: 0
-}; 
-
-struct BoidRuleFight { // Max dep:117
-	BoidRule rule; // type_index: 117
-	float distance; // type_index: 7
-	float flee_distance; // type_index: 7
-}; 
-
-struct BoidParticle { // Max dep:123
-	Object *ground; // type_index: 51
-	BoidData data; // type_index: 123
-	float gravity[3]; // type_index: 7
-	float wander[3]; // type_index: 7
-	char _pad0[4]; // type_index: 0
-}; 
-
-struct BoidState { // Max dep:124
-	BoidState *next; // type_index: 124
-	BoidState *prev; // type_index: 124
-	ListBase rules; // type_index: 22
-	ListBase conditions; // type_index: 22
-	ListBase actions; // type_index: 22
-	char name[32]; // type_index: 0
-	int id; // type_index: 4
-	int flag; // type_index: 4
-	int ruleset_type; // type_index: 4
-	float rule_fuzziness; // type_index: 7
-	int signal_id; // type_index: 4
-	int channels; // type_index: 4
-	float volume; // type_index: 7
-	float falloff; // type_index: 7
-}; 
-
-struct UnifiedPaintSettings { // Max dep:127
-	int size; // type_index: 4
-	float unprojected_radius; // type_index: 7
-	float alpha; // type_index: 7
-	float weight; // type_index: 7
-	float color[3]; // type_index: 7
-	float secondary_color[3]; // type_index: 7
-	float rgb[3]; // type_index: 7
-	float secondary_rgb[3]; // type_index: 7
-	int color_jitter_flag; // type_index: 4
-	float hsv_jitter[3]; // type_index: 7
-	CurveMapping *curve_rand_hue; // type_index: 127
-	CurveMapping *curve_rand_saturation; // type_index: 127
-	CurveMapping *curve_rand_value; // type_index: 127
-	int input_samples; // type_index: 4
-	int flag; // type_index: 4
-}; 
-
-struct UvSculpt { // Max dep:127
-	CurveMapping *strength_curve; // type_index: 127
-	int size; // type_index: 4
-	float strength; // type_index: 7
-	int8_t curve_preset; // type_index: 12
-	char _pad[7]; // type_index: 0
-}; 
-
-struct BrushCurvesSculptSettings { // Max dep:127
-	int add_amount; // type_index: 4
-	int points_per_curve; // type_index: 4
-	int flag; // type_index: 4
-	float minimum_length; // type_index: 7
-	float curve_length; // type_index: 7
-	float minimum_distance; // type_index: 7
-	float curve_radius; // type_index: 7
-	int density_add_attempts; // type_index: 4
-	uchar density_mode; // type_index: 1
-	char _pad[7]; // type_index: 0
-	CurveMapping *curve_parameter_falloff; // type_index: 127
-}; 
-
-struct GP_Interpolate_Settings { // Max dep:127
-	CurveMapping *custom_ipo; // type_index: 127
-}; 
-
-struct ColorManagedViewSettings { // Max dep:127
-	int flag; // type_index: 4
-	char _pad[4]; // type_index: 0
-	char look[64]; // type_index: 0
-	char view_transform[64]; // type_index: 0
-	float exposure; // type_index: 7
-	float gamma; // type_index: 7
-	float temperature; // type_index: 7
-	float tint; // type_index: 7
-	CurveMapping *curve_mapping; // type_index: 127
-	void *_pad2; // type_index: 11
-}; 
-
-struct GreasePencilModifierInfluenceData { // Max dep:128
-	int flag; // type_index: 4
-	char _pad1[4]; // type_index: 0
-	char layer_name[64]; // type_index: 0
-	Material *material; // type_index: 128
-	int layer_pass; // type_index: 4
-	int material_pass; // type_index: 4
-	char vertex_group_name[64]; // type_index: 0
-	CurveMapping *custom_curve; // type_index: 127
-	void *_pad2; // type_index: 11
-}; 
-
-struct BrushGpencilSettings { // Max dep:128
+struct BrushGpencilSettings { // Max dep:12
 	float draw_smoothfac; // type_index: 7
 	float fill_factor; // type_index: 7
 	float draw_strength; // type_index: 7
@@ -5422,1097 +6173,1019 @@ struct BrushGpencilSettings { // Max dep:128
 	Material *material_alt; // type_index: 128
 }; 
 
-struct bNodeSocketValueMaterial { // Max dep:128
-	Material *value; // type_index: 128
+struct MInt8Property { // Max dep:12
+	int8_t i; // type_index: 12
 }; 
 
-struct ColorMapping { // Max dep:132
-	ColorBand coba; // type_index: 132
-	float bright; // type_index: 7
-	float contrast; // type_index: 7
-	float saturation; // type_index: 7
+struct GreasePencilDrawingBase { // Max dep:12
+	int8_t type; // type_index: 12
+	char _pad[3]; // type_index: 0
 	int flag; // type_index: 4
-	float blend_color[3]; // type_index: 7
-	float blend_factor; // type_index: 7
-	int blend_type; // type_index: 4
+}; 
+
+struct Attribute { // Max dep:12
+	char *name; // type_index: 0
+	short data_type; // type_index: 2
+	int8_t domain; // type_index: 12
+	int8_t storage_type; // type_index: 12
 	char _pad[4]; // type_index: 0
+	void *data; // type_index: 11
 }; 
 
-struct Brush { // Max dep:133
-	ID id; // type_index: 26
-	CurveMapping *curve; // type_index: 127
-	MTex mtex; // type_index: 131
-	MTex mask_mtex; // type_index: 131
-	PreviewImage *preview; // type_index: 37
-	ColorBand *gradient; // type_index: 132
-	PaintCurve *paint_curve; // type_index: 133
-	float normal_weight; // type_index: 7
-	float rake_factor; // type_index: 7
-	short blend; // type_index: 2
-	short ob_mode; // type_index: 2
-	float weight; // type_index: 7
-	int size; // type_index: 4
+struct wmKeyMapItem { // Max dep:12
+	wmKeyMapItem *next; // type_index: 1089
+	wmKeyMapItem *prev; // type_index: 1089
+	char idname[64]; // type_index: 0
+	IDProperty *properties; // type_index: 24
+	char propvalue_str[64]; // type_index: 0
+	short propvalue; // type_index: 2
+	short type; // type_index: 2
+	int8_t val; // type_index: 12
+	int8_t direction; // type_index: 12
+	int8_t shift; // type_index: 12
+	int8_t ctrl; // type_index: 12
+	int8_t alt; // type_index: 12
+	int8_t oskey; // type_index: 12
+	int8_t hyper; // type_index: 12
+	char _pad0[7]; // type_index: 0
+	short keymodifier; // type_index: 2
+	uchar flag; // type_index: 1
+	uchar maptype; // type_index: 1
+	short id; // type_index: 2
+	PointerRNA *ptr; // type_index: 1090
+}; 
+
+struct GreasePencilFrame { // Max dep:12
+	int drawing_index; // type_index: 4
 	int flag; // type_index: 4
-	int flag2; // type_index: 4
-	int sampling_flag; // type_index: 4
-	int input_samples; // type_index: 4
-	int mask_pressure; // type_index: 4
-	float jitter; // type_index: 7
-	int jitter_absolute; // type_index: 4
-	int overlay_flags; // type_index: 4
-	int spacing; // type_index: 4
-	int smooth_stroke_radius; // type_index: 4
-	float smooth_stroke_factor; // type_index: 7
-	float rate; // type_index: 7
-	float color[3]; // type_index: 7
-	int color_jitter_flag; // type_index: 4
-	float hsv_jitter[3]; // type_index: 7
-	CurveMapping *curve_rand_hue; // type_index: 127
-	CurveMapping *curve_rand_saturation; // type_index: 127
-	CurveMapping *curve_rand_value; // type_index: 127
-	CurveMapping *curve_size; // type_index: 127
-	CurveMapping *curve_strength; // type_index: 127
-	CurveMapping *curve_jitter; // type_index: 127
-	float alpha; // type_index: 7
-	float hardness; // type_index: 7
-	float flow; // type_index: 7
-	float wet_mix; // type_index: 7
-	float wet_persistence; // type_index: 7
-	float density; // type_index: 7
-	int paint_flags; // type_index: 4
-	float tip_roundness; // type_index: 7
-	float tip_scale_x; // type_index: 7
-	float secondary_color[3]; // type_index: 7
-	float rgb[3]; // type_index: 7
-	float secondary_rgb[3]; // type_index: 7
-	float dash_ratio; // type_index: 7
-	int dash_samples; // type_index: 4
-	int sculpt_plane; // type_index: 4
-	float plane_offset; // type_index: 7
-	int gradient_spacing; // type_index: 4
-	char gradient_stroke_mode; // type_index: 0
-	char gradient_fill_mode; // type_index: 0
-	char has_unsaved_changes; // type_index: 0
-	char falloff_shape; // type_index: 0
-	float falloff_angle; // type_index: 7
-	char sculpt_tool; // type_index: 0
-	char vertexpaint_tool; // type_index: 0
-	char weightpaint_tool; // type_index: 0
-	char imagepaint_tool; // type_index: 0
-	char mask_tool; // type_index: 0
-	char gpencil_tool; // type_index: 0
-	char gpencil_vertex_tool; // type_index: 0
-	char gpencil_sculpt_tool; // type_index: 0
-	char gpencil_weight_tool; // type_index: 0
-	char curves_sculpt_tool; // type_index: 0
-	char _pad1[10]; // type_index: 0
-	float autosmooth_factor; // type_index: 7
-	float tilt_strength_factor; // type_index: 7
-	float topology_rake_factor; // type_index: 7
-	float crease_pinch_factor; // type_index: 7
-	float normal_radius_factor; // type_index: 7
-	float area_radius_factor; // type_index: 7
-	float wet_paint_radius_factor; // type_index: 7
-	float plane_trim; // type_index: 7
-	float height; // type_index: 7
-	float plane_height; // type_index: 7
-	float plane_depth; // type_index: 7
-	float stabilize_normal; // type_index: 7
-	float stabilize_plane; // type_index: 7
-	int plane_inversion_mode; // type_index: 4
-	float texture_sample_bias; // type_index: 7
-	int curve_preset; // type_index: 4
-	float disconnected_distance_max; // type_index: 7
-	int deform_target; // type_index: 4
-	int automasking_flags; // type_index: 4
-	int automasking_boundary_edges_propagation_steps; // type_index: 4
-	float automasking_start_normal_limit; // type_index: 7
-	float automasking_start_normal_falloff; // type_index: 7
-	float automasking_view_normal_limit; // type_index: 7
-	float automasking_view_normal_falloff; // type_index: 7
-	int elastic_deform_type; // type_index: 4
-	float elastic_deform_volume_preservation; // type_index: 7
-	int snake_hook_deform_type; // type_index: 4
-	int pose_deform_type; // type_index: 4
-	float pose_offset; // type_index: 7
-	int pose_smooth_iterations; // type_index: 4
-	int pose_ik_segments; // type_index: 4
-	int pose_origin_type; // type_index: 4
-	int boundary_deform_type; // type_index: 4
-	int boundary_falloff_type; // type_index: 4
-	float boundary_offset; // type_index: 7
-	int cloth_deform_type; // type_index: 4
-	int cloth_force_falloff_type; // type_index: 4
-	int cloth_simulation_area_type; // type_index: 4
-	float cloth_mass; // type_index: 7
-	float cloth_damping; // type_index: 7
-	float cloth_sim_limit; // type_index: 7
-	float cloth_sim_falloff; // type_index: 7
-	float cloth_constraint_softbody_strength; // type_index: 7
-	int smooth_deform_type; // type_index: 4
-	float surface_smooth_shape_preservation; // type_index: 7
-	float surface_smooth_current_vertex; // type_index: 7
-	int surface_smooth_iterations; // type_index: 4
-	float multiplane_scrape_angle; // type_index: 7
-	int smear_deform_type; // type_index: 4
-	int slide_deform_type; // type_index: 4
-	int texture_overlay_alpha; // type_index: 4
-	int mask_overlay_alpha; // type_index: 4
-	int cursor_overlay_alpha; // type_index: 4
-	float unprojected_radius; // type_index: 7
-	float sharp_threshold; // type_index: 7
-	int blur_kernel_radius; // type_index: 4
-	int blur_mode; // type_index: 4
-	float fill_threshold; // type_index: 7
-	float add_col[4]; // type_index: 7
-	float sub_col[4]; // type_index: 7
-	float stencil_pos[2]; // type_index: 7
-	float stencil_dimension[2]; // type_index: 7
-	float mask_stencil_pos[2]; // type_index: 7
-	float mask_stencil_dimension[2]; // type_index: 7
-	BrushGpencilSettings *gpencil_settings; // type_index: 126
-	BrushCurvesSculptSettings *curves_sculpt_settings; // type_index: 129
-	int automasking_cavity_blur_steps; // type_index: 4
-	float automasking_cavity_factor; // type_index: 7
-	CurveMapping *automasking_cavity_curve; // type_index: 127
+	int8_t type; // type_index: 12
+	char _pad[3]; // type_index: 0
 }; 
 
-struct PaletteColor { // Max dep:134
-	PaletteColor *next; // type_index: 134
-	PaletteColor *prev; // type_index: 134
-	float color[3]; // type_index: 7
-	float value; // type_index: 7
-	float rgb[3]; // type_index: 7
-	float _pad; // type_index: 7
-}; 
-
-struct PaintCurve { // Max dep:136
-	ID id; // type_index: 26
-	PaintCurvePoint *points; // type_index: 136
-	int tot_points; // type_index: 4
-	int add_index; // type_index: 4
-}; 
-
-struct CacheObjectPath { // Max dep:137
-	CacheObjectPath *next; // type_index: 137
-	CacheObjectPath *prev; // type_index: 137
-	char path[4096]; // type_index: 0
-}; 
-
-struct CacheFileLayer { // Max dep:138
-	CacheFileLayer *next; // type_index: 138
-	CacheFileLayer *prev; // type_index: 138
-	char filepath[1024]; // type_index: 0
+struct NodesModifierBake { // Max dep:12
+	int id; // type_index: 4
 	int flag; // type_index: 4
-	int _pad; // type_index: 4
+	uchar bake_mode; // type_index: 1
+	int8_t bake_target; // type_index: 12
+	char _pad[6]; // type_index: 0
+	char *directory; // type_index: 0
+	int frame_start; // type_index: 4
+	int frame_end; // type_index: 4
+	int data_blocks_num; // type_index: 4
+	int active_data_block; // type_index: 4
+	NodesModifierDataBlock *data_blocks; // type_index: 504
+	NodesModifierPackedBake *packed; // type_index: 506
+	void *_pad2; // type_index: 11
+	int64_t bake_size; // type_index: 9
 }; 
 
-struct CacheFile { // Max dep:141
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	ListBase object_paths; // type_index: 22
-	ListBase layers; // type_index: 22
-	char filepath[1024]; // type_index: 0
-	char is_sequence; // type_index: 0
-	char forward_axis; // type_index: 0
-	char up_axis; // type_index: 0
-	char override_frame; // type_index: 0
-	float scale; // type_index: 7
-	float frame; // type_index: 7
-	float frame_offset; // type_index: 7
-	short flag; // type_index: 2
-	char type; // type_index: 0
-	char _pad1[1]; // type_index: 0
-	int active_layer; // type_index: 4
-	char _pad2[3]; // type_index: 0
-	char velocity_unit; // type_index: 0
-	char velocity_name[64]; // type_index: 0
-	char _pad3[4]; // type_index: 0
-	CacheArchiveHandle *handle; // type_index: 140
-	char handle_filepath[1024]; // type_index: 0
-	GSet *handle_readers; // type_index: 141
-}; 
-
-struct MaterialGPencilStyle { // Max dep:144
-	Image *sima; // type_index: 144
-	Image *ima; // type_index: 144
-	float stroke_rgba[4]; // type_index: 7
-	float fill_rgba[4]; // type_index: 7
-	float mix_rgba[4]; // type_index: 7
-	short flag; // type_index: 2
-	short index; // type_index: 2
-	short stroke_style; // type_index: 2
-	short fill_style; // type_index: 2
-	float mix_factor; // type_index: 7
-	float gradient_angle; // type_index: 7
-	float gradient_radius; // type_index: 7
+struct GreasePencilOnionSkinningSettings { // Max dep:12
+	float opacity; // type_index: 7
+	int8_t mode; // type_index: 12
+	uchar flag; // type_index: 1
+	uchar filter; // type_index: 1
+	char _pad[1]; // type_index: 0
+	short num_frames_before; // type_index: 2
+	short num_frames_after; // type_index: 2
+	float color_before[3]; // type_index: 7
+	float color_after[3]; // type_index: 7
 	char _pad2[4]; // type_index: 0
-	float gradient_scale[2]; // type_index: 7
-	float gradient_shift[2]; // type_index: 7
-	float texture_angle; // type_index: 7
-	float texture_scale[2]; // type_index: 7
-	float texture_offset[2]; // type_index: 7
-	float texture_opacity; // type_index: 7
-	float texture_pixsize; // type_index: 7
-	int mode; // type_index: 4
-	int gradient_type; // type_index: 4
-	float mix_stroke_factor; // type_index: 7
-	int alignment_mode; // type_index: 4
-	float alignment_rotation; // type_index: 7
 }; 
 
-struct bNodeSocketValueImage { // Max dep:144
-	Image *value; // type_index: 144
+struct NodeSeparateBundleItem { // Max dep:12
+	char *name; // type_index: 0
+	int identifier; // type_index: 4
+	short socket_type; // type_index: 2
+	int8_t structure_type; // type_index: 12
+	char _pad[1]; // type_index: 0
 }; 
 
-struct PaintModeSettings { // Max dep:145
-	char canvas_source; // type_index: 0
+struct NodeCombineBundleItem { // Max dep:12
+	char *name; // type_index: 0
+	int identifier; // type_index: 4
+	short socket_type; // type_index: 2
+	int8_t structure_type; // type_index: 12
+	char _pad[1]; // type_index: 0
+}; 
+
+struct NodeShaderMix { // Max dep:12
+	int8_t data_type; // type_index: 12
+	int8_t factor_mode; // type_index: 12
+	int8_t clamp_factor; // type_index: 12
+	int8_t clamp_result; // type_index: 12
+	int8_t blend_type; // type_index: 12
+	char _pad[3]; // type_index: 0
+}; 
+
+struct NodeCombSepColor { // Max dep:12
+	int8_t mode; // type_index: 12
+}; 
+
+struct NodeFunctionCompare { // Max dep:12
+	int8_t operation; // type_index: 12
+	int8_t data_type; // type_index: 12
+	int8_t mode; // type_index: 12
+	char _pad[1]; // type_index: 0
+}; 
+
+struct GeometryNodeFieldToGrid { // Max dep:12
+	int8_t data_type; // type_index: 12
+	char _pad[3]; // type_index: 0
+	int next_identifier; // type_index: 4
+	GeometryNodeFieldToGridItem *items; // type_index: 756
+	int items_num; // type_index: 4
+	int active_index; // type_index: 4
+}; 
+
+struct GeometryNodeFieldToGridItem { // Max dep:12
+	int8_t data_type; // type_index: 12
+	char _pad[3]; // type_index: 0
+	int identifier; // type_index: 4
+	char *name; // type_index: 0
+}; 
+
+struct NodeEvaluateClosureOutputItem { // Max dep:12
+	char *name; // type_index: 0
+	short socket_type; // type_index: 2
+	int8_t structure_type; // type_index: 12
+	char _pad[1]; // type_index: 0
+	int identifier; // type_index: 4
+}; 
+
+struct NodeEvaluateClosureInputItem { // Max dep:12
+	char *name; // type_index: 0
+	short socket_type; // type_index: 2
+	int8_t structure_type; // type_index: 12
+	char _pad[1]; // type_index: 0
+	int identifier; // type_index: 4
+}; 
+
+struct NodeClosureOutputItem { // Max dep:12
+	char *name; // type_index: 0
+	short socket_type; // type_index: 2
+	int8_t structure_type; // type_index: 12
+	char _pad[1]; // type_index: 0
+	int identifier; // type_index: 4
+}; 
+
+struct GreasePencilLayerTreeNode { // Max dep:12
+	GreasePencilLayerTreeNode *next; // type_index: 308
+	GreasePencilLayerTreeNode *prev; // type_index: 308
+	GreasePencilLayerTreeGroup *parent; // type_index: 309
+	char *name; // type_index: 0
+	int8_t type; // type_index: 12
 	char _pad[7]; // type_index: 0
-	Image *canvas_image; // type_index: 144
-	ImageUser image_user; // type_index: 145
-}; 
-
-struct TexPaintSlot { // Max dep:145
-	Image *ima; // type_index: 144
-	ImageUser *image_user; // type_index: 145
-	char *uvname; // type_index: 0
-	char *attribute_name; // type_index: 0
-	int valid; // type_index: 4
-	int interp; // type_index: 4
-}; 
-
-struct bObjectSolverConstraint { // Max dep:146
-	MovieClip *clip; // type_index: 146
+	float color[3]; // type_index: 7
 	int flag; // type_index: 4
+}; 
+
+struct IDPropertyUIDataFloat { // Max dep:14
+	IDPropertyUIData base; // type_index: 14
+	double *default_array; // type_index: 8
+	int default_array_len; // type_index: 4
 	char _pad[4]; // type_index: 0
-	char object[64]; // type_index: 0
-	float invmat[4][4]; // type_index: 7
-	Object *camera; // type_index: 51
+	float step; // type_index: 7
+	int precision; // type_index: 4
+	double min; // type_index: 8
+	double max; // type_index: 8
+	double soft_min; // type_index: 8
+	double soft_max; // type_index: 8
+	double default_value; // type_index: 8
 }; 
 
-struct bCameraSolverConstraint { // Max dep:146
-	MovieClip *clip; // type_index: 146
-	int flag; // type_index: 4
-	char _pad[4]; // type_index: 0
+struct IDPropertyUIDataID { // Max dep:14
+	IDPropertyUIData base; // type_index: 14
+	short id_type; // type_index: 2
+	char _pad[6]; // type_index: 0
 }; 
 
-struct bFollowTrackConstraint { // Max dep:146
-	MovieClip *clip; // type_index: 146
-	char track[64]; // type_index: 0
-	int flag; // type_index: 4
-	int frame_method; // type_index: 4
-	char object[64]; // type_index: 0
-	Object *camera; // type_index: 51
-	Object *depth_ob; // type_index: 51
+struct IDPropertyUIDataString { // Max dep:14
+	IDPropertyUIData base; // type_index: 14
+	char *default_value; // type_index: 0
 }; 
 
-struct CameraBGImage { // Max dep:147
-	CameraBGImage *next; // type_index: 143
-	CameraBGImage *prev; // type_index: 143
-	Image *ima; // type_index: 144
-	ImageUser iuser; // type_index: 145
-	MovieClip *clip; // type_index: 146
-	MovieClipUser cuser; // type_index: 147
-	float offset[2]; // type_index: 7
-	float scale; // type_index: 7
-	float rotation; // type_index: 7
-	float alpha; // type_index: 7
-	short flag; // type_index: 2
-	short source; // type_index: 2
+struct IDPropertyUIDataBool { // Max dep:14
+	IDPropertyUIData base; // type_index: 14
+	int8_t *default_array; // type_index: 12
+	int default_array_len; // type_index: 4
+	char _pad[3]; // type_index: 0
+	int8_t default_value; // type_index: 12
 }; 
 
-struct Camera { // Max dep:152
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
+struct IDPropertyUIDataInt { // Max dep:14
+	IDPropertyUIData base; // type_index: 14
+	int *default_array; // type_index: 4
+	int default_array_len; // type_index: 4
+	int min; // type_index: 4
+	int max; // type_index: 4
+	int soft_min; // type_index: 4
+	int soft_max; // type_index: 4
+	int step; // type_index: 4
+	int default_value; // type_index: 4
+	int enum_items_num; // type_index: 4
+	IDPropertyUIDataEnumItem *enum_items; // type_index: 15
+}; 
+
+struct IDProperty { // Max dep:21
+	IDProperty *next; // type_index: 24
+	IDProperty *prev; // type_index: 24
 	char type; // type_index: 0
-	char dtx; // type_index: 0
+	char subtype; // type_index: 0
 	short flag; // type_index: 2
-	float passepartalpha; // type_index: 7
-	float clipsta; // type_index: 7
-	float clipend; // type_index: 7
-	float lens; // type_index: 7
-	float ortho_scale; // type_index: 7
-	float drawsize; // type_index: 7
-	float sensor_x; // type_index: 7
-	float sensor_y; // type_index: 7
-	float shiftx; // type_index: 7
-	float shifty; // type_index: 7
-	float YF_dofdist; // type_index: 7
-	char sensor_fit; // type_index: 0
-	char panorama_type; // type_index: 0
-	char _pad[2]; // type_index: 0
-	float fisheye_fov; // type_index: 7
-	float fisheye_lens; // type_index: 7
-	float latitude_min; // type_index: 7
-	float latitude_max; // type_index: 7
-	float longitude_min; // type_index: 7
-	float longitude_max; // type_index: 7
-	float fisheye_polynomial_k0; // type_index: 7
-	float fisheye_polynomial_k1; // type_index: 7
-	float fisheye_polynomial_k2; // type_index: 7
-	float fisheye_polynomial_k3; // type_index: 7
-	float fisheye_polynomial_k4; // type_index: 7
-	float central_cylindrical_range_u_min; // type_index: 7
-	float central_cylindrical_range_u_max; // type_index: 7
-	float central_cylindrical_range_v_min; // type_index: 7
-	float central_cylindrical_range_v_max; // type_index: 7
-	float central_cylindrical_radius; // type_index: 7
-	float _pad2; // type_index: 7
-	Text *custom_shader; // type_index: 151
-	char custom_filepath[1024]; // type_index: 0
-	char custom_bytecode_hash[64]; // type_index: 0
-	char *custom_bytecode; // type_index: 0
-	int custom_mode; // type_index: 4
-	int _pad3; // type_index: 4
-	Object *dof_ob; // type_index: 51
-	GPUDOFSettings gpu_dof; // type_index: 152
-	CameraDOFSettings dof; // type_index: 148
-	ListBase bg_images; // type_index: 22
-	CameraStereoSettings stereo; // type_index: 142
-	float composition_guide_color[4]; // type_index: 7
-	Camera_Runtime runtime; // type_index: 149
+	char name[64]; // type_index: 0
+	char _pad0[4]; // type_index: 0
+	IDPropertyData data; // type_index: 21
+	int len; // type_index: 4
+	int totallen; // type_index: 4
+	IDPropertyUIData *ui_data; // type_index: 14
 }; 
 
-struct ClothCollSettings { // Max dep:154
-	LinkNode *collision_list; // type_index: 154
-	float epsilon; // type_index: 7
-	float self_friction; // type_index: 7
-	float friction; // type_index: 7
-	float damping; // type_index: 7
-	float selfepsilon; // type_index: 7
-	float repel_force; // type_index: 7
-	float distance_repel; // type_index: 7
-	int flags; // type_index: 4
-	short self_loop_count; // type_index: 2
-	short loop_count; // type_index: 2
+struct bUserMenu { // Max dep:22
+	bUserMenu *next; // type_index: 1034
+	bUserMenu *prev; // type_index: 1034
+	char space_type; // type_index: 0
+	char _pad0[7]; // type_index: 0
+	char context[64]; // type_index: 0
+	ListBase items; // type_index: 22
+}; 
+
+struct MovieTrackingDopesheet { // Max dep:22
+	int ok; // type_index: 4
+	short sort_method; // type_index: 2
+	short flag; // type_index: 2
+	ListBase coverage_segments; // type_index: 22
+	ListBase channels; // type_index: 22
+	int tot_channel; // type_index: 4
 	char _pad[4]; // type_index: 0
-	Collection *group; // type_index: 66
-	short vgroup_selfcol; // type_index: 2
-	short vgroup_objcol; // type_index: 2
-	char _pad2[4]; // type_index: 0
-	float clamp; // type_index: 7
-	float self_clamp; // type_index: 7
 }; 
 
-struct ClothSimSettings { // Max dep:155
-	LinkNode *cache; // type_index: 154
-	float mingoal; // type_index: 7
-	float Cdis; // type_index: 7
-	float Cvi; // type_index: 7
-	float gravity[3]; // type_index: 7
-	float dt; // type_index: 7
-	float mass; // type_index: 7
-	float structural; // type_index: 7
-	float shear; // type_index: 7
-	float bending; // type_index: 7
-	float max_bend; // type_index: 7
-	float max_struct; // type_index: 7
-	float max_shear; // type_index: 7
-	float max_sewing; // type_index: 7
-	float avg_spring_len; // type_index: 7
-	float timescale; // type_index: 7
-	float time_scale; // type_index: 7
-	float maxgoal; // type_index: 7
-	float eff_force_scale; // type_index: 7
-	float eff_wind_scale; // type_index: 7
-	float sim_time_old; // type_index: 7
-	float defgoal; // type_index: 7
+struct SpaceUserPref { // Max dep:22
+	SpaceLink *next; // type_index: 70
+	SpaceLink *prev; // type_index: 70
+	ListBase regionbase; // type_index: 22
+	char spacetype; // type_index: 0
+	char link_flag; // type_index: 0
+	char _pad0[6]; // type_index: 0
+	char _pad1[7]; // type_index: 0
+	char filter_type; // type_index: 0
+	char filter[64]; // type_index: 0
+}; 
+
+struct bDopeSheet { // Max dep:22
+	ID *source; // type_index: 26
+	ListBase chanbase; // type_index: 22
+	Collection *filter_grp; // type_index: 66
+	char searchstr[64]; // type_index: 0
+	int filterflag; // type_index: 4
+	int filterflag2; // type_index: 4
+	int flag; // type_index: 4
+	int renameIndex; // type_index: 4
+}; 
+
+struct SpaceStatusBar { // Max dep:22
+	SpaceLink *next; // type_index: 70
+	SpaceLink *prev; // type_index: 70
+	ListBase regionbase; // type_index: 22
+	char spacetype; // type_index: 0
+	char link_flag; // type_index: 0
+	char _pad0[6]; // type_index: 0
+}; 
+
+struct SpaceTopBar { // Max dep:22
+	SpaceLink *next; // type_index: 70
+	SpaceLink *prev; // type_index: 70
+	ListBase regionbase; // type_index: 22
+	char spacetype; // type_index: 0
+	char link_flag; // type_index: 0
+	char _pad0[6]; // type_index: 0
+}; 
+
+struct SpaceInfo { // Max dep:22
+	SpaceLink *next; // type_index: 70
+	SpaceLink *prev; // type_index: 70
+	ListBase regionbase; // type_index: 22
+	char spacetype; // type_index: 0
+	char link_flag; // type_index: 0
+	char _pad0[6]; // type_index: 0
+	char rpt_mask; // type_index: 0
+	char _pad[7]; // type_index: 0
+}; 
+
+struct bUserAssetShelfSettings { // Max dep:22
+	bUserAssetShelfSettings *next; // type_index: 1050
+	bUserAssetShelfSettings *prev; // type_index: 1050
+	char shelf_idname[64]; // type_index: 0
+	ListBase enabled_catalog_paths; // type_index: 22
+}; 
+
+struct IDOverrideLibrary { // Max dep:22
+	ID *reference; // type_index: 26
+	ListBase properties; // type_index: 22
+	ID *hierarchy_root; // type_index: 26
+	IDOverrideLibraryRuntime *runtime; // type_index: 29
+	int flag; // type_index: 4
+	char _pad_1[4]; // type_index: 0
+}; 
+
+struct IDOverrideLibraryProperty { // Max dep:22
+	IDOverrideLibraryProperty *next; // type_index: 27
+	IDOverrideLibraryProperty *prev; // type_index: 27
+	char *rna_path; // type_index: 0
+	ListBase operations; // type_index: 22
+	short tag; // type_index: 2
+	char _pad[2]; // type_index: 0
+	int rna_prop_type; // type_index: 4
+}; 
+
+struct ViewerPath { // Max dep:22
+	ListBase path; // type_index: 22
+}; 
+
+struct wmKeyMap { // Max dep:22
+	wmKeyMap *next; // type_index: 1092
+	wmKeyMap *prev; // type_index: 1092
+	ListBase items; // type_index: 22
+	ListBase diff_items; // type_index: 22
+	char idname[64]; // type_index: 0
+	short spaceid; // type_index: 2
+	short regionid; // type_index: 2
+	char owner_id[128]; // type_index: 0
+	short flag; // type_index: 2
+	short kmi_id; // type_index: 2
+	bool (*poll)(); // type_index: 1093
+	bool (*poll_modal_item)(); // type_index: 1093
+	void *modal_items; // type_index: 11
+}; 
+
+struct wmKeyConfig { // Max dep:22
+	wmKeyConfig *next; // type_index: 1095
+	wmKeyConfig *prev; // type_index: 1095
+	char idname[64]; // type_index: 0
+	char basename[64]; // type_index: 0
+	ListBase keymaps; // type_index: 22
+	int actkeymap; // type_index: 4
+	short flag; // type_index: 2
+	char _pad0[2]; // type_index: 0
+}; 
+
+struct wmOperator { // Max dep:22
+	wmOperator *next; // type_index: 968
+	wmOperator *prev; // type_index: 968
+	char idname[64]; // type_index: 0
+	IDProperty *properties; // type_index: 24
+	wmOperatorType *type; // type_index: 1096
+	void *customdata; // type_index: 11
+	void *py_instance; // type_index: 11
+	PointerRNA *ptr; // type_index: 1090
+	ReportList *reports; // type_index: 1097
+	ListBase macro; // type_index: 22
+	wmOperator *opm; // type_index: 968
+	uiLayout *layout; // type_index: 869
+	short flag; // type_index: 2
+	char _pad[6]; // type_index: 0
+}; 
+
+struct IDPropertyData { // Max dep:22
+	void *pointer; // type_index: 11
+	ListBase group; // type_index: 22
+	IDPropertyGroupChildrenSet *children_map; // type_index: 23
+	int val; // type_index: 4
+	int val2; // type_index: 4
+}; 
+
+struct XrActionMapBinding { // Max dep:22
+	XrActionMapBinding *next; // type_index: 1105
+	XrActionMapBinding *prev; // type_index: 1105
+	char name[64]; // type_index: 0
+	char profile[256]; // type_index: 0
+	ListBase component_paths; // type_index: 22
+	float float_threshold; // type_index: 7
+	short axis_flag; // type_index: 2
+	char _pad[2]; // type_index: 0
+	float pose_location[3]; // type_index: 7
+	float pose_rotation[3]; // type_index: 7
+}; 
+
+struct XrActionMapItem { // Max dep:22
+	XrActionMapItem *next; // type_index: 1107
+	XrActionMapItem *prev; // type_index: 1107
+	char name[64]; // type_index: 0
+	char type; // type_index: 0
+	char _pad[7]; // type_index: 0
+	ListBase user_paths; // type_index: 22
+	char op[64]; // type_index: 0
+	IDProperty *op_properties; // type_index: 24
+	PointerRNA *op_properties_ptr; // type_index: 1090
+	short op_flag; // type_index: 2
+	short action_flag; // type_index: 2
+	short haptic_flag; // type_index: 2
+	short pose_flag; // type_index: 2
+	char haptic_name[64]; // type_index: 0
+	float haptic_duration; // type_index: 7
+	float haptic_frequency; // type_index: 7
+	float haptic_amplitude; // type_index: 7
+	short selbinding; // type_index: 2
+	char _pad3[2]; // type_index: 0
+	ListBase bindings; // type_index: 22
+}; 
+
+struct XrActionMap { // Max dep:22
+	XrActionMap *next; // type_index: 1108
+	XrActionMap *prev; // type_index: 1108
+	char name[64]; // type_index: 0
+	ListBase items; // type_index: 22
+	short selitem; // type_index: 2
+	char _pad[6]; // type_index: 0
+}; 
+
+struct RegionAssetShelf { // Max dep:22
+	ListBase shelves; // type_index: 22
+	AssetShelf *active_shelf; // type_index: 887
+}; 
+
+struct bArmatureConstraint { // Max dep:22
+	int flag; // type_index: 4
+	char _pad[4]; // type_index: 0
+	ListBase targets; // type_index: 22
+}; 
+
+struct SoftBody_Shared { // Max dep:22
+	PointCache *pointcache; // type_index: 226
+	ListBase ptcaches; // type_index: 22
+}; 
+
+struct SoftBody { // Max dep:22
+	int totpoint; // type_index: 4
+	int totspring; // type_index: 4
+	BodyPoint *bpoint; // type_index: 778
+	BodySpring *bspring; // type_index: 779
+	char _pad; // type_index: 0
+	char msg_lock; // type_index: 0
+	short msg_value; // type_index: 2
+	float nodemass; // type_index: 7
+	char namedVG_Mass[64]; // type_index: 0
+	float grav; // type_index: 7
+	float mediafrict; // type_index: 7
+	float rklimit; // type_index: 7
+	float physics_speed; // type_index: 7
 	float goalspring; // type_index: 7
 	float goalfrict; // type_index: 7
-	float velocity_smooth; // type_index: 7
-	float density_target; // type_index: 7
-	float density_strength; // type_index: 7
-	float collider_friction; // type_index: 7
-	float vel_damping; // type_index: 7
-	float shrink_min; // type_index: 7
-	float shrink_max; // type_index: 7
-	float uniform_pressure_force; // type_index: 7
-	float target_volume; // type_index: 7
-	float pressure_factor; // type_index: 7
-	float fluid_density; // type_index: 7
-	short vgroup_pressure; // type_index: 2
-	char _pad7[6]; // type_index: 0
-	float bending_damping; // type_index: 7
-	float voxel_cell_size; // type_index: 7
-	int stepsPerFrame; // type_index: 4
-	int flags; // type_index: 4
-	int preroll; // type_index: 4
-	int maxspringlen; // type_index: 4
-	short solver_type; // type_index: 2
-	short vgroup_bend; // type_index: 2
-	short vgroup_mass; // type_index: 2
-	short vgroup_struct; // type_index: 2
-	short vgroup_shrink; // type_index: 2
-	short shapekey_rest; // type_index: 2
-	short presets; // type_index: 2
-	short reset; // type_index: 2
-	EffectorWeights *effector_weights; // type_index: 155
-	short bending_model; // type_index: 2
-	short vgroup_shear; // type_index: 2
-	float tension; // type_index: 7
-	float compression; // type_index: 7
-	float max_tension; // type_index: 7
-	float max_compression; // type_index: 7
-	float tension_damp; // type_index: 7
-	float compression_damp; // type_index: 7
-	float shear_damp; // type_index: 7
-	float internal_spring_max_length; // type_index: 7
-	float internal_spring_max_diversion; // type_index: 7
-	short vgroup_intern; // type_index: 2
-	char _pad1[2]; // type_index: 0
-	float internal_tension; // type_index: 7
-	float internal_compression; // type_index: 7
-	float max_internal_tension; // type_index: 7
-	float max_internal_compression; // type_index: 7
-	char _pad0[4]; // type_index: 0
-}; 
-
-struct CollectionObject { // Max dep:158
-	CollectionObject *next; // type_index: 158
-	CollectionObject *prev; // type_index: 158
-	Object *ob; // type_index: 51
-	CollectionLightLinking light_linking; // type_index: 157
-	int _pad; // type_index: 4
-}; 
-
-struct CollectionChild { // Max dep:159
-	CollectionChild *next; // type_index: 159
-	CollectionChild *prev; // type_index: 159
-	Collection *collection; // type_index: 66
-	CollectionLightLinking light_linking; // type_index: 157
-	int _pad; // type_index: 4
-}; 
-
-struct CollectionExport { // Max dep:160
-	CollectionExport *next; // type_index: 160
-	CollectionExport *prev; // type_index: 160
-	char fh_idname[64]; // type_index: 0
-	char name[64]; // type_index: 0
-	IDProperty *export_properties; // type_index: 24
-	int flag; // type_index: 4
-	int _pad0; // type_index: 4
-}; 
-
-struct Collection { // Max dep:162
-	ID id; // type_index: 26
-	ID *owner_id; // type_index: 26
-	ListBase gobject; // type_index: 22
-	ListBase children; // type_index: 22
-	char _pad0[4]; // type_index: 0
-	int active_exporter_index; // type_index: 4
-	ListBase exporters; // type_index: 22
-	PreviewImage *preview; // type_index: 37
-	int layer; // type_index: 4
-	float dupli_ofs[3]; // type_index: 7
-	uchar flag; // type_index: 1
-	int8_t color_tag; // type_index: 12
-	char _pad1[2]; // type_index: 0
-	uchar lineart_usage; // type_index: 1
-	uchar lineart_flags; // type_index: 1
-	uchar lineart_intersection_mask; // type_index: 1
-	uchar lineart_intersection_priority; // type_index: 1
-	ViewLayer *view_layer; // type_index: 161
-	CollectionRuntimeHandle *runtime; // type_index: 162
-}; 
-
-struct CurveMap { // Max dep:163
-	short totpoint; // type_index: 2
-	short flag; // type_index: 2
-	float range; // type_index: 7
-	float mintable; // type_index: 7
-	float maxtable; // type_index: 7
-	float ext_in[2]; // type_index: 7
-	float ext_out[2]; // type_index: 7
-	CurveMapPoint *curve; // type_index: 163
-	CurveMapPoint *table; // type_index: 163
-	CurveMapPoint *premultable; // type_index: 163
-	float premul_ext_in[2]; // type_index: 7
-	float premul_ext_out[2]; // type_index: 7
-	short default_handle_type; // type_index: 2
-	char _pad[6]; // type_index: 0
-}; 
-
-struct CurveMapping { // Max dep:164
-	int flag; // type_index: 4
-	int cur; // type_index: 4
-	int preset; // type_index: 4
-	int changed_timestamp; // type_index: 4
-	rctf curr; // type_index: 82
-	rctf clipr; // type_index: 82
-	CurveMap cm[4]; // type_index: 164
-	float black[3]; // type_index: 7
-	float white[3]; // type_index: 7
-	float bwmul[3]; // type_index: 7
-	float sample[3]; // type_index: 7
-	short tone; // type_index: 2
-	char _pad[6]; // type_index: 0
-}; 
-
-struct Scopes { // Max dep:165
-	int ok; // type_index: 4
-	int sample_full; // type_index: 4
-	int sample_lines; // type_index: 4
-	int wavefrm_mode; // type_index: 4
-	int vecscope_mode; // type_index: 4
-	int wavefrm_height; // type_index: 4
-	int vecscope_height; // type_index: 4
-	int waveform_tot; // type_index: 4
-	float accuracy; // type_index: 7
-	float wavefrm_alpha; // type_index: 7
-	float wavefrm_yfac; // type_index: 7
-	float vecscope_alpha; // type_index: 7
-	float minmax[3][2]; // type_index: 7
-	Histogram hist; // type_index: 165
-	float *waveform_1; // type_index: 7
-	float *waveform_2; // type_index: 7
-	float *waveform_3; // type_index: 7
-	float *vecscope; // type_index: 7
-	float *vecscope_rgb; // type_index: 7
-}; 
-
-struct NodeConvertToDisplay { // Max dep:168
-	ColorManagedDisplaySettings display_settings; // type_index: 168
-	ColorManagedViewSettings view_settings; // type_index: 167
-}; 
-
-struct ColorBand { // Max dep:170
-	short tot; // type_index: 2
-	short cur; // type_index: 2
-	char ipotype; // type_index: 0
-	char ipotype_hue; // type_index: 0
-	char color_mode; // type_index: 0
-	char _pad[1]; // type_index: 0
-	CBData data[32]; // type_index: 170
-}; 
-
-struct bConstraint { // Max dep:171
-	bConstraint *next; // type_index: 171
-	bConstraint *prev; // type_index: 171
-	void *data; // type_index: 11
-	short type; // type_index: 2
-	short flag; // type_index: 2
-	char ownspace; // type_index: 0
-	char tarspace; // type_index: 0
-	short ui_expand_flag; // type_index: 2
-	Object *space_object; // type_index: 51
-	char space_subtarget[64]; // type_index: 0
-	char name[64]; // type_index: 0
-	float enforce; // type_index: 7
-	float headtail; // type_index: 7
-	float lin_error; // type_index: 7
-	float rot_error; // type_index: 7
-}; 
-
-struct bConstraintTarget { // Max dep:172
-	bConstraintTarget *next; // type_index: 172
-	bConstraintTarget *prev; // type_index: 172
-	Object *tar; // type_index: 51
-	char subtarget[64]; // type_index: 0
-	float matrix[4][4]; // type_index: 7
-	short space; // type_index: 2
-	short flag; // type_index: 2
-	short type; // type_index: 2
-	short rotOrder; // type_index: 2
-	float weight; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct bTransformCacheConstraint { // Max dep:202
-	CacheFile *cache_file; // type_index: 139
-	char object_path[1024]; // type_index: 0
-	CacheReader *reader; // type_index: 202
-	char reader_object_path[1024]; // type_index: 0
-}; 
-
-struct Nurb { // Max dep:205
-	Nurb *next; // type_index: 205
-	Nurb *prev; // type_index: 205
-	short type; // type_index: 2
-	short mat_nr; // type_index: 2
-	short hide; // type_index: 2
-	short flag; // type_index: 2
-	int pntsu; // type_index: 4
-	int pntsv; // type_index: 4
-	char _pad[4]; // type_index: 0
-	short resolu; // type_index: 2
-	short resolv; // type_index: 2
-	short orderu; // type_index: 2
-	short orderv; // type_index: 2
-	short flagu; // type_index: 2
-	short flagv; // type_index: 2
-	float *knotsu; // type_index: 7
-	float *knotsv; // type_index: 7
-	BPoint *bp; // type_index: 204
-	BezTriple *bezt; // type_index: 90
-	short tilt_interp; // type_index: 2
-	short radius_interp; // type_index: 2
-	int charidx; // type_index: 4
-}; 
-
-struct CurveProfilePoint { // Max dep:211
-	float x; // type_index: 7
-	float y; // type_index: 7
-	short flag; // type_index: 2
-	char h1; // type_index: 0
-	char h2; // type_index: 0
-	float h1_loc[2]; // type_index: 7
-	float h2_loc[2]; // type_index: 7
-	char _pad[4]; // type_index: 0
-	CurveProfile *profile; // type_index: 211
-}; 
-
-struct Curve { // Max dep:214
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	ListBase nurb; // type_index: 22
-	EditNurb *editnurb; // type_index: 209
-	Object *bevobj; // type_index: 51
-	Object *taperobj; // type_index: 51
-	Object *textoncurve; // type_index: 51
-	Key *key; // type_index: 210
-	Material **mat; // type_index: 128
-	CurveProfile *bevel_profile; // type_index: 211
-	float loc[3]; // type_index: 7
-	float size[3]; // type_index: 7
-	short type; // type_index: 2
-	char texflag; // type_index: 0
-	char _pad0[7]; // type_index: 0
-	short twist_mode; // type_index: 2
-	float twist_smooth; // type_index: 7
-	float smallcaps_scale; // type_index: 7
-	int pathlen; // type_index: 4
-	short bevresol; // type_index: 2
-	short totcol; // type_index: 2
-	int flag; // type_index: 4
-	float width; // type_index: 7
-	float ext1; // type_index: 7
-	float ext2; // type_index: 7
-	short resolu; // type_index: 2
-	short resolv; // type_index: 2
-	short resolu_ren; // type_index: 2
-	short resolv_ren; // type_index: 2
-	int actnu; // type_index: 4
-	int actvert; // type_index: 4
-	char overflow; // type_index: 0
-	char spacemode; // type_index: 0
-	char align_y; // type_index: 0
-	char bevel_mode; // type_index: 0
-	char taper_radius_mode; // type_index: 0
-	char _pad[3]; // type_index: 0
-	float spacing; // type_index: 7
-	float linedist; // type_index: 7
-	float shear; // type_index: 7
-	float fsize; // type_index: 7
-	float wordspace; // type_index: 7
-	float ulpos; // type_index: 7
-	float ulheight; // type_index: 7
-	float xof; // type_index: 7
-	float yof; // type_index: 7
-	float linewidth; // type_index: 7
-	int pos; // type_index: 4
-	int selstart; // type_index: 4
-	int selend; // type_index: 4
-	int len_wchar; // type_index: 4
-	int len; // type_index: 4
-	char *str; // type_index: 0
-	EditFont *editfont; // type_index: 212
-	char family[64]; // type_index: 0
-	VFont *vfont; // type_index: 213
-	VFont *vfontb; // type_index: 213
-	VFont *vfonti; // type_index: 213
-	VFont *vfontbi; // type_index: 213
-	TextBox *tb; // type_index: 207
-	int totbox; // type_index: 4
-	int actbox; // type_index: 4
-	CharInfo *strinfo; // type_index: 206
-	CharInfo curinfo; // type_index: 206
-	float ctime; // type_index: 7
-	float bevfac1; // type_index: 7
-	float bevfac2; // type_index: 7
-	char bevfac1_mapping; // type_index: 0
-	char bevfac2_mapping; // type_index: 0
-	char _pad2[1]; // type_index: 0
-	char edit_data_from_original; // type_index: 0
-	Curves *curve_eval; // type_index: 214
-	void *batch_cache; // type_index: 11
-}; 
-
-struct CurveProfile { // Max dep:215
-	short path_len; // type_index: 2
-	short segments_len; // type_index: 2
-	int preset; // type_index: 4
-	CurveProfilePoint *path; // type_index: 215
-	CurveProfilePoint *table; // type_index: 215
-	CurveProfilePoint *segments; // type_index: 215
-	int flag; // type_index: 4
-	int changed_timestamp; // type_index: 4
-	rctf view_rect; // type_index: 82
-	rctf clip_rect; // type_index: 82
-}; 
-
-struct Curves { // Max dep:216
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	CurvesGeometry geometry; // type_index: 216
-	int flag; // type_index: 4
-	int attributes_active_index; // type_index: 4
-	Material **mat; // type_index: 128
-	short totcol; // type_index: 2
-	char symmetry; // type_index: 0
-	char selection_domain; // type_index: 0
-	char _pad[4]; // type_index: 0
-	Object *surface; // type_index: 51
-	char *surface_uv_map; // type_index: 0
-	float surface_collision_distance; // type_index: 7
-	char _pad2[4]; // type_index: 0
-	void *batch_cache; // type_index: 11
-}; 
-
-struct CurvesGeometry { // Max dep:218
-	int *curve_offsets; // type_index: 4
-	AttributeStorage attribute_storage; // type_index: 115
-	CustomData point_data; // type_index: 217
-	CustomData curve_data; // type_index: 217
-	int point_size; // type_index: 4
-	int curve_size; // type_index: 4
-	ListBase vertex_group_names; // type_index: 22
-	int vertex_group_active_index; // type_index: 4
-	int attributes_active_index; // type_index: 4
-	CurvesGeometryRuntimeHandle *runtime; // type_index: 218
-	float *custom_knots; // type_index: 7
-	int custom_knot_num; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct CustomData { // Max dep:221
-	CustomDataLayer *layers; // type_index: 219
-	int typemap[53]; // type_index: 4
-	int totlayer; // type_index: 4
-	int maxlayer; // type_index: 4
-	int totsize; // type_index: 4
-	BLI_mempool *pool; // type_index: 221
-	CustomDataExternal *external; // type_index: 220
-}; 
-
-struct SoftBody_Shared { // Max dep:226
-	PointCache *pointcache; // type_index: 226
-	ListBase ptcaches; // type_index: 22
-}; 
-
-struct DynamicPaintSurface { // Max dep:227
-	DynamicPaintSurface *next; // type_index: 223
-	DynamicPaintSurface *prev; // type_index: 223
-	DynamicPaintCanvasSettings *canvas; // type_index: 224
-	PaintSurfaceData *data; // type_index: 225
-	Collection *brush_group; // type_index: 66
-	EffectorWeights *effector_weights; // type_index: 155
-	PointCache *pointcache; // type_index: 226
-	ListBase ptcaches; // type_index: 22
-	int current_frame; // type_index: 4
-	char name[64]; // type_index: 0
-	short format; // type_index: 2
-	short type; // type_index: 2
-	short disp_type; // type_index: 2
-	short image_fileformat; // type_index: 2
-	short effect_ui; // type_index: 2
-	short init_color_type; // type_index: 2
-	int flags; // type_index: 4
-	int effect; // type_index: 4
-	int image_resolution; // type_index: 4
-	int substeps; // type_index: 4
-	int start_frame; // type_index: 4
-	int end_frame; // type_index: 4
-	float init_color[4]; // type_index: 7
-	Tex *init_texture; // type_index: 227
-	char init_layername[68]; // type_index: 0
-	int dry_speed; // type_index: 4
-	int diss_speed; // type_index: 4
-	float color_dry_threshold; // type_index: 7
-	float depth_clamp; // type_index: 7
-	float disp_factor; // type_index: 7
-	float spread_speed; // type_index: 7
-	float color_spread_speed; // type_index: 7
-	float shrink_speed; // type_index: 7
-	float drip_vel; // type_index: 7
-	float drip_acc; // type_index: 7
-	float influence_scale; // type_index: 7
-	float radius_scale; // type_index: 7
-	float wave_damping; // type_index: 7
-	float wave_speed; // type_index: 7
-	float wave_timescale; // type_index: 7
-	float wave_spring; // type_index: 7
-	float wave_smoothness; // type_index: 7
-	char _pad2[4]; // type_index: 0
-	char uvlayer_name[68]; // type_index: 0
-	char image_output_path[1024]; // type_index: 0
-	char output_name[68]; // type_index: 0
-	char output_name2[68]; // type_index: 0
-}; 
-
-struct bNodeSocketValueTexture { // Max dep:227
-	Tex *value; // type_index: 227
-}; 
-
-struct MTex { // Max dep:227
-	short texco; // type_index: 2
-	short mapto; // type_index: 2
-	short blendtype; // type_index: 2
-	char _pad2[2]; // type_index: 0
-	Object *object; // type_index: 51
-	Tex *tex; // type_index: 227
-	char uvname[68]; // type_index: 0
-	char projx; // type_index: 0
-	char projy; // type_index: 0
-	char projz; // type_index: 0
-	char mapping; // type_index: 0
-	char brush_map_mode; // type_index: 0
-	char brush_angle_mode; // type_index: 0
-	short which_output; // type_index: 2
-	float ofs[3]; // type_index: 7
-	float size[3]; // type_index: 7
-	float rot; // type_index: 7
-	float random_angle; // type_index: 7
-	float r; // type_index: 7
-	float g; // type_index: 7
-	float b; // type_index: 7
-	float k; // type_index: 7
-	float def_var; // type_index: 7
-	float colfac; // type_index: 7
-	float alphafac; // type_index: 7
-	float timefac; // type_index: 7
-	float lengthfac; // type_index: 7
-	float clumpfac; // type_index: 7
-	float dampfac; // type_index: 7
-	float kinkfac; // type_index: 7
-	float kinkampfac; // type_index: 7
-	float roughfac; // type_index: 7
-	float padensfac; // type_index: 7
-	float gravityfac; // type_index: 7
-	float lifefac; // type_index: 7
-	float sizefac; // type_index: 7
-	float ivelfac; // type_index: 7
-	float fieldfac; // type_index: 7
-	float twistfac; // type_index: 7
-}; 
-
-struct PartDeflect { // Max dep:227
-	int flag; // type_index: 4
-	short deflect; // type_index: 2
-	short forcefield; // type_index: 2
-	short falloff; // type_index: 2
-	short shape; // type_index: 2
-	short tex_mode; // type_index: 2
-	short kink; // type_index: 2
-	short kink_axis; // type_index: 2
-	short zdir; // type_index: 2
-	float f_strength; // type_index: 7
-	float f_damp; // type_index: 7
-	float f_flow; // type_index: 7
-	float f_wind_factor; // type_index: 7
-	char _pad0[4]; // type_index: 0
-	float f_size; // type_index: 7
-	float f_power; // type_index: 7
-	float maxdist; // type_index: 7
-	float mindist; // type_index: 7
-	float f_power_r; // type_index: 7
-	float maxrad; // type_index: 7
-	float minrad; // type_index: 7
-	float pdef_damp; // type_index: 7
-	float pdef_rdamp; // type_index: 7
-	float pdef_perm; // type_index: 7
-	float pdef_frict; // type_index: 7
-	float pdef_rfrict; // type_index: 7
-	float pdef_stickness; // type_index: 7
-	float absorption; // type_index: 7
-	float pdef_sbdamp; // type_index: 7
-	float pdef_sbift; // type_index: 7
-	float pdef_sboft; // type_index: 7
-	float clump_fac; // type_index: 7
-	float clump_pow; // type_index: 7
-	float kink_freq; // type_index: 7
-	float kink_shape; // type_index: 7
-	float kink_amp; // type_index: 7
-	float free_end; // type_index: 7
-	float tex_nabla; // type_index: 7
-	Tex *tex; // type_index: 227
-	float f_noise; // type_index: 7
-	int seed; // type_index: 4
-	float drawvec1[4]; // type_index: 7
-	float drawvec2[4]; // type_index: 7
-	float drawvec_falloff_min[3]; // type_index: 7
-	char _pad1[4]; // type_index: 0
-	float drawvec_falloff_max[3]; // type_index: 7
-	char _pad2[4]; // type_index: 0
-	Object *f_source; // type_index: 51
-	float pdef_cfrict; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct DynamicPaintCanvasSettings { // Max dep:228
-	DynamicPaintModifierData *pmd; // type_index: 228
-	ListBase surfaces; // type_index: 22
-	short active_sur; // type_index: 2
-	short flags; // type_index: 2
-	char _pad[4]; // type_index: 0
-	char error[64]; // type_index: 0
-}; 
-
-struct DynamicPaintBrushSettings { // Max dep:230
-	DynamicPaintModifierData *pmd; // type_index: 228
-	ParticleSystem *psys; // type_index: 230
-	int flags; // type_index: 4
-	int collision; // type_index: 4
-	float r; // type_index: 7
-	float g; // type_index: 7
-	float b; // type_index: 7
-	float alpha; // type_index: 7
-	float wetness; // type_index: 7
-	float particle_radius; // type_index: 7
-	float particle_smooth; // type_index: 7
-	float paint_distance; // type_index: 7
-	ColorBand *paint_ramp; // type_index: 132
-	ColorBand *vel_ramp; // type_index: 132
-	short proximity_falloff; // type_index: 2
-	short wave_type; // type_index: 2
-	short ray_dir; // type_index: 2
-	char _pad[2]; // type_index: 0
-	float wave_factor; // type_index: 7
-	float wave_clamp; // type_index: 7
-	float max_velocity; // type_index: 7
-	float smudge_strength; // type_index: 7
-}; 
-
-struct Effect { // Max dep:231
-	Effect *next; // type_index: 231
-	Effect *prev; // type_index: 231
-	short type; // type_index: 2
-	short flag; // type_index: 2
-	short buttype; // type_index: 2
-	char _pad0[2]; // type_index: 0
-}; 
-
-struct BuildEff { // Max dep:232
-	BuildEff *next; // type_index: 232
-	BuildEff *prev; // type_index: 232
-	short type; // type_index: 2
-	short flag; // type_index: 2
-	short buttype; // type_index: 2
-	char _pad0[2]; // type_index: 0
-	float len; // type_index: 7
-	float sfra; // type_index: 7
-}; 
-
-struct PartEff { // Max dep:234
-	PartEff *next; // type_index: 233
-	PartEff *prev; // type_index: 233
-	short type; // type_index: 2
-	short flag; // type_index: 2
-	short buttype; // type_index: 2
-	short stype; // type_index: 2
+	float mingoal; // type_index: 7
+	float maxgoal; // type_index: 7
+	float defgoal; // type_index: 7
 	short vertgroup; // type_index: 2
-	short userjit; // type_index: 2
-	float sta; // type_index: 7
-	float end; // type_index: 7
-	float lifetime; // type_index: 7
-	int totpart; // type_index: 4
+	char namedVG_Softgoal[64]; // type_index: 0
+	short fuzzyness; // type_index: 2
+	float inspring; // type_index: 7
+	float infrict; // type_index: 7
+	char namedVG_Spring_K[64]; // type_index: 0
+	char _pad1[6]; // type_index: 0
+	char local; // type_index: 0
+	char solverflags; // type_index: 0
+	SBVertex **keys; // type_index: 775
+	int totpointkey; // type_index: 4
 	int totkey; // type_index: 4
-	int seed; // type_index: 4
-	float normfac; // type_index: 7
-	float obfac; // type_index: 7
-	float randfac; // type_index: 7
-	float texfac; // type_index: 7
-	float randlife; // type_index: 7
-	float force[3]; // type_index: 7
-	float damp; // type_index: 7
-	float nabla; // type_index: 7
-	float vectsize; // type_index: 7
-	float maxlen; // type_index: 7
-	float defvec[3]; // type_index: 7
-	char _pad[4]; // type_index: 0
-	float mult[4]; // type_index: 7
-	float life[4]; // type_index: 7
-	short child[4]; // type_index: 2
-	short mat[4]; // type_index: 2
-	short texmap; // type_index: 2
-	short curmult; // type_index: 2
-	short staticstep; // type_index: 2
-	short omat; // type_index: 2
-	short timetex; // type_index: 2
-	short speedtex; // type_index: 2
-	short flag2; // type_index: 2
-	short flag2neg; // type_index: 2
-	short disp; // type_index: 2
-	short vertgroup_v; // type_index: 2
-	char vgroupname[64]; // type_index: 0
-	char vgroupname_v[64]; // type_index: 0
+	float secondspring; // type_index: 7
+	float colball; // type_index: 7
+	float balldamp; // type_index: 7
+	float ballstiff; // type_index: 7
+	short sbc_mode; // type_index: 2
+	short aeroedge; // type_index: 2
+	short minloops; // type_index: 2
+	short maxloops; // type_index: 2
+	short choke; // type_index: 2
+	short solver_ID; // type_index: 2
+	short plastic; // type_index: 2
+	short springpreload; // type_index: 2
+	SBScratch *scratch; // type_index: 780
+	float shearstiff; // type_index: 7
+	float inpush; // type_index: 7
+	SoftBody_Shared *shared; // type_index: 776
+	PointCache *pointcache; // type_index: 226
+	ListBase ptcaches; // type_index: 22
+	Collection *collision_group; // type_index: 66
+	EffectorWeights *effector_weights; // type_index: 155
+	float lcom[3]; // type_index: 7
+	float lrot[3][3]; // type_index: 7
+	float lscale[3][3]; // type_index: 7
+	int last_frame; // type_index: 4
+}; 
+
+struct ParticleSystem { // Max dep:22
+	ParticleSystem *next; // type_index: 230
+	ParticleSystem *prev; // type_index: 230
+	ParticleSettings *part; // type_index: 802
+	ParticleData *particles; // type_index: 800
+	ChildParticle *child; // type_index: 797
+	PTCacheEdit *edit; // type_index: 803
+	void (*free_edit)(); // type_index: 11
+	ParticleCacheKey **pathcache; // type_index: 804
+	ParticleCacheKey **childcache; // type_index: 804
+	ListBase pathcachebufs; // type_index: 22
+	ListBase childcachebufs; // type_index: 22
+	ClothModifierData *clmd; // type_index: 452
+	Mesh *hair_in_mesh; // type_index: 244
+	Mesh *hair_out_mesh; // type_index: 244
+	Object *target_ob; // type_index: 51
+	LatticeDeformData *lattice_deform_data; // type_index: 279
+	Object *parent; // type_index: 51
+	ListBase targets; // type_index: 22
+	char name[64]; // type_index: 0
 	float imat[4][4]; // type_index: 7
-	Particle *keys; // type_index: 234
+	float cfra; // type_index: 7
+	float tree_frame; // type_index: 7
+	float bvhtree_frame; // type_index: 7
+	int seed; // type_index: 4
+	int child_seed; // type_index: 4
+	int flag; // type_index: 4
+	int totpart; // type_index: 4
+	int totunexist; // type_index: 4
+	int totchild; // type_index: 4
+	int totcached; // type_index: 4
+	int totchildcache; // type_index: 4
+	int recalc; // type_index: 4
+	short target_psys; // type_index: 2
+	short totkeyed; // type_index: 2
+	short bakespace; // type_index: 2
+	char _pad1[6]; // type_index: 0
+	char bb_uvname[3][68]; // type_index: 0
+	char _pad2[4]; // type_index: 0
+	short vgroup[13]; // type_index: 2
+	short vg_neg; // type_index: 2
+	short rt3; // type_index: 2
+	char _pad3[6]; // type_index: 0
+	PointCache *pointcache; // type_index: 226
+	ListBase ptcaches; // type_index: 22
+	ListBase *effectors; // type_index: 22
+	ParticleSpring *fluid_springs; // type_index: 796
+	int tot_fluidsprings; // type_index: 4
+	int alloc_fluidsprings; // type_index: 4
+	KDTree_3d *tree; // type_index: 805
+	BVHTree *bvhtree; // type_index: 457
+	ParticleDrawData *pdd; // type_index: 806
+	float dt_frac; // type_index: 7
+	float lattice_strength; // type_index: 7
+	void *batch_cache; // type_index: 11
+	ParticleSystem *orig_psys; // type_index: 230
+}; 
+
+struct PTCacheMem { // Max dep:22
+	PTCacheMem *next; // type_index: 808
+	PTCacheMem *prev; // type_index: 808
+	int frame; // type_index: 4
+	int totpoint; // type_index: 4
+	int data_types; // type_index: 4
+	int flag; // type_index: 4
+	void *data[8]; // type_index: 11
+	ListBase extradata; // type_index: 22
+}; 
+
+struct PointCache { // Max dep:22
+	PointCache *next; // type_index: 226
+	PointCache *prev; // type_index: 226
+	int flag; // type_index: 4
+	int step; // type_index: 4
+	int simframe; // type_index: 4
+	int startframe; // type_index: 4
+	int endframe; // type_index: 4
+	int editframe; // type_index: 4
+	int last_exact; // type_index: 4
+	int last_valid; // type_index: 4
+	char _pad[4]; // type_index: 0
+	int totpoint; // type_index: 4
+	int index; // type_index: 4
+	short compression; // type_index: 2
+	char _pad0[2]; // type_index: 0
+	char name[64]; // type_index: 0
+	char prev_name[64]; // type_index: 0
+	char info[128]; // type_index: 0
+	char path[1024]; // type_index: 0
+	char *cached_frames; // type_index: 0
+	int cached_frames_len; // type_index: 4
+	char _pad1[4]; // type_index: 0
+	ListBase mem_cache; // type_index: 22
+	PTCacheEdit *edit; // type_index: 803
+	void (*free_edit)(); // type_index: 11
+}; 
+
+struct RigidBodyWorld_Shared { // Max dep:22
+	PointCache *pointcache; // type_index: 226
+	ListBase ptcaches; // type_index: 22
+	RigidBodyWorld_Runtime *runtime; // type_index: 812
+}; 
+
+struct RigidBodyWorld { // Max dep:22
+	EffectorWeights *effector_weights; // type_index: 155
 	Collection *group; // type_index: 66
+	Object **objects; // type_index: 51
+	Collection *constraints; // type_index: 66
+	char _pad[4]; // type_index: 0
+	float ltime; // type_index: 7
+	RigidBodyWorld_Shared *shared; // type_index: 811
+	PointCache *pointcache; // type_index: 226
+	ListBase ptcaches; // type_index: 22
+	int numbodies; // type_index: 4
+	short steps_per_second; // type_index: 2
+	short num_solver_iterations; // type_index: 2
+	int flag; // type_index: 4
+	float time_scale; // type_index: 7
 }; 
 
-struct WaveEff { // Max dep:235
-	WaveEff *next; // type_index: 235
-	WaveEff *prev; // type_index: 235
-	short type; // type_index: 2
-	short flag; // type_index: 2
-	short buttype; // type_index: 2
-	short stype; // type_index: 2
-	float startx; // type_index: 7
-	float starty; // type_index: 7
+struct BoidSettings { // Max dep:22
+	int options; // type_index: 4
+	int last_state_id; // type_index: 4
+	float landing_smoothness; // type_index: 7
 	float height; // type_index: 7
-	float width; // type_index: 7
-	float narrow; // type_index: 7
-	float speed; // type_index: 7
-	float minfac; // type_index: 7
-	float damp; // type_index: 7
-	float timeoffs; // type_index: 7
-	float lifetime; // type_index: 7
+	float banking; // type_index: 7
+	float pitch; // type_index: 7
+	float health; // type_index: 7
+	float aggression; // type_index: 7
+	float strength; // type_index: 7
+	float accuracy; // type_index: 7
+	float range; // type_index: 7
+	float air_min_speed; // type_index: 7
+	float air_max_speed; // type_index: 7
+	float air_max_acc; // type_index: 7
+	float air_max_ave; // type_index: 7
+	float air_personal_space; // type_index: 7
+	float land_jump_speed; // type_index: 7
+	float land_max_speed; // type_index: 7
+	float land_max_acc; // type_index: 7
+	float land_max_ave; // type_index: 7
+	float land_personal_space; // type_index: 7
+	float land_stick_force; // type_index: 7
+	ListBase states; // type_index: 22
 }; 
 
-struct FileGlobal { // Max dep:238
-	char subvstr[4]; // type_index: 0
-	short subversion; // type_index: 2
-	short minversion; // type_index: 2
-	short minsubversion; // type_index: 2
-	char _pad[6]; // type_index: 0
-	bScreen *curscreen; // type_index: 237
-	Scene *curscene; // type_index: 238
-	ViewLayer *cur_view_layer; // type_index: 161
-	void *_pad1; // type_index: 11
-	int fileflags; // type_index: 4
-	int globalf; // type_index: 4
-	uint64_t build_commit_timestamp; // type_index: 10
-	char build_hash[16]; // type_index: 0
-	char filename[1024]; // type_index: 0
-	char colorspace_scene_linear_name[64]; // type_index: 0
-	float colorspace_scene_linear_to_xyz[3][3]; // type_index: 7
-	int _pad2[3]; // type_index: 4
+struct BoidState { // Max dep:22
+	BoidState *next; // type_index: 124
+	BoidState *prev; // type_index: 124
+	ListBase rules; // type_index: 22
+	ListBase conditions; // type_index: 22
+	ListBase actions; // type_index: 22
+	char name[32]; // type_index: 0
+	int id; // type_index: 4
+	int flag; // type_index: 4
+	int ruleset_type; // type_index: 4
+	float rule_fuzziness; // type_index: 7
+	int signal_id; // type_index: 4
+	int channels; // type_index: 4
+	float volume; // type_index: 7
+	float falloff; // type_index: 7
 }; 
 
-struct ImageUser { // Max dep:238
-	Scene *scene; // type_index: 238
-	int framenr; // type_index: 4
-	int frames; // type_index: 4
-	int offset; // type_index: 4
-	int sfra; // type_index: 4
-	char cycl; // type_index: 0
-	char multiview_eye; // type_index: 0
-	short pass; // type_index: 2
-	int tile; // type_index: 4
-	short multi_index; // type_index: 2
-	short view; // type_index: 2
-	short layer; // type_index: 2
+struct ToolSystemBrushBindings { // Max dep:22
+	AssetWeakReference *main_brush_asset_reference; // type_index: 109
+	ListBase active_brush_per_brush_type; // type_index: 22
+}; 
+
+struct ScrAreaMap { // Max dep:22
+	ListBase vertbase; // type_index: 22
+	ListBase edgebase; // type_index: 22
+	ListBase areabase; // type_index: 22
+}; 
+
+struct Panel { // Max dep:22
+	Panel *next; // type_index: 867
+	Panel *prev; // type_index: 867
+	PanelType *type; // type_index: 868
+	uiLayout *layout; // type_index: 869
+	char panelname[64]; // type_index: 0
+	char *drawname; // type_index: 0
+	int ofsx; // type_index: 4
+	int ofsy; // type_index: 4
+	int sizex; // type_index: 4
+	int sizey; // type_index: 4
+	int blocksizex; // type_index: 4
+	int blocksizey; // type_index: 4
+	short labelofs; // type_index: 2
 	short flag; // type_index: 2
+	short runtime_flag; // type_index: 2
+	char _pad[6]; // type_index: 0
+	int sortorder; // type_index: 4
+	void *activedata; // type_index: 11
+	ListBase children; // type_index: 22
+	ListBase layout_panel_states; // type_index: 22
+	int layout_panel_states_clock; // type_index: 4
+	char _pad2[4]; // type_index: 0
+	Panel_Runtime *runtime; // type_index: 870
 }; 
 
-struct MovieClip_RuntimeGPUTexture { // Max dep:242
-	void *next; // type_index: 11
-	void *prev; // type_index: 11
-	MovieClipUser user; // type_index: 147
-	GPUTexture *gputexture[3]; // type_index: 242
+struct BoneCollection { // Max dep:22
+	BoneCollection *next; // type_index: 100
+	BoneCollection *prev; // type_index: 100
+	char name[64]; // type_index: 0
+	ListBase bones; // type_index: 22
+	uchar flags; // type_index: 1
+	uchar _pad0[7]; // type_index: 1
+	int child_index; // type_index: 4
+	int child_count; // type_index: 4
+	IDProperty *prop; // type_index: 24
+	IDProperty *system_properties; // type_index: 24
 }; 
 
-struct FluidDomainSettings { // Max dep:242
+struct SpaceConsole { // Max dep:22
+	SpaceLink *next; // type_index: 70
+	SpaceLink *prev; // type_index: 70
+	ListBase regionbase; // type_index: 22
+	char spacetype; // type_index: 0
+	char link_flag; // type_index: 0
+	char _pad0[6]; // type_index: 0
+	ListBase scrollback; // type_index: 22
+	ListBase history; // type_index: 22
+	char prompt[256]; // type_index: 0
+	char language[32]; // type_index: 0
+	int lheight; // type_index: 4
+	int history_index; // type_index: 4
+	int sel_start; // type_index: 4
+	int sel_end; // type_index: 4
+}; 
+
+struct Bone_Runtime { // Max dep:22
+	ListBase collections; // type_index: 22
+}; 
+
+struct AnimData { // Max dep:22
+	bAction *action; // type_index: 61
+	int slot_handle; // type_index: 4
+	char slot_name[258]; // type_index: 0
+	uchar _pad0[2]; // type_index: 1
+	bAction *tmpact; // type_index: 61
+	int tmp_slot_handle; // type_index: 4
+	char tmp_slot_name[258]; // type_index: 0
+	uchar _pad1[2]; // type_index: 1
+	ListBase nla_tracks; // type_index: 22
+	NlaTrack *act_track; // type_index: 92
+	NlaStrip *actstrip; // type_index: 91
+	ListBase drivers; // type_index: 22
+	ListBase overrides; // type_index: 22
+	FCurve **driver_array; // type_index: 74
+	int flag; // type_index: 4
+	short act_blendmode; // type_index: 2
+	short act_extendmode; // type_index: 2
+	float act_influence; // type_index: 7
+	uchar _pad2[4]; // type_index: 1
+}; 
+
+struct KeyingSet { // Max dep:22
+	KeyingSet *next; // type_index: 94
+	KeyingSet *prev; // type_index: 94
+	ListBase paths; // type_index: 22
+	char idname[64]; // type_index: 0
+	char name[64]; // type_index: 0
+	char description[1024]; // type_index: 0
+	char typeinfo[64]; // type_index: 0
+	int active_path; // type_index: 4
+	short flag; // type_index: 2
+	short keyingflag; // type_index: 2
+	short keyingoverride; // type_index: 2
+	char _pad[6]; // type_index: 0
+}; 
+
+struct SpaceLink { // Max dep:22
+	SpaceLink *next; // type_index: 70
+	SpaceLink *prev; // type_index: 70
+	ListBase regionbase; // type_index: 22
+	char spacetype; // type_index: 0
+	char link_flag; // type_index: 0
+	char _pad0[6]; // type_index: 0
+}; 
+
+struct SpaceGraph_Runtime { // Max dep:22
+	char flag; // type_index: 0
+	char _pad[7]; // type_index: 0
+	ListBase ghost_curves; // type_index: 22
+}; 
+
+struct NlaTrack { // Max dep:22
+	NlaTrack *next; // type_index: 92
+	NlaTrack *prev; // type_index: 92
+	ListBase strips; // type_index: 22
+	int flag; // type_index: 4
+	int index; // type_index: 4
+	char name[64]; // type_index: 0
+}; 
+
+struct NlaStrip { // Max dep:22
+	NlaStrip *next; // type_index: 91
+	NlaStrip *prev; // type_index: 91
+	ListBase strips; // type_index: 22
+	bAction *act; // type_index: 61
+	int action_slot_handle; // type_index: 4
+	char action_slot_name[258]; // type_index: 0
+	char _pad0[2]; // type_index: 0
+	ListBase fcurves; // type_index: 22
+	ListBase modifiers; // type_index: 22
+	char name[64]; // type_index: 0
+	float influence; // type_index: 7
+	float strip_time; // type_index: 7
+	float start; // type_index: 7
+	float end; // type_index: 7
+	float actstart; // type_index: 7
+	float actend; // type_index: 7
+	float repeat; // type_index: 7
+	float scale; // type_index: 7
+	float blendin; // type_index: 7
+	float blendout; // type_index: 7
+	short blendmode; // type_index: 2
+	short extendmode; // type_index: 2
+	char _pad1[2]; // type_index: 0
+	short type; // type_index: 2
+	void *speaker_handle; // type_index: 11
+	int flag; // type_index: 4
+	char _pad2[4]; // type_index: 0
+	NlaStrip *orig_strip; // type_index: 91
+	void *_pad3; // type_index: 11
+}; 
+
+struct FCurve { // Max dep:22
+	FCurve *next; // type_index: 74
+	FCurve *prev; // type_index: 74
+	bActionGroup *grp; // type_index: 58
+	ChannelDriver *driver; // type_index: 87
+	ListBase modifiers; // type_index: 22
+	BezTriple *bezt; // type_index: 90
+	FPoint *fpt; // type_index: 89
+	int totvert; // type_index: 4
+	int active_keyframe_index; // type_index: 4
+	float curval; // type_index: 7
+	short flag; // type_index: 2
+	short extend; // type_index: 2
+	char auto_smoothing; // type_index: 0
+	char _pad[3]; // type_index: 0
+	int array_index; // type_index: 4
+	char *rna_path; // type_index: 0
+	int color_mode; // type_index: 4
+	float color[3]; // type_index: 7
+	float prev_norm_factor; // type_index: 7
+	float prev_offset; // type_index: 7
+}; 
+
+struct FileFolderHistory { // Max dep:22
+	FileFolderLists *next; // type_index: 965
+	FileFolderLists *prev; // type_index: 965
+	char browse_mode; // type_index: 0
+	char _pad[7]; // type_index: 0
+	ListBase folders_prev; // type_index: 22
+	ListBase folders_next; // type_index: 22
+}; 
+
+struct SpaceFile { // Max dep:22
+	SpaceLink *next; // type_index: 70
+	SpaceLink *prev; // type_index: 70
+	ListBase regionbase; // type_index: 22
+	char spacetype; // type_index: 0
+	char link_flag; // type_index: 0
+	char _pad0[6]; // type_index: 0
+	char browse_mode; // type_index: 0
+	char _pad1[1]; // type_index: 0
+	short tags; // type_index: 2
+	int scroll_offset; // type_index: 4
+	FileSelectParams *params; // type_index: 962
+	FileAssetSelectParams *asset_params; // type_index: 963
+	void *_pad2; // type_index: 11
+	FileList *files; // type_index: 967
+	ListBase *folders_prev; // type_index: 22
+	ListBase *folders_next; // type_index: 22
+	ListBase folder_histories; // type_index: 22
+	wmOperator *op; // type_index: 968
+	wmTimer *smoothscroll_timer; // type_index: 860
+	wmTimer *previews_timer; // type_index: 860
+	FileLayout *layout; // type_index: 969
+	short recentnr; // type_index: 2
+	short bookmarknr; // type_index: 2
+	short systemnr; // type_index: 2
+	short system_bookmarknr; // type_index: 2
+	SpaceFile_Runtime *runtime; // type_index: 970
+}; 
+
+struct SpaceText { // Max dep:22
+	SpaceLink *next; // type_index: 70
+	SpaceLink *prev; // type_index: 70
+	ListBase regionbase; // type_index: 22
+	char spacetype; // type_index: 0
+	char link_flag; // type_index: 0
+	char _pad0[6]; // type_index: 0
+	Text *text; // type_index: 151
+	int top; // type_index: 4
+	int left; // type_index: 4
+	char _pad1[4]; // type_index: 0
+	short flags; // type_index: 2
+	short lheight; // type_index: 2
+	int tabnumber; // type_index: 4
+	char wordwrap; // type_index: 0
+	char doplugins; // type_index: 0
+	char showlinenrs; // type_index: 0
+	char showsyntax; // type_index: 0
+	char line_hlight; // type_index: 0
+	char overwrite; // type_index: 0
+	char live_edit; // type_index: 0
+	char _pad2[1]; // type_index: 0
+	char findstr[256]; // type_index: 0
+	char replacestr[256]; // type_index: 0
+	short margin_column; // type_index: 2
+	char _pad3[2]; // type_index: 0
+	SpaceText_Runtime *runtime; // type_index: 974
+}; 
+
+struct SpaceScript { // Max dep:22
+	SpaceLink *next; // type_index: 70
+	SpaceLink *prev; // type_index: 70
+	ListBase regionbase; // type_index: 22
+	char spacetype; // type_index: 0
+	char link_flag; // type_index: 0
+	char _pad0[6]; // type_index: 0
+	Script *script; // type_index: 975
+	short flags; // type_index: 2
+	short menunr; // type_index: 2
+	char _pad1[4]; // type_index: 0
+	void *but_refs; // type_index: 11
+}; 
+
+struct ChannelDriver { // Max dep:22
+	ListBase variables; // type_index: 22
+	char expression[256]; // type_index: 0
+	void *expr_comp; // type_index: 11
+	ExprPyLike_Parsed *expr_simple; // type_index: 88
+	float curval; // type_index: 7
+	float influence; // type_index: 7
+	int type; // type_index: 4
+	int flag; // type_index: 4
+}; 
+
+struct NodeCryptomatte_Runtime { // Max dep:22
+	ListBase layers; // type_index: 22
+	float add[3]; // type_index: 7
+	float remove[3]; // type_index: 7
+}; 
+
+struct MaskLayer { // Max dep:22
+	MaskLayer *next; // type_index: 400
+	MaskLayer *prev; // type_index: 400
+	char name[64]; // type_index: 0
+	ListBase splines; // type_index: 22
+	ListBase splines_shapes; // type_index: 22
+	MaskSpline *act_spline; // type_index: 398
+	MaskSplinePoint *act_point; // type_index: 397
+	float alpha; // type_index: 7
+	char blend; // type_index: 0
+	char blend_flag; // type_index: 0
+	char falloff; // type_index: 0
+	char _pad[7]; // type_index: 0
+	char flag; // type_index: 0
+	char restrictflag; // type_index: 0
+}; 
+
+struct MovieClip_Runtime { // Max dep:22
+	ListBase gputextures; // type_index: 22
+	uint64_t last_update; // type_index: 10
+}; 
+
+struct bActionStrip { // Max dep:22
+	bActionStrip *next; // type_index: 554
+	bActionStrip *prev; // type_index: 554
+	short flag; // type_index: 2
+	short mode; // type_index: 2
+	short stride_axis; // type_index: 2
+	short curmod; // type_index: 2
+	bAction *act; // type_index: 61
+	Object *object; // type_index: 51
+	float start; // type_index: 7
+	float end; // type_index: 7
+	float actstart; // type_index: 7
+	float actend; // type_index: 7
+	float actoffs; // type_index: 7
+	float stridelen; // type_index: 7
+	float repeat; // type_index: 7
+	float scale; // type_index: 7
+	float blendin; // type_index: 7
+	float blendout; // type_index: 7
+	char stridechannel[32]; // type_index: 0
+	char offs_bone[32]; // type_index: 0
+	ListBase modifiers; // type_index: 22
+}; 
+
+struct bGPDpalette { // Max dep:22
+	bGPDpalette *next; // type_index: 253
+	bGPDpalette *prev; // type_index: 253
+	ListBase colors; // type_index: 22
+	char info[64]; // type_index: 0
+	short flag; // type_index: 2
+	char _pad[6]; // type_index: 0
+}; 
+
+struct FreestyleConfig { // Max dep:22
+	ListBase modules; // type_index: 22
+	int mode; // type_index: 4
+	int raycasting_algorithm; // type_index: 4
+	int flags; // type_index: 4
+	float sphere_radius; // type_index: 7
+	float dkr_epsilon; // type_index: 7
+	float crease_angle; // type_index: 7
+	ListBase linesets; // type_index: 22
+}; 
+
+struct FluidDomainSettings { // Max dep:22
 	FluidModifierData *fmd; // type_index: 240
 	MANTA *fluid; // type_index: 241
 	MANTA *fluid_old; // type_index: 241
@@ -6700,3352 +7373,7 @@ struct FluidDomainSettings { // Max dep:242
 	char _pad13[7]; // type_index: 0
 }; 
 
-struct LightCacheTexture { // Max dep:242
-	GPUTexture *tex; // type_index: 242
-	char *data; // type_index: 0
-	int tex_size[3]; // type_index: 4
-	char data_type; // type_index: 0
-	char components; // type_index: 0
-	char _pad[2]; // type_index: 0
-}; 
-
-struct FluidEffectorSettings { // Max dep:244
-	FluidModifierData *fmd; // type_index: 240
-	Mesh *mesh; // type_index: 244
-	float *verts_old; // type_index: 7
-	int numverts; // type_index: 4
-	float surface_distance; // type_index: 7
-	int flags; // type_index: 4
-	int subframes; // type_index: 4
-	short type; // type_index: 2
-	char _pad1[6]; // type_index: 0
-	float vel_multi; // type_index: 7
-	short guiding_mode; // type_index: 2
-	char _pad2[2]; // type_index: 0
-}; 
-
-struct FluidFlowSettings { // Max dep:244
-	FluidModifierData *fmd; // type_index: 240
-	Mesh *mesh; // type_index: 244
-	ParticleSystem *psys; // type_index: 230
-	Tex *noise_texture; // type_index: 227
-	float *verts_old; // type_index: 7
-	int numverts; // type_index: 4
-	float vel_multi; // type_index: 7
-	float vel_normal; // type_index: 7
-	float vel_random; // type_index: 7
-	float vel_coord[3]; // type_index: 7
-	char _pad1[4]; // type_index: 0
-	float density; // type_index: 7
-	float color[3]; // type_index: 7
-	float fuel_amount; // type_index: 7
-	float temperature; // type_index: 7
-	float volume_density; // type_index: 7
-	float surface_distance; // type_index: 7
-	float particle_size; // type_index: 7
-	int subframes; // type_index: 4
-	float texture_size; // type_index: 7
-	float texture_offset; // type_index: 7
-	char _pad2[4]; // type_index: 0
-	char uvlayer_name[68]; // type_index: 0
-	char _pad3[4]; // type_index: 0
-	short vgroup_density; // type_index: 2
-	short type; // type_index: 2
-	short behavior; // type_index: 2
-	short source; // type_index: 2
-	short texture_type; // type_index: 2
-	short _pad4[3]; // type_index: 2
-	int flags; // type_index: 4
-}; 
-
-struct FreestyleLineSet { // Max dep:247
-	FreestyleLineSet *next; // type_index: 246
-	FreestyleLineSet *prev; // type_index: 246
-	char name[64]; // type_index: 0
-	int flags; // type_index: 4
-	int selection; // type_index: 4
-	short qi; // type_index: 2
-	char _pad1[2]; // type_index: 0
-	int qi_start; // type_index: 4
-	int qi_end; // type_index: 4
-	int edge_types; // type_index: 4
-	int exclude_edge_types; // type_index: 4
-	char _pad2[4]; // type_index: 0
-	Collection *group; // type_index: 66
-	FreestyleLineStyle *linestyle; // type_index: 247
-}; 
-
-struct FreestyleModuleConfig { // Max dep:248
-	FreestyleModuleConfig *next; // type_index: 248
-	FreestyleModuleConfig *prev; // type_index: 248
-	Text *script; // type_index: 151
-	short is_displayed; // type_index: 2
-	char _pad[6]; // type_index: 0
-}; 
-
-struct bGPDpalettecolor { // Max dep:252
-	bGPDpalettecolor *next; // type_index: 252
-	bGPDpalettecolor *prev; // type_index: 252
-	char info[64]; // type_index: 0
-	float color[4]; // type_index: 7
-	float fill[4]; // type_index: 7
-	short flag; // type_index: 2
-	char _pad[6]; // type_index: 0
-}; 
-
-struct bGPDpalette { // Max dep:253
-	bGPDpalette *next; // type_index: 253
-	bGPDpalette *prev; // type_index: 253
-	ListBase colors; // type_index: 22
-	char info[64]; // type_index: 0
-	short flag; // type_index: 2
-	char _pad[6]; // type_index: 0
-}; 
-
-struct bGPDcurve { // Max dep:254
-	bGPDcurve_point *curve_points; // type_index: 254
-	int tot_curve_points; // type_index: 4
-	short flag; // type_index: 2
-	char _pad[2]; // type_index: 0
-}; 
-
-struct bGPDstroke_Runtime { // Max dep:257
-	char tmp_layerinfo[128]; // type_index: 0
-	float multi_frame_falloff; // type_index: 7
-	int stroke_start; // type_index: 4
-	int fill_start; // type_index: 4
-	int vertex_start; // type_index: 4
-	int curve_start; // type_index: 4
-	int _pad0; // type_index: 4
-	bGPDstroke *gps_orig; // type_index: 257
-	void *_pad2; // type_index: 11
-}; 
-
-struct bGPDstroke { // Max dep:258
-	bGPDstroke *next; // type_index: 257
-	bGPDstroke *prev; // type_index: 257
-	bGPDspoint *points; // type_index: 250
-	bGPDtriangle *triangles; // type_index: 251
-	int totpoints; // type_index: 4
-	int tot_triangles; // type_index: 4
-	short thickness; // type_index: 2
-	short flag; // type_index: 2
-	short _pad[2]; // type_index: 2
-	double inittime; // type_index: 8
-	char colorname[128]; // type_index: 0
-	int mat_nr; // type_index: 4
-	short caps[2]; // type_index: 2
-	float gradient_f; // type_index: 7
-	float gradient_s[2]; // type_index: 7
-	float fill_opacity_fac; // type_index: 7
-	float uv_rotation; // type_index: 7
-	float uv_translation[2]; // type_index: 7
-	float uv_scale; // type_index: 7
-	int select_index; // type_index: 4
-	char _pad4[4]; // type_index: 0
-	MDeformVert *dvert; // type_index: 258
-	void *_pad3; // type_index: 11
-	float vert_color_fill[4]; // type_index: 7
-	bGPDcurve *editcurve; // type_index: 255
-	bGPDstroke_Runtime runtime; // type_index: 256
-	void *_pad5; // type_index: 11
-}; 
-
-struct bGPDframe { // Max dep:260
-	bGPDframe *next; // type_index: 260
-	bGPDframe *prev; // type_index: 260
-	ListBase strokes; // type_index: 22
-	int framenum; // type_index: 4
-	short flag; // type_index: 2
-	short key_type; // type_index: 2
-	bGPDframe_Runtime runtime; // type_index: 259
-}; 
-
-struct bGPDlayer_Mask { // Max dep:261
-	bGPDlayer_Mask *next; // type_index: 261
-	bGPDlayer_Mask *prev; // type_index: 261
-	char name[128]; // type_index: 0
-	short flag; // type_index: 2
-	short sort_index; // type_index: 2
-	char _pad[4]; // type_index: 0
-}; 
-
-struct bGPDlayer { // Max dep:263
-	bGPDlayer *next; // type_index: 263
-	bGPDlayer *prev; // type_index: 263
-	ListBase frames; // type_index: 22
-	bGPDframe *actframe; // type_index: 260
-	short flag; // type_index: 2
-	short onion_flag; // type_index: 2
-	float color[4]; // type_index: 7
-	float fill[4]; // type_index: 7
-	char info[128]; // type_index: 0
-	short thickness; // type_index: 2
-	short pass_index; // type_index: 2
-	Object *parent; // type_index: 51
-	float inverse[4][4]; // type_index: 7
-	char parsubstr[64]; // type_index: 0
-	short partype; // type_index: 2
-	short line_change; // type_index: 2
-	float tintcolor[4]; // type_index: 7
-	float opacity; // type_index: 7
-	char viewlayername[64]; // type_index: 0
-	int blend_mode; // type_index: 4
-	float vertex_paint_opacity; // type_index: 7
-	short gstep; // type_index: 2
-	short gstep_next; // type_index: 2
-	float gcolor_prev[3]; // type_index: 7
-	float gcolor_next[3]; // type_index: 7
-	char _pad1[4]; // type_index: 0
-	ListBase mask_layers; // type_index: 22
-	int act_mask; // type_index: 4
-	char _pad2[4]; // type_index: 0
-	float location[3]; // type_index: 7
-	float rotation[3]; // type_index: 7
-	float scale[3]; // type_index: 7
-	float layer_mat[4][4]; // type_index: 7
-	float layer_invmat[4][4]; // type_index: 7
-	char _pad3[4]; // type_index: 0
-	bGPDlayer_Runtime runtime; // type_index: 262
-}; 
-
-struct bGPdata { // Max dep:265
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	ListBase layers; // type_index: 22
-	int flag; // type_index: 4
-	int curve_edit_resolution; // type_index: 4
-	float curve_edit_threshold; // type_index: 7
-	float curve_edit_corner_angle; // type_index: 7
-	ListBase palettes; // type_index: 22
-	ListBase vertex_group_names; // type_index: 22
-	float pixfactor; // type_index: 7
-	float line_color[4]; // type_index: 7
-	float onion_factor; // type_index: 7
-	int onion_mode; // type_index: 4
-	int onion_flag; // type_index: 4
-	short gstep; // type_index: 2
-	short gstep_next; // type_index: 2
-	float gcolor_prev[3]; // type_index: 7
-	float gcolor_next[3]; // type_index: 7
-	float zdepth_offset; // type_index: 7
-	Material **mat; // type_index: 128
-	short totcol; // type_index: 2
-	short totlayer; // type_index: 2
-	short totframe; // type_index: 2
-	char _pad2[6]; // type_index: 0
-	int totstroke; // type_index: 4
-	int totpoint; // type_index: 4
-	short draw_mode; // type_index: 2
-	short onion_keytype; // type_index: 2
-	int select_last_index; // type_index: 4
-	int vertex_group_active_index; // type_index: 4
-	bGPgrid grid; // type_index: 265
-	bGPdata_Runtime runtime; // type_index: 264
-}; 
-
-struct MirrorGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Object *object; // type_index: 51
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char materialname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	int layer_pass; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct WeightProxGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	char target_vgname[64]; // type_index: 0
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char vgname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	float min_weight; // type_index: 7
-	int layer_pass; // type_index: 4
-	float dist_start; // type_index: 7
-	float dist_end; // type_index: 7
-	Object *object; // type_index: 51
-}; 
-
-struct ColorGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char materialname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	float hsv[3]; // type_index: 7
-	char modify_color; // type_index: 0
-	char _pad[3]; // type_index: 0
-	int layer_pass; // type_index: 4
-	char _pad1[4]; // type_index: 0
-	CurveMapping *curve_intensity; // type_index: 127
-}; 
-
-struct OpacityGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char materialname[64]; // type_index: 0
-	char vgname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	float factor; // type_index: 7
-	char modify_color; // type_index: 0
-	char _pad[3]; // type_index: 0
-	int layer_pass; // type_index: 4
-	float hardeness; // type_index: 7
-	CurveMapping *curve_intensity; // type_index: 127
-}; 
-
-struct OutlineGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Object *object; // type_index: 51
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	int thickness; // type_index: 4
-	float sample_length; // type_index: 7
-	int subdiv; // type_index: 4
-	int layer_pass; // type_index: 4
-	Material *outline_material; // type_index: 128
-}; 
-
-struct ArrayGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Object *object; // type_index: 51
-	Material *material; // type_index: 128
-	int count; // type_index: 4
-	int flag; // type_index: 4
-	float offset[3]; // type_index: 7
-	float shift[3]; // type_index: 7
-	float rnd_offset[3]; // type_index: 7
-	float rnd_rot[3]; // type_index: 7
-	float rnd_scale[3]; // type_index: 7
-	char _pad[4]; // type_index: 0
-	int seed; // type_index: 4
-	int pass_index; // type_index: 4
-	char layername[64]; // type_index: 0
-	char materialname[64]; // type_index: 0
-	int mat_rpl; // type_index: 4
-	int layer_pass; // type_index: 4
-}; 
-
-struct BuildGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	char materialname[64]; // type_index: 0
-	int layer_pass; // type_index: 4
-	float start_frame; // type_index: 7
-	float end_frame; // type_index: 7
-	float start_delay; // type_index: 7
-	float length; // type_index: 7
-	short flag; // type_index: 2
-	short mode; // type_index: 2
-	short transition; // type_index: 2
-	short time_alignment; // type_index: 2
-	float speed_fac; // type_index: 7
-	float speed_maxgap; // type_index: 7
-	short time_mode; // type_index: 2
-	char _pad[6]; // type_index: 0
-	Object *object; // type_index: 51
-	float percentage_fac; // type_index: 7
-	float fade_fac; // type_index: 7
-	char target_vgname[64]; // type_index: 0
-	float fade_opacity_strength; // type_index: 7
-	float fade_thickness_strength; // type_index: 7
-}; 
-
-struct LengthGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	int layer_pass; // type_index: 4
-	float start_fac; // type_index: 7
-	float end_fac; // type_index: 7
-	float rand_start_fac; // type_index: 7
-	float rand_end_fac; // type_index: 7
-	float rand_offset; // type_index: 7
-	float overshoot_fac; // type_index: 7
-	int seed; // type_index: 4
-	int step; // type_index: 4
-	int mode; // type_index: 4
-	char _pad[4]; // type_index: 0
-	float point_density; // type_index: 7
-	float segment_influence; // type_index: 7
-	float max_angle; // type_index: 7
-}; 
-
-struct TextureGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char materialname[64]; // type_index: 0
-	char vgname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	float uv_offset; // type_index: 7
-	float uv_scale; // type_index: 7
-	float fill_rotation; // type_index: 7
-	float fill_offset[2]; // type_index: 7
-	float fill_scale; // type_index: 7
-	int layer_pass; // type_index: 4
-	short fit_method; // type_index: 2
-	short mode; // type_index: 2
-	float alignment_rotation; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct HookGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Object *object; // type_index: 51
-	Material *material; // type_index: 128
-	char subtarget[64]; // type_index: 0
-	char layername[64]; // type_index: 0
-	char materialname[64]; // type_index: 0
-	char vgname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int layer_pass; // type_index: 4
-	char _pad[4]; // type_index: 0
-	int flag; // type_index: 4
-	char falloff_type; // type_index: 0
-	char _pad1[3]; // type_index: 0
-	float parentinv[4][4]; // type_index: 7
-	float cent[3]; // type_index: 7
-	float falloff; // type_index: 7
-	float force; // type_index: 7
-	CurveMapping *curfalloff; // type_index: 127
-}; 
-
-struct TintGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Object *object; // type_index: 51
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char materialname[64]; // type_index: 0
-	char vgname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int layer_pass; // type_index: 4
-	int flag; // type_index: 4
-	int mode; // type_index: 4
-	float factor; // type_index: 7
-	float radius; // type_index: 7
-	float rgb[3]; // type_index: 7
-	int type; // type_index: 4
-	CurveMapping *curve_intensity; // type_index: 127
-	ColorBand *colorband; // type_index: 132
-}; 
-
-struct MultiplyGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char materialname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	int layer_pass; // type_index: 4
-	int flags; // type_index: 4
-	int duplications; // type_index: 4
-	float distance; // type_index: 7
-	float offset; // type_index: 7
-	float fading_center; // type_index: 7
-	float fading_thickness; // type_index: 7
-	float fading_opacity; // type_index: 7
-}; 
-
-struct ArmatureGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	short deformflag; // type_index: 2
-	short multi; // type_index: 2
-	int _pad; // type_index: 4
-	Object *object; // type_index: 51
-	float (*vert_coords_prev)(); // type_index: 7
-	char vgname[64]; // type_index: 0
-}; 
-
-struct SmoothGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char materialname[64]; // type_index: 0
-	char vgname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	float factor; // type_index: 7
-	int step; // type_index: 4
-	int layer_pass; // type_index: 4
-	char _pad1[4]; // type_index: 0
-	CurveMapping *curve_intensity; // type_index: 127
-}; 
-
-struct OffsetGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char materialname[64]; // type_index: 0
-	char vgname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	float loc[3]; // type_index: 7
-	float rot[3]; // type_index: 7
-	float scale[3]; // type_index: 7
-	float rnd_offset[3]; // type_index: 7
-	float rnd_rot[3]; // type_index: 7
-	float rnd_scale[3]; // type_index: 7
-	int seed; // type_index: 4
-	int mode; // type_index: 4
-	int stroke_step; // type_index: 4
-	int stroke_start_offset; // type_index: 4
-	int layer_pass; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct SimplifyGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char materialname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	float factor; // type_index: 7
-	short mode; // type_index: 2
-	short step; // type_index: 2
-	int layer_pass; // type_index: 4
-	float length; // type_index: 7
-	float sharp_threshold; // type_index: 7
-	float distance; // type_index: 7
-}; 
-
-struct SubdivGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char materialname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	int level; // type_index: 4
-	int layer_pass; // type_index: 4
-	short type; // type_index: 2
-	char _pad[6]; // type_index: 0
-}; 
-
-struct NoiseGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char materialname[64]; // type_index: 0
-	char vgname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	float factor; // type_index: 7
-	float factor_strength; // type_index: 7
-	float factor_thickness; // type_index: 7
-	float factor_uvs; // type_index: 7
-	float noise_scale; // type_index: 7
-	float noise_offset; // type_index: 7
-	short noise_mode; // type_index: 2
-	char _pad[2]; // type_index: 0
-	int step; // type_index: 4
-	int layer_pass; // type_index: 4
-	int seed; // type_index: 4
-	CurveMapping *curve_intensity; // type_index: 127
-}; 
-
-struct GpencilModifierData { // Max dep:267
-	GpencilModifierData *next; // type_index: 267
-	GpencilModifierData *prev; // type_index: 267
-	int type; // type_index: 4
-	int mode; // type_index: 4
-	char _pad0[4]; // type_index: 0
-	short flag; // type_index: 2
-	short ui_expand_flag; // type_index: 2
-	char name[64]; // type_index: 0
-	char *error; // type_index: 0
-}; 
-
-struct WeightAngleGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	char target_vgname[64]; // type_index: 0
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char vgname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	float min_weight; // type_index: 7
-	int layer_pass; // type_index: 4
-	short axis; // type_index: 2
-	short space; // type_index: 2
-	float angle; // type_index: 7
-}; 
-
-struct ThickGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char materialname[64]; // type_index: 0
-	char vgname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	float thickness_fac; // type_index: 7
-	int thickness; // type_index: 4
-	int layer_pass; // type_index: 4
-	char _pad[4]; // type_index: 0
-	CurveMapping *curve_thickness; // type_index: 127
-}; 
-
-struct EnvelopeGpencilModifierData { // Max dep:267
-	GpencilModifierData modifier; // type_index: 267
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char vgname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	int mode; // type_index: 4
-	int mat_nr; // type_index: 4
-	float thickness; // type_index: 7
-	float strength; // type_index: 7
-	int skip; // type_index: 4
-	int layer_pass; // type_index: 4
-	int spread; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct TimeGpencilModifierData { // Max dep:271
-	GpencilModifierData modifier; // type_index: 267
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	int layer_pass; // type_index: 4
-	int flag; // type_index: 4
-	int offset; // type_index: 4
-	float frame_scale; // type_index: 7
-	int mode; // type_index: 4
-	int sfra; // type_index: 4
-	int efra; // type_index: 4
-	char _pad[4]; // type_index: 0
-	TimeGpencilModifierSegment *segments; // type_index: 271
-	int segments_len; // type_index: 4
-	int segment_active_index; // type_index: 4
-}; 
-
-struct TimeGpencilModifierSegment { // Max dep:272
-	char name[64]; // type_index: 0
-	TimeGpencilModifierData *gpmd; // type_index: 272
-	int seg_start; // type_index: 4
-	int seg_end; // type_index: 4
-	int seg_mode; // type_index: 4
-	int seg_repeat; // type_index: 4
-}; 
-
-struct LatticeGpencilModifierData { // Max dep:279
-	GpencilModifierData modifier; // type_index: 267
-	Object *object; // type_index: 51
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char materialname[64]; // type_index: 0
-	char vgname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	float strength; // type_index: 7
-	int layer_pass; // type_index: 4
-	LatticeDeformData *cache_data; // type_index: 279
-}; 
-
-struct DashGpencilModifierData { // Max dep:281
-	GpencilModifierData modifier; // type_index: 267
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	int layer_pass; // type_index: 4
-	int dash_offset; // type_index: 4
-	DashGpencilModifierSegment *segments; // type_index: 281
-	int segments_len; // type_index: 4
-	int segment_active_index; // type_index: 4
-}; 
-
-struct DashGpencilModifierSegment { // Max dep:282
-	char name[64]; // type_index: 0
-	DashGpencilModifierData *dmd; // type_index: 282
-	int dash; // type_index: 4
-	int gap; // type_index: 4
-	float radius; // type_index: 7
-	float opacity; // type_index: 7
-	int mat_nr; // type_index: 4
-	int flag; // type_index: 4
-}; 
-
-struct LineartGpencilModifierData { // Max dep:296
-	GpencilModifierData modifier; // type_index: 267
-	ushort line_types; // type_index: 3
-	char source_type; // type_index: 0
-	char use_multiple_levels; // type_index: 0
-	short level_start; // type_index: 2
-	short level_end; // type_index: 2
-	Object *source_camera; // type_index: 51
-	Object *light_contour_object; // type_index: 51
-	Object *source_object; // type_index: 51
-	Collection *source_collection; // type_index: 66
-	Material *target_material; // type_index: 128
-	char target_layer[64]; // type_index: 0
-	char source_vertex_group[64]; // type_index: 0
-	char vgname[64]; // type_index: 0
-	float overscan; // type_index: 7
-	float shadow_camera_fov; // type_index: 7
-	float shadow_camera_size; // type_index: 7
-	float shadow_camera_near; // type_index: 7
-	float shadow_camera_far; // type_index: 7
-	float opacity; // type_index: 7
-	short thickness; // type_index: 2
-	char transparency_flags; // type_index: 0
-	char transparency_mask; // type_index: 0
-	char intersection_mask; // type_index: 0
-	char shadow_selection; // type_index: 0
-	char silhouette_selection; // type_index: 0
-	char _pad[1]; // type_index: 0
-	float crease_threshold; // type_index: 7
-	float angle_splitting_threshold; // type_index: 7
-	float chain_smooth_tolerance; // type_index: 7
-	float chaining_image_threshold; // type_index: 7
-	int calculation_flags; // type_index: 4
-	int flags; // type_index: 4
-	float stroke_depth_offset; // type_index: 7
-	char level_start_override; // type_index: 0
-	char level_end_override; // type_index: 0
-	short edge_types_override; // type_index: 2
-	char shadow_selection_override; // type_index: 0
-	char shadow_use_silhouette_override; // type_index: 0
-	char _pad2[6]; // type_index: 0
-	LineartCache *cache; // type_index: 295
-	LineartData *la_data_ptr; // type_index: 296
-}; 
-
-struct ShrinkwrapGpencilModifierData { // Max dep:298
-	GpencilModifierData modifier; // type_index: 267
-	Object *target; // type_index: 51
-	Object *aux_target; // type_index: 51
-	Material *material; // type_index: 128
-	char layername[64]; // type_index: 0
-	char vgname[64]; // type_index: 0
-	int pass_index; // type_index: 4
-	int flag; // type_index: 4
-	int layer_pass; // type_index: 4
-	float keep_dist; // type_index: 7
-	short shrink_type; // type_index: 2
-	char shrink_opts; // type_index: 0
-	char shrink_mode; // type_index: 0
-	float proj_limit; // type_index: 7
-	char proj_axis; // type_index: 0
-	char subsurf_levels; // type_index: 0
-	char _pad[6]; // type_index: 0
-	float smooth_factor; // type_index: 7
-	int smooth_step; // type_index: 4
-	ShrinkwrapTreeData *cache_data; // type_index: 298
-}; 
-
-struct GreasePencilDrawing { // Max dep:302
-	GreasePencilDrawingBase base; // type_index: 300
-	CurvesGeometry geometry; // type_index: 216
-	GreasePencilDrawingRuntimeHandle *runtime; // type_index: 302
-}; 
-
-struct GreasePencilDrawingReference { // Max dep:304
-	GreasePencilDrawingBase base; // type_index: 300
-	GreasePencil *id_reference; // type_index: 304
-}; 
-
-struct GreasePencilLayerFramesMapStorage { // Max dep:305
-	int *keys; // type_index: 4
-	GreasePencilFrame *values; // type_index: 305
-	int size; // type_index: 4
-	int flag; // type_index: 4
-}; 
-
-struct GreasePencilLayerMask { // Max dep:307
-	GreasePencilLayerMask *next; // type_index: 307
-	GreasePencilLayerMask *prev; // type_index: 307
-	char *layer_name; // type_index: 0
-	ushort flag; // type_index: 3
-	char _pad[6]; // type_index: 0
-}; 
-
-struct GreasePencilLayerTreeNode { // Max dep:309
-	GreasePencilLayerTreeNode *next; // type_index: 308
-	GreasePencilLayerTreeNode *prev; // type_index: 308
-	GreasePencilLayerTreeGroup *parent; // type_index: 309
-	char *name; // type_index: 0
-	int8_t type; // type_index: 12
-	char _pad[7]; // type_index: 0
-	float color[3]; // type_index: 7
-	int flag; // type_index: 4
-}; 
-
-struct GreasePencilLayer { // Max dep:311
-	GreasePencilLayerTreeNode base; // type_index: 308
-	GreasePencilLayerFramesMapStorage frames_storage; // type_index: 306
-	int8_t blend_mode; // type_index: 12
-	char _pad[3]; // type_index: 0
-	float opacity; // type_index: 7
-	ListBase masks; // type_index: 22
-	int active_mask_index; // type_index: 4
-	char _pad2[4]; // type_index: 0
-	Object *parent; // type_index: 51
-	char *parsubstr; // type_index: 0
-	float parentinv[4][4]; // type_index: 7
-	float translation[3]; // type_index: 7
-	float rotation[3]; // type_index: 7
-	float scale[3]; // type_index: 7
-	char _pad3[4]; // type_index: 0
-	char *viewlayername; // type_index: 0
-	GreasePencilLayerRuntimeHandle *runtime; // type_index: 311
-}; 
-
-struct GreasePencilLayerTreeGroup { // Max dep:312
-	GreasePencilLayerTreeNode base; // type_index: 308
-	ListBase children; // type_index: 22
-	int8_t color_tag; // type_index: 12
-	char _pad[7]; // type_index: 0
-	GreasePencilLayerGroupRuntimeHandle *runtime; // type_index: 312
-}; 
-
-struct GreasePencil { // Max dep:314
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	GreasePencilDrawingBase **drawing_array; // type_index: 300
-	int drawing_array_size; // type_index: 4
-	char _pad[4]; // type_index: 0
-	GreasePencilLayerTreeGroup *root_group_ptr; // type_index: 309
-	CustomData layers_data; // type_index: 217
-	AttributeStorage attribute_storage; // type_index: 115
-	int attributes_active_index; // type_index: 4
-	char _pad2[4]; // type_index: 0
-	GreasePencilLayerTreeNode *active_node; // type_index: 308
-	Material **material_array; // type_index: 128
-	short material_array_size; // type_index: 2
-	char _pad3[2]; // type_index: 0
-	int flag; // type_index: 4
-	ListBase vertex_group_names; // type_index: 22
-	int vertex_group_active_index; // type_index: 4
-	char _pad4[4]; // type_index: 0
-	GreasePencilOnionSkinningSettings onion_skinning_settings; // type_index: 313
-	GreasePencilRuntimeHandle *runtime; // type_index: 314
-}; 
-
-struct StripProxy { // Max dep:316
-	char dir[768]; // type_index: 0
-	char file[256]; // type_index: 0
-	MovieReader *anim; // type_index: 316
-	short tc; // type_index: 2
-	short quality; // type_index: 2
-	short build_size_flags; // type_index: 2
-	short build_tc_flags; // type_index: 2
-	short build_flags; // type_index: 2
-	char storage; // type_index: 0
-	char _pad[5]; // type_index: 0
-}; 
-
-struct ImageAnim { // Max dep:316
-	ImageAnim *next; // type_index: 315
-	ImageAnim *prev; // type_index: 315
-	MovieReader *anim; // type_index: 316
-}; 
-
-struct ImageView { // Max dep:317
-	ImageView *next; // type_index: 317
-	ImageView *prev; // type_index: 317
-	char name[64]; // type_index: 0
-	char filepath[1024]; // type_index: 0
-}; 
-
-struct ImagePackedFile { // Max dep:318
-	ImagePackedFile *next; // type_index: 318
-	ImagePackedFile *prev; // type_index: 318
-	PackedFile *packedfile; // type_index: 35
-	int view; // type_index: 4
-	int tile_number; // type_index: 4
-	char filepath[1024]; // type_index: 0
-}; 
-
-struct RenderSlot { // Max dep:320
-	RenderSlot *next; // type_index: 319
-	RenderSlot *prev; // type_index: 319
-	char name[64]; // type_index: 0
-	RenderResult *render; // type_index: 320
-}; 
-
-struct ImageTile { // Max dep:322
-	ImageTile *next; // type_index: 322
-	ImageTile *prev; // type_index: 322
-	ImageTile_Runtime runtime; // type_index: 321
-	int tile_number; // type_index: 4
-	int gen_x; // type_index: 4
-	int gen_y; // type_index: 4
-	char gen_type; // type_index: 0
-	char gen_flag; // type_index: 0
-	short gen_depth; // type_index: 2
-	float gen_color[4]; // type_index: 7
-	char label[64]; // type_index: 0
-}; 
-
-struct ImageFormatData { // Max dep:324
-	char media_type; // type_index: 0
-	char imtype; // type_index: 0
-	char depth; // type_index: 0
-	char planes; // type_index: 0
-	char flag; // type_index: 0
-	char quality; // type_index: 0
-	char compress; // type_index: 0
-	char exr_codec; // type_index: 0
-	char exr_flag; // type_index: 0
-	char jp2_flag; // type_index: 0
-	char jp2_codec; // type_index: 0
-	char tiff_codec; // type_index: 0
-	char cineon_flag; // type_index: 0
-	char _pad[3]; // type_index: 0
-	short cineon_white; // type_index: 2
-	short cineon_black; // type_index: 2
-	float cineon_gamma; // type_index: 7
-	Stereo3dFormat stereo3d_format; // type_index: 324
-	char views_format; // type_index: 0
-	char color_management; // type_index: 0
-	char _pad1[6]; // type_index: 0
-	ColorManagedViewSettings view_settings; // type_index: 167
-	ColorManagedDisplaySettings display_settings; // type_index: 168
-	ColorManagedColorspaceSettings linear_colorspace_settings; // type_index: 169
-}; 
-
-struct Image { // Max dep:325
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	char name[1024]; // type_index: 0
-	MovieCache *cache; // type_index: 323
-	GPUTexture *gputexture[3][2]; // type_index: 242
-	ListBase anims; // type_index: 22
-	RenderResult *rr; // type_index: 320
-	ListBase renderslots; // type_index: 22
-	short render_slot; // type_index: 2
-	short last_render_slot; // type_index: 2
-	int flag; // type_index: 4
-	short source; // type_index: 2
-	short type; // type_index: 2
-	int lastframe; // type_index: 4
-	int gpuframenr; // type_index: 4
-	short gpuflag; // type_index: 2
-	short gpu_pass; // type_index: 2
-	short gpu_layer; // type_index: 2
-	short gpu_view; // type_index: 2
-	short seam_margin; // type_index: 2
-	char _pad2[2]; // type_index: 0
-	PackedFile *packedfile; // type_index: 35
-	ListBase packedfiles; // type_index: 22
-	PreviewImage *preview; // type_index: 37
-	int lastused; // type_index: 4
-	int gen_x; // type_index: 4
-	int gen_y; // type_index: 4
-	char gen_type; // type_index: 0
-	char gen_flag; // type_index: 0
-	short gen_depth; // type_index: 2
-	float gen_color[4]; // type_index: 7
-	float aspx; // type_index: 7
-	float aspy; // type_index: 7
-	ColorManagedColorspaceSettings colorspace_settings; // type_index: 169
-	char alpha_mode; // type_index: 0
-	char _pad; // type_index: 0
-	char eye; // type_index: 0
-	char views_format; // type_index: 0
-	int active_tile_index; // type_index: 4
-	ListBase tiles; // type_index: 22
-	ListBase views; // type_index: 22
-	Stereo3dFormat *stereo3d_format; // type_index: 324
-	ImageRuntimeHandle *runtime; // type_index: 325
-}; 
-
-struct Key { // Max dep:326
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	KeyBlock *refkey; // type_index: 326
-	char elemstr[32]; // type_index: 0
-	int elemsize; // type_index: 4
-	char _pad[4]; // type_index: 0
-	ListBase block; // type_index: 22
-	ID *from; // type_index: 26
-	int totkey; // type_index: 4
-	short flag; // type_index: 2
-	char type; // type_index: 0
-	char _pad2; // type_index: 0
-	float ctime; // type_index: 7
-	int uidgen; // type_index: 4
-}; 
-
-struct KeyBlock { // Max dep:326
-	KeyBlock *next; // type_index: 326
-	KeyBlock *prev; // type_index: 326
-	float pos; // type_index: 7
-	float curval; // type_index: 7
-	short type; // type_index: 2
-	char _pad1[2]; // type_index: 0
-	short relative; // type_index: 2
-	short flag; // type_index: 2
-	int totelem; // type_index: 4
-	int uid; // type_index: 4
-	void *data; // type_index: 11
-	char name[64]; // type_index: 0
-	char vgroup[64]; // type_index: 0
-	float slidermin; // type_index: 7
-	float slidermax; // type_index: 7
-}; 
-
-struct Lattice { // Max dep:328
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	short pntsu; // type_index: 2
-	short pntsv; // type_index: 2
-	short pntsw; // type_index: 2
-	short flag; // type_index: 2
-	short opntsu; // type_index: 2
-	short opntsv; // type_index: 2
-	short opntsw; // type_index: 2
-	char _pad2[3]; // type_index: 0
-	char typeu; // type_index: 0
-	char typev; // type_index: 0
-	char typew; // type_index: 0
-	int actbp; // type_index: 4
-	float fu; // type_index: 7
-	float fv; // type_index: 7
-	float fw; // type_index: 7
-	float du; // type_index: 7
-	float dv; // type_index: 7
-	float dw; // type_index: 7
-	BPoint *def; // type_index: 204
-	Key *key; // type_index: 210
-	MDeformVert *dvert; // type_index: 258
-	char vgroup[64]; // type_index: 0
-	ListBase vertex_group_names; // type_index: 22
-	int vertex_group_active_index; // type_index: 4
-	char _pad0[4]; // type_index: 0
-	EditLatt *editlatt; // type_index: 328
-	void *batch_cache; // type_index: 11
-}; 
-
-struct Base { // Max dep:329
-	Base *next; // type_index: 329
-	Base *prev; // type_index: 329
-	Object *object; // type_index: 51
-	Base *base_orig; // type_index: 329
-	int lay; // type_index: 4
-	short flag; // type_index: 2
-	short flag_from_collection; // type_index: 2
-	short flag_legacy; // type_index: 2
-	short local_view_bits; // type_index: 2
-	short local_collections_bits; // type_index: 2
-	char _pad1[2]; // type_index: 0
-}; 
-
-struct LayerCollection { // Max dep:330
-	LayerCollection *next; // type_index: 330
-	LayerCollection *prev; // type_index: 330
-	Collection *collection; // type_index: 66
-	void *_pad1; // type_index: 11
-	short flag; // type_index: 2
-	short runtime_flag; // type_index: 2
-	char _pad[4]; // type_index: 0
-	ListBase layer_collections; // type_index: 22
-	short local_collections_bits; // type_index: 2
-	short _pad2[3]; // type_index: 2
-}; 
-
-struct ViewLayerAOV { // Max dep:332
-	ViewLayerAOV *next; // type_index: 332
-	ViewLayerAOV *prev; // type_index: 332
-	char name[64]; // type_index: 0
-	int flag; // type_index: 4
-	int type; // type_index: 4
-}; 
-
-struct ViewLayerLightgroup { // Max dep:333
-	ViewLayerLightgroup *next; // type_index: 333
-	ViewLayerLightgroup *prev; // type_index: 333
-	char name[64]; // type_index: 0
-}; 
-
-struct View3D_Runtime { // Max dep:335
-	void *properties_storage; // type_index: 11
-	void (*properties_storage_free)(); // type_index: 11
-	int flag; // type_index: 4
-	float ofs_last_center[3]; // type_index: 7
-	SceneStats *local_stats; // type_index: 335
-}; 
-
-struct ViewLayer { // Max dep:336
-	ViewLayer *next; // type_index: 161
-	ViewLayer *prev; // type_index: 161
-	char name[64]; // type_index: 0
-	short flag; // type_index: 2
-	char _pad[6]; // type_index: 0
-	ListBase object_bases; // type_index: 22
-	SceneStats *stats; // type_index: 335
-	Base *basact; // type_index: 329
-	ListBase layer_collections; // type_index: 22
-	LayerCollection *active_collection; // type_index: 330
-	int layflag; // type_index: 4
-	int passflag; // type_index: 4
-	float pass_alpha_threshold; // type_index: 7
-	short cryptomatte_flag; // type_index: 2
-	short cryptomatte_levels; // type_index: 2
-	int grease_pencil_flags; // type_index: 4
-	int samples; // type_index: 4
-	Material *mat_override; // type_index: 128
-	World *world_override; // type_index: 336
-	IDProperty *id_properties; // type_index: 24
-	IDProperty *system_properties; // type_index: 24
-	FreestyleConfig freestyle_config; // type_index: 249
-	ViewLayerEEVEE eevee; // type_index: 331
-	ListBase aovs; // type_index: 22
-	ViewLayerAOV *active_aov; // type_index: 332
-	ListBase lightgroups; // type_index: 22
-	ViewLayerLightgroup *active_lightgroup; // type_index: 333
-	Base **object_bases_array; // type_index: 329
-	GHash *object_bases_hash; // type_index: 55
-}; 
-
-struct World { // Max dep:338
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	char _pad0[4]; // type_index: 0
-	short texact; // type_index: 2
-	short mistype; // type_index: 2
-	float horr; // type_index: 7
-	float horg; // type_index: 7
-	float horb; // type_index: 7
-	float exposure; // type_index: 7
-	float exp; // type_index: 7
-	float range; // type_index: 7
-	short mode; // type_index: 2
-	short flag; // type_index: 2
-	float misi; // type_index: 7
-	float miststa; // type_index: 7
-	float mistdist; // type_index: 7
-	float misthi; // type_index: 7
-	float aodist; // type_index: 7
-	float aoenergy; // type_index: 7
-	int probe_resolution; // type_index: 4
-	float sun_threshold; // type_index: 7
-	float sun_angle; // type_index: 7
-	float sun_shadow_maximum_resolution; // type_index: 7
-	float sun_shadow_jitter_overblur; // type_index: 7
-	float sun_shadow_filter_radius; // type_index: 7
-	short pr_texture; // type_index: 2
-	short use_nodes; // type_index: 2
-	PreviewImage *preview; // type_index: 37
-	bNodeTree *nodetree; // type_index: 338
-	LightgroupMembership *lightgroup; // type_index: 334
-	void *_pad1; // type_index: 11
-	ListBase gpumaterial; // type_index: 22
-	uint64_t last_update; // type_index: 10
-}; 
-
-struct FreestyleLineStyle { // Max dep:338
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	float r; // type_index: 7
-	float g; // type_index: 7
-	float b; // type_index: 7
-	float alpha; // type_index: 7
-	float thickness; // type_index: 7
-	int thickness_position; // type_index: 4
-	float thickness_ratio; // type_index: 7
-	int flag; // type_index: 4
-	int caps; // type_index: 4
-	int chaining; // type_index: 4
-	int rounds; // type_index: 4
-	float split_length; // type_index: 7
-	float min_angle; // type_index: 7
-	float max_angle; // type_index: 7
-	float min_length; // type_index: 7
-	float max_length; // type_index: 7
-	int chain_count; // type_index: 4
-	short split_dash1; // type_index: 2
-	short split_gap1; // type_index: 2
-	short split_dash2; // type_index: 2
-	short split_gap2; // type_index: 2
-	short split_dash3; // type_index: 2
-	short split_gap3; // type_index: 2
-	int sort_key; // type_index: 4
-	int integration_type; // type_index: 4
-	float texstep; // type_index: 7
-	short texact; // type_index: 2
-	short pr_texture; // type_index: 2
-	short use_nodes; // type_index: 2
-	char _pad[6]; // type_index: 0
-	short dash1; // type_index: 2
-	short gap1; // type_index: 2
-	short dash2; // type_index: 2
-	short gap2; // type_index: 2
-	short dash3; // type_index: 2
-	short gap3; // type_index: 2
-	int panel; // type_index: 4
-	MTex *mtex[18]; // type_index: 131
-	bNodeTree *nodetree; // type_index: 338
-	ListBase color_modifiers; // type_index: 22
-	ListBase alpha_modifiers; // type_index: 22
-	ListBase thickness_modifiers; // type_index: 22
-	ListBase geometry_modifiers; // type_index: 22
-}; 
-
-struct Lamp { // Max dep:338
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	short type; // type_index: 2
-	short flag; // type_index: 2
-	int mode; // type_index: 4
-	float r; // type_index: 7
-	float g; // type_index: 7
-	float b; // type_index: 7
-	float temperature; // type_index: 7
-	float energy_new; // type_index: 7
-	float exposure; // type_index: 7
-	float radius; // type_index: 7
-	float spotsize; // type_index: 7
-	float spotblend; // type_index: 7
-	short area_shape; // type_index: 2
-	short _pad1; // type_index: 2
-	float area_size; // type_index: 7
-	float area_sizey; // type_index: 7
-	float area_sizez; // type_index: 7
-	float area_spread; // type_index: 7
-	float sun_angle; // type_index: 7
-	short pr_texture; // type_index: 2
-	short use_nodes; // type_index: 2
-	float clipsta; // type_index: 7
-	float clipend; // type_index: 7
-	float cascade_max_dist; // type_index: 7
-	float cascade_exponent; // type_index: 7
-	float cascade_fade; // type_index: 7
-	int cascade_count; // type_index: 4
-	float diff_fac; // type_index: 7
-	float spec_fac; // type_index: 7
-	float transmission_fac; // type_index: 7
-	float volume_fac; // type_index: 7
-	float att_dist; // type_index: 7
-	float shadow_filter_radius; // type_index: 7
-	float shadow_maximum_resolution; // type_index: 7
-	float shadow_jitter_overblur; // type_index: 7
-	PreviewImage *preview; // type_index: 37
-	bNodeTree *nodetree; // type_index: 338
-	float energy; // type_index: 7
-	float _pad2; // type_index: 7
-}; 
-
-struct LightCache { // Max dep:342
-	int flag; // type_index: 4
-	int version; // type_index: 4
-	int type; // type_index: 4
-	int cube_len; // type_index: 4
-	int grid_len; // type_index: 4
-	int mips_len; // type_index: 4
-	int vis_res; // type_index: 4
-	int ref_res; // type_index: 4
-	char _pad[4][2]; // type_index: 0
-	LightCacheTexture grid_tx; // type_index: 342
-	LightCacheTexture cube_tx; // type_index: 342
-	LightCacheTexture *cube_mips; // type_index: 342
-	LightProbeCache *cube_data; // type_index: 340
-	LightGridCache *grid_data; // type_index: 341
-}; 
-
-struct LightProbeGridCacheFrame { // Max dep:348
-	int size[3]; // type_index: 4
-	int data_layout; // type_index: 4
-	int block_len; // type_index: 4
-	int block_size; // type_index: 4
-	LightProbeBlockData *block_infos; // type_index: 348
-	LightProbeBakingData baking; // type_index: 344
-	LightProbeIrradianceData irradiance; // type_index: 345
-	LightProbeVisibilityData visibility; // type_index: 346
-	LightProbeConnectivityData connectivity; // type_index: 347
-	char _pad[4]; // type_index: 0
-	int surfels_len; // type_index: 4
-	void *surfels; // type_index: 11
-}; 
-
-struct LightProbeObjectCache { // Max dep:349
-	int cache_type; // type_index: 4
-	char shared; // type_index: 0
-	char dirty; // type_index: 0
-	char _pad0[2]; // type_index: 0
-	LightProbeGridCacheFrame *grid_static_cache; // type_index: 349
-}; 
-
-struct LineStyleAlphaModifier_Tangent { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	CurveMapping *curve; // type_index: 127
-	int flags; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleGeometryModifier_BackboneStretcher { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	float backbone_length; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleThicknessModifier_Tangent { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	CurveMapping *curve; // type_index: 127
-	int flags; // type_index: 4
-	float min_thickness; // type_index: 7
-	float max_thickness; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleColorModifier_Material { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	ColorBand *color_ramp; // type_index: 132
-	int flags; // type_index: 4
-	int mat_attr; // type_index: 4
-}; 
-
-struct LineStyleAlphaModifier_Material { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	CurveMapping *curve; // type_index: 127
-	int flags; // type_index: 4
-	int mat_attr; // type_index: 4
-}; 
-
-struct LineStyleThicknessModifier_Material { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	CurveMapping *curve; // type_index: 127
-	int flags; // type_index: 4
-	float value_min; // type_index: 7
-	float value_max; // type_index: 7
-	int mat_attr; // type_index: 4
-}; 
-
-struct LineStyleGeometryModifier_Sampling { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	float sampling; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleGeometryModifier_BezierCurve { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	float error; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleGeometryModifier_SinusDisplacement { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	float wavelength; // type_index: 7
-	float amplitude; // type_index: 7
-	float phase; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleGeometryModifier_SpatialNoise { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	float amplitude; // type_index: 7
-	float scale; // type_index: 7
-	int octaves; // type_index: 4
-	int flags; // type_index: 4
-}; 
-
-struct LineStyleGeometryModifier_PerlinNoise1D { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	float frequency; // type_index: 7
-	float amplitude; // type_index: 7
-	float angle; // type_index: 7
-	int octaves; // type_index: 4
-	int seed; // type_index: 4
-	char _pad1[4]; // type_index: 0
-}; 
-
-struct LineStyleGeometryModifier_PerlinNoise2D { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	float frequency; // type_index: 7
-	float amplitude; // type_index: 7
-	float angle; // type_index: 7
-	int octaves; // type_index: 4
-	int seed; // type_index: 4
-	char _pad1[4]; // type_index: 0
-}; 
-
-struct LineStyleGeometryModifier_TipRemover { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	float tip_length; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleGeometryModifier_Polygonalization { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	float error; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleGeometryModifier_GuidingLines { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	float offset; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleGeometryModifier_Blueprint { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	int flags; // type_index: 4
-	int rounds; // type_index: 4
-	float backbone_length; // type_index: 7
-	int random_radius; // type_index: 4
-	int random_center; // type_index: 4
-	int random_backbone; // type_index: 4
-}; 
-
-struct LineStyleGeometryModifier_2DOffset { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	float start; // type_index: 7
-	float end; // type_index: 7
-	float x; // type_index: 7
-	float y; // type_index: 7
-}; 
-
-struct LineStyleGeometryModifier_2DTransform { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	int pivot; // type_index: 4
-	float scale_x; // type_index: 7
-	float scale_y; // type_index: 7
-	float angle; // type_index: 7
-	float pivot_u; // type_index: 7
-	float pivot_x; // type_index: 7
-	float pivot_y; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleGeometryModifier_Simplification { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	float tolerance; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleThicknessModifier_Calligraphy { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	float min_thickness; // type_index: 7
-	float max_thickness; // type_index: 7
-	float orientation; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleThicknessModifier_CreaseAngle { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	CurveMapping *curve; // type_index: 127
-	int flags; // type_index: 4
-	char _pad[4]; // type_index: 0
-	float min_angle; // type_index: 7
-	float max_angle; // type_index: 7
-	float min_thickness; // type_index: 7
-	float max_thickness; // type_index: 7
-}; 
-
-struct LineStyleModifier { // Max dep:351
-	LineStyleModifier *next; // type_index: 351
-	LineStyleModifier *prev; // type_index: 351
-	char name[64]; // type_index: 0
-	int type; // type_index: 4
-	float influence; // type_index: 7
-	int flags; // type_index: 4
-	int blend; // type_index: 4
-}; 
-
-struct LineStyleColorModifier_AlongStroke { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	ColorBand *color_ramp; // type_index: 132
-}; 
-
-struct LineStyleAlphaModifier_AlongStroke { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	CurveMapping *curve; // type_index: 127
-	int flags; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleThicknessModifier_AlongStroke { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	CurveMapping *curve; // type_index: 127
-	int flags; // type_index: 4
-	float value_min; // type_index: 7
-	float value_max; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleColorModifier_DistanceFromCamera { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	ColorBand *color_ramp; // type_index: 132
-	float range_min; // type_index: 7
-	float range_max; // type_index: 7
-}; 
-
-struct LineStyleAlphaModifier_DistanceFromCamera { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	CurveMapping *curve; // type_index: 127
-	int flags; // type_index: 4
-	float range_min; // type_index: 7
-	float range_max; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleThicknessModifier_DistanceFromCamera { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	CurveMapping *curve; // type_index: 127
-	int flags; // type_index: 4
-	float range_min; // type_index: 7
-	float range_max; // type_index: 7
-	float value_min; // type_index: 7
-	float value_max; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleColorModifier_DistanceFromObject { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	Object *target; // type_index: 51
-	ColorBand *color_ramp; // type_index: 132
-	float range_min; // type_index: 7
-	float range_max; // type_index: 7
-}; 
-
-struct LineStyleAlphaModifier_DistanceFromObject { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	Object *target; // type_index: 51
-	CurveMapping *curve; // type_index: 127
-	int flags; // type_index: 4
-	float range_min; // type_index: 7
-	float range_max; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleThicknessModifier_DistanceFromObject { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	Object *target; // type_index: 51
-	CurveMapping *curve; // type_index: 127
-	int flags; // type_index: 4
-	float range_min; // type_index: 7
-	float range_max; // type_index: 7
-	float value_min; // type_index: 7
-	float value_max; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleColorModifier_Curvature_3D { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	float min_curvature; // type_index: 7
-	float max_curvature; // type_index: 7
-	ColorBand *color_ramp; // type_index: 132
-	float range_min; // type_index: 7
-	float range_max; // type_index: 7
-}; 
-
-struct LineStyleAlphaModifier_Curvature_3D { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	CurveMapping *curve; // type_index: 127
-	int flags; // type_index: 4
-	float min_curvature; // type_index: 7
-	float max_curvature; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleThicknessModifier_Curvature_3D { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	CurveMapping *curve; // type_index: 127
-	int flags; // type_index: 4
-	char _pad[4]; // type_index: 0
-	float min_curvature; // type_index: 7
-	float max_curvature; // type_index: 7
-	float min_thickness; // type_index: 7
-	float max_thickness; // type_index: 7
-}; 
-
-struct LineStyleColorModifier_Noise { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	ColorBand *color_ramp; // type_index: 132
-	float period; // type_index: 7
-	float amplitude; // type_index: 7
-	int seed; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleAlphaModifier_Noise { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	CurveMapping *curve; // type_index: 127
-	int flags; // type_index: 4
-	float period; // type_index: 7
-	float amplitude; // type_index: 7
-	int seed; // type_index: 4
-}; 
-
-struct LineStyleThicknessModifier_Noise { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	float period; // type_index: 7
-	float amplitude; // type_index: 7
-	int flags; // type_index: 4
-	int seed; // type_index: 4
-}; 
-
-struct LineStyleColorModifier_CreaseAngle { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	ColorBand *color_ramp; // type_index: 132
-	float min_angle; // type_index: 7
-	float max_angle; // type_index: 7
-}; 
-
-struct LineStyleAlphaModifier_CreaseAngle { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	CurveMapping *curve; // type_index: 127
-	int flags; // type_index: 4
-	float min_angle; // type_index: 7
-	float max_angle; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct LineStyleColorModifier_Tangent { // Max dep:351
-	LineStyleModifier modifier; // type_index: 351
-	ColorBand *color_ramp; // type_index: 132
-}; 
-
-struct Link { // Max dep:391
-	Link *next; // type_index: 391
-	Link *prev; // type_index: 391
-}; 
-
-struct LinkData { // Max dep:392
-	LinkData *next; // type_index: 392
-	LinkData *prev; // type_index: 392
-	void *data; // type_index: 11
-}; 
-
-struct Mask { // Max dep:393
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	ListBase masklayers; // type_index: 22
-	int masklay_act; // type_index: 4
-	int masklay_tot; // type_index: 4
-	int sfra; // type_index: 4
-	int efra; // type_index: 4
-	int flag; // type_index: 4
-	char _pad[4]; // type_index: 0
-	Mask_Runtime runtime; // type_index: 393
-}; 
-
-struct MaskSpaceInfo { // Max dep:394
-	Mask *mask; // type_index: 394
-	char draw_flag; // type_index: 0
-	char draw_type; // type_index: 0
-	char overlay_mode; // type_index: 0
-	char _pad3[1]; // type_index: 0
-	float blend_factor; // type_index: 7
-}; 
-
-struct MaskSplinePoint { // Max dep:396
-	BezTriple bezt; // type_index: 90
-	char _pad[4]; // type_index: 0
-	int tot_uw; // type_index: 4
-	MaskSplinePointUW *uw; // type_index: 396
-	MaskParent parent; // type_index: 395
-}; 
-
-struct MaskSpline { // Max dep:398
-	MaskSpline *next; // type_index: 398
-	MaskSpline *prev; // type_index: 398
-	short flag; // type_index: 2
-	char offset_mode; // type_index: 0
-	char weight_interp; // type_index: 0
-	int tot_point; // type_index: 4
-	MaskSplinePoint *points; // type_index: 397
-	MaskParent parent; // type_index: 395
-	MaskSplinePoint *points_deform; // type_index: 397
-}; 
-
-struct MaskLayerShape { // Max dep:399
-	MaskLayerShape *next; // type_index: 399
-	MaskLayerShape *prev; // type_index: 399
-	float *data; // type_index: 7
-	int tot_vert; // type_index: 4
-	int frame; // type_index: 4
-	char flag; // type_index: 0
-	char _pad[7]; // type_index: 0
-}; 
-
-struct MaskLayer { // Max dep:400
-	MaskLayer *next; // type_index: 400
-	MaskLayer *prev; // type_index: 400
-	char name[64]; // type_index: 0
-	ListBase splines; // type_index: 22
-	ListBase splines_shapes; // type_index: 22
-	MaskSpline *act_spline; // type_index: 398
-	MaskSplinePoint *act_point; // type_index: 397
-	float alpha; // type_index: 7
-	char blend; // type_index: 0
-	char blend_flag; // type_index: 0
-	char falloff; // type_index: 0
-	char _pad[7]; // type_index: 0
-	char flag; // type_index: 0
-	char restrictflag; // type_index: 0
-}; 
-
-struct Material { // Max dep:403
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	short flag; // type_index: 2
-	char surface_render_method; // type_index: 0
-	char _pad1[1]; // type_index: 0
-	float r; // type_index: 7
-	float g; // type_index: 7
-	float b; // type_index: 7
-	float a; // type_index: 7
-	float specr; // type_index: 7
-	float specg; // type_index: 7
-	float specb; // type_index: 7
-	float alpha; // type_index: 7
-	float ray_mirror; // type_index: 7
-	float spec; // type_index: 7
-	float gloss_mir; // type_index: 7
-	float roughness; // type_index: 7
-	float metallic; // type_index: 7
-	char use_nodes; // type_index: 0
-	char pr_type; // type_index: 0
-	short pr_texture; // type_index: 2
-	short pr_flag; // type_index: 2
-	short index; // type_index: 2
-	bNodeTree *nodetree; // type_index: 338
-	PreviewImage *preview; // type_index: 37
-	float line_col[4]; // type_index: 7
-	short line_priority; // type_index: 2
-	short vcol_alpha; // type_index: 2
-	short paint_active_slot; // type_index: 2
-	short paint_clone_slot; // type_index: 2
-	short tot_slots; // type_index: 2
-	char displacement_method; // type_index: 0
-	char thickness_mode; // type_index: 0
-	float alpha_threshold; // type_index: 7
-	float refract_depth; // type_index: 7
-	char blend_method; // type_index: 0
-	char blend_shadow; // type_index: 0
-	char blend_flag; // type_index: 0
-	char volume_intersection_method; // type_index: 0
-	float inflate_bounds; // type_index: 7
-	char _pad3[4]; // type_index: 0
-	TexPaintSlot *texpaintslot; // type_index: 401
-	ListBase gpumaterial; // type_index: 22
-	MaterialGPencilStyle *gp_style; // type_index: 402
-	MaterialLineArt lineart; // type_index: 403
-}; 
-
-struct Mesh { // Max dep:413
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	Key *key; // type_index: 210
-	Material **mat; // type_index: 128
-	int totvert; // type_index: 4
-	int totedge; // type_index: 4
-	int totpoly; // type_index: 4
-	int totloop; // type_index: 4
-	int *poly_offset_indices; // type_index: 4
-	AttributeStorage attribute_storage; // type_index: 115
-	CustomData vdata; // type_index: 217
-	CustomData edata; // type_index: 217
-	CustomData pdata; // type_index: 217
-	CustomData ldata; // type_index: 217
-	ListBase vertex_group_names; // type_index: 22
-	int vertex_group_active_index; // type_index: 4
-	int attributes_active_index; // type_index: 4
-	MSelect *mselect; // type_index: 404
-	int totselect; // type_index: 4
-	int act_face; // type_index: 4
-	Mesh *texcomesh; // type_index: 244
-	float loc[3]; // type_index: 7
-	float size[3]; // type_index: 7
-	char texflag; // type_index: 0
-	char editflag; // type_index: 0
-	ushort flag; // type_index: 3
-	float smoothresh; // type_index: 7
-	float remesh_voxel_size; // type_index: 7
-	float remesh_voxel_adaptivity; // type_index: 7
-	int face_sets_color_seed; // type_index: 4
-	int face_sets_color_default; // type_index: 4
-	char *active_color_attribute; // type_index: 0
-	char *default_color_attribute; // type_index: 0
-	char *active_uv_map_attribute; // type_index: 0
-	char *default_uv_map_attribute; // type_index: 0
-	char symmetry; // type_index: 0
-	char remesh_mode; // type_index: 0
-	short totcol; // type_index: 2
-	char cd_flag; // type_index: 0
-	char subdiv; // type_index: 0
-	char subdivr; // type_index: 0
-	char subsurftype; // type_index: 0
-	MPoly *mpoly; // type_index: 405
-	MLoop *mloop; // type_index: 406
-	MVert *mvert; // type_index: 407
-	MEdge *medge; // type_index: 408
-	MDeformVert *dvert; // type_index: 258
-	MTFace *mtface; // type_index: 409
-	TFace *tface; // type_index: 410
-	MCol *mcol; // type_index: 411
-	MFace *mface; // type_index: 412
-	CustomData fdata; // type_index: 217
-	int totface; // type_index: 4
-	char _pad1; // type_index: 0
-	int8_t radial_symmetry[3]; // type_index: 12
-	MeshRuntimeHandle *runtime; // type_index: 413
-}; 
-
-struct MDeformVert { // Max dep:419
-	MDeformWeight *dw; // type_index: 419
-	int totweight; // type_index: 4
-	int flag; // type_index: 4
-}; 
-
-struct MetaBall { // Max dep:429
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	ListBase elems; // type_index: 22
-	ListBase *editelems; // type_index: 22
-	Material **mat; // type_index: 128
-	char flag; // type_index: 0
-	char flag2; // type_index: 0
-	short totcol; // type_index: 2
-	char texflag; // type_index: 0
-	char _pad[2]; // type_index: 0
-	char needs_flush_to_id; // type_index: 0
-	float loc[3]; // type_index: 7
-	float size[3]; // type_index: 7
-	float wiresize; // type_index: 7
-	float rendersize; // type_index: 7
-	float thresh; // type_index: 7
-	char _pad0[4]; // type_index: 0
-	MetaElem *lastelem; // type_index: 429
-}; 
-
-struct MetaElem { // Max dep:430
-	MetaElem *next; // type_index: 429
-	MetaElem *prev; // type_index: 429
-	BoundBox *bb; // type_index: 430
-	short type; // type_index: 2
-	short flag; // type_index: 2
-	char _pad[4]; // type_index: 0
-	float x; // type_index: 7
-	float y; // type_index: 7
-	float z; // type_index: 7
-	float quat[4]; // type_index: 7
-	float expx; // type_index: 7
-	float expy; // type_index: 7
-	float expz; // type_index: 7
-	float rad; // type_index: 7
-	float rad2; // type_index: 7
-	float s; // type_index: 7
-	float len; // type_index: 7
-	float *mat; // type_index: 7
-	float *imat; // type_index: 7
-}; 
-
-struct DisplaceModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Tex *texture; // type_index: 227
-	Object *map_object; // type_index: 51
-	char map_bone[64]; // type_index: 0
-	char uvlayer_name[68]; // type_index: 0
-	char _pad1[4]; // type_index: 0
-	int uvlayer_tmp; // type_index: 4
-	int texmapping; // type_index: 4
-	float strength; // type_index: 7
-	int direction; // type_index: 4
-	char defgrp_name[64]; // type_index: 0
-	float midlevel; // type_index: 7
-	int space; // type_index: 4
-	short flag; // type_index: 2
-	char _pad2[6]; // type_index: 0
-}; 
-
-struct FluidModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	FluidDomainSettings *domain; // type_index: 239
-	FluidFlowSettings *flow; // type_index: 243
-	FluidEffectorSettings *effector; // type_index: 245
-	float time; // type_index: 7
-	int type; // type_index: 4
-	void *_pad1; // type_index: 11
-}; 
-
-struct BevelModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	float value; // type_index: 7
-	int res; // type_index: 4
-	short flags; // type_index: 2
-	short val_flags; // type_index: 2
-	short profile_type; // type_index: 2
-	short lim_flags; // type_index: 2
-	short e_flags; // type_index: 2
-	short mat; // type_index: 2
-	short edge_flags; // type_index: 2
-	short face_str_mode; // type_index: 2
-	short miter_inner; // type_index: 2
-	short miter_outer; // type_index: 2
-	short vmesh_method; // type_index: 2
-	char affect_type; // type_index: 0
-	char _pad; // type_index: 0
-	float profile; // type_index: 7
-	float bevel_angle; // type_index: 7
-	float spread; // type_index: 7
-	char defgrp_name[64]; // type_index: 0
-	char _pad1[4]; // type_index: 0
-	CurveProfile *custom_profile; // type_index: 211
-	char edge_weight_name[64]; // type_index: 0
-	char vertex_weight_name[64]; // type_index: 0
-}; 
-
-struct EdgeSplitModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	float split_angle; // type_index: 7
-	int flags; // type_index: 4
-}; 
-
-struct MirrorModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	short axis; // type_index: 2
-	short flag; // type_index: 2
-	float tolerance; // type_index: 7
-	float bisect_threshold; // type_index: 7
-	uchar use_correct_order_on_merge; // type_index: 1
-	char _pad[3]; // type_index: 0
-	float uv_offset[2]; // type_index: 7
-	float uv_offset_copy[2]; // type_index: 7
-	Object *mirror_ob; // type_index: 51
-	void *_pad1; // type_index: 11
-}; 
-
-struct ArrayModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Object *start_cap; // type_index: 51
-	Object *end_cap; // type_index: 51
-	Object *curve_ob; // type_index: 51
-	Object *offset_ob; // type_index: 51
-	float offset[3]; // type_index: 7
-	float scale[3]; // type_index: 7
-	float length; // type_index: 7
-	float merge_dist; // type_index: 7
-	int fit_type; // type_index: 4
-	int offset_type; // type_index: 4
-	int flags; // type_index: 4
-	int count; // type_index: 4
-	float uv_offset[2]; // type_index: 7
-}; 
-
-struct MaskModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Object *ob_arm; // type_index: 51
-	char vgroup[64]; // type_index: 0
-	short mode; // type_index: 2
-	short flag; // type_index: 2
-	float threshold; // type_index: 7
-	void *_pad1; // type_index: 11
-}; 
-
-struct BuildModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	float start; // type_index: 7
-	float length; // type_index: 7
-	short flag; // type_index: 2
-	short randomize; // type_index: 2
-	int seed; // type_index: 4
-}; 
-
-struct CurveModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Object *object; // type_index: 51
-	char name[64]; // type_index: 0
-	short defaxis; // type_index: 2
-	short flag; // type_index: 2
-	char _pad[4]; // type_index: 0
-	void *_pad1; // type_index: 11
-}; 
-
-struct LatticeModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Object *object; // type_index: 51
-	char name[64]; // type_index: 0
-	float strength; // type_index: 7
-	short flag; // type_index: 2
-	char _pad[2]; // type_index: 0
-	void *_pad1; // type_index: 11
-}; 
-
-struct SubsurfModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	short subdivType; // type_index: 2
-	short levels; // type_index: 2
-	short renderLevels; // type_index: 2
-	short flags; // type_index: 2
-	short uv_smooth; // type_index: 2
-	short quality; // type_index: 2
-	short boundary_smooth; // type_index: 2
-	short adaptive_space; // type_index: 2
-	float adaptive_pixel_size; // type_index: 7
-	float adaptive_object_edge_length; // type_index: 7
-}; 
-
-struct MappingInfoModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Tex *texture; // type_index: 227
-	Object *map_object; // type_index: 51
-	char map_bone[64]; // type_index: 0
-	char uvlayer_name[68]; // type_index: 0
-	char _pad1[4]; // type_index: 0
-	int uvlayer_tmp; // type_index: 4
-	int texmapping; // type_index: 4
-}; 
-
-struct ModifierData { // Max dep:432
-	ModifierData *next; // type_index: 432
-	ModifierData *prev; // type_index: 432
-	int type; // type_index: 4
-	int mode; // type_index: 4
-	float execution_time; // type_index: 7
-	short flag; // type_index: 2
-	short ui_expand_flag; // type_index: 2
-	ushort layout_panel_open_flag; // type_index: 3
-	char _pad[2]; // type_index: 0
-	int persistent_uid; // type_index: 4
-	char name[64]; // type_index: 0
-	char *error; // type_index: 0
-	void *runtime; // type_index: 11
-}; 
-
-struct UVWarpModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	char axis_u; // type_index: 0
-	char axis_v; // type_index: 0
-	short flag; // type_index: 2
-	float center[2]; // type_index: 7
-	float offset[2]; // type_index: 7
-	float scale[2]; // type_index: 7
-	float rotation; // type_index: 7
-	Object *object_src; // type_index: 51
-	char bone_src[64]; // type_index: 0
-	Object *object_dst; // type_index: 51
-	char bone_dst[64]; // type_index: 0
-	char vgroup_name[64]; // type_index: 0
-	char uvlayer_name[68]; // type_index: 0
-	char _pad[4]; // type_index: 0
-}; 
-
-struct SolidifyModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	char defgrp_name[64]; // type_index: 0
-	char shell_defgrp_name[64]; // type_index: 0
-	char rim_defgrp_name[64]; // type_index: 0
-	float offset; // type_index: 7
-	float offset_fac; // type_index: 7
-	float offset_fac_vg; // type_index: 7
-	float offset_clamp; // type_index: 7
-	char mode; // type_index: 0
-	char nonmanifold_offset_mode; // type_index: 0
-	char nonmanifold_boundary_mode; // type_index: 0
-	char _pad; // type_index: 0
-	float crease_inner; // type_index: 7
-	float crease_outer; // type_index: 7
-	float crease_rim; // type_index: 7
-	int flag; // type_index: 4
-	short mat_ofs; // type_index: 2
-	short mat_ofs_rim; // type_index: 2
-	float merge_tolerance; // type_index: 7
-	float bevel_convex; // type_index: 7
-}; 
-
-struct ScrewModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Object *ob_axis; // type_index: 51
-	int steps; // type_index: 4
-	int render_steps; // type_index: 4
-	int iter; // type_index: 4
-	float screw_ofs; // type_index: 7
-	float angle; // type_index: 7
-	float merge_dist; // type_index: 7
-	short flag; // type_index: 2
-	char axis; // type_index: 0
-	char _pad[5]; // type_index: 0
-	void *_pad1; // type_index: 11
-}; 
-
-struct WarpModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Tex *texture; // type_index: 227
-	Object *map_object; // type_index: 51
-	char map_bone[64]; // type_index: 0
-	char uvlayer_name[68]; // type_index: 0
-	char _pad1[4]; // type_index: 0
-	int uvlayer_tmp; // type_index: 4
-	int texmapping; // type_index: 4
-	Object *object_from; // type_index: 51
-	Object *object_to; // type_index: 51
-	char bone_from[64]; // type_index: 0
-	char bone_to[64]; // type_index: 0
-	CurveMapping *curfalloff; // type_index: 127
-	char defgrp_name[64]; // type_index: 0
-	float strength; // type_index: 7
-	float falloff_radius; // type_index: 7
-	char flag; // type_index: 0
-	char falloff_type; // type_index: 0
-	char _pad2[6]; // type_index: 0
-	void *_pad3; // type_index: 11
-}; 
-
-struct WeightVGEditModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	char defgrp_name[64]; // type_index: 0
-	short edit_flags; // type_index: 2
-	short falloff_type; // type_index: 2
-	float default_weight; // type_index: 7
-	CurveMapping *cmap_curve; // type_index: 127
-	float add_threshold; // type_index: 7
-	float rem_threshold; // type_index: 7
-	float mask_constant; // type_index: 7
-	char mask_defgrp_name[64]; // type_index: 0
-	int mask_tex_use_channel; // type_index: 4
-	Tex *mask_texture; // type_index: 227
-	Object *mask_tex_map_obj; // type_index: 51
-	char mask_tex_map_bone[64]; // type_index: 0
-	int mask_tex_mapping; // type_index: 4
-	char mask_tex_uvlayer_name[68]; // type_index: 0
-	void *_pad1; // type_index: 11
-}; 
-
-struct WeightVGMixModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	char defgrp_name_a[64]; // type_index: 0
-	char defgrp_name_b[64]; // type_index: 0
-	float default_weight_a; // type_index: 7
-	float default_weight_b; // type_index: 7
-	char mix_mode; // type_index: 0
-	char mix_set; // type_index: 0
-	char _pad0[6]; // type_index: 0
-	float mask_constant; // type_index: 7
-	char mask_defgrp_name[64]; // type_index: 0
-	int mask_tex_use_channel; // type_index: 4
-	Tex *mask_texture; // type_index: 227
-	Object *mask_tex_map_obj; // type_index: 51
-	char mask_tex_map_bone[64]; // type_index: 0
-	int mask_tex_mapping; // type_index: 4
-	char mask_tex_uvlayer_name[68]; // type_index: 0
-	char _pad1[4]; // type_index: 0
-	char flag; // type_index: 0
-	char _pad2[3]; // type_index: 0
-}; 
-
-struct WeightVGProximityModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	char defgrp_name[64]; // type_index: 0
-	CurveMapping *cmap_curve; // type_index: 127
-	int proximity_mode; // type_index: 4
-	int proximity_flags; // type_index: 4
-	Object *proximity_ob_target; // type_index: 51
-	float mask_constant; // type_index: 7
-	char mask_defgrp_name[64]; // type_index: 0
-	int mask_tex_use_channel; // type_index: 4
-	Tex *mask_texture; // type_index: 227
-	Object *mask_tex_map_obj; // type_index: 51
-	char mask_tex_map_bone[64]; // type_index: 0
-	int mask_tex_mapping; // type_index: 4
-	char mask_tex_uvlayer_name[68]; // type_index: 0
-	char _pad1[4]; // type_index: 0
-	float min_dist; // type_index: 7
-	float max_dist; // type_index: 7
-	short falloff_type; // type_index: 2
-	char _pad0[2]; // type_index: 0
-}; 
-
-struct DynamicPaintModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	DynamicPaintCanvasSettings *canvas; // type_index: 224
-	DynamicPaintBrushSettings *brush; // type_index: 229
-	int type; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct RemeshModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	float threshold; // type_index: 7
-	float scale; // type_index: 7
-	float hermite_num; // type_index: 7
-	char depth; // type_index: 0
-	char flag; // type_index: 0
-	char mode; // type_index: 0
-	char _pad; // type_index: 0
-	float voxel_size; // type_index: 7
-	float adaptivity; // type_index: 7
-}; 
-
-struct SkinModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	float branch_smoothing; // type_index: 7
-	char flag; // type_index: 0
-	char symmetry_axes; // type_index: 0
-	char _pad[2]; // type_index: 0
-}; 
-
-struct TriangulateModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	int flag; // type_index: 4
-	int quad_method; // type_index: 4
-	int ngon_method; // type_index: 4
-	int min_vertices; // type_index: 4
-}; 
-
-struct LaplacianSmoothModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	float lambda; // type_index: 7
-	float lambda_border; // type_index: 7
-	char _pad1[4]; // type_index: 0
-	char defgrp_name[64]; // type_index: 0
-	short flag; // type_index: 2
-	short repeat; // type_index: 2
-}; 
-
-struct DecimateModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	float percent; // type_index: 7
-	short iter; // type_index: 2
-	char delimit; // type_index: 0
-	char symmetry_axis; // type_index: 0
-	float angle; // type_index: 7
-	char defgrp_name[64]; // type_index: 0
-	float defgrp_factor; // type_index: 7
-	short flag; // type_index: 2
-	short mode; // type_index: 2
-	int face_count; // type_index: 4
-}; 
-
-struct MeshCacheModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	char flag; // type_index: 0
-	char type; // type_index: 0
-	char time_mode; // type_index: 0
-	char play_mode; // type_index: 0
-	char forward_axis; // type_index: 0
-	char up_axis; // type_index: 0
-	char flip_axis; // type_index: 0
-	char interp; // type_index: 0
-	float factor; // type_index: 7
-	char deform_mode; // type_index: 0
-	char defgrp_name[64]; // type_index: 0
-	char _pad[7]; // type_index: 0
-	float frame_start; // type_index: 7
-	float frame_scale; // type_index: 7
-	float eval_frame; // type_index: 7
-	float eval_time; // type_index: 7
-	float eval_factor; // type_index: 7
-	char filepath[1024]; // type_index: 0
-}; 
-
-struct LaplacianDeformModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	char anchor_grp_name[64]; // type_index: 0
-	int total_verts; // type_index: 4
-	int repeat; // type_index: 4
-	float *vertexco; // type_index: 7
-	ImplicitSharingInfoHandle *vertexco_sharing_info; // type_index: 112
-	void *cache_system; // type_index: 11
-	short flag; // type_index: 2
-	char _pad[6]; // type_index: 0
-}; 
-
-struct WireframeModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	char defgrp_name[64]; // type_index: 0
-	float offset; // type_index: 7
-	float offset_fac; // type_index: 7
-	float offset_fac_vg; // type_index: 7
-	float crease_weight; // type_index: 7
-	short flag; // type_index: 2
-	short mat_ofs; // type_index: 2
-	char _pad[4]; // type_index: 0
-}; 
-
-struct WeldModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	float merge_dist; // type_index: 7
-	char defgrp_name[64]; // type_index: 0
-	char mode; // type_index: 0
-	char flag; // type_index: 0
-	char _pad[2]; // type_index: 0
-}; 
-
-struct DataTransferModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Object *ob_source; // type_index: 51
-	int data_types; // type_index: 4
-	int vmap_mode; // type_index: 4
-	int emap_mode; // type_index: 4
-	int lmap_mode; // type_index: 4
-	int pmap_mode; // type_index: 4
-	float map_max_distance; // type_index: 7
-	float map_ray_radius; // type_index: 7
-	float islands_precision; // type_index: 7
-	char _pad1[4]; // type_index: 0
-	int layers_select_src[5]; // type_index: 4
-	int layers_select_dst[5]; // type_index: 4
-	int mix_mode; // type_index: 4
-	float mix_factor; // type_index: 7
-	char defgrp_name[64]; // type_index: 0
-	int flags; // type_index: 4
-	void *_pad2; // type_index: 11
-}; 
-
-struct NormalEditModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	char defgrp_name[64]; // type_index: 0
-	Object *target; // type_index: 51
-	short mode; // type_index: 2
-	short flag; // type_index: 2
-	short mix_mode; // type_index: 2
-	char _pad[2]; // type_index: 0
-	float mix_factor; // type_index: 7
-	float mix_limit; // type_index: 7
-	float offset[3]; // type_index: 7
-	char _pad0[4]; // type_index: 0
-	void *_pad1; // type_index: 11
-}; 
-
-struct MeshSeqCacheModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	CacheFile *cache_file; // type_index: 139
-	char object_path[1024]; // type_index: 0
-	char read_flag; // type_index: 0
-	char _pad[3]; // type_index: 0
-	float velocity_scale; // type_index: 7
-	CacheReader *reader; // type_index: 202
-	char reader_object_path[1024]; // type_index: 0
-}; 
-
-struct WeightedNormalModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	char defgrp_name[64]; // type_index: 0
-	char mode; // type_index: 0
-	char flag; // type_index: 0
-	short weight; // type_index: 2
-	float thresh; // type_index: 7
-}; 
-
-struct MeshToVolumeModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Object *object; // type_index: 51
-	int resolution_mode; // type_index: 4
-	float voxel_size; // type_index: 7
-	int voxel_amount; // type_index: 4
-	float interior_band_width; // type_index: 7
-	float density; // type_index: 7
-	char _pad2[4]; // type_index: 0
-	void *_pad3; // type_index: 11
-}; 
-
-struct VolumeDisplaceModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Tex *texture; // type_index: 227
-	Object *texture_map_object; // type_index: 51
-	int texture_map_mode; // type_index: 4
-	float strength; // type_index: 7
-	float texture_mid_level[3]; // type_index: 7
-	float texture_sample_radius; // type_index: 7
-}; 
-
-struct VolumeToMeshModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Object *object; // type_index: 51
-	float threshold; // type_index: 7
-	float adaptivity; // type_index: 7
-	int flag; // type_index: 4
-	int resolution_mode; // type_index: 4
-	float voxel_size; // type_index: 7
-	int voxel_amount; // type_index: 4
-	char grid_name[64]; // type_index: 0
-	void *_pad1; // type_index: 11
-}; 
-
-struct SimpleDeformModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Object *origin; // type_index: 51
-	char vgroup_name[64]; // type_index: 0
-	float factor; // type_index: 7
-	float limit[2]; // type_index: 7
-	char mode; // type_index: 0
-	char axis; // type_index: 0
-	char deform_axis; // type_index: 0
-	char flag; // type_index: 0
-	void *_pad1; // type_index: 11
-}; 
-
-struct ShapeKeyModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-}; 
-
-struct UVProjectModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Object *projectors[10]; // type_index: 51
-	char _pad2[4]; // type_index: 0
-	int num_projectors; // type_index: 4
-	float aspectx; // type_index: 7
-	float aspecty; // type_index: 7
-	float scalex; // type_index: 7
-	float scaley; // type_index: 7
-	char uvlayer_name[68]; // type_index: 0
-	int uvlayer_tmp; // type_index: 4
-}; 
-
-struct SmoothModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	float fac; // type_index: 7
-	char defgrp_name[64]; // type_index: 0
-	short flag; // type_index: 2
-	short repeat; // type_index: 2
-}; 
-
-struct CastModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Object *object; // type_index: 51
-	float fac; // type_index: 7
-	float radius; // type_index: 7
-	float size; // type_index: 7
-	char defgrp_name[64]; // type_index: 0
-	short flag; // type_index: 2
-	short type; // type_index: 2
-	void *_pad1; // type_index: 11
-}; 
-
-struct WaveModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Tex *texture; // type_index: 227
-	Object *map_object; // type_index: 51
-	char map_bone[64]; // type_index: 0
-	char uvlayer_name[68]; // type_index: 0
-	char _pad1[4]; // type_index: 0
-	int uvlayer_tmp; // type_index: 4
-	int texmapping; // type_index: 4
-	Object *objectcenter; // type_index: 51
-	char defgrp_name[64]; // type_index: 0
-	short flag; // type_index: 2
-	char _pad2[2]; // type_index: 0
-	float startx; // type_index: 7
-	float starty; // type_index: 7
-	float height; // type_index: 7
-	float width; // type_index: 7
-	float narrow; // type_index: 7
-	float speed; // type_index: 7
-	float damp; // type_index: 7
-	float falloff; // type_index: 7
-	float timeoffs; // type_index: 7
-	float lifetime; // type_index: 7
-	char _pad3[4]; // type_index: 0
-	void *_pad4; // type_index: 11
-}; 
-
-struct ArmatureModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	short deformflag; // type_index: 2
-	short multi; // type_index: 2
-	char _pad2[4]; // type_index: 0
-	Object *object; // type_index: 51
-	float (*vert_coords_prev)(); // type_index: 7
-	char defgrp_name[64]; // type_index: 0
-}; 
-
-struct HookModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Object *object; // type_index: 51
-	char subtarget[64]; // type_index: 0
-	char flag; // type_index: 0
-	char falloff_type; // type_index: 0
-	char _pad[6]; // type_index: 0
-	float parentinv[4][4]; // type_index: 7
-	float cent[3]; // type_index: 7
-	float falloff; // type_index: 7
-	CurveMapping *curfalloff; // type_index: 127
-	int *indexar; // type_index: 4
-	int totindex; // type_index: 4
-	float force; // type_index: 7
-	char name[64]; // type_index: 0
-	void *_pad1; // type_index: 11
-}; 
-
-struct SoftbodyModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-}; 
-
-struct BooleanModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Object *object; // type_index: 51
-	Collection *collection; // type_index: 66
-	float double_threshold; // type_index: 7
-	char operation; // type_index: 0
-	char solver; // type_index: 0
-	char material_mode; // type_index: 0
-	char flag; // type_index: 0
-	char bm_flag; // type_index: 0
-	char _pad[7]; // type_index: 0
-}; 
-
-struct ParticleSystemModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	ParticleSystem *psys; // type_index: 230
-	Mesh *mesh_final; // type_index: 244
-	Mesh *mesh_original; // type_index: 244
-	int totdmvert; // type_index: 4
-	int totdmedge; // type_index: 4
-	int totdmface; // type_index: 4
-	short flag; // type_index: 2
-	char _pad[2]; // type_index: 0
-	void *_pad1; // type_index: 11
-}; 
-
-struct MultiresModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	char lvl; // type_index: 0
-	char sculptlvl; // type_index: 0
-	char renderlvl; // type_index: 0
-	char totlvl; // type_index: 0
-	char simple; // type_index: 0
-	char flags; // type_index: 0
-	char _pad[2]; // type_index: 0
-	short quality; // type_index: 2
-	short uv_smooth; // type_index: 2
-	short boundary_smooth; // type_index: 2
-	char _pad2[2]; // type_index: 0
-}; 
-
-struct ShrinkwrapModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Object *target; // type_index: 51
-	Object *auxTarget; // type_index: 51
-	char vgroup_name[64]; // type_index: 0
-	float keepDist; // type_index: 7
-	short shrinkType; // type_index: 2
-	char shrinkOpts; // type_index: 0
-	char shrinkMode; // type_index: 0
-	float projLimit; // type_index: 7
-	char projAxis; // type_index: 0
-	char subsurfLevels; // type_index: 0
-	char _pad[2]; // type_index: 0
-}; 
-
-struct ParticleInstanceModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	Object *ob; // type_index: 51
-	short psys; // type_index: 2
-	short flag; // type_index: 2
-	short axis; // type_index: 2
-	short space; // type_index: 2
-	float position; // type_index: 7
-	float random_position; // type_index: 7
-	float rotation; // type_index: 7
-	float random_rotation; // type_index: 7
-	float particle_amount; // type_index: 7
-	float particle_offset; // type_index: 7
-	char index_layer_name[68]; // type_index: 0
-	char value_layer_name[68]; // type_index: 0
-	void *_pad1; // type_index: 11
-}; 
-
-struct SmokeModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	int type; // type_index: 4
-	int _pad; // type_index: 4
-}; 
-
-struct ExplodeModifierData { // Max dep:432
-	ModifierData modifier; // type_index: 432
-	int *facepa; // type_index: 4
-	short flag; // type_index: 2
-	short vgroup; // type_index: 2
-	float protect; // type_index: 7
-	char uvname[68]; // type_index: 0
-	char _pad1[4]; // type_index: 0
-	void *_pad2; // type_index: 11
-}; 
-
-struct ClothModifierData { // Max dep:455
-	ModifierData modifier; // type_index: 432
-	Cloth *clothObject; // type_index: 453
-	ClothSimSettings *sim_parms; // type_index: 153
-	ClothCollSettings *coll_parms; // type_index: 156
-	PointCache *point_cache; // type_index: 226
-	ListBase ptcaches; // type_index: 22
-	ClothHairData *hairdata; // type_index: 454
-	float hair_grid_min[3]; // type_index: 7
-	float hair_grid_max[3]; // type_index: 7
-	int hair_grid_res[3]; // type_index: 4
-	float hair_grid_cellsize; // type_index: 7
-	ClothSolverResult *solver_result; // type_index: 455
-}; 
-
-struct CollisionModifierData { // Max dep:457
-	ModifierData modifier; // type_index: 432
-	float (*x)(); // type_index: 7
-	float (*xnew)(); // type_index: 7
-	float (*xold)(); // type_index: 7
-	float (*current_xnew)(); // type_index: 7
-	float (*current_x)(); // type_index: 7
-	float (*current_v)(); // type_index: 7
-	int (*vert_tris)(); // type_index: 4
-	int mvert_num; // type_index: 4
-	int tri_num; // type_index: 4
-	float time_x; // type_index: 7
-	float time_xnew; // type_index: 7
-	char is_static; // type_index: 0
-	char _pad[7]; // type_index: 0
-	BVHTree *bvhtree; // type_index: 457
-}; 
-
-struct SurfaceModifierData { // Max dep:458
-	ModifierData modifier; // type_index: 432
-	SurfaceModifierData_Runtime runtime; // type_index: 458
-}; 
-
-struct SurfaceModifierData_Runtime { // Max dep:459
-	float (*vert_positions_prev)(); // type_index: 7
-	float (*vert_velocities)(); // type_index: 7
-	Mesh *mesh; // type_index: 244
-	BVHTreeFromMeshHandle *bvhtree; // type_index: 459
-	int cfra_prev; // type_index: 4
-	int verts_num; // type_index: 4
-}; 
-
-struct MeshDeformModifierData { // Max dep:463
-	ModifierData modifier; // type_index: 432
-	Object *object; // type_index: 51
-	char defgrp_name[64]; // type_index: 0
-	short gridsize; // type_index: 2
-	short flag; // type_index: 2
-	char _pad[4]; // type_index: 0
-	MDefInfluence *bindinfluences; // type_index: 462
-	ImplicitSharingInfoHandle *bindinfluences_sharing_info; // type_index: 112
-	int *bindoffsets; // type_index: 4
-	ImplicitSharingInfoHandle *bindoffsets_sharing_info; // type_index: 112
-	float *bindcagecos; // type_index: 7
-	ImplicitSharingInfoHandle *bindcagecos_sharing_info; // type_index: 112
-	int totvert; // type_index: 4
-	int totcagevert; // type_index: 4
-	MDefCell *dyngrid; // type_index: 463
-	ImplicitSharingInfoHandle *dyngrid_sharing_info; // type_index: 112
-	MDefInfluence *dyninfluences; // type_index: 462
-	ImplicitSharingInfoHandle *dyninfluences_sharing_info; // type_index: 112
-	int *dynverts; // type_index: 4
-	ImplicitSharingInfoHandle *dynverts_sharing_info; // type_index: 112
-	int dyngridsize; // type_index: 4
-	int totinfluence; // type_index: 4
-	float dyncellmin[3]; // type_index: 7
-	float dyncellwidth; // type_index: 7
-	float bindmat[4][4]; // type_index: 7
-	float *bindweights; // type_index: 7
-	float *bindcos; // type_index: 7
-	void (*bindfunc)(); // type_index: 11
-}; 
-
-struct FluidsimModifierData { // Max dep:470
-	ModifierData modifier; // type_index: 432
-	FluidsimSettings *fss; // type_index: 470
-	void *_pad1; // type_index: 11
-}; 
-
-struct OceanModifierData { // Max dep:479
-	ModifierData modifier; // type_index: 432
-	Ocean *ocean; // type_index: 478
-	OceanCache *oceancache; // type_index: 479
-	int resolution; // type_index: 4
-	int viewport_resolution; // type_index: 4
-	int spatial_size; // type_index: 4
-	float wind_velocity; // type_index: 7
-	float damp; // type_index: 7
-	float smallest_wave; // type_index: 7
-	float depth; // type_index: 7
-	float wave_alignment; // type_index: 7
-	float wave_direction; // type_index: 7
-	float wave_scale; // type_index: 7
-	float chop_amount; // type_index: 7
-	float foam_coverage; // type_index: 7
-	float time; // type_index: 7
-	int spectrum; // type_index: 4
-	float fetch_jonswap; // type_index: 7
-	float sharpen_peak_jonswap; // type_index: 7
-	int bakestart; // type_index: 4
-	int bakeend; // type_index: 4
-	char cachepath[1024]; // type_index: 0
-	char foamlayername[68]; // type_index: 0
-	char spraylayername[68]; // type_index: 0
-	char cached; // type_index: 0
-	char geometry_mode; // type_index: 0
-	char flag; // type_index: 0
-	char _pad2; // type_index: 0
-	short repeat_x; // type_index: 2
-	short repeat_y; // type_index: 2
-	int seed; // type_index: 4
-	float size; // type_index: 7
-	float foam_fade; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct CorrectiveSmoothModifierData { // Max dep:488
-	ModifierData modifier; // type_index: 432
-	float (*bind_coords)(); // type_index: 7
-	ImplicitSharingInfoHandle *bind_coords_sharing_info; // type_index: 112
-	int bind_coords_num; // type_index: 4
-	float lambda; // type_index: 7
-	float scale; // type_index: 7
-	short repeat; // type_index: 2
-	short flag; // type_index: 2
-	char smooth_type; // type_index: 0
-	char rest_source; // type_index: 0
-	char _pad[6]; // type_index: 0
-	char defgrp_name[64]; // type_index: 0
-	CorrectiveSmoothDeltaCache delta_cache; // type_index: 488
-}; 
-
-struct SDefVert { // Max dep:498
-	SDefBind *binds; // type_index: 498
-	int numbinds; // type_index: 4
-	int vertex_idx; // type_index: 4
-}; 
-
-struct SurfaceDeformModifierData { // Max dep:501
-	ModifierData modifier; // type_index: 432
-	Depsgraph *depsgraph; // type_index: 501
-	Object *target; // type_index: 51
-	SDefVert *verts; // type_index: 499
-	ImplicitSharingInfoHandle *verts_sharing_info; // type_index: 112
-	float falloff; // type_index: 7
-	int num_mesh_verts; // type_index: 4
-	int numverts; // type_index: 4
-	int target_verts_num; // type_index: 4
-	int numpoly; // type_index: 4
-	int flags; // type_index: 4
-	float mat[4][4]; // type_index: 7
-	float strength; // type_index: 7
-	char defgrp_name[64]; // type_index: 0
-	int _pad2; // type_index: 4
-}; 
-
-struct NodesModifierPackedBake { // Max dep:505
-	int meta_files_num; // type_index: 4
-	int blob_files_num; // type_index: 4
-	NodesModifierBakeFile *meta_files; // type_index: 505
-	NodesModifierBakeFile *blob_files; // type_index: 505
-}; 
-
-struct NodesModifierBake { // Max dep:506
-	int id; // type_index: 4
-	int flag; // type_index: 4
-	uchar bake_mode; // type_index: 1
-	int8_t bake_target; // type_index: 12
-	char _pad[6]; // type_index: 0
-	char *directory; // type_index: 0
-	int frame_start; // type_index: 4
-	int frame_end; // type_index: 4
-	int data_blocks_num; // type_index: 4
-	int active_data_block; // type_index: 4
-	NodesModifierDataBlock *data_blocks; // type_index: 504
-	NodesModifierPackedBake *packed; // type_index: 506
-	void *_pad2; // type_index: 11
-	int64_t bake_size; // type_index: 9
-}; 
-
-struct NodesModifierData { // Max dep:510
-	ModifierData modifier; // type_index: 432
-	bNodeTree *node_group; // type_index: 338
-	NodesModifierSettings settings; // type_index: 503
-	char *simulation_bake_directory; // type_index: 0
-	int8_t flag; // type_index: 12
-	int8_t bake_target; // type_index: 12
-	char _pad[2]; // type_index: 0
-	int bakes_num; // type_index: 4
-	NodesModifierBake *bakes; // type_index: 507
-	char _pad2[4]; // type_index: 0
-	int panels_num; // type_index: 4
-	NodesModifierPanel *panels; // type_index: 508
-	NodesModifierRuntimeHandle *runtime; // type_index: 510
-}; 
-
-struct GreasePencilSimplifyModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	short mode; // type_index: 2
-	char _pad[4]; // type_index: 0
-	short step; // type_index: 2
-	float factor; // type_index: 7
-	float length; // type_index: 7
-	float sharp_threshold; // type_index: 7
-	float distance; // type_index: 7
-}; 
-
-struct GreasePencilTextureModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	float uv_offset; // type_index: 7
-	float uv_scale; // type_index: 7
-	float fill_rotation; // type_index: 7
-	float fill_offset[2]; // type_index: 7
-	float fill_scale; // type_index: 7
-	int layer_pass; // type_index: 4
-	short fit_method; // type_index: 2
-	short mode; // type_index: 2
-	float alignment_rotation; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct GreasePencilOpacityModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	int flag; // type_index: 4
-	char color_mode; // type_index: 0
-	char _pad1[3]; // type_index: 0
-	float color_factor; // type_index: 7
-	float hardness_factor; // type_index: 7
-	void *_pad2; // type_index: 11
-}; 
-
-struct GreasePencilBuildModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	float start_frame; // type_index: 7
-	float end_frame; // type_index: 7
-	float start_delay; // type_index: 7
-	float length; // type_index: 7
-	short flag; // type_index: 2
-	short mode; // type_index: 2
-	short transition; // type_index: 2
-	short time_alignment; // type_index: 2
-	float speed_fac; // type_index: 7
-	float speed_maxgap; // type_index: 7
-	short time_mode; // type_index: 2
-	char _pad[6]; // type_index: 0
-	Object *object; // type_index: 51
-	float percentage_fac; // type_index: 7
-	float fade_fac; // type_index: 7
-	char target_vgname[64]; // type_index: 0
-	float fade_opacity_strength; // type_index: 7
-	float fade_thickness_strength; // type_index: 7
-}; 
-
-struct GreasePencilShrinkwrapModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	Object *target; // type_index: 51
-	Object *aux_target; // type_index: 51
-	float keep_dist; // type_index: 7
-	short shrink_type; // type_index: 2
-	char shrink_opts; // type_index: 0
-	char shrink_mode; // type_index: 0
-	float proj_limit; // type_index: 7
-	char proj_axis; // type_index: 0
-	char subsurf_levels; // type_index: 0
-	char _pad[2]; // type_index: 0
-	float smooth_factor; // type_index: 7
-	int smooth_step; // type_index: 4
-	ShrinkwrapTreeData *cache_data; // type_index: 298
-}; 
-
-struct GreasePencilOutlineModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	Object *object; // type_index: 51
-	int flag; // type_index: 4
-	int thickness; // type_index: 4
-	float sample_length; // type_index: 7
-	int subdiv; // type_index: 4
-	Material *outline_material; // type_index: 128
-}; 
-
-struct GreasePencilEnvelopeModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	int mode; // type_index: 4
-	int mat_nr; // type_index: 4
-	float thickness; // type_index: 7
-	float strength; // type_index: 7
-	int skip; // type_index: 4
-	int spread; // type_index: 4
-}; 
-
-struct GreasePencilArmatureModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	Object *object; // type_index: 51
-	short deformflag; // type_index: 2
-	char _pad[6]; // type_index: 0
-}; 
-
-struct GreasePencilHookModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	Object *object; // type_index: 51
-	char subtarget[64]; // type_index: 0
-	char _pad[4]; // type_index: 0
-	int flag; // type_index: 4
-	char falloff_type; // type_index: 0
-	char _pad1[3]; // type_index: 0
-	float parentinv[4][4]; // type_index: 7
-	float cent[3]; // type_index: 7
-	float falloff; // type_index: 7
-	float force; // type_index: 7
-}; 
-
-struct GreasePencilWeightProximityModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	int flag; // type_index: 4
-	char target_vgname[64]; // type_index: 0
-	float min_weight; // type_index: 7
-	float dist_start; // type_index: 7
-	float dist_end; // type_index: 7
-	Object *object; // type_index: 51
-}; 
-
-struct GreasePencilArrayModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	Object *object; // type_index: 51
-	int count; // type_index: 4
-	int flag; // type_index: 4
-	float offset[3]; // type_index: 7
-	float shift[3]; // type_index: 7
-	float rnd_offset[3]; // type_index: 7
-	float rnd_rot[3]; // type_index: 7
-	float rnd_scale[3]; // type_index: 7
-	char _pad[4]; // type_index: 0
-	int seed; // type_index: 4
-	int mat_rpl; // type_index: 4
-}; 
-
-struct GreasePencilWeightAngleModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	int flag; // type_index: 4
-	float min_weight; // type_index: 7
-	short axis; // type_index: 2
-	short space; // type_index: 2
-	float angle; // type_index: 7
-	char target_vgname[64]; // type_index: 0
-	void *_pad; // type_index: 11
-}; 
-
-struct GreasePencilLengthModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	int flag; // type_index: 4
-	float start_fac; // type_index: 7
-	float end_fac; // type_index: 7
-	float rand_start_fac; // type_index: 7
-	float rand_end_fac; // type_index: 7
-	float rand_offset; // type_index: 7
-	float overshoot_fac; // type_index: 7
-	int seed; // type_index: 4
-	int step; // type_index: 4
-	int mode; // type_index: 4
-	char _pad[4]; // type_index: 0
-	float point_density; // type_index: 7
-	float segment_influence; // type_index: 7
-	float max_angle; // type_index: 7
-	void *_pad1; // type_index: 11
-}; 
-
-struct GreasePencilMultiModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	int flag; // type_index: 4
-	int duplications; // type_index: 4
-	float distance; // type_index: 7
-	float offset; // type_index: 7
-	float fading_center; // type_index: 7
-	float fading_thickness; // type_index: 7
-	float fading_opacity; // type_index: 7
-	int _pad0; // type_index: 4
-	void *_pad; // type_index: 11
-}; 
-
-struct GreasePencilLatticeModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	Object *object; // type_index: 51
-	float strength; // type_index: 7
-	char _pad[4]; // type_index: 0
-}; 
-
-struct GreasePencilThickModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	int flag; // type_index: 4
-	float thickness_fac; // type_index: 7
-	float thickness; // type_index: 7
-	char _pad[4]; // type_index: 0
-	void *_pad1; // type_index: 11
-}; 
-
-struct GreasePencilMirrorModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	Object *object; // type_index: 51
-	int flag; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct GreasePencilNoiseModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	int flag; // type_index: 4
-	float factor; // type_index: 7
-	float factor_strength; // type_index: 7
-	float factor_thickness; // type_index: 7
-	float factor_uvs; // type_index: 7
-	float noise_scale; // type_index: 7
-	float noise_offset; // type_index: 7
-	short noise_mode; // type_index: 2
-	char _pad[2]; // type_index: 0
-	int step; // type_index: 4
-	int seed; // type_index: 4
-	void *_pad1; // type_index: 11
-}; 
-
-struct GreasePencilSubdivModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	int type; // type_index: 4
-	int level; // type_index: 4
-	char _pad[8]; // type_index: 0
-	void *_pad1; // type_index: 11
-}; 
-
-struct GreasePencilOffsetModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	int flag; // type_index: 4
-	int offset_mode; // type_index: 4
-	float loc[3]; // type_index: 7
-	float rot[3]; // type_index: 7
-	float scale[3]; // type_index: 7
-	float stroke_loc[3]; // type_index: 7
-	float stroke_rot[3]; // type_index: 7
-	float stroke_scale[3]; // type_index: 7
-	int seed; // type_index: 4
-	int stroke_step; // type_index: 4
-	int stroke_start_offset; // type_index: 4
-	char _pad1[4]; // type_index: 0
-	void *_pad2; // type_index: 11
-}; 
-
-struct GreasePencilColorModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	char color_mode; // type_index: 0
-	char _pad1[3]; // type_index: 0
-	float hsv[3]; // type_index: 7
-	void *_pad2; // type_index: 11
-}; 
-
-struct GreasePencilSmoothModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	int flag; // type_index: 4
-	float factor; // type_index: 7
-	int step; // type_index: 4
-	char _pad[4]; // type_index: 0
-	void *_pad1; // type_index: 11
-}; 
-
-struct GreasePencilTintModifierData { // Max dep:514
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	short flag; // type_index: 2
-	char color_mode; // type_index: 0
-	char tint_mode; // type_index: 0
-	float factor; // type_index: 7
-	float radius; // type_index: 7
-	float color[3]; // type_index: 7
-	Object *object; // type_index: 51
-	ColorBand *color_ramp; // type_index: 132
-	void *_pad; // type_index: 11
-}; 
-
-struct GreasePencilDashModifierData { // Max dep:525
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	GreasePencilDashModifierSegment *segments_array; // type_index: 525
-	int segments_num; // type_index: 4
-	int segment_active_index; // type_index: 4
-	int dash_offset; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct GreasePencilLineartModifierData { // Max dep:534
-	ModifierData modifier; // type_index: 432
-	ushort edge_types; // type_index: 3
-	char source_type; // type_index: 0
-	char use_multiple_levels; // type_index: 0
-	short level_start; // type_index: 2
-	short level_end; // type_index: 2
-	Object *source_camera; // type_index: 51
-	Object *light_contour_object; // type_index: 51
-	Object *source_object; // type_index: 51
-	Collection *source_collection; // type_index: 66
-	Material *target_material; // type_index: 128
-	char target_layer[64]; // type_index: 0
-	char source_vertex_group[64]; // type_index: 0
-	char vgname[64]; // type_index: 0
-	float overscan; // type_index: 7
-	float shadow_camera_fov; // type_index: 7
-	float shadow_camera_size; // type_index: 7
-	float shadow_camera_near; // type_index: 7
-	float shadow_camera_far; // type_index: 7
-	float opacity; // type_index: 7
-	float radius; // type_index: 7
-	short thickness; // type_index: 2
-	char mask_switches; // type_index: 0
-	char material_mask_bits; // type_index: 0
-	char intersection_mask; // type_index: 0
-	char shadow_selection; // type_index: 0
-	char silhouette_selection; // type_index: 0
-	char _pad[5]; // type_index: 0
-	float crease_threshold; // type_index: 7
-	float angle_splitting_threshold; // type_index: 7
-	float chain_smooth_tolerance; // type_index: 7
-	float chaining_image_threshold; // type_index: 7
-	int calculation_flags; // type_index: 4
-	int flags; // type_index: 4
-	float stroke_depth_offset; // type_index: 7
-	char level_start_override; // type_index: 0
-	char level_end_override; // type_index: 0
-	short edge_types_override; // type_index: 2
-	char shadow_selection_override; // type_index: 0
-	char shadow_use_silhouette_override; // type_index: 0
-	char _pad2[6]; // type_index: 0
-	LineartCache *shared_cache; // type_index: 295
-	LineartCache *cache; // type_index: 295
-	LineartData *la_data_ptr; // type_index: 296
-	LineartModifierRuntime *runtime; // type_index: 534
-}; 
-
-struct GreasePencilTimeModifierData { // Max dep:536
-	ModifierData modifier; // type_index: 432
-	GreasePencilModifierInfluenceData influence; // type_index: 514
-	int flag; // type_index: 4
-	int offset; // type_index: 4
-	float frame_scale; // type_index: 7
-	int mode; // type_index: 4
-	int sfra; // type_index: 4
-	int efra; // type_index: 4
-	GreasePencilTimeModifierSegment *segments_array; // type_index: 536
-	int segments_num; // type_index: 4
-	int segment_active_index; // type_index: 4
-}; 
-
-struct MovieClip { // Max dep:548
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	char name[1024]; // type_index: 0
-	int source; // type_index: 4
-	int _pad; // type_index: 4
-	int lastsize[2]; // type_index: 4
-	float aspx; // type_index: 7
-	float aspy; // type_index: 7
-	MovieReader *anim; // type_index: 316
-	MovieClipCache *cache; // type_index: 547
-	bGPdata *gpd; // type_index: 266
-	MovieTracking tracking; // type_index: 548
-	void *tracking_context; // type_index: 11
-	MovieClipProxy proxy; // type_index: 544
-	int flag; // type_index: 4
-	int len; // type_index: 4
-	int start_frame; // type_index: 4
-	int frame_offset; // type_index: 4
-	ColorManagedColorspaceSettings colorspace_settings; // type_index: 169
-	MovieClip_Runtime runtime; // type_index: 546
-}; 
-
-struct MovieTrackingTrack { // Max dep:552
-	MovieTrackingTrack *next; // type_index: 552
-	MovieTrackingTrack *prev; // type_index: 552
-	char name[64]; // type_index: 0
-	float pat_min[2]; // type_index: 7
-	float pat_max[2]; // type_index: 7
-	float search_min[2]; // type_index: 7
-	float search_max[2]; // type_index: 7
-	float offset[2]; // type_index: 7
-	int markersnr; // type_index: 4
-	int _pad; // type_index: 4
-	MovieTrackingMarker *markers; // type_index: 550
-	float bundle_pos[3]; // type_index: 7
-	float error; // type_index: 7
-	int flag; // type_index: 4
-	int pat_flag; // type_index: 4
-	int search_flag; // type_index: 4
-	float color[3]; // type_index: 7
-	short frames_limit; // type_index: 2
-	short margin; // type_index: 2
-	short pattern_match; // type_index: 2
-	short motion_model; // type_index: 2
-	int algorithm_flag; // type_index: 4
-	float minimum_correlation; // type_index: 7
-	bGPdata *gpd; // type_index: 266
-	float weight; // type_index: 7
-	float weight_stab; // type_index: 7
-}; 
-
-struct MovieTrackingStabilization { // Max dep:552
-	int flag; // type_index: 4
-	int tot_track; // type_index: 4
-	int act_track; // type_index: 4
-	int tot_rot_track; // type_index: 4
-	int act_rot_track; // type_index: 4
-	float maxscale; // type_index: 7
-	MovieTrackingTrack *rot_track; // type_index: 552
-	int anchor_frame; // type_index: 4
-	float target_pos[2]; // type_index: 7
-	float target_rot; // type_index: 7
-	float scale; // type_index: 7
-	float locinf; // type_index: 7
-	float scaleinf; // type_index: 7
-	float rotinf; // type_index: 7
-	int filter; // type_index: 4
-	int _pad; // type_index: 4
-}; 
-
-struct MovieClipScopes { // Max dep:552
-	short ok; // type_index: 2
-	short use_track_mask; // type_index: 2
-	int track_preview_height; // type_index: 4
-	int frame_width; // type_index: 4
-	int frame_height; // type_index: 4
-	MovieTrackingMarker undist_marker; // type_index: 550
-	ImBuf *track_search; // type_index: 551
-	ImBuf *track_preview; // type_index: 551
-	float track_pos[2]; // type_index: 7
-	short track_disabled; // type_index: 2
-	short track_locked; // type_index: 2
-	int scene_framenr; // type_index: 4
-	MovieTrackingTrack *track; // type_index: 552
-	MovieTrackingMarker *marker; // type_index: 550
-	float slide_scale[2]; // type_index: 7
-}; 
-
-struct bActionModifier { // Max dep:553
-	bActionModifier *next; // type_index: 553
-	bActionModifier *prev; // type_index: 553
-	short type; // type_index: 2
-	short flag; // type_index: 2
-	char channel[32]; // type_index: 0
-	float noisesize; // type_index: 7
-	float turbul; // type_index: 7
-	short channels; // type_index: 2
-	short no_rot_axis; // type_index: 2
-	Object *ob; // type_index: 51
-}; 
-
-struct bActionStrip { // Max dep:554
-	bActionStrip *next; // type_index: 554
-	bActionStrip *prev; // type_index: 554
-	short flag; // type_index: 2
-	short mode; // type_index: 2
-	short stride_axis; // type_index: 2
-	short curmod; // type_index: 2
-	bAction *act; // type_index: 61
-	Object *object; // type_index: 51
-	float start; // type_index: 7
-	float end; // type_index: 7
-	float actstart; // type_index: 7
-	float actend; // type_index: 7
-	float actoffs; // type_index: 7
-	float stridelen; // type_index: 7
-	float repeat; // type_index: 7
-	float scale; // type_index: 7
-	float blendin; // type_index: 7
-	float blendout; // type_index: 7
-	char stridechannel[32]; // type_index: 0
-	char offs_bone[32]; // type_index: 0
-	ListBase modifiers; // type_index: 22
-}; 
-
-struct bNodeTreeInterfacePanel { // Max dep:555
-	bNodeTreeInterfaceItem item; // type_index: 555
-	char *name; // type_index: 0
-	char *description; // type_index: 0
-	int flag; // type_index: 4
-	char _pad[4]; // type_index: 0
-	bNodeTreeInterfaceItem **items_array; // type_index: 555
-	int items_num; // type_index: 4
-	int identifier; // type_index: 4
-}; 
-
-struct bNodeTreeInterfaceSocket { // Max dep:555
-	bNodeTreeInterfaceItem item; // type_index: 555
-	char *name; // type_index: 0
-	char *description; // type_index: 0
-	char *socket_type; // type_index: 0
-	int flag; // type_index: 4
-	short attribute_domain; // type_index: 2
-	short default_input; // type_index: 2
-	char *default_attribute_name; // type_index: 0
-	char *identifier; // type_index: 0
-	void *socket_data; // type_index: 11
-	IDProperty *properties; // type_index: 24
-	int8_t structure_type; // type_index: 12
-	char _pad[7]; // type_index: 0
-}; 
-
-struct bNodeTreeInterface { // Max dep:559
-	bNodeTreeInterfacePanel root_panel; // type_index: 557
-	int active_index; // type_index: 4
-	int next_uid; // type_index: 4
-	bNodeTreeInterfaceRuntimeHandle *runtime; // type_index: 559
-}; 
-
-struct bNodeSocket { // Max dep:564
-	bNodeSocket *next; // type_index: 561
-	bNodeSocket *prev; // type_index: 561
-	IDProperty *prop; // type_index: 24
-	char identifier[64]; // type_index: 0
-	char name[64]; // type_index: 0
-	void *storage; // type_index: 11
-	short type; // type_index: 2
-	short flag; // type_index: 2
-	short limit; // type_index: 2
-	short in_out; // type_index: 2
-	bNodeSocketTypeHandle *typeinfo; // type_index: 562
-	char idname[64]; // type_index: 0
-	void *default_value; // type_index: 11
-	int stack_index; // type_index: 4
-	char display_shape; // type_index: 0
-	char attribute_domain; // type_index: 0
-	char _pad[2]; // type_index: 0
-	char label[64]; // type_index: 0
-	char short_label[64]; // type_index: 0
-	char description[64]; // type_index: 0
-	char *default_attribute_name; // type_index: 0
-	int own_index; // type_index: 4
-	int to_index; // type_index: 4
-	bNodeLink *link; // type_index: 563
-	bNodeStack ns; // type_index: 560
-	bNodeSocketRuntimeHandle *runtime; // type_index: 564
-}; 
-
-struct bNodeLink { // Max dep:566
-	bNodeLink *next; // type_index: 563
-	bNodeLink *prev; // type_index: 563
-	bNode *fromnode; // type_index: 566
-	bNode *tonode; // type_index: 566
-	bNodeSocket *fromsock; // type_index: 561
-	bNodeSocket *tosock; // type_index: 561
-	int flag; // type_index: 4
-	int multi_input_socket_index; // type_index: 4
-}; 
-
-struct bNode { // Max dep:568
+struct bNode { // Max dep:22
 	bNode *next; // type_index: 566
 	bNode *prev; // type_index: 566
 	ListBase inputs; // type_index: 22
@@ -10082,735 +7410,79 @@ struct bNode { // Max dep:568
 	bNodeRuntimeHandle *runtime; // type_index: 568
 }; 
 
-struct bNestedNodeRef { // Max dep:570
-	int id; // type_index: 4
+struct DynamicPaintCanvasSettings { // Max dep:22
+	DynamicPaintModifierData *pmd; // type_index: 228
+	ListBase surfaces; // type_index: 22
+	short active_sur; // type_index: 2
+	short flags; // type_index: 2
 	char _pad[4]; // type_index: 0
-	bNestedNodePath path; // type_index: 570
+	char error[64]; // type_index: 0
 }; 
 
-struct bNodeTree { // Max dep:574
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	ID *owner_id; // type_index: 26
-	bNodeTreeTypeHandle *typeinfo; // type_index: 572
-	char idname[64]; // type_index: 0
-	char *description; // type_index: 0
-	bGPdata *gpd; // type_index: 266
-	float view_center[2]; // type_index: 7
-	ListBase nodes; // type_index: 22
-	ListBase links; // type_index: 22
-	int type; // type_index: 4
-	int cur_index; // type_index: 4
-	int flag; // type_index: 4
-	int chunksize; // type_index: 4
-	int execution_mode; // type_index: 4
-	int precision; // type_index: 4
-	int color_tag; // type_index: 4
-	int default_group_node_width; // type_index: 4
-	rctf viewer_border; // type_index: 82
-	ListBase inputs; // type_index: 22
-	ListBase outputs; // type_index: 22
-	bNodeTreeInterface tree_interface; // type_index: 558
-	bNodeInstanceKey active_viewer_key; // type_index: 569
-	int nested_node_refs_num; // type_index: 4
-	bNestedNodeRef *nested_node_refs; // type_index: 571
-	GeometryNodeAssetTraits *geometry_node_asset_traits; // type_index: 573
-	PreviewImage *preview; // type_index: 37
-	bNodeTreeRuntimeHandle *runtime; // type_index: 574
-}; 
-
-struct bNodeSocketValueMenu { // Max dep:588
-	int value; // type_index: 4
-	int runtime_flag; // type_index: 4
-	RuntimeNodeEnumItemsHandle *enum_items; // type_index: 588
-}; 
-
-struct NodeColorCorrection { // Max dep:592
-	ColorCorrectionData master; // type_index: 592
-	ColorCorrectionData shadows; // type_index: 592
-	ColorCorrectionData midtones; // type_index: 592
-	ColorCorrectionData highlights; // type_index: 592
-	float startmidtones; // type_index: 7
-	float endmidtones; // type_index: 7
-}; 
-
-struct BakeData { // Max dep:605
-	ImageFormatData im_format; // type_index: 605
-	char filepath[1024]; // type_index: 0
-	int type; // type_index: 4
-	short width; // type_index: 2
-	short height; // type_index: 2
-	short margin; // type_index: 2
-	short flag; // type_index: 2
-	float cage_extrusion; // type_index: 7
-	float max_ray_distance; // type_index: 7
-	int pass_filter; // type_index: 4
-	char normal_swizzle[3]; // type_index: 0
-	char normal_space; // type_index: 0
-	char displacement_space; // type_index: 0
-	char target; // type_index: 0
-	char save_mode; // type_index: 0
-	char margin_type; // type_index: 0
-	char view_from; // type_index: 0
-	char _pad[7]; // type_index: 0
-	Object *cage_object; // type_index: 51
-}; 
-
-struct NodeCompositorFileOutputItem { // Max dep:605
-	int identifier; // type_index: 4
-	short socket_type; // type_index: 2
-	char vector_socket_dimensions; // type_index: 0
-	char override_node_format; // type_index: 0
-	char save_as_render; // type_index: 0
-	char _pad[7]; // type_index: 0
-	char *name; // type_index: 0
-	ImageFormatData format; // type_index: 605
-}; 
-
-struct NodeImageMultiFileSocket { // Max dep:605
-	short use_render_format; // type_index: 2
-	short use_node_format; // type_index: 2
-	char save_as_render; // type_index: 0
-	char _pad1[3]; // type_index: 0
-	char path[1024]; // type_index: 0
-	ImageFormatData format; // type_index: 605
-	char layer[62]; // type_index: 0
-	char _pad2[2]; // type_index: 0
-}; 
-
-struct NodeImageFile { // Max dep:605
-	char name[1024]; // type_index: 0
-	ImageFormatData im_format; // type_index: 605
-	int sfra; // type_index: 4
-	int efra; // type_index: 4
-}; 
-
-struct NodeImageMultiFile { // Max dep:606
-	char base_path[1024]; // type_index: 0
-	char *file_name; // type_index: 0
-	ImageFormatData format; // type_index: 605
-	NodeCompositorFileOutputItem *items; // type_index: 606
-	int items_count; // type_index: 4
-	int active_input; // type_index: 4
-	char save_as_render; // type_index: 0
-	char _pad[7]; // type_index: 0
-}; 
-
-struct NodeTexWave { // Max dep:626
-	NodeTexBase base; // type_index: 626
-	int wave_type; // type_index: 4
-	int bands_direction; // type_index: 4
-	int rings_direction; // type_index: 4
-	int wave_profile; // type_index: 4
-}; 
-
-struct NodeTexMagic { // Max dep:626
-	NodeTexBase base; // type_index: 626
-	int depth; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeTexMusgrave { // Max dep:626
-	NodeTexBase base; // type_index: 626
-	int musgrave_type; // type_index: 4
-	int dimensions; // type_index: 4
-}; 
-
-struct NodeTexVoronoi { // Max dep:626
-	NodeTexBase base; // type_index: 626
-	int dimensions; // type_index: 4
-	int feature; // type_index: 4
-	int distance; // type_index: 4
-	int normalize; // type_index: 4
-	int coloring; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeTexNoise { // Max dep:626
-	NodeTexBase base; // type_index: 626
-	int dimensions; // type_index: 4
-	uchar type; // type_index: 1
-	uchar normalize; // type_index: 1
-	char _pad[2]; // type_index: 0
-}; 
-
-struct NodeTexGradient { // Max dep:626
-	NodeTexBase base; // type_index: 626
-	int gradient_type; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeTexSky { // Max dep:626
-	NodeTexBase base; // type_index: 626
-	int sky_model; // type_index: 4
-	float sun_direction[3]; // type_index: 7
-	float turbidity; // type_index: 7
-	float ground_albedo; // type_index: 7
-	float sun_size; // type_index: 7
-	float sun_intensity; // type_index: 7
-	float sun_elevation; // type_index: 7
-	float sun_rotation; // type_index: 7
-	float altitude; // type_index: 7
-	float air_density; // type_index: 7
-	float dust_density; // type_index: 7
-	float ozone_density; // type_index: 7
-	char sun_disc; // type_index: 0
-	char _pad[7]; // type_index: 0
-}; 
-
-struct NodeTexImage { // Max dep:626
-	NodeTexBase base; // type_index: 626
-	ImageUser iuser; // type_index: 145
-	int color_space; // type_index: 4
-	int projection; // type_index: 4
-	float projection_blend; // type_index: 7
-	int interpolation; // type_index: 4
-	int extension; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeTexGabor { // Max dep:626
-	NodeTexBase base; // type_index: 626
-	char type; // type_index: 0
-	char _pad[7]; // type_index: 0
-}; 
-
-struct NodeTexChecker { // Max dep:626
-	NodeTexBase base; // type_index: 626
-}; 
-
-struct NodeTexBrick { // Max dep:626
-	NodeTexBase base; // type_index: 626
-	int offset_freq; // type_index: 4
-	int squash_freq; // type_index: 4
-	float offset; // type_index: 7
-	float squash; // type_index: 7
-}; 
-
-struct NodeTexEnvironment { // Max dep:626
-	NodeTexBase base; // type_index: 626
-	ImageUser iuser; // type_index: 145
-	int color_space; // type_index: 4
-	int projection; // type_index: 4
-	int interpolation; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeTexBase { // Max dep:628
-	TexMapping tex_mapping; // type_index: 627
-	ColorMapping color_mapping; // type_index: 628
-}; 
-
-struct CryptomatteEntry { // Max dep:666
-	CryptomatteEntry *next; // type_index: 666
-	CryptomatteEntry *prev; // type_index: 666
-	float encoded_hash; // type_index: 7
-	char name[64]; // type_index: 0
-	char _pad[4]; // type_index: 0
-}; 
-
-struct CryptomatteLayer { // Max dep:666
-	CryptomatteEntry *next; // type_index: 666
-	CryptomatteEntry *prev; // type_index: 666
-	char name[64]; // type_index: 0
-}; 
-
-struct NodeCryptomatte { // Max dep:668
-	ImageUser iuser; // type_index: 145
-	ListBase entries; // type_index: 22
-	char layer_name[64]; // type_index: 0
-	char *matte_id; // type_index: 0
-	int num_inputs; // type_index: 4
-	char _pad[4]; // type_index: 0
-	NodeCryptomatte_Runtime runtime; // type_index: 668
-}; 
-
-struct NodeEnumDefinition { // Max dep:694
-	NodeEnumItem *items_array; // type_index: 694
-	int items_num; // type_index: 4
-	int active_index; // type_index: 4
-	int next_identifier; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeMenuSwitch { // Max dep:695
-	NodeEnumDefinition enum_definition; // type_index: 695
-	uchar data_type; // type_index: 1
-	char _pad[7]; // type_index: 0
-}; 
-
-struct NodeGeometryAttributeCapture { // Max dep:716
-	int8_t data_type; // type_index: 12
-	int8_t domain; // type_index: 12
-	char _pad[2]; // type_index: 0
-	int next_identifier; // type_index: 4
-	NodeGeometryAttributeCaptureItem *capture_items; // type_index: 716
-	int capture_items_num; // type_index: 4
-	int active_index; // type_index: 4
-}; 
-
-struct NodeGeometryViewer { // Max dep:726
-	NodeGeometryViewerItem *items; // type_index: 726
-	int items_num; // type_index: 4
-	int active_index; // type_index: 4
-	int next_identifier; // type_index: 4
-	int8_t data_type; // type_index: 12
-	int8_t domain; // type_index: 12
-	char _pad[2]; // type_index: 0
-}; 
-
-struct NodeGeometrySimulationOutput { // Max dep:729
-	NodeSimulationItem *items; // type_index: 729
-	int items_num; // type_index: 4
-	int active_index; // type_index: 4
-	int next_identifier; // type_index: 4
-	int _pad; // type_index: 4
-}; 
-
-struct NodeGeometryRepeatOutput { // Max dep:732
-	NodeRepeatItem *items; // type_index: 732
-	int items_num; // type_index: 4
-	int active_index; // type_index: 4
-	int next_identifier; // type_index: 4
-	int inspection_index; // type_index: 4
-}; 
-
-struct NodeForeachGeometryElementInputItems { // Max dep:736
-	NodeForeachGeometryElementInputItem *items; // type_index: 736
-	int items_num; // type_index: 4
-	int active_index; // type_index: 4
-	int next_identifier; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeForeachGeometryElementMainItems { // Max dep:737
-	NodeForeachGeometryElementMainItem *items; // type_index: 737
-	int items_num; // type_index: 4
-	int active_index; // type_index: 4
-	int next_identifier; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeForeachGeometryElementGenerationItems { // Max dep:738
-	NodeForeachGeometryElementGenerationItem *items; // type_index: 738
-	int items_num; // type_index: 4
-	int active_index; // type_index: 4
-	int next_identifier; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeGeometryForeachGeometryElementOutput { // Max dep:741
-	NodeForeachGeometryElementInputItems input_items; // type_index: 739
-	NodeForeachGeometryElementMainItems main_items; // type_index: 740
-	NodeForeachGeometryElementGenerationItems generation_items; // type_index: 741
-	int inspection_index; // type_index: 4
-	uchar domain; // type_index: 1
-	char _pad[3]; // type_index: 0
-}; 
-
-struct NodeClosureInputItems { // Max dep:744
-	NodeClosureInputItem *items; // type_index: 744
-	int items_num; // type_index: 4
-	int active_index; // type_index: 4
-	int next_identifier; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeClosureOutputItems { // Max dep:745
-	NodeClosureOutputItem *items; // type_index: 745
-	int items_num; // type_index: 4
-	int active_index; // type_index: 4
-	int next_identifier; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeClosureOutput { // Max dep:747
-	NodeClosureInputItems input_items; // type_index: 746
-	NodeClosureOutputItems output_items; // type_index: 747
-	uchar flag; // type_index: 1
-	char _pad[7]; // type_index: 0
-}; 
-
-struct NodeEvaluateClosureInputItems { // Max dep:749
-	NodeEvaluateClosureInputItem *items; // type_index: 749
-	int items_num; // type_index: 4
-	int active_index; // type_index: 4
-	int next_identifier; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeEvaluateClosureOutputItems { // Max dep:750
-	NodeEvaluateClosureOutputItem *items; // type_index: 750
-	int items_num; // type_index: 4
-	int active_index; // type_index: 4
-	int next_identifier; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeEvaluateClosure { // Max dep:752
-	NodeEvaluateClosureInputItems input_items; // type_index: 751
-	NodeEvaluateClosureOutputItems output_items; // type_index: 752
-	uchar flag; // type_index: 1
-	char _pad[7]; // type_index: 0
-}; 
-
-struct NodeIndexSwitch { // Max dep:754
-	IndexSwitchItem *items; // type_index: 754
-	int items_num; // type_index: 4
-	int data_type; // type_index: 4
-	int next_identifier; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct GeometryNodeFieldToGrid { // Max dep:756
-	int8_t data_type; // type_index: 12
-	char _pad[3]; // type_index: 0
-	int next_identifier; // type_index: 4
-	GeometryNodeFieldToGridItem *items; // type_index: 756
-	int items_num; // type_index: 4
-	int active_index; // type_index: 4
-}; 
-
-struct NodeGeometryBake { // Max dep:765
-	NodeGeometryBakeItem *items; // type_index: 765
-	int items_num; // type_index: 4
-	int next_identifier; // type_index: 4
-	int active_index; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct NodeCombineBundle { // Max dep:767
-	NodeCombineBundleItem *items; // type_index: 767
-	int items_num; // type_index: 4
-	int next_identifier; // type_index: 4
-	int active_index; // type_index: 4
-	uchar flag; // type_index: 1
-	char _pad[3]; // type_index: 0
-}; 
-
-struct NodeSeparateBundle { // Max dep:769
-	NodeSeparateBundleItem *items; // type_index: 769
-	int items_num; // type_index: 4
-	int next_identifier; // type_index: 4
-	int active_index; // type_index: 4
-	uchar flag; // type_index: 1
-	char _pad[3]; // type_index: 0
-}; 
-
-struct NodeFunctionFormatString { // Max dep:771
-	NodeFunctionFormatStringItem *items; // type_index: 771
-	int items_num; // type_index: 4
-	int next_identifier; // type_index: 4
-	int active_index; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct FluidsimSettings { // Max dep:773
-	FluidsimModifierData *fmd; // type_index: 469
-	int threads; // type_index: 4
-	char _pad1[4]; // type_index: 0
-	short type; // type_index: 2
-	short show_advancedoptions; // type_index: 2
-	short resolutionxyz; // type_index: 2
-	short previewresxyz; // type_index: 2
-	float realsize; // type_index: 7
-	short guiDisplayMode; // type_index: 2
-	short renderDisplayMode; // type_index: 2
-	float viscosityValue; // type_index: 7
-	short viscosityMode; // type_index: 2
-	short viscosityExponent; // type_index: 2
-	float grav[3]; // type_index: 7
-	float animStart; // type_index: 7
-	float animEnd; // type_index: 7
-	int bakeStart; // type_index: 4
-	int bakeEnd; // type_index: 4
-	int frameOffset; // type_index: 4
-	char _pad2[4]; // type_index: 0
-	float gstar; // type_index: 7
-	int maxRefine; // type_index: 4
-	float iniVelx; // type_index: 7
-	float iniVely; // type_index: 7
-	float iniVelz; // type_index: 7
-	char surfdataPath[1024]; // type_index: 0
-	float bbStart[3]; // type_index: 7
-	float bbSize[3]; // type_index: 7
-	short typeFlags; // type_index: 2
-	char domainNovecgen; // type_index: 0
-	char volumeInitType; // type_index: 0
-	float partSlipValue; // type_index: 7
-	int generateTracers; // type_index: 4
-	float generateParticles; // type_index: 7
-	float surfaceSmoothing; // type_index: 7
-	int surfaceSubdivs; // type_index: 4
-	int flag; // type_index: 4
-	float particleInfSize; // type_index: 7
-	float particleInfAlpha; // type_index: 7
-	float farFieldSize; // type_index: 7
-	FluidVertexVelocity *meshVelocities; // type_index: 773
-	int totvert; // type_index: 4
-	float cpsTimeStart; // type_index: 7
-	float cpsTimeEnd; // type_index: 7
-	float cpsQuality; // type_index: 7
-	float attractforceStrength; // type_index: 7
-	float attractforceRadius; // type_index: 7
-	float velocityforceStrength; // type_index: 7
-	float velocityforceRadius; // type_index: 7
-	int lastgoodframe; // type_index: 4
-	float animRate; // type_index: 7
-}; 
-
-struct SoftBody { // Max dep:780
-	int totpoint; // type_index: 4
-	int totspring; // type_index: 4
-	BodyPoint *bpoint; // type_index: 778
-	BodySpring *bspring; // type_index: 779
-	char _pad; // type_index: 0
-	char msg_lock; // type_index: 0
-	short msg_value; // type_index: 2
-	float nodemass; // type_index: 7
-	char namedVG_Mass[64]; // type_index: 0
-	float grav; // type_index: 7
-	float mediafrict; // type_index: 7
-	float rklimit; // type_index: 7
-	float physics_speed; // type_index: 7
-	float goalspring; // type_index: 7
-	float goalfrict; // type_index: 7
-	float mingoal; // type_index: 7
-	float maxgoal; // type_index: 7
-	float defgoal; // type_index: 7
-	short vertgroup; // type_index: 2
-	char namedVG_Softgoal[64]; // type_index: 0
-	short fuzzyness; // type_index: 2
-	float inspring; // type_index: 7
-	float infrict; // type_index: 7
-	char namedVG_Spring_K[64]; // type_index: 0
-	char _pad1[6]; // type_index: 0
-	char local; // type_index: 0
-	char solverflags; // type_index: 0
-	SBVertex **keys; // type_index: 775
-	int totpointkey; // type_index: 4
-	int totkey; // type_index: 4
-	float secondspring; // type_index: 7
-	float colball; // type_index: 7
-	float balldamp; // type_index: 7
-	float ballstiff; // type_index: 7
-	short sbc_mode; // type_index: 2
-	short aeroedge; // type_index: 2
-	short minloops; // type_index: 2
-	short maxloops; // type_index: 2
-	short choke; // type_index: 2
-	short solver_ID; // type_index: 2
-	short plastic; // type_index: 2
-	short springpreload; // type_index: 2
-	SBScratch *scratch; // type_index: 780
-	float shearstiff; // type_index: 7
-	float inpush; // type_index: 7
-	SoftBody_Shared *shared; // type_index: 776
+struct DynamicPaintSurface { // Max dep:22
+	DynamicPaintSurface *next; // type_index: 223
+	DynamicPaintSurface *prev; // type_index: 223
+	DynamicPaintCanvasSettings *canvas; // type_index: 224
+	PaintSurfaceData *data; // type_index: 225
+	Collection *brush_group; // type_index: 66
+	EffectorWeights *effector_weights; // type_index: 155
 	PointCache *pointcache; // type_index: 226
 	ListBase ptcaches; // type_index: 22
-	Collection *collision_group; // type_index: 66
-	EffectorWeights *effector_weights; // type_index: 155
-	float lcom[3]; // type_index: 7
-	float lrot[3][3]; // type_index: 7
-	float lscale[3][3]; // type_index: 7
-	int last_frame; // type_index: 4
-}; 
-
-struct bDeformGroup { // Max dep:781
-	bDeformGroup *next; // type_index: 781
-	bDeformGroup *prev; // type_index: 781
+	int current_frame; // type_index: 4
 	char name[64]; // type_index: 0
-	char flag; // type_index: 0
-	char _pad0[7]; // type_index: 0
-}; 
-
-struct bFaceMap { // Max dep:782
-	bFaceMap *next; // type_index: 782
-	bFaceMap *prev; // type_index: 782
-	char name[64]; // type_index: 0
-	char flag; // type_index: 0
-	char _pad0[7]; // type_index: 0
-}; 
-
-struct LightLinking { // Max dep:784
-	Collection *receiver_collection; // type_index: 66
-	Collection *blocker_collection; // type_index: 66
-	LightLinkingRuntime runtime; // type_index: 784
-}; 
-
-struct Object { // Max dep:789
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	SculptSession *sculpt; // type_index: 786
+	short format; // type_index: 2
 	short type; // type_index: 2
-	short partype; // type_index: 2
-	int par1; // type_index: 4
-	int par2; // type_index: 4
-	int par3; // type_index: 4
-	char parsubstr[64]; // type_index: 0
-	Object *parent; // type_index: 51
-	Object *track; // type_index: 51
-	Object *proxy; // type_index: 51
-	Object *proxy_group; // type_index: 51
-	Object *proxy_from; // type_index: 51
-	bAction *poselib; // type_index: 61
-	bPose *pose; // type_index: 54
-	void *data; // type_index: 11
-	bGPdata *gpd; // type_index: 266
-	bAnimVizSettings avs; // type_index: 43
-	bMotionPath *mpath; // type_index: 40
-	ListBase effect; // type_index: 22
-	ListBase defbase; // type_index: 22
-	ListBase fmaps; // type_index: 22
-	ListBase modifiers; // type_index: 22
-	ListBase greasepencil_modifiers; // type_index: 22
-	ListBase shader_fx; // type_index: 22
-	int mode; // type_index: 4
-	int restore_mode; // type_index: 4
-	Material **mat; // type_index: 128
-	char *matbits; // type_index: 0
-	int totcol; // type_index: 4
-	int actcol; // type_index: 4
-	float loc[3]; // type_index: 7
-	float dloc[3]; // type_index: 7
-	float size[3]; // type_index: 7
-	float dsize[3]; // type_index: 7
-	float dscale[3]; // type_index: 7
-	float rot[3]; // type_index: 7
-	float drot[3]; // type_index: 7
-	float quat[4]; // type_index: 7
-	float dquat[4]; // type_index: 7
-	float rotAxis[3]; // type_index: 7
-	float drotAxis[3]; // type_index: 7
-	float rotAngle; // type_index: 7
-	float drotAngle; // type_index: 7
-	float parentinv[4][4]; // type_index: 7
-	float constinv[4][4]; // type_index: 7
-	int lay; // type_index: 4
-	short flag; // type_index: 2
-	short colbits; // type_index: 2
-	short transflag; // type_index: 2
-	short protectflag; // type_index: 2
-	short trackflag; // type_index: 2
-	short upflag; // type_index: 2
-	short nlaflag; // type_index: 2
-	char _pad1; // type_index: 0
-	char duplicator_visibility_flag; // type_index: 0
-	short base_flag; // type_index: 2
-	short base_local_view_bits; // type_index: 2
-	short col_group; // type_index: 2
-	short col_mask; // type_index: 2
-	short rotmode; // type_index: 2
-	char boundtype; // type_index: 0
-	char collision_boundtype; // type_index: 0
-	short dtx; // type_index: 2
-	char dt; // type_index: 0
-	char empty_drawtype; // type_index: 0
-	float empty_drawsize; // type_index: 7
-	float dupfacesca; // type_index: 7
-	short index; // type_index: 2
-	short actdef; // type_index: 2
+	short disp_type; // type_index: 2
+	short image_fileformat; // type_index: 2
+	short effect_ui; // type_index: 2
+	short init_color_type; // type_index: 2
+	int flags; // type_index: 4
+	int effect; // type_index: 4
+	int image_resolution; // type_index: 4
+	int substeps; // type_index: 4
+	int start_frame; // type_index: 4
+	int end_frame; // type_index: 4
+	float init_color[4]; // type_index: 7
+	Tex *init_texture; // type_index: 227
+	char init_layername[68]; // type_index: 0
+	int dry_speed; // type_index: 4
+	int diss_speed; // type_index: 4
+	float color_dry_threshold; // type_index: 7
+	float depth_clamp; // type_index: 7
+	float disp_factor; // type_index: 7
+	float spread_speed; // type_index: 7
+	float color_spread_speed; // type_index: 7
+	float shrink_speed; // type_index: 7
+	float drip_vel; // type_index: 7
+	float drip_acc; // type_index: 7
+	float influence_scale; // type_index: 7
+	float radius_scale; // type_index: 7
+	float wave_damping; // type_index: 7
+	float wave_speed; // type_index: 7
+	float wave_timescale; // type_index: 7
+	float wave_spring; // type_index: 7
+	float wave_smoothness; // type_index: 7
 	char _pad2[4]; // type_index: 0
-	float col[4]; // type_index: 7
-	short softflag; // type_index: 2
-	short restrictflag; // type_index: 2
-	short shapenr; // type_index: 2
-	char shapeflag; // type_index: 0
-	char _pad3[1]; // type_index: 0
-	ListBase constraints; // type_index: 22
-	ListBase hooks; // type_index: 22
-	ListBase particlesystem; // type_index: 22
-	PartDeflect *pd; // type_index: 774
-	SoftBody *soft; // type_index: 777
-	Collection *dup_group; // type_index: 66
-	FluidsimSettings *fluidsimSettings; // type_index: 470
-	ListBase pc_ids; // type_index: 22
-	RigidBodyOb *rigidbody_object; // type_index: 787
-	RigidBodyCon *rigidbody_constraint; // type_index: 788
-	float ima_ofs[2]; // type_index: 7
-	ImageUser *iuser; // type_index: 145
-	char empty_image_visibility_flag; // type_index: 0
-	char empty_image_depth; // type_index: 0
-	char empty_image_flag; // type_index: 0
-	uchar modifier_flag; // type_index: 1
-	float shadow_terminator_normal_offset; // type_index: 7
-	float shadow_terminator_geometry_offset; // type_index: 7
-	float shadow_terminator_shading_offset; // type_index: 7
-	PreviewImage *preview; // type_index: 37
-	ObjectLineArt lineart; // type_index: 783
-	LightgroupMembership *lightgroup; // type_index: 334
-	LightLinking *light_linking; // type_index: 785
-	LightProbeObjectCache *lightprobe_cache; // type_index: 350
-	ObjectRuntimeHandle *runtime; // type_index: 789
+	char uvlayer_name[68]; // type_index: 0
+	char image_output_path[1024]; // type_index: 0
+	char output_name[68]; // type_index: 0
+	char output_name2[68]; // type_index: 0
 }; 
 
-struct ObHook { // Max dep:790
-	ObHook *next; // type_index: 790
-	ObHook *prev; // type_index: 790
-	Object *parent; // type_index: 51
-	float parentinv[4][4]; // type_index: 7
-	float mat[4][4]; // type_index: 7
-	float cent[3]; // type_index: 7
-	float falloff; // type_index: 7
-	char name[64]; // type_index: 0
-	int *indexar; // type_index: 4
-	int totindex; // type_index: 4
-	int curindex; // type_index: 4
-	short type; // type_index: 2
-	short active; // type_index: 2
-	float force; // type_index: 7
-}; 
-
-struct TreeStore { // Max dep:791
-	int totelem; // type_index: 4
-	int usedelem; // type_index: 4
-	TreeStoreElem *data; // type_index: 791
-}; 
-
-struct ParticleData { // Max dep:795
-	ParticleKey state; // type_index: 794
-	ParticleKey prev_state; // type_index: 794
-	HairKey *hair; // type_index: 793
-	ParticleKey *keys; // type_index: 794
-	BoidParticle *boid; // type_index: 795
-	int totkey; // type_index: 4
-	float time; // type_index: 7
-	float lifetime; // type_index: 7
-	float dietime; // type_index: 7
-	int num; // type_index: 4
-	int num_dmcache; // type_index: 4
-	float fuv[4]; // type_index: 7
-	float foffset; // type_index: 7
-	float size; // type_index: 7
-	float sphdensity; // type_index: 7
+struct LayerCollection { // Max dep:22
+	LayerCollection *next; // type_index: 330
+	LayerCollection *prev; // type_index: 330
+	Collection *collection; // type_index: 66
+	void *_pad1; // type_index: 11
+	short flag; // type_index: 2
+	short runtime_flag; // type_index: 2
 	char _pad[4]; // type_index: 0
-	int hair_index; // type_index: 4
-	short flag; // type_index: 2
-	short alive; // type_index: 2
+	ListBase layer_collections; // type_index: 22
+	short local_collections_bits; // type_index: 2
+	short _pad2[3]; // type_index: 2
 }; 
 
-struct ParticleTarget { // Max dep:798
-	ParticleTarget *next; // type_index: 798
-	ParticleTarget *prev; // type_index: 798
-	Object *ob; // type_index: 51
-	int psys; // type_index: 4
-	short flag; // type_index: 2
-	short mode; // type_index: 2
-	float time; // type_index: 7
-	float duration; // type_index: 7
-}; 
-
-struct ParticleDupliWeight { // Max dep:799
-	ParticleDupliWeight *next; // type_index: 799
-	ParticleDupliWeight *prev; // type_index: 799
-	Object *ob; // type_index: 51
-	short count; // type_index: 2
-	short flag; // type_index: 2
-	short index; // type_index: 2
-	char _pad0[2]; // type_index: 0
-}; 
-
-struct ParticleSettings { // Max dep:801
+struct ParticleSettings { // Max dep:26
 	ID id; // type_index: 26
 	AnimData *adt; // type_index: 96
 	BoidSettings *boids; // type_index: 125
@@ -10958,112 +7630,1371 @@ struct ParticleSettings { // Max dep:801
 	CurveMapping *twistcurve; // type_index: 127
 }; 
 
-struct PointCache { // Max dep:803
-	PointCache *next; // type_index: 226
-	PointCache *prev; // type_index: 226
-	int flag; // type_index: 4
-	int step; // type_index: 4
-	int simframe; // type_index: 4
-	int startframe; // type_index: 4
-	int endframe; // type_index: 4
-	int editframe; // type_index: 4
-	int last_exact; // type_index: 4
-	int last_valid; // type_index: 4
-	char _pad[4]; // type_index: 0
-	int totpoint; // type_index: 4
-	int index; // type_index: 4
-	short compression; // type_index: 2
-	char _pad0[2]; // type_index: 0
-	char name[64]; // type_index: 0
-	char prev_name[64]; // type_index: 0
-	char info[128]; // type_index: 0
-	char path[1024]; // type_index: 0
-	char *cached_frames; // type_index: 0
-	int cached_frames_len; // type_index: 4
+struct Lamp { // Max dep:26
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	short type; // type_index: 2
+	short flag; // type_index: 2
+	int mode; // type_index: 4
+	float r; // type_index: 7
+	float g; // type_index: 7
+	float b; // type_index: 7
+	float temperature; // type_index: 7
+	float energy_new; // type_index: 7
+	float exposure; // type_index: 7
+	float radius; // type_index: 7
+	float spotsize; // type_index: 7
+	float spotblend; // type_index: 7
+	short area_shape; // type_index: 2
+	short _pad1; // type_index: 2
+	float area_size; // type_index: 7
+	float area_sizey; // type_index: 7
+	float area_sizez; // type_index: 7
+	float area_spread; // type_index: 7
+	float sun_angle; // type_index: 7
+	short pr_texture; // type_index: 2
+	short use_nodes; // type_index: 2
+	float clipsta; // type_index: 7
+	float clipend; // type_index: 7
+	float cascade_max_dist; // type_index: 7
+	float cascade_exponent; // type_index: 7
+	float cascade_fade; // type_index: 7
+	int cascade_count; // type_index: 4
+	float diff_fac; // type_index: 7
+	float spec_fac; // type_index: 7
+	float transmission_fac; // type_index: 7
+	float volume_fac; // type_index: 7
+	float att_dist; // type_index: 7
+	float shadow_filter_radius; // type_index: 7
+	float shadow_maximum_resolution; // type_index: 7
+	float shadow_jitter_overblur; // type_index: 7
+	PreviewImage *preview; // type_index: 37
+	bNodeTree *nodetree; // type_index: 338
+	float energy; // type_index: 7
+	float _pad2; // type_index: 7
+}; 
+
+struct LightProbe { // Max dep:26
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	char type; // type_index: 0
+	char flag; // type_index: 0
+	char attenuation_type; // type_index: 0
+	char parallax_type; // type_index: 0
+	char grid_flag; // type_index: 0
+	char _pad0[3]; // type_index: 0
+	float distinf; // type_index: 7
+	float distpar; // type_index: 7
+	float falloff; // type_index: 7
+	float clipsta; // type_index: 7
+	float clipend; // type_index: 7
+	float vis_bias; // type_index: 7
+	float vis_bleedbias; // type_index: 7
+	float vis_blur; // type_index: 7
+	float intensity; // type_index: 7
+	int grid_resolution_x; // type_index: 4
+	int grid_resolution_y; // type_index: 4
+	int grid_resolution_z; // type_index: 4
+	int grid_bake_samples; // type_index: 4
+	float grid_surface_bias; // type_index: 7
+	float grid_escape_bias; // type_index: 7
+	float grid_normal_bias; // type_index: 7
+	float grid_view_bias; // type_index: 7
+	float grid_facing_bias; // type_index: 7
+	float grid_validity_threshold; // type_index: 7
+	float grid_dilation_threshold; // type_index: 7
+	float grid_dilation_radius; // type_index: 7
+	float grid_clamp_direct; // type_index: 7
+	float grid_clamp_indirect; // type_index: 7
+	int grid_surfel_density; // type_index: 4
+	Collection *visibility_grp; // type_index: 66
+	float data_display_size; // type_index: 7
 	char _pad1[4]; // type_index: 0
-	ListBase mem_cache; // type_index: 22
-	PTCacheEdit *edit; // type_index: 803
-	void (*free_edit)(); // type_index: 11
 }; 
 
-struct ParticleSystem { // Max dep:806
-	ParticleSystem *next; // type_index: 230
-	ParticleSystem *prev; // type_index: 230
-	ParticleSettings *part; // type_index: 802
-	ParticleData *particles; // type_index: 800
-	ChildParticle *child; // type_index: 797
-	PTCacheEdit *edit; // type_index: 803
-	void (*free_edit)(); // type_index: 11
-	ParticleCacheKey **pathcache; // type_index: 804
-	ParticleCacheKey **childcache; // type_index: 804
-	ListBase pathcachebufs; // type_index: 22
-	ListBase childcachebufs; // type_index: 22
-	ClothModifierData *clmd; // type_index: 452
-	Mesh *hair_in_mesh; // type_index: 244
-	Mesh *hair_out_mesh; // type_index: 244
-	Object *target_ob; // type_index: 51
-	LatticeDeformData *lattice_deform_data; // type_index: 279
-	Object *parent; // type_index: 51
-	ListBase targets; // type_index: 22
-	char name[64]; // type_index: 0
-	float imat[4][4]; // type_index: 7
-	float cfra; // type_index: 7
-	float tree_frame; // type_index: 7
-	float bvhtree_frame; // type_index: 7
-	int seed; // type_index: 4
-	int child_seed; // type_index: 4
+struct bAction { // Max dep:26
+	ID id; // type_index: 26
+	ActionLayer **layer_array; // type_index: 62
+	int layer_array_num; // type_index: 4
+	int layer_active_index; // type_index: 4
+	ActionSlot **slot_array; // type_index: 63
+	int slot_array_num; // type_index: 4
+	int last_slot_handle; // type_index: 4
+	ActionStripKeyframeData **strip_keyframe_data_array; // type_index: 64
+	int strip_keyframe_data_array_num; // type_index: 4
+	char _pad0[4]; // type_index: 0
+	ListBase curves; // type_index: 22
+	ListBase groups; // type_index: 22
+	ListBase markers; // type_index: 22
 	int flag; // type_index: 4
-	int totpart; // type_index: 4
-	int totunexist; // type_index: 4
-	int totchild; // type_index: 4
-	int totcached; // type_index: 4
-	int totchildcache; // type_index: 4
-	int recalc; // type_index: 4
-	short target_psys; // type_index: 2
-	short totkeyed; // type_index: 2
-	short bakespace; // type_index: 2
-	char _pad1[6]; // type_index: 0
-	char bb_uvname[3][68]; // type_index: 0
-	char _pad2[4]; // type_index: 0
-	short vgroup[13]; // type_index: 2
-	short vg_neg; // type_index: 2
-	short rt3; // type_index: 2
-	char _pad3[6]; // type_index: 0
-	PointCache *pointcache; // type_index: 226
-	ListBase ptcaches; // type_index: 22
-	ListBase *effectors; // type_index: 22
-	ParticleSpring *fluid_springs; // type_index: 796
-	int tot_fluidsprings; // type_index: 4
-	int alloc_fluidsprings; // type_index: 4
-	KDTree_3d *tree; // type_index: 805
-	BVHTree *bvhtree; // type_index: 457
-	ParticleDrawData *pdd; // type_index: 806
-	float dt_frac; // type_index: 7
-	float lattice_strength; // type_index: 7
+	int active_marker; // type_index: 4
+	int idroot; // type_index: 4
+	char _pad1[4]; // type_index: 0
+	float frame_start; // type_index: 7
+	float frame_end; // type_index: 7
+	PreviewImage *preview; // type_index: 37
+}; 
+
+struct Lattice { // Max dep:26
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	short pntsu; // type_index: 2
+	short pntsv; // type_index: 2
+	short pntsw; // type_index: 2
+	short flag; // type_index: 2
+	short opntsu; // type_index: 2
+	short opntsv; // type_index: 2
+	short opntsw; // type_index: 2
+	char _pad2[3]; // type_index: 0
+	char typeu; // type_index: 0
+	char typev; // type_index: 0
+	char typew; // type_index: 0
+	int actbp; // type_index: 4
+	float fu; // type_index: 7
+	float fv; // type_index: 7
+	float fw; // type_index: 7
+	float du; // type_index: 7
+	float dv; // type_index: 7
+	float dw; // type_index: 7
+	BPoint *def; // type_index: 204
+	Key *key; // type_index: 210
+	MDeformVert *dvert; // type_index: 258
+	char vgroup[64]; // type_index: 0
+	ListBase vertex_group_names; // type_index: 22
+	int vertex_group_active_index; // type_index: 4
+	char _pad0[4]; // type_index: 0
+	EditLatt *editlatt; // type_index: 328
 	void *batch_cache; // type_index: 11
-	ParticleSystem *orig_psys; // type_index: 230
 }; 
 
-struct PTCacheExtra { // Max dep:807
-	PTCacheExtra *next; // type_index: 807
-	PTCacheExtra *prev; // type_index: 807
-	int type; // type_index: 4
-	int totdata; // type_index: 4
-	void *data; // type_index: 11
+struct Key { // Max dep:26
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	KeyBlock *refkey; // type_index: 326
+	char elemstr[32]; // type_index: 0
+	int elemsize; // type_index: 4
+	char _pad[4]; // type_index: 0
+	ListBase block; // type_index: 22
+	ID *from; // type_index: 26
+	int totkey; // type_index: 4
+	short flag; // type_index: 2
+	char type; // type_index: 0
+	char _pad2; // type_index: 0
+	float ctime; // type_index: 7
+	int uidgen; // type_index: 4
 }; 
 
-struct PTCacheMem { // Max dep:808
-	PTCacheMem *next; // type_index: 808
-	PTCacheMem *prev; // type_index: 808
-	int frame; // type_index: 4
-	int totpoint; // type_index: 4
-	int data_types; // type_index: 4
+struct FreestyleLineStyle { // Max dep:26
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	float r; // type_index: 7
+	float g; // type_index: 7
+	float b; // type_index: 7
+	float alpha; // type_index: 7
+	float thickness; // type_index: 7
+	int thickness_position; // type_index: 4
+	float thickness_ratio; // type_index: 7
 	int flag; // type_index: 4
-	void *data[8]; // type_index: 11
-	ListBase extradata; // type_index: 22
+	int caps; // type_index: 4
+	int chaining; // type_index: 4
+	int rounds; // type_index: 4
+	float split_length; // type_index: 7
+	float min_angle; // type_index: 7
+	float max_angle; // type_index: 7
+	float min_length; // type_index: 7
+	float max_length; // type_index: 7
+	int chain_count; // type_index: 4
+	short split_dash1; // type_index: 2
+	short split_gap1; // type_index: 2
+	short split_dash2; // type_index: 2
+	short split_gap2; // type_index: 2
+	short split_dash3; // type_index: 2
+	short split_gap3; // type_index: 2
+	int sort_key; // type_index: 4
+	int integration_type; // type_index: 4
+	float texstep; // type_index: 7
+	short texact; // type_index: 2
+	short pr_texture; // type_index: 2
+	short use_nodes; // type_index: 2
+	char _pad[6]; // type_index: 0
+	short dash1; // type_index: 2
+	short gap1; // type_index: 2
+	short dash2; // type_index: 2
+	short gap2; // type_index: 2
+	short dash3; // type_index: 2
+	short gap3; // type_index: 2
+	int panel; // type_index: 4
+	MTex *mtex[18]; // type_index: 131
+	bNodeTree *nodetree; // type_index: 338
+	ListBase color_modifiers; // type_index: 22
+	ListBase alpha_modifiers; // type_index: 22
+	ListBase thickness_modifiers; // type_index: 22
+	ListBase geometry_modifiers; // type_index: 22
 }; 
 
-struct PointCloud { // Max dep:810
+struct Library { // Max dep:26
+	ID id; // type_index: 26
+	char name[1024]; // type_index: 0
+	ushort flag; // type_index: 3
+	char _pad[6]; // type_index: 0
+	Library *archive_parent_library; // type_index: 31
+	PackedFile *packedfile; // type_index: 35
+	LibraryRuntimeHandle *runtime; // type_index: 36
+	void *_pad2; // type_index: 11
+}; 
+
+struct Collection { // Max dep:26
+	ID id; // type_index: 26
+	ID *owner_id; // type_index: 26
+	ListBase gobject; // type_index: 22
+	ListBase children; // type_index: 22
+	char _pad0[4]; // type_index: 0
+	int active_exporter_index; // type_index: 4
+	ListBase exporters; // type_index: 22
+	PreviewImage *preview; // type_index: 37
+	int layer; // type_index: 4
+	float dupli_ofs[3]; // type_index: 7
+	uchar flag; // type_index: 1
+	int8_t color_tag; // type_index: 12
+	char _pad1[2]; // type_index: 0
+	uchar lineart_usage; // type_index: 1
+	uchar lineart_flags; // type_index: 1
+	uchar lineart_intersection_mask; // type_index: 1
+	uchar lineart_intersection_priority; // type_index: 1
+	ViewLayer *view_layer; // type_index: 161
+	CollectionRuntimeHandle *runtime; // type_index: 162
+}; 
+
+struct MetaBall { // Max dep:26
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	ListBase elems; // type_index: 22
+	ListBase *editelems; // type_index: 22
+	Material **mat; // type_index: 128
+	char flag; // type_index: 0
+	char flag2; // type_index: 0
+	short totcol; // type_index: 2
+	char texflag; // type_index: 0
+	char _pad[2]; // type_index: 0
+	char needs_flush_to_id; // type_index: 0
+	float loc[3]; // type_index: 7
+	float size[3]; // type_index: 7
+	float wiresize; // type_index: 7
+	float rendersize; // type_index: 7
+	float thresh; // type_index: 7
+	char _pad0[4]; // type_index: 0
+	MetaElem *lastelem; // type_index: 429
+}; 
+
+struct Palette { // Max dep:26
+	ID id; // type_index: 26
+	ListBase colors; // type_index: 22
+	int active_color; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct VFont { // Max dep:26
+	ID id; // type_index: 26
+	char name[1024]; // type_index: 0
+	VFontData *data; // type_index: 1058
+	PackedFile *packedfile; // type_index: 35
+	PackedFile *temp_pf; // type_index: 35
+}; 
+
+struct PaintCurve { // Max dep:26
+	ID id; // type_index: 26
+	PaintCurvePoint *points; // type_index: 136
+	int tot_points; // type_index: 4
+	int add_index; // type_index: 4
+}; 
+
+struct CacheFile { // Max dep:26
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	ListBase object_paths; // type_index: 22
+	ListBase layers; // type_index: 22
+	char filepath[1024]; // type_index: 0
+	char is_sequence; // type_index: 0
+	char forward_axis; // type_index: 0
+	char up_axis; // type_index: 0
+	char override_frame; // type_index: 0
+	float scale; // type_index: 7
+	float frame; // type_index: 7
+	float frame_offset; // type_index: 7
+	short flag; // type_index: 2
+	char type; // type_index: 0
+	char _pad1[1]; // type_index: 0
+	int active_layer; // type_index: 4
+	char _pad2[3]; // type_index: 0
+	char velocity_unit; // type_index: 0
+	char velocity_name[64]; // type_index: 0
+	char _pad3[4]; // type_index: 0
+	CacheArchiveHandle *handle; // type_index: 140
+	char handle_filepath[1024]; // type_index: 0
+	GSet *handle_readers; // type_index: 141
+}; 
+
+struct IdAdtTemplate { // Max dep:26
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+}; 
+
+struct Text { // Max dep:26
+	ID id; // type_index: 26
+	void *_pad1; // type_index: 11
+	char *name; // type_index: 0
+	void *compiled; // type_index: 11
+	int flags; // type_index: 4
+	char _pad0[4]; // type_index: 0
+	ListBase lines; // type_index: 22
+	TextLine *curl; // type_index: 1001
+	TextLine *sell; // type_index: 1001
+	int curc; // type_index: 4
+	int selc; // type_index: 4
+	double mtime; // type_index: 8
+}; 
+
+struct Speaker { // Max dep:26
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	bSound *sound; // type_index: 902
+	float volume_max; // type_index: 7
+	float volume_min; // type_index: 7
+	float distance_max; // type_index: 7
+	float distance_reference; // type_index: 7
+	float attenuation; // type_index: 7
+	float cone_angle_outer; // type_index: 7
+	float cone_angle_inner; // type_index: 7
+	float cone_volume_outer; // type_index: 7
+	float volume; // type_index: 7
+	float pitch; // type_index: 7
+	short flag; // type_index: 2
+	char _pad1[6]; // type_index: 0
+}; 
+
+struct World { // Max dep:26
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	char _pad0[4]; // type_index: 0
+	short texact; // type_index: 2
+	short mistype; // type_index: 2
+	float horr; // type_index: 7
+	float horg; // type_index: 7
+	float horb; // type_index: 7
+	float exposure; // type_index: 7
+	float exp; // type_index: 7
+	float range; // type_index: 7
+	short mode; // type_index: 2
+	short flag; // type_index: 2
+	float misi; // type_index: 7
+	float miststa; // type_index: 7
+	float mistdist; // type_index: 7
+	float misthi; // type_index: 7
+	float aodist; // type_index: 7
+	float aoenergy; // type_index: 7
+	int probe_resolution; // type_index: 4
+	float sun_threshold; // type_index: 7
+	float sun_angle; // type_index: 7
+	float sun_shadow_maximum_resolution; // type_index: 7
+	float sun_shadow_jitter_overblur; // type_index: 7
+	float sun_shadow_filter_radius; // type_index: 7
+	short pr_texture; // type_index: 2
+	short use_nodes; // type_index: 2
+	PreviewImage *preview; // type_index: 37
+	bNodeTree *nodetree; // type_index: 338
+	LightgroupMembership *lightgroup; // type_index: 334
+	void *_pad1; // type_index: 11
+	ListBase gpumaterial; // type_index: 22
+	uint64_t last_update; // type_index: 10
+}; 
+
+struct bSound { // Max dep:26
+	ID id; // type_index: 26
+	void *_pad1; // type_index: 11
+	char name[1024]; // type_index: 0
+	PackedFile *packedfile; // type_index: 35
+	void *handle; // type_index: 11
+	PackedFile *newpackedfile; // type_index: 35
+	void *_pad0; // type_index: 11
+	float volume; // type_index: 7
+	float attenuation; // type_index: 7
+	float pitch; // type_index: 7
+	float min_gain; // type_index: 7
+	float max_gain; // type_index: 7
+	float distance; // type_index: 7
+	short flags; // type_index: 2
+	short tags; // type_index: 2
+	char _pad[4]; // type_index: 0
+	double offset_time; // type_index: 8
+	void *cache; // type_index: 11
+	void *waveform; // type_index: 11
+	void *playback_handle; // type_index: 11
+	void *spinlock; // type_index: 11
+	int audio_channels; // type_index: 4
+	int samplerate; // type_index: 4
+}; 
+
+struct Script { // Max dep:26
+	ID id; // type_index: 26
+	void *py_draw; // type_index: 11
+	void *py_event; // type_index: 11
+	void *py_button; // type_index: 11
+	void *py_browsercallback; // type_index: 11
+	void *py_globaldict; // type_index: 11
+	int flags; // type_index: 4
+	int lastspace; // type_index: 4
+	char scriptname[1024]; // type_index: 0
+	char scriptarg[256]; // type_index: 0
+}; 
+
+struct bScreen { // Max dep:26
+	ID id; // type_index: 26
+	ListBase vertbase; // type_index: 22
+	ListBase edgebase; // type_index: 22
+	ListBase areabase; // type_index: 22
+	ListBase regionbase; // type_index: 22
+	Scene *scene; // type_index: 238
+	short flag; // type_index: 2
+	short winid; // type_index: 2
+	short redraws_flag; // type_index: 2
+	char temp; // type_index: 0
+	char state; // type_index: 0
+	char do_draw; // type_index: 0
+	char do_refresh; // type_index: 0
+	char do_draw_gesture; // type_index: 0
+	char do_draw_paintcursor; // type_index: 0
+	char do_draw_drag; // type_index: 0
+	char skip_handling; // type_index: 0
+	char scrubbing; // type_index: 0
+	char _pad[1]; // type_index: 0
+	ARegion *active_region; // type_index: 859
+	wmTimer *animtimer; // type_index: 860
+	void *context; // type_index: 11
+	short fullscreen_flag; // type_index: 2
+	char _pad2[6]; // type_index: 0
+	wmTooltipState *tool_tip; // type_index: 861
+	PreviewImage *preview; // type_index: 37
+}; 
+
+struct ID { // Max dep:30
+	void *next; // type_index: 11
+	void *prev; // type_index: 11
+	ID *newid; // type_index: 26
+	Library *lib; // type_index: 31
+	AssetMetaData *asset_data; // type_index: 32
+	char name[258]; // type_index: 0
+	short flag; // type_index: 2
+	int tag; // type_index: 4
+	int us; // type_index: 4
+	int icon_id; // type_index: 4
+	int recalc; // type_index: 4
+	int recalc_up_to_undo_push; // type_index: 4
+	int recalc_after_undo_push; // type_index: 4
+	int session_uid; // type_index: 4
+	IDHash deep_hash; // type_index: 30
+	IDProperty *properties; // type_index: 24
+	IDProperty *system_properties; // type_index: 24
+	void *_pad1; // type_index: 11
+	IDOverrideLibrary *override_library; // type_index: 28
+	ID *orig_id; // type_index: 26
+	void *py_instance; // type_index: 11
+	LibraryWeakReference *library_weak_reference; // type_index: 33
+	ID_RuntimeHandle *runtime; // type_index: 34
+}; 
+
+struct bPose { // Max dep:43
+	ListBase chanbase; // type_index: 22
+	GHash *chanhash; // type_index: 55
+	bPoseChannel **chan_array; // type_index: 49
+	short flag; // type_index: 2
+	char _pad[2]; // type_index: 0
+	float ctime; // type_index: 7
+	float stride_offset[3]; // type_index: 7
+	float cyclic_offset[3]; // type_index: 7
+	ListBase agroups; // type_index: 22
+	int active_group; // type_index: 4
+	int iksolver; // type_index: 4
+	void *ikdata; // type_index: 11
+	void *ikparam; // type_index: 11
+	bAnimVizSettings avs; // type_index: 43
+}; 
+
+struct StripRuntime { // Max dep:46
+	SessionUID session_uid; // type_index: 46
+	int flag; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct bPoseChannel_Runtime { // Max dep:47
+	SessionUID session_uid; // type_index: 46
+	DualQuat deform_dual_quat; // type_index: 47
+	int bbone_segments; // type_index: 4
+	float bbone_arc_length_reciprocal; // type_index: 7
+	uchar flag; // type_index: 1
+	char _pad1[3]; // type_index: 0
+	Mat4 *bbone_rest_mats; // type_index: 48
+	Mat4 *bbone_pose_mats; // type_index: 48
+	Mat4 *bbone_deform_mats; // type_index: 48
+	DualQuat *bbone_dual_quats; // type_index: 47
+	bPoseChannel_BBoneSegmentBoundary *bbone_segment_boundaries; // type_index: 44
+	void *_pad; // type_index: 11
+}; 
+
+struct bPoseChannel { // Max dep:53
+	bPoseChannel *next; // type_index: 49
+	bPoseChannel *prev; // type_index: 49
+	IDProperty *prop; // type_index: 24
+	IDProperty *system_properties; // type_index: 24
+	ListBase constraints; // type_index: 22
+	char name[64]; // type_index: 0
+	short flag; // type_index: 2
+	short ikflag; // type_index: 2
+	short protectflag; // type_index: 2
+	short agrp_index; // type_index: 2
+	char constflag; // type_index: 0
+	char selectflag; // type_index: 0
+	char drawflag; // type_index: 0
+	char bboneflag; // type_index: 0
+	char _pad0[4]; // type_index: 0
+	Bone *bone; // type_index: 50
+	bPoseChannel *parent; // type_index: 49
+	bPoseChannel *child; // type_index: 49
+	ListBase iktree; // type_index: 22
+	ListBase siktree; // type_index: 22
+	bMotionPath *mpath; // type_index: 40
+	Object *custom; // type_index: 51
+	bPoseChannel *custom_tx; // type_index: 49
+	float custom_scale; // type_index: 7
+	float custom_scale_xyz[3]; // type_index: 7
+	float custom_translation[3]; // type_index: 7
+	float custom_rotation_euler[3]; // type_index: 7
+	float custom_shape_wire_width; // type_index: 7
+	float loc[3]; // type_index: 7
+	float size[3]; // type_index: 7
+	float eul[3]; // type_index: 7
+	float quat[4]; // type_index: 7
+	float rotAxis[3]; // type_index: 7
+	float rotAngle; // type_index: 7
+	short rotmode; // type_index: 2
+	char _pad[6]; // type_index: 0
+	float chan_mat[4][4]; // type_index: 7
+	float pose_mat[4][4]; // type_index: 7
+	float disp_mat[4][4]; // type_index: 7
+	float disp_tail_mat[4][4]; // type_index: 7
+	float constinv[4][4]; // type_index: 7
+	float pose_head[3]; // type_index: 7
+	float pose_tail[3]; // type_index: 7
+	float limitmin[3]; // type_index: 7
+	float limitmax[3]; // type_index: 7
+	float stiffness[3]; // type_index: 7
+	float ikstretch; // type_index: 7
+	float ikrotweight; // type_index: 7
+	float iklinweight; // type_index: 7
+	float roll1; // type_index: 7
+	float roll2; // type_index: 7
+	float curveInX; // type_index: 7
+	float curveInY; // type_index: 7
+	float curveOutX; // type_index: 7
+	float curveOutY; // type_index: 7
+	float ease1; // type_index: 7
+	float ease2; // type_index: 7
+	float scaleIn; // type_index: 7
+	float scale_in_y; // type_index: 7
+	float scaleOut; // type_index: 7
+	float scale_out_y; // type_index: 7
+	float scale_in[3]; // type_index: 7
+	float scale_out[3]; // type_index: 7
+	bPoseChannel *bbone_prev; // type_index: 49
+	bPoseChannel *bbone_next; // type_index: 49
+	void *temp; // type_index: 11
+	bPoseChannelDrawData *draw_data; // type_index: 52
+	bPoseChannel *orig_pchan; // type_index: 49
+	BoneColor color; // type_index: 53
+	void *_pad2; // type_index: 11
+	bPoseChannel_Runtime runtime; // type_index: 45
+}; 
+
+struct BoneColor { // Max dep:60
+	int8_t palette_index; // type_index: 12
+	uchar _pad0[7]; // type_index: 1
+	ThemeWireColor custom; // type_index: 60
+}; 
+
+struct bActionGroup { // Max dep:60
+	bActionGroup *next; // type_index: 58
+	bActionGroup *prev; // type_index: 58
+	ListBase channels; // type_index: 22
+	int fcurve_range_start; // type_index: 4
+	int fcurve_range_length; // type_index: 4
+	ActionChannelBag *channel_bag; // type_index: 59
+	int flag; // type_index: 4
+	int customCol; // type_index: 4
+	char name[64]; // type_index: 0
+	ThemeWireColor cs; // type_index: 60
+}; 
+
+struct SpaceNla { // Max dep:71
+	SpaceLink *next; // type_index: 70
+	SpaceLink *prev; // type_index: 70
+	ListBase regionbase; // type_index: 22
+	char spacetype; // type_index: 0
+	char link_flag; // type_index: 0
+	char _pad0[6]; // type_index: 0
+	short autosnap; // type_index: 2
+	short flag; // type_index: 2
+	char _pad[4]; // type_index: 0
+	bDopeSheet *ads; // type_index: 65
+	View2D v2d; // type_index: 71
+}; 
+
+struct SpaceOops { // Max dep:71
+	SpaceLink *next; // type_index: 70
+	SpaceLink *prev; // type_index: 70
+	ListBase regionbase; // type_index: 22
+	char spacetype; // type_index: 0
+	char link_flag; // type_index: 0
+	char _pad0[6]; // type_index: 0
+	View2D v2d; // type_index: 71
+	ListBase tree; // type_index: 22
+	BLI_mempool *treestore; // type_index: 221
+	char search_string[64]; // type_index: 0
+	short flag; // type_index: 2
+	short outlinevis; // type_index: 2
+	short lib_override_view_mode; // type_index: 2
+	short storeflag; // type_index: 2
+	char search_flags; // type_index: 0
+	char _pad[6]; // type_index: 0
+	char sync_select_dirty; // type_index: 0
+	int filter; // type_index: 4
+	char filter_state; // type_index: 0
+	char show_restrict_flags; // type_index: 0
+	short filter_id_type; // type_index: 2
+	SpaceOutliner_Runtime *runtime; // type_index: 952
+}; 
+
+struct SpaceButs { // Max dep:71
+	SpaceLink *next; // type_index: 70
+	SpaceLink *prev; // type_index: 70
+	ListBase regionbase; // type_index: 22
+	char spacetype; // type_index: 0
+	char link_flag; // type_index: 0
+	char _pad0[6]; // type_index: 0
+	View2D v2d; // type_index: 71
+	short space_subtype; // type_index: 2
+	short mainb; // type_index: 2
+	short mainbo; // type_index: 2
+	short mainbuser; // type_index: 2
+	int visible_tabs; // type_index: 4
+	short preview; // type_index: 2
+	char flag; // type_index: 0
+	char outliner_sync; // type_index: 0
+	void *path; // type_index: 11
+	int pathflag; // type_index: 4
+	int dataicon; // type_index: 4
+	ID *pinid; // type_index: 26
+	void *texuser; // type_index: 11
+	SpaceProperties_Runtime *runtime; // type_index: 950
+}; 
+
+struct SpaceAction { // Max dep:71
+	SpaceLink *next; // type_index: 70
+	SpaceLink *prev; // type_index: 70
+	ListBase regionbase; // type_index: 22
+	char spacetype; // type_index: 0
+	char link_flag; // type_index: 0
+	char _pad0[6]; // type_index: 0
+	View2D v2d; // type_index: 71
+	bAction *action; // type_index: 61
+	bDopeSheet ads; // type_index: 65
+	float timeslide; // type_index: 7
+	short flag; // type_index: 2
+	char mode; // type_index: 0
+	char mode_prev; // type_index: 0
+	char autosnap; // type_index: 0
+	char cache_display; // type_index: 0
+	char _pad1[6]; // type_index: 0
+	SpaceActionOverlays overlays; // type_index: 68
+	SpaceAction_Runtime runtime; // type_index: 67
+}; 
+
+struct UserDef_TempWinBounds { // Max dep:82
+	rctf file; // type_index: 82
+	rctf userpref; // type_index: 82
+	rctf image; // type_index: 82
+	rctf graph; // type_index: 82
+	rctf info; // type_index: 82
+	rctf outliner; // type_index: 82
+}; 
+
+struct CurveProfile { // Max dep:82
+	short path_len; // type_index: 2
+	short segments_len; // type_index: 2
+	int preset; // type_index: 4
+	CurveProfilePoint *path; // type_index: 215
+	CurveProfilePoint *table; // type_index: 215
+	CurveProfilePoint *segments; // type_index: 215
+	int flag; // type_index: 4
+	int changed_timestamp; // type_index: 4
+	rctf view_rect; // type_index: 82
+	rctf clip_rect; // type_index: 82
+}; 
+
+struct FMod_Limits { // Max dep:82
+	rctf rect; // type_index: 82
+	int flag; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct DriverVar { // Max dep:85
+	DriverVar *next; // type_index: 86
+	DriverVar *prev; // type_index: 86
+	char name[64]; // type_index: 0
+	DriverTarget targets[8]; // type_index: 85
+	char num_targets; // type_index: 0
+	char type; // type_index: 0
+	short flag; // type_index: 2
+	float curval; // type_index: 7
+}; 
+
+struct bGPDcurve_point { // Max dep:90
+	BezTriple bezt; // type_index: 90
+	float pressure; // type_index: 7
+	float strength; // type_index: 7
+	int point_index; // type_index: 4
+	int flag; // type_index: 4
+	float uv_fac; // type_index: 7
+	float uv_rot; // type_index: 7
+	float uv_fill[2]; // type_index: 7
+	float vert_color[4]; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct PaintCurvePoint { // Max dep:90
+	BezTriple bez; // type_index: 90
+	float pressure; // type_index: 7
+}; 
+
+struct Bone { // Max dep:98
+	Bone *next; // type_index: 50
+	Bone *prev; // type_index: 50
+	IDProperty *prop; // type_index: 24
+	IDProperty *system_properties; // type_index: 24
+	void *_pad0; // type_index: 11
+	Bone *parent; // type_index: 50
+	ListBase childbase; // type_index: 22
+	char name[64]; // type_index: 0
+	float roll; // type_index: 7
+	float head[3]; // type_index: 7
+	float tail[3]; // type_index: 7
+	float bone_mat[3][3]; // type_index: 7
+	int flag; // type_index: 4
+	int8_t drawtype; // type_index: 12
+	char _pad1[3]; // type_index: 0
+	BoneColor color; // type_index: 53
+	char inherit_scale_mode; // type_index: 0
+	char _pad[3]; // type_index: 0
+	float arm_head[3]; // type_index: 7
+	float arm_tail[3]; // type_index: 7
+	float arm_mat[4][4]; // type_index: 7
+	float arm_roll; // type_index: 7
+	float dist; // type_index: 7
+	float weight; // type_index: 7
+	float xwidth; // type_index: 7
+	float length; // type_index: 7
+	float zwidth; // type_index: 7
+	float rad_head; // type_index: 7
+	float rad_tail; // type_index: 7
+	float roll1; // type_index: 7
+	float roll2; // type_index: 7
+	float curveInX; // type_index: 7
+	float curveInY; // type_index: 7
+	float curveOutX; // type_index: 7
+	float curveOutY; // type_index: 7
+	float ease1; // type_index: 7
+	float ease2; // type_index: 7
+	float scaleIn; // type_index: 7
+	float scale_in_y; // type_index: 7
+	float scaleOut; // type_index: 7
+	float scale_out_y; // type_index: 7
+	float scale_in[3]; // type_index: 7
+	float scale_out[3]; // type_index: 7
+	float size[3]; // type_index: 7
+	int layer; // type_index: 4
+	short segments; // type_index: 2
+	char bbone_mapping_mode; // type_index: 0
+	char _pad2[7]; // type_index: 0
+	char bbone_prev_type; // type_index: 0
+	char bbone_next_type; // type_index: 0
+	int bbone_flag; // type_index: 4
+	short bbone_prev_flag; // type_index: 2
+	short bbone_next_flag; // type_index: 2
+	Bone *bbone_prev; // type_index: 50
+	Bone *bbone_next; // type_index: 50
+	Bone_Runtime runtime; // type_index: 98
+}; 
+
+struct bArmature { // Max dep:99
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	ListBase bonebase; // type_index: 22
+	GHash *bonehash; // type_index: 55
+	void *_pad1; // type_index: 11
+	ListBase *edbo; // type_index: 22
+	Bone *act_bone; // type_index: 50
+	EditBone *act_edbone; // type_index: 102
+	char needs_flush_to_id; // type_index: 0
+	char _pad0[3]; // type_index: 0
+	int flag; // type_index: 4
+	int drawtype; // type_index: 4
+	short deformflag; // type_index: 2
+	short pathflag; // type_index: 2
+	ListBase collections; // type_index: 22
+	BoneCollection **collection_array; // type_index: 100
+	int collection_array_num; // type_index: 4
+	int collection_root_count; // type_index: 4
+	char active_collection_name[64]; // type_index: 0
+	int layer_used; // type_index: 4
+	int layer; // type_index: 4
+	int layer_protected; // type_index: 4
+	float axes_position; // type_index: 7
+	bArmature_Runtime runtime; // type_index: 99
+}; 
+
+struct AssetMetaData { // Max dep:107
+	AssetTypeInfo *local_type_info; // type_index: 106
+	IDProperty *properties; // type_index: 24
+	bUUID catalog_id; // type_index: 107
+	char catalog_simple_name[64]; // type_index: 0
+	char *author; // type_index: 0
+	char *description; // type_index: 0
+	char *copyright; // type_index: 0
+	char *license; // type_index: 0
+	ListBase tags; // type_index: 22
+	short active_tag; // type_index: 2
+	short tot_tags; // type_index: 2
+	char _pad[4]; // type_index: 0
+}; 
+
+struct AssetShelfSettings { // Max dep:108
+	AssetLibraryReference asset_library_reference; // type_index: 108
+	ListBase enabled_catalog_paths; // type_index: 22
+	char *active_catalog_path; // type_index: 0
+	char search_string[64]; // type_index: 0
+	short preview_size; // type_index: 2
+	short display_flag; // type_index: 2
+	char _pad1[4]; // type_index: 0
+}; 
+
+struct BoidRuleAvoidCollision { // Max dep:117
+	BoidRule rule; // type_index: 117
+	int options; // type_index: 4
+	float look_ahead; // type_index: 7
+}; 
+
+struct BoidRuleFollowLeader { // Max dep:117
+	BoidRule rule; // type_index: 117
+	Object *ob; // type_index: 51
+	float loc[3]; // type_index: 7
+	float oloc[3]; // type_index: 7
+	float cfra; // type_index: 7
+	float distance; // type_index: 7
+	int options; // type_index: 4
+	int queue_size; // type_index: 4
+}; 
+
+struct BoidRuleGoalAvoid { // Max dep:117
+	BoidRule rule; // type_index: 117
+	Object *ob; // type_index: 51
+	int options; // type_index: 4
+	float fear_factor; // type_index: 7
+	int signal_id; // type_index: 4
+	int channels; // type_index: 4
+}; 
+
+struct BoidRuleFight { // Max dep:117
+	BoidRule rule; // type_index: 117
+	float distance; // type_index: 7
+	float flee_distance; // type_index: 7
+}; 
+
+struct BoidRuleAverageSpeed { // Max dep:117
+	BoidRule rule; // type_index: 117
+	float wander; // type_index: 7
+	float level; // type_index: 7
+	float speed; // type_index: 7
+	char _pad0[4]; // type_index: 0
+}; 
+
+struct BoidParticle { // Max dep:123
+	Object *ground; // type_index: 51
+	BoidData data; // type_index: 123
+	float gravity[3]; // type_index: 7
+	float wander[3]; // type_index: 7
+	char _pad0[4]; // type_index: 0
+}; 
+
+struct EQCurveMappingData { // Max dep:127
+	EQCurveMappingData *next; // type_index: 934
+	EQCurveMappingData *prev; // type_index: 934
+	CurveMapping curve_mapping; // type_index: 127
+}; 
+
+struct Brush { // Max dep:131
+	ID id; // type_index: 26
+	CurveMapping *curve; // type_index: 127
+	MTex mtex; // type_index: 131
+	MTex mask_mtex; // type_index: 131
+	PreviewImage *preview; // type_index: 37
+	ColorBand *gradient; // type_index: 132
+	PaintCurve *paint_curve; // type_index: 133
+	float normal_weight; // type_index: 7
+	float rake_factor; // type_index: 7
+	short blend; // type_index: 2
+	short ob_mode; // type_index: 2
+	float weight; // type_index: 7
+	int size; // type_index: 4
+	int flag; // type_index: 4
+	int flag2; // type_index: 4
+	int sampling_flag; // type_index: 4
+	int input_samples; // type_index: 4
+	int mask_pressure; // type_index: 4
+	float jitter; // type_index: 7
+	int jitter_absolute; // type_index: 4
+	int overlay_flags; // type_index: 4
+	int spacing; // type_index: 4
+	int smooth_stroke_radius; // type_index: 4
+	float smooth_stroke_factor; // type_index: 7
+	float rate; // type_index: 7
+	float color[3]; // type_index: 7
+	int color_jitter_flag; // type_index: 4
+	float hsv_jitter[3]; // type_index: 7
+	CurveMapping *curve_rand_hue; // type_index: 127
+	CurveMapping *curve_rand_saturation; // type_index: 127
+	CurveMapping *curve_rand_value; // type_index: 127
+	CurveMapping *curve_size; // type_index: 127
+	CurveMapping *curve_strength; // type_index: 127
+	CurveMapping *curve_jitter; // type_index: 127
+	float alpha; // type_index: 7
+	float hardness; // type_index: 7
+	float flow; // type_index: 7
+	float wet_mix; // type_index: 7
+	float wet_persistence; // type_index: 7
+	float density; // type_index: 7
+	int paint_flags; // type_index: 4
+	float tip_roundness; // type_index: 7
+	float tip_scale_x; // type_index: 7
+	float secondary_color[3]; // type_index: 7
+	float rgb[3]; // type_index: 7
+	float secondary_rgb[3]; // type_index: 7
+	float dash_ratio; // type_index: 7
+	int dash_samples; // type_index: 4
+	int sculpt_plane; // type_index: 4
+	float plane_offset; // type_index: 7
+	int gradient_spacing; // type_index: 4
+	char gradient_stroke_mode; // type_index: 0
+	char gradient_fill_mode; // type_index: 0
+	char has_unsaved_changes; // type_index: 0
+	char falloff_shape; // type_index: 0
+	float falloff_angle; // type_index: 7
+	char sculpt_tool; // type_index: 0
+	char vertexpaint_tool; // type_index: 0
+	char weightpaint_tool; // type_index: 0
+	char imagepaint_tool; // type_index: 0
+	char mask_tool; // type_index: 0
+	char gpencil_tool; // type_index: 0
+	char gpencil_vertex_tool; // type_index: 0
+	char gpencil_sculpt_tool; // type_index: 0
+	char gpencil_weight_tool; // type_index: 0
+	char curves_sculpt_tool; // type_index: 0
+	char _pad1[10]; // type_index: 0
+	float autosmooth_factor; // type_index: 7
+	float tilt_strength_factor; // type_index: 7
+	float topology_rake_factor; // type_index: 7
+	float crease_pinch_factor; // type_index: 7
+	float normal_radius_factor; // type_index: 7
+	float area_radius_factor; // type_index: 7
+	float wet_paint_radius_factor; // type_index: 7
+	float plane_trim; // type_index: 7
+	float height; // type_index: 7
+	float plane_height; // type_index: 7
+	float plane_depth; // type_index: 7
+	float stabilize_normal; // type_index: 7
+	float stabilize_plane; // type_index: 7
+	int plane_inversion_mode; // type_index: 4
+	float texture_sample_bias; // type_index: 7
+	int curve_preset; // type_index: 4
+	float disconnected_distance_max; // type_index: 7
+	int deform_target; // type_index: 4
+	int automasking_flags; // type_index: 4
+	int automasking_boundary_edges_propagation_steps; // type_index: 4
+	float automasking_start_normal_limit; // type_index: 7
+	float automasking_start_normal_falloff; // type_index: 7
+	float automasking_view_normal_limit; // type_index: 7
+	float automasking_view_normal_falloff; // type_index: 7
+	int elastic_deform_type; // type_index: 4
+	float elastic_deform_volume_preservation; // type_index: 7
+	int snake_hook_deform_type; // type_index: 4
+	int pose_deform_type; // type_index: 4
+	float pose_offset; // type_index: 7
+	int pose_smooth_iterations; // type_index: 4
+	int pose_ik_segments; // type_index: 4
+	int pose_origin_type; // type_index: 4
+	int boundary_deform_type; // type_index: 4
+	int boundary_falloff_type; // type_index: 4
+	float boundary_offset; // type_index: 7
+	int cloth_deform_type; // type_index: 4
+	int cloth_force_falloff_type; // type_index: 4
+	int cloth_simulation_area_type; // type_index: 4
+	float cloth_mass; // type_index: 7
+	float cloth_damping; // type_index: 7
+	float cloth_sim_limit; // type_index: 7
+	float cloth_sim_falloff; // type_index: 7
+	float cloth_constraint_softbody_strength; // type_index: 7
+	int smooth_deform_type; // type_index: 4
+	float surface_smooth_shape_preservation; // type_index: 7
+	float surface_smooth_current_vertex; // type_index: 7
+	int surface_smooth_iterations; // type_index: 4
+	float multiplane_scrape_angle; // type_index: 7
+	int smear_deform_type; // type_index: 4
+	int slide_deform_type; // type_index: 4
+	int texture_overlay_alpha; // type_index: 4
+	int mask_overlay_alpha; // type_index: 4
+	int cursor_overlay_alpha; // type_index: 4
+	float unprojected_radius; // type_index: 7
+	float sharp_threshold; // type_index: 7
+	int blur_kernel_radius; // type_index: 4
+	int blur_mode; // type_index: 4
+	float fill_threshold; // type_index: 7
+	float add_col[4]; // type_index: 7
+	float sub_col[4]; // type_index: 7
+	float stencil_pos[2]; // type_index: 7
+	float stencil_dimension[2]; // type_index: 7
+	float mask_stencil_pos[2]; // type_index: 7
+	float mask_stencil_dimension[2]; // type_index: 7
+	BrushGpencilSettings *gpencil_settings; // type_index: 126
+	BrushCurvesSculptSettings *curves_sculpt_settings; // type_index: 129
+	int automasking_cavity_blur_steps; // type_index: 4
+	float automasking_cavity_factor; // type_index: 7
+	CurveMapping *automasking_cavity_curve; // type_index: 127
+}; 
+
+struct ColorMapping { // Max dep:132
+	ColorBand coba; // type_index: 132
+	float bright; // type_index: 7
+	float contrast; // type_index: 7
+	float saturation; // type_index: 7
+	int flag; // type_index: 4
+	float blend_color[3]; // type_index: 7
+	float blend_factor; // type_index: 7
+	int blend_type; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct PaintModeSettings { // Max dep:145
+	char canvas_source; // type_index: 0
+	char _pad[7]; // type_index: 0
+	Image *canvas_image; // type_index: 144
+	ImageUser image_user; // type_index: 145
+}; 
+
+struct CameraBGImage { // Max dep:147
+	CameraBGImage *next; // type_index: 143
+	CameraBGImage *prev; // type_index: 143
+	Image *ima; // type_index: 144
+	ImageUser iuser; // type_index: 145
+	MovieClip *clip; // type_index: 146
+	MovieClipUser cuser; // type_index: 147
+	float offset[2]; // type_index: 7
+	float scale; // type_index: 7
+	float rotation; // type_index: 7
+	float alpha; // type_index: 7
+	short flag; // type_index: 2
+	short source; // type_index: 2
+}; 
+
+struct MovieClip_RuntimeGPUTexture { // Max dep:147
+	void *next; // type_index: 11
+	void *prev; // type_index: 11
+	MovieClipUser user; // type_index: 147
+	GPUTexture *gputexture[3]; // type_index: 242
+}; 
+
+struct Camera { // Max dep:152
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	char type; // type_index: 0
+	char dtx; // type_index: 0
+	short flag; // type_index: 2
+	float passepartalpha; // type_index: 7
+	float clipsta; // type_index: 7
+	float clipend; // type_index: 7
+	float lens; // type_index: 7
+	float ortho_scale; // type_index: 7
+	float drawsize; // type_index: 7
+	float sensor_x; // type_index: 7
+	float sensor_y; // type_index: 7
+	float shiftx; // type_index: 7
+	float shifty; // type_index: 7
+	float YF_dofdist; // type_index: 7
+	char sensor_fit; // type_index: 0
+	char panorama_type; // type_index: 0
+	char _pad[2]; // type_index: 0
+	float fisheye_fov; // type_index: 7
+	float fisheye_lens; // type_index: 7
+	float latitude_min; // type_index: 7
+	float latitude_max; // type_index: 7
+	float longitude_min; // type_index: 7
+	float longitude_max; // type_index: 7
+	float fisheye_polynomial_k0; // type_index: 7
+	float fisheye_polynomial_k1; // type_index: 7
+	float fisheye_polynomial_k2; // type_index: 7
+	float fisheye_polynomial_k3; // type_index: 7
+	float fisheye_polynomial_k4; // type_index: 7
+	float central_cylindrical_range_u_min; // type_index: 7
+	float central_cylindrical_range_u_max; // type_index: 7
+	float central_cylindrical_range_v_min; // type_index: 7
+	float central_cylindrical_range_v_max; // type_index: 7
+	float central_cylindrical_radius; // type_index: 7
+	float _pad2; // type_index: 7
+	Text *custom_shader; // type_index: 151
+	char custom_filepath[1024]; // type_index: 0
+	char custom_bytecode_hash[64]; // type_index: 0
+	char *custom_bytecode; // type_index: 0
+	int custom_mode; // type_index: 4
+	int _pad3; // type_index: 4
+	Object *dof_ob; // type_index: 51
+	GPUDOFSettings gpu_dof; // type_index: 152
+	CameraDOFSettings dof; // type_index: 148
+	ListBase bg_images; // type_index: 22
+	CameraStereoSettings stereo; // type_index: 142
+	float composition_guide_color[4]; // type_index: 7
+	Camera_Runtime runtime; // type_index: 149
+}; 
+
+struct CollectionChild { // Max dep:157
+	CollectionChild *next; // type_index: 159
+	CollectionChild *prev; // type_index: 159
+	Collection *collection; // type_index: 66
+	CollectionLightLinking light_linking; // type_index: 157
+	int _pad; // type_index: 4
+}; 
+
+struct CollectionObject { // Max dep:157
+	CollectionObject *next; // type_index: 158
+	CollectionObject *prev; // type_index: 158
+	Object *ob; // type_index: 51
+	CollectionLightLinking light_linking; // type_index: 157
+	int _pad; // type_index: 4
+}; 
+
+struct CurveMapping { // Max dep:164
+	int flag; // type_index: 4
+	int cur; // type_index: 4
+	int preset; // type_index: 4
+	int changed_timestamp; // type_index: 4
+	rctf curr; // type_index: 82
+	rctf clipr; // type_index: 82
+	CurveMap cm[4]; // type_index: 164
+	float black[3]; // type_index: 7
+	float white[3]; // type_index: 7
+	float bwmul[3]; // type_index: 7
+	float sample[3]; // type_index: 7
+	short tone; // type_index: 2
+	char _pad[6]; // type_index: 0
+}; 
+
+struct Scopes { // Max dep:165
+	int ok; // type_index: 4
+	int sample_full; // type_index: 4
+	int sample_lines; // type_index: 4
+	int wavefrm_mode; // type_index: 4
+	int vecscope_mode; // type_index: 4
+	int wavefrm_height; // type_index: 4
+	int vecscope_height; // type_index: 4
+	int waveform_tot; // type_index: 4
+	float accuracy; // type_index: 7
+	float wavefrm_alpha; // type_index: 7
+	float wavefrm_yfac; // type_index: 7
+	float vecscope_alpha; // type_index: 7
+	float minmax[3][2]; // type_index: 7
+	Histogram hist; // type_index: 165
+	float *waveform_1; // type_index: 7
+	float *waveform_2; // type_index: 7
+	float *waveform_3; // type_index: 7
+	float *vecscope; // type_index: 7
+	float *vecscope_rgb; // type_index: 7
+}; 
+
+struct NodeConvertToDisplay { // Max dep:168
+	ColorManagedDisplaySettings display_settings; // type_index: 168
+	ColorManagedViewSettings view_settings; // type_index: 167
+}; 
+
+struct Image { // Max dep:169
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	char name[1024]; // type_index: 0
+	MovieCache *cache; // type_index: 323
+	GPUTexture *gputexture[3][2]; // type_index: 242
+	ListBase anims; // type_index: 22
+	RenderResult *rr; // type_index: 320
+	ListBase renderslots; // type_index: 22
+	short render_slot; // type_index: 2
+	short last_render_slot; // type_index: 2
+	int flag; // type_index: 4
+	short source; // type_index: 2
+	short type; // type_index: 2
+	int lastframe; // type_index: 4
+	int gpuframenr; // type_index: 4
+	short gpuflag; // type_index: 2
+	short gpu_pass; // type_index: 2
+	short gpu_layer; // type_index: 2
+	short gpu_view; // type_index: 2
+	short seam_margin; // type_index: 2
+	char _pad2[2]; // type_index: 0
+	PackedFile *packedfile; // type_index: 35
+	ListBase packedfiles; // type_index: 22
+	PreviewImage *preview; // type_index: 37
+	int lastused; // type_index: 4
+	int gen_x; // type_index: 4
+	int gen_y; // type_index: 4
+	char gen_type; // type_index: 0
+	char gen_flag; // type_index: 0
+	short gen_depth; // type_index: 2
+	float gen_color[4]; // type_index: 7
+	float aspx; // type_index: 7
+	float aspy; // type_index: 7
+	ColorManagedColorspaceSettings colorspace_settings; // type_index: 169
+	char alpha_mode; // type_index: 0
+	char _pad; // type_index: 0
+	char eye; // type_index: 0
+	char views_format; // type_index: 0
+	int active_tile_index; // type_index: 4
+	ListBase tiles; // type_index: 22
+	ListBase views; // type_index: 22
+	Stereo3dFormat *stereo3d_format; // type_index: 324
+	ImageRuntimeHandle *runtime; // type_index: 325
+}; 
+
+struct Strip { // Max dep:169
+	Strip *next; // type_index: 898
+	Strip *prev; // type_index: 898
+	int us; // type_index: 4
+	int done; // type_index: 4
+	StripElem *stripdata; // type_index: 893
+	char dir[768]; // type_index: 0
+	StripProxy *proxy; // type_index: 897
+	StripCrop *crop; // type_index: 894
+	StripTransform *transform; // type_index: 895
+	StripColorBalance *color_balance; // type_index: 896
+	ColorManagedColorspaceSettings colorspace_settings; // type_index: 169
+}; 
+
+struct ColorBand { // Max dep:170
+	short tot; // type_index: 2
+	short cur; // type_index: 2
+	char ipotype; // type_index: 0
+	char ipotype_hue; // type_index: 0
+	char color_mode; // type_index: 0
+	char _pad[1]; // type_index: 0
+	CBData data[32]; // type_index: 170
+}; 
+
+struct Curve { // Max dep:206
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	ListBase nurb; // type_index: 22
+	EditNurb *editnurb; // type_index: 209
+	Object *bevobj; // type_index: 51
+	Object *taperobj; // type_index: 51
+	Object *textoncurve; // type_index: 51
+	Key *key; // type_index: 210
+	Material **mat; // type_index: 128
+	CurveProfile *bevel_profile; // type_index: 211
+	float loc[3]; // type_index: 7
+	float size[3]; // type_index: 7
+	short type; // type_index: 2
+	char texflag; // type_index: 0
+	char _pad0[7]; // type_index: 0
+	short twist_mode; // type_index: 2
+	float twist_smooth; // type_index: 7
+	float smallcaps_scale; // type_index: 7
+	int pathlen; // type_index: 4
+	short bevresol; // type_index: 2
+	short totcol; // type_index: 2
+	int flag; // type_index: 4
+	float width; // type_index: 7
+	float ext1; // type_index: 7
+	float ext2; // type_index: 7
+	short resolu; // type_index: 2
+	short resolv; // type_index: 2
+	short resolu_ren; // type_index: 2
+	short resolv_ren; // type_index: 2
+	int actnu; // type_index: 4
+	int actvert; // type_index: 4
+	char overflow; // type_index: 0
+	char spacemode; // type_index: 0
+	char align_y; // type_index: 0
+	char bevel_mode; // type_index: 0
+	char taper_radius_mode; // type_index: 0
+	char _pad[3]; // type_index: 0
+	float spacing; // type_index: 7
+	float linedist; // type_index: 7
+	float shear; // type_index: 7
+	float fsize; // type_index: 7
+	float wordspace; // type_index: 7
+	float ulpos; // type_index: 7
+	float ulheight; // type_index: 7
+	float xof; // type_index: 7
+	float yof; // type_index: 7
+	float linewidth; // type_index: 7
+	int pos; // type_index: 4
+	int selstart; // type_index: 4
+	int selend; // type_index: 4
+	int len_wchar; // type_index: 4
+	int len; // type_index: 4
+	char *str; // type_index: 0
+	EditFont *editfont; // type_index: 212
+	char family[64]; // type_index: 0
+	VFont *vfont; // type_index: 213
+	VFont *vfontb; // type_index: 213
+	VFont *vfonti; // type_index: 213
+	VFont *vfontbi; // type_index: 213
+	TextBox *tb; // type_index: 207
+	int totbox; // type_index: 4
+	int actbox; // type_index: 4
+	CharInfo *strinfo; // type_index: 206
+	CharInfo curinfo; // type_index: 206
+	float ctime; // type_index: 7
+	float bevfac1; // type_index: 7
+	float bevfac2; // type_index: 7
+	char bevfac1_mapping; // type_index: 0
+	char bevfac2_mapping; // type_index: 0
+	char _pad2[1]; // type_index: 0
+	char edit_data_from_original; // type_index: 0
+	Curves *curve_eval; // type_index: 214
+	void *batch_cache; // type_index: 11
+}; 
+
+struct Curves { // Max dep:216
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	CurvesGeometry geometry; // type_index: 216
+	int flag; // type_index: 4
+	int attributes_active_index; // type_index: 4
+	Material **mat; // type_index: 128
+	short totcol; // type_index: 2
+	char symmetry; // type_index: 0
+	char selection_domain; // type_index: 0
+	char _pad[4]; // type_index: 0
+	Object *surface; // type_index: 51
+	char *surface_uv_map; // type_index: 0
+	float surface_collision_distance; // type_index: 7
+	char _pad2[4]; // type_index: 0
+	void *batch_cache; // type_index: 11
+}; 
+
+struct PointCloud { // Max dep:217
 	ID id; // type_index: 26
 	AnimData *adt; // type_index: 96
 	int flag; // type_index: 4
@@ -11079,51 +9010,82 @@ struct PointCloud { // Max dep:810
 	void *batch_cache; // type_index: 11
 }; 
 
-struct RigidBodyWorld { // Max dep:811
-	EffectorWeights *effector_weights; // type_index: 155
-	Collection *group; // type_index: 66
-	Object **objects; // type_index: 51
-	Collection *constraints; // type_index: 66
+struct Mesh { // Max dep:217
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	Key *key; // type_index: 210
+	Material **mat; // type_index: 128
+	int totvert; // type_index: 4
+	int totedge; // type_index: 4
+	int totpoly; // type_index: 4
+	int totloop; // type_index: 4
+	int *poly_offset_indices; // type_index: 4
+	AttributeStorage attribute_storage; // type_index: 115
+	CustomData vdata; // type_index: 217
+	CustomData edata; // type_index: 217
+	CustomData pdata; // type_index: 217
+	CustomData ldata; // type_index: 217
+	ListBase vertex_group_names; // type_index: 22
+	int vertex_group_active_index; // type_index: 4
+	int attributes_active_index; // type_index: 4
+	MSelect *mselect; // type_index: 404
+	int totselect; // type_index: 4
+	int act_face; // type_index: 4
+	Mesh *texcomesh; // type_index: 244
+	float loc[3]; // type_index: 7
+	float size[3]; // type_index: 7
+	char texflag; // type_index: 0
+	char editflag; // type_index: 0
+	ushort flag; // type_index: 3
+	float smoothresh; // type_index: 7
+	float remesh_voxel_size; // type_index: 7
+	float remesh_voxel_adaptivity; // type_index: 7
+	int face_sets_color_seed; // type_index: 4
+	int face_sets_color_default; // type_index: 4
+	char *active_color_attribute; // type_index: 0
+	char *default_color_attribute; // type_index: 0
+	char *active_uv_map_attribute; // type_index: 0
+	char *default_uv_map_attribute; // type_index: 0
+	char symmetry; // type_index: 0
+	char remesh_mode; // type_index: 0
+	short totcol; // type_index: 2
+	char cd_flag; // type_index: 0
+	char subdiv; // type_index: 0
+	char subdivr; // type_index: 0
+	char subsurftype; // type_index: 0
+	MPoly *mpoly; // type_index: 405
+	MLoop *mloop; // type_index: 406
+	MVert *mvert; // type_index: 407
+	MEdge *medge; // type_index: 408
+	MDeformVert *dvert; // type_index: 258
+	MTFace *mtface; // type_index: 409
+	TFace *tface; // type_index: 410
+	MCol *mcol; // type_index: 411
+	MFace *mface; // type_index: 412
+	CustomData fdata; // type_index: 217
+	int totface; // type_index: 4
+	char _pad1; // type_index: 0
+	int8_t radial_symmetry[3]; // type_index: 12
+	MeshRuntimeHandle *runtime; // type_index: 413
+}; 
+
+struct CurvesGeometry { // Max dep:217
+	int *curve_offsets; // type_index: 4
+	AttributeStorage attribute_storage; // type_index: 115
+	CustomData point_data; // type_index: 217
+	CustomData curve_data; // type_index: 217
+	int point_size; // type_index: 4
+	int curve_size; // type_index: 4
+	ListBase vertex_group_names; // type_index: 22
+	int vertex_group_active_index; // type_index: 4
+	int attributes_active_index; // type_index: 4
+	CurvesGeometryRuntimeHandle *runtime; // type_index: 218
+	float *custom_knots; // type_index: 7
+	int custom_knot_num; // type_index: 4
 	char _pad[4]; // type_index: 0
-	float ltime; // type_index: 7
-	RigidBodyWorld_Shared *shared; // type_index: 811
-	PointCache *pointcache; // type_index: 226
-	ListBase ptcaches; // type_index: 22
-	int numbodies; // type_index: 4
-	short steps_per_second; // type_index: 2
-	short num_solver_iterations; // type_index: 2
-	int flag; // type_index: 4
-	float time_scale; // type_index: 7
 }; 
 
-struct RigidBodyWorld_Shared { // Max dep:812
-	PointCache *pointcache; // type_index: 226
-	ListBase ptcaches; // type_index: 22
-	RigidBodyWorld_Runtime *runtime; // type_index: 812
-}; 
-
-struct RigidBodyOb { // Max dep:814
-	short type; // type_index: 2
-	short shape; // type_index: 2
-	int flag; // type_index: 4
-	int col_groups; // type_index: 4
-	short mesh_source; // type_index: 2
-	char _pad[2]; // type_index: 0
-	float mass; // type_index: 7
-	float friction; // type_index: 7
-	float restitution; // type_index: 7
-	float margin; // type_index: 7
-	float lin_damping; // type_index: 7
-	float ang_damping; // type_index: 7
-	float lin_sleep_thresh; // type_index: 7
-	float ang_sleep_thresh; // type_index: 7
-	float orn[4]; // type_index: 7
-	float pos[3]; // type_index: 7
-	char _pad1[4]; // type_index: 0
-	RigidBodyOb_Shared *shared; // type_index: 814
-}; 
-
-struct SceneRenderLayer { // Max dep:817
+struct SceneRenderLayer { // Max dep:249
 	SceneRenderLayer *next; // type_index: 817
 	SceneRenderLayer *prev; // type_index: 817
 	char name[64]; // type_index: 0
@@ -11141,13 +9103,2902 @@ struct SceneRenderLayer { // Max dep:817
 	FreestyleConfig freestyleConfig; // type_index: 249
 }; 
 
-struct SceneRenderView { // Max dep:818
-	SceneRenderView *next; // type_index: 818
-	SceneRenderView *prev; // type_index: 818
-	char name[64]; // type_index: 0
-	char suffix[64]; // type_index: 0
-	int viewflag; // type_index: 4
+struct bGPDstroke { // Max dep:256
+	bGPDstroke *next; // type_index: 257
+	bGPDstroke *prev; // type_index: 257
+	bGPDspoint *points; // type_index: 250
+	bGPDtriangle *triangles; // type_index: 251
+	int totpoints; // type_index: 4
+	int tot_triangles; // type_index: 4
+	short thickness; // type_index: 2
+	short flag; // type_index: 2
+	short _pad[2]; // type_index: 2
+	double inittime; // type_index: 8
+	char colorname[128]; // type_index: 0
+	int mat_nr; // type_index: 4
+	short caps[2]; // type_index: 2
+	float gradient_f; // type_index: 7
+	float gradient_s[2]; // type_index: 7
+	float fill_opacity_fac; // type_index: 7
+	float uv_rotation; // type_index: 7
+	float uv_translation[2]; // type_index: 7
+	float uv_scale; // type_index: 7
+	int select_index; // type_index: 4
+	char _pad4[4]; // type_index: 0
+	MDeformVert *dvert; // type_index: 258
+	void *_pad3; // type_index: 11
+	float vert_color_fill[4]; // type_index: 7
+	bGPDcurve *editcurve; // type_index: 255
+	bGPDstroke_Runtime runtime; // type_index: 256
+	void *_pad5; // type_index: 11
+}; 
+
+struct bGPDframe { // Max dep:259
+	bGPDframe *next; // type_index: 260
+	bGPDframe *prev; // type_index: 260
+	ListBase strokes; // type_index: 22
+	int framenum; // type_index: 4
+	short flag; // type_index: 2
+	short key_type; // type_index: 2
+	bGPDframe_Runtime runtime; // type_index: 259
+}; 
+
+struct bGPDlayer { // Max dep:262
+	bGPDlayer *next; // type_index: 263
+	bGPDlayer *prev; // type_index: 263
+	ListBase frames; // type_index: 22
+	bGPDframe *actframe; // type_index: 260
+	short flag; // type_index: 2
+	short onion_flag; // type_index: 2
+	float color[4]; // type_index: 7
+	float fill[4]; // type_index: 7
+	char info[128]; // type_index: 0
+	short thickness; // type_index: 2
+	short pass_index; // type_index: 2
+	Object *parent; // type_index: 51
+	float inverse[4][4]; // type_index: 7
+	char parsubstr[64]; // type_index: 0
+	short partype; // type_index: 2
+	short line_change; // type_index: 2
+	float tintcolor[4]; // type_index: 7
+	float opacity; // type_index: 7
+	char viewlayername[64]; // type_index: 0
+	int blend_mode; // type_index: 4
+	float vertex_paint_opacity; // type_index: 7
+	short gstep; // type_index: 2
+	short gstep_next; // type_index: 2
+	float gcolor_prev[3]; // type_index: 7
+	float gcolor_next[3]; // type_index: 7
+	char _pad1[4]; // type_index: 0
+	ListBase mask_layers; // type_index: 22
+	int act_mask; // type_index: 4
 	char _pad2[4]; // type_index: 0
+	float location[3]; // type_index: 7
+	float rotation[3]; // type_index: 7
+	float scale[3]; // type_index: 7
+	float layer_mat[4][4]; // type_index: 7
+	float layer_invmat[4][4]; // type_index: 7
+	char _pad3[4]; // type_index: 0
+	bGPDlayer_Runtime runtime; // type_index: 262
+}; 
+
+struct bGPdata { // Max dep:265
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	ListBase layers; // type_index: 22
+	int flag; // type_index: 4
+	int curve_edit_resolution; // type_index: 4
+	float curve_edit_threshold; // type_index: 7
+	float curve_edit_corner_angle; // type_index: 7
+	ListBase palettes; // type_index: 22
+	ListBase vertex_group_names; // type_index: 22
+	float pixfactor; // type_index: 7
+	float line_color[4]; // type_index: 7
+	float onion_factor; // type_index: 7
+	int onion_mode; // type_index: 4
+	int onion_flag; // type_index: 4
+	short gstep; // type_index: 2
+	short gstep_next; // type_index: 2
+	float gcolor_prev[3]; // type_index: 7
+	float gcolor_next[3]; // type_index: 7
+	float zdepth_offset; // type_index: 7
+	Material **mat; // type_index: 128
+	short totcol; // type_index: 2
+	short totlayer; // type_index: 2
+	short totframe; // type_index: 2
+	char _pad2[6]; // type_index: 0
+	int totstroke; // type_index: 4
+	int totpoint; // type_index: 4
+	short draw_mode; // type_index: 2
+	short onion_keytype; // type_index: 2
+	int select_last_index; // type_index: 4
+	int vertex_group_active_index; // type_index: 4
+	bGPgrid grid; // type_index: 265
+	bGPdata_Runtime runtime; // type_index: 264
+}; 
+
+struct ThickGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char materialname[64]; // type_index: 0
+	char vgname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	float thickness_fac; // type_index: 7
+	int thickness; // type_index: 4
+	int layer_pass; // type_index: 4
+	char _pad[4]; // type_index: 0
+	CurveMapping *curve_thickness; // type_index: 127
+}; 
+
+struct TimeGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	int layer_pass; // type_index: 4
+	int flag; // type_index: 4
+	int offset; // type_index: 4
+	float frame_scale; // type_index: 7
+	int mode; // type_index: 4
+	int sfra; // type_index: 4
+	int efra; // type_index: 4
+	char _pad[4]; // type_index: 0
+	TimeGpencilModifierSegment *segments; // type_index: 271
+	int segments_len; // type_index: 4
+	int segment_active_index; // type_index: 4
+}; 
+
+struct SubdivGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char materialname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	int level; // type_index: 4
+	int layer_pass; // type_index: 4
+	short type; // type_index: 2
+	char _pad[6]; // type_index: 0
+}; 
+
+struct BuildGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	char materialname[64]; // type_index: 0
+	int layer_pass; // type_index: 4
+	float start_frame; // type_index: 7
+	float end_frame; // type_index: 7
+	float start_delay; // type_index: 7
+	float length; // type_index: 7
+	short flag; // type_index: 2
+	short mode; // type_index: 2
+	short transition; // type_index: 2
+	short time_alignment; // type_index: 2
+	float speed_fac; // type_index: 7
+	float speed_maxgap; // type_index: 7
+	short time_mode; // type_index: 2
+	char _pad[6]; // type_index: 0
+	Object *object; // type_index: 51
+	float percentage_fac; // type_index: 7
+	float fade_fac; // type_index: 7
+	char target_vgname[64]; // type_index: 0
+	float fade_opacity_strength; // type_index: 7
+	float fade_thickness_strength; // type_index: 7
+}; 
+
+struct NoiseGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char materialname[64]; // type_index: 0
+	char vgname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	float factor; // type_index: 7
+	float factor_strength; // type_index: 7
+	float factor_thickness; // type_index: 7
+	float factor_uvs; // type_index: 7
+	float noise_scale; // type_index: 7
+	float noise_offset; // type_index: 7
+	short noise_mode; // type_index: 2
+	char _pad[2]; // type_index: 0
+	int step; // type_index: 4
+	int layer_pass; // type_index: 4
+	int seed; // type_index: 4
+	CurveMapping *curve_intensity; // type_index: 127
+}; 
+
+struct ColorGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char materialname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	float hsv[3]; // type_index: 7
+	char modify_color; // type_index: 0
+	char _pad[3]; // type_index: 0
+	int layer_pass; // type_index: 4
+	char _pad1[4]; // type_index: 0
+	CurveMapping *curve_intensity; // type_index: 127
+}; 
+
+struct OpacityGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char materialname[64]; // type_index: 0
+	char vgname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	float factor; // type_index: 7
+	char modify_color; // type_index: 0
+	char _pad[3]; // type_index: 0
+	int layer_pass; // type_index: 4
+	float hardeness; // type_index: 7
+	CurveMapping *curve_intensity; // type_index: 127
+}; 
+
+struct HookGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Object *object; // type_index: 51
+	Material *material; // type_index: 128
+	char subtarget[64]; // type_index: 0
+	char layername[64]; // type_index: 0
+	char materialname[64]; // type_index: 0
+	char vgname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int layer_pass; // type_index: 4
+	char _pad[4]; // type_index: 0
+	int flag; // type_index: 4
+	char falloff_type; // type_index: 0
+	char _pad1[3]; // type_index: 0
+	float parentinv[4][4]; // type_index: 7
+	float cent[3]; // type_index: 7
+	float falloff; // type_index: 7
+	float force; // type_index: 7
+	CurveMapping *curfalloff; // type_index: 127
+}; 
+
+struct MultiplyGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char materialname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	int layer_pass; // type_index: 4
+	int flags; // type_index: 4
+	int duplications; // type_index: 4
+	float distance; // type_index: 7
+	float offset; // type_index: 7
+	float fading_center; // type_index: 7
+	float fading_thickness; // type_index: 7
+	float fading_opacity; // type_index: 7
+}; 
+
+struct ArmatureGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	short deformflag; // type_index: 2
+	short multi; // type_index: 2
+	int _pad; // type_index: 4
+	Object *object; // type_index: 51
+	float (*vert_coords_prev)(); // type_index: 7
+	char vgname[64]; // type_index: 0
+}; 
+
+struct ArrayGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Object *object; // type_index: 51
+	Material *material; // type_index: 128
+	int count; // type_index: 4
+	int flag; // type_index: 4
+	float offset[3]; // type_index: 7
+	float shift[3]; // type_index: 7
+	float rnd_offset[3]; // type_index: 7
+	float rnd_rot[3]; // type_index: 7
+	float rnd_scale[3]; // type_index: 7
+	char _pad[4]; // type_index: 0
+	int seed; // type_index: 4
+	int pass_index; // type_index: 4
+	char layername[64]; // type_index: 0
+	char materialname[64]; // type_index: 0
+	int mat_rpl; // type_index: 4
+	int layer_pass; // type_index: 4
+}; 
+
+struct ShrinkwrapGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Object *target; // type_index: 51
+	Object *aux_target; // type_index: 51
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char vgname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	int layer_pass; // type_index: 4
+	float keep_dist; // type_index: 7
+	short shrink_type; // type_index: 2
+	char shrink_opts; // type_index: 0
+	char shrink_mode; // type_index: 0
+	float proj_limit; // type_index: 7
+	char proj_axis; // type_index: 0
+	char subsurf_levels; // type_index: 0
+	char _pad[6]; // type_index: 0
+	float smooth_factor; // type_index: 7
+	int smooth_step; // type_index: 4
+	ShrinkwrapTreeData *cache_data; // type_index: 298
+}; 
+
+struct LineartGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	ushort line_types; // type_index: 3
+	char source_type; // type_index: 0
+	char use_multiple_levels; // type_index: 0
+	short level_start; // type_index: 2
+	short level_end; // type_index: 2
+	Object *source_camera; // type_index: 51
+	Object *light_contour_object; // type_index: 51
+	Object *source_object; // type_index: 51
+	Collection *source_collection; // type_index: 66
+	Material *target_material; // type_index: 128
+	char target_layer[64]; // type_index: 0
+	char source_vertex_group[64]; // type_index: 0
+	char vgname[64]; // type_index: 0
+	float overscan; // type_index: 7
+	float shadow_camera_fov; // type_index: 7
+	float shadow_camera_size; // type_index: 7
+	float shadow_camera_near; // type_index: 7
+	float shadow_camera_far; // type_index: 7
+	float opacity; // type_index: 7
+	short thickness; // type_index: 2
+	char transparency_flags; // type_index: 0
+	char transparency_mask; // type_index: 0
+	char intersection_mask; // type_index: 0
+	char shadow_selection; // type_index: 0
+	char silhouette_selection; // type_index: 0
+	char _pad[1]; // type_index: 0
+	float crease_threshold; // type_index: 7
+	float angle_splitting_threshold; // type_index: 7
+	float chain_smooth_tolerance; // type_index: 7
+	float chaining_image_threshold; // type_index: 7
+	int calculation_flags; // type_index: 4
+	int flags; // type_index: 4
+	float stroke_depth_offset; // type_index: 7
+	char level_start_override; // type_index: 0
+	char level_end_override; // type_index: 0
+	short edge_types_override; // type_index: 2
+	char shadow_selection_override; // type_index: 0
+	char shadow_use_silhouette_override; // type_index: 0
+	char _pad2[6]; // type_index: 0
+	LineartCache *cache; // type_index: 295
+	LineartData *la_data_ptr; // type_index: 296
+}; 
+
+struct SmoothGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char materialname[64]; // type_index: 0
+	char vgname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	float factor; // type_index: 7
+	int step; // type_index: 4
+	int layer_pass; // type_index: 4
+	char _pad1[4]; // type_index: 0
+	CurveMapping *curve_intensity; // type_index: 127
+}; 
+
+struct OffsetGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char materialname[64]; // type_index: 0
+	char vgname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	float loc[3]; // type_index: 7
+	float rot[3]; // type_index: 7
+	float scale[3]; // type_index: 7
+	float rnd_offset[3]; // type_index: 7
+	float rnd_rot[3]; // type_index: 7
+	float rnd_scale[3]; // type_index: 7
+	int seed; // type_index: 4
+	int mode; // type_index: 4
+	int stroke_step; // type_index: 4
+	int stroke_start_offset; // type_index: 4
+	int layer_pass; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct SimplifyGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char materialname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	float factor; // type_index: 7
+	short mode; // type_index: 2
+	short step; // type_index: 2
+	int layer_pass; // type_index: 4
+	float length; // type_index: 7
+	float sharp_threshold; // type_index: 7
+	float distance; // type_index: 7
+}; 
+
+struct TintGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Object *object; // type_index: 51
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char materialname[64]; // type_index: 0
+	char vgname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int layer_pass; // type_index: 4
+	int flag; // type_index: 4
+	int mode; // type_index: 4
+	float factor; // type_index: 7
+	float radius; // type_index: 7
+	float rgb[3]; // type_index: 7
+	int type; // type_index: 4
+	CurveMapping *curve_intensity; // type_index: 127
+	ColorBand *colorband; // type_index: 132
+}; 
+
+struct WeightProxGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	char target_vgname[64]; // type_index: 0
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char vgname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	float min_weight; // type_index: 7
+	int layer_pass; // type_index: 4
+	float dist_start; // type_index: 7
+	float dist_end; // type_index: 7
+	Object *object; // type_index: 51
+}; 
+
+struct TextureGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char materialname[64]; // type_index: 0
+	char vgname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	float uv_offset; // type_index: 7
+	float uv_scale; // type_index: 7
+	float fill_rotation; // type_index: 7
+	float fill_offset[2]; // type_index: 7
+	float fill_scale; // type_index: 7
+	int layer_pass; // type_index: 4
+	short fit_method; // type_index: 2
+	short mode; // type_index: 2
+	float alignment_rotation; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct MirrorGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Object *object; // type_index: 51
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char materialname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	int layer_pass; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct DashGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	int layer_pass; // type_index: 4
+	int dash_offset; // type_index: 4
+	DashGpencilModifierSegment *segments; // type_index: 281
+	int segments_len; // type_index: 4
+	int segment_active_index; // type_index: 4
+}; 
+
+struct LengthGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	int layer_pass; // type_index: 4
+	float start_fac; // type_index: 7
+	float end_fac; // type_index: 7
+	float rand_start_fac; // type_index: 7
+	float rand_end_fac; // type_index: 7
+	float rand_offset; // type_index: 7
+	float overshoot_fac; // type_index: 7
+	int seed; // type_index: 4
+	int step; // type_index: 4
+	int mode; // type_index: 4
+	char _pad[4]; // type_index: 0
+	float point_density; // type_index: 7
+	float segment_influence; // type_index: 7
+	float max_angle; // type_index: 7
+}; 
+
+struct LatticeGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Object *object; // type_index: 51
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char materialname[64]; // type_index: 0
+	char vgname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	float strength; // type_index: 7
+	int layer_pass; // type_index: 4
+	LatticeDeformData *cache_data; // type_index: 279
+}; 
+
+struct EnvelopeGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char vgname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	int mode; // type_index: 4
+	int mat_nr; // type_index: 4
+	float thickness; // type_index: 7
+	float strength; // type_index: 7
+	int skip; // type_index: 4
+	int layer_pass; // type_index: 4
+	int spread; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct OutlineGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	Object *object; // type_index: 51
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	int thickness; // type_index: 4
+	float sample_length; // type_index: 7
+	int subdiv; // type_index: 4
+	int layer_pass; // type_index: 4
+	Material *outline_material; // type_index: 128
+}; 
+
+struct WeightAngleGpencilModifierData { // Max dep:267
+	GpencilModifierData modifier; // type_index: 267
+	char target_vgname[64]; // type_index: 0
+	Material *material; // type_index: 128
+	char layername[64]; // type_index: 0
+	char vgname[64]; // type_index: 0
+	int pass_index; // type_index: 4
+	int flag; // type_index: 4
+	float min_weight; // type_index: 7
+	int layer_pass; // type_index: 4
+	short axis; // type_index: 2
+	short space; // type_index: 2
+	float angle; // type_index: 7
+}; 
+
+struct GreasePencilDrawingReference { // Max dep:300
+	GreasePencilDrawingBase base; // type_index: 300
+	GreasePencil *id_reference; // type_index: 304
+}; 
+
+struct GreasePencilDrawing { // Max dep:300
+	GreasePencilDrawingBase base; // type_index: 300
+	CurvesGeometry geometry; // type_index: 216
+	GreasePencilDrawingRuntimeHandle *runtime; // type_index: 302
+}; 
+
+struct GreasePencilLayerTreeGroup { // Max dep:308
+	GreasePencilLayerTreeNode base; // type_index: 308
+	ListBase children; // type_index: 22
+	int8_t color_tag; // type_index: 12
+	char _pad[7]; // type_index: 0
+	GreasePencilLayerGroupRuntimeHandle *runtime; // type_index: 312
+}; 
+
+struct GreasePencilLayer { // Max dep:308
+	GreasePencilLayerTreeNode base; // type_index: 308
+	GreasePencilLayerFramesMapStorage frames_storage; // type_index: 306
+	int8_t blend_mode; // type_index: 12
+	char _pad[3]; // type_index: 0
+	float opacity; // type_index: 7
+	ListBase masks; // type_index: 22
+	int active_mask_index; // type_index: 4
+	char _pad2[4]; // type_index: 0
+	Object *parent; // type_index: 51
+	char *parsubstr; // type_index: 0
+	float parentinv[4][4]; // type_index: 7
+	float translation[3]; // type_index: 7
+	float rotation[3]; // type_index: 7
+	float scale[3]; // type_index: 7
+	char _pad3[4]; // type_index: 0
+	char *viewlayername; // type_index: 0
+	GreasePencilLayerRuntimeHandle *runtime; // type_index: 311
+}; 
+
+struct GreasePencil { // Max dep:313
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	GreasePencilDrawingBase **drawing_array; // type_index: 300
+	int drawing_array_size; // type_index: 4
+	char _pad[4]; // type_index: 0
+	GreasePencilLayerTreeGroup *root_group_ptr; // type_index: 309
+	CustomData layers_data; // type_index: 217
+	AttributeStorage attribute_storage; // type_index: 115
+	int attributes_active_index; // type_index: 4
+	char _pad2[4]; // type_index: 0
+	GreasePencilLayerTreeNode *active_node; // type_index: 308
+	Material **material_array; // type_index: 128
+	short material_array_size; // type_index: 2
+	char _pad3[2]; // type_index: 0
+	int flag; // type_index: 4
+	ListBase vertex_group_names; // type_index: 22
+	int vertex_group_active_index; // type_index: 4
+	char _pad4[4]; // type_index: 0
+	GreasePencilOnionSkinningSettings onion_skinning_settings; // type_index: 313
+	GreasePencilRuntimeHandle *runtime; // type_index: 314
+}; 
+
+struct ImageTile { // Max dep:321
+	ImageTile *next; // type_index: 322
+	ImageTile *prev; // type_index: 322
+	ImageTile_Runtime runtime; // type_index: 321
+	int tile_number; // type_index: 4
+	int gen_x; // type_index: 4
+	int gen_y; // type_index: 4
+	char gen_type; // type_index: 0
+	char gen_flag; // type_index: 0
+	short gen_depth; // type_index: 2
+	float gen_color[4]; // type_index: 7
+	char label[64]; // type_index: 0
+}; 
+
+struct ImageFormatData { // Max dep:324
+	char media_type; // type_index: 0
+	char imtype; // type_index: 0
+	char depth; // type_index: 0
+	char planes; // type_index: 0
+	char flag; // type_index: 0
+	char quality; // type_index: 0
+	char compress; // type_index: 0
+	char exr_codec; // type_index: 0
+	char exr_flag; // type_index: 0
+	char jp2_flag; // type_index: 0
+	char jp2_codec; // type_index: 0
+	char tiff_codec; // type_index: 0
+	char cineon_flag; // type_index: 0
+	char _pad[3]; // type_index: 0
+	short cineon_white; // type_index: 2
+	short cineon_black; // type_index: 2
+	float cineon_gamma; // type_index: 7
+	Stereo3dFormat stereo3d_format; // type_index: 324
+	char views_format; // type_index: 0
+	char color_management; // type_index: 0
+	char _pad1[6]; // type_index: 0
+	ColorManagedViewSettings view_settings; // type_index: 167
+	ColorManagedDisplaySettings display_settings; // type_index: 168
+	ColorManagedColorspaceSettings linear_colorspace_settings; // type_index: 169
+}; 
+
+struct ViewLayer { // Max dep:331
+	ViewLayer *next; // type_index: 161
+	ViewLayer *prev; // type_index: 161
+	char name[64]; // type_index: 0
+	short flag; // type_index: 2
+	char _pad[6]; // type_index: 0
+	ListBase object_bases; // type_index: 22
+	SceneStats *stats; // type_index: 335
+	Base *basact; // type_index: 329
+	ListBase layer_collections; // type_index: 22
+	LayerCollection *active_collection; // type_index: 330
+	int layflag; // type_index: 4
+	int passflag; // type_index: 4
+	float pass_alpha_threshold; // type_index: 7
+	short cryptomatte_flag; // type_index: 2
+	short cryptomatte_levels; // type_index: 2
+	int grease_pencil_flags; // type_index: 4
+	int samples; // type_index: 4
+	Material *mat_override; // type_index: 128
+	World *world_override; // type_index: 336
+	IDProperty *id_properties; // type_index: 24
+	IDProperty *system_properties; // type_index: 24
+	FreestyleConfig freestyle_config; // type_index: 249
+	ViewLayerEEVEE eevee; // type_index: 331
+	ListBase aovs; // type_index: 22
+	ViewLayerAOV *active_aov; // type_index: 332
+	ListBase lightgroups; // type_index: 22
+	ViewLayerLightgroup *active_lightgroup; // type_index: 333
+	Base **object_bases_array; // type_index: 329
+	GHash *object_bases_hash; // type_index: 55
+}; 
+
+struct LightCache { // Max dep:342
+	int flag; // type_index: 4
+	int version; // type_index: 4
+	int type; // type_index: 4
+	int cube_len; // type_index: 4
+	int grid_len; // type_index: 4
+	int mips_len; // type_index: 4
+	int vis_res; // type_index: 4
+	int ref_res; // type_index: 4
+	char _pad[4][2]; // type_index: 0
+	LightCacheTexture grid_tx; // type_index: 342
+	LightCacheTexture cube_tx; // type_index: 342
+	LightCacheTexture *cube_mips; // type_index: 342
+	LightProbeCache *cube_data; // type_index: 340
+	LightGridCache *grid_data; // type_index: 341
+}; 
+
+struct LightProbeGridCacheFrame { // Max dep:347
+	int size[3]; // type_index: 4
+	int data_layout; // type_index: 4
+	int block_len; // type_index: 4
+	int block_size; // type_index: 4
+	LightProbeBlockData *block_infos; // type_index: 348
+	LightProbeBakingData baking; // type_index: 344
+	LightProbeIrradianceData irradiance; // type_index: 345
+	LightProbeVisibilityData visibility; // type_index: 346
+	LightProbeConnectivityData connectivity; // type_index: 347
+	char _pad[4]; // type_index: 0
+	int surfels_len; // type_index: 4
+	void *surfels; // type_index: 11
+}; 
+
+struct LineStyleAlphaModifier_DistanceFromCamera { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	CurveMapping *curve; // type_index: 127
+	int flags; // type_index: 4
+	float range_min; // type_index: 7
+	float range_max; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleAlphaModifier_Tangent { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	CurveMapping *curve; // type_index: 127
+	int flags; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleThicknessModifier_DistanceFromCamera { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	CurveMapping *curve; // type_index: 127
+	int flags; // type_index: 4
+	float range_min; // type_index: 7
+	float range_max; // type_index: 7
+	float value_min; // type_index: 7
+	float value_max; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleColorModifier_DistanceFromObject { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	Object *target; // type_index: 51
+	ColorBand *color_ramp; // type_index: 132
+	float range_min; // type_index: 7
+	float range_max; // type_index: 7
+}; 
+
+struct LineStyleColorModifier_Curvature_3D { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	float min_curvature; // type_index: 7
+	float max_curvature; // type_index: 7
+	ColorBand *color_ramp; // type_index: 132
+	float range_min; // type_index: 7
+	float range_max; // type_index: 7
+}; 
+
+struct LineStyleColorModifier_DistanceFromCamera { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	ColorBand *color_ramp; // type_index: 132
+	float range_min; // type_index: 7
+	float range_max; // type_index: 7
+}; 
+
+struct LineStyleAlphaModifier_Material { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	CurveMapping *curve; // type_index: 127
+	int flags; // type_index: 4
+	int mat_attr; // type_index: 4
+}; 
+
+struct LineStyleThicknessModifier_AlongStroke { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	CurveMapping *curve; // type_index: 127
+	int flags; // type_index: 4
+	float value_min; // type_index: 7
+	float value_max; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleThicknessModifier_Tangent { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	CurveMapping *curve; // type_index: 127
+	int flags; // type_index: 4
+	float min_thickness; // type_index: 7
+	float max_thickness; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleAlphaModifier_AlongStroke { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	CurveMapping *curve; // type_index: 127
+	int flags; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleColorModifier_Material { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	ColorBand *color_ramp; // type_index: 132
+	int flags; // type_index: 4
+	int mat_attr; // type_index: 4
+}; 
+
+struct LineStyleColorModifier_AlongStroke { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	ColorBand *color_ramp; // type_index: 132
+}; 
+
+struct LineStyleColorModifier_CreaseAngle { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	ColorBand *color_ramp; // type_index: 132
+	float min_angle; // type_index: 7
+	float max_angle; // type_index: 7
+}; 
+
+struct LineStyleAlphaModifier_CreaseAngle { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	CurveMapping *curve; // type_index: 127
+	int flags; // type_index: 4
+	float min_angle; // type_index: 7
+	float max_angle; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleGeometryModifier_PerlinNoise2D { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	float frequency; // type_index: 7
+	float amplitude; // type_index: 7
+	float angle; // type_index: 7
+	int octaves; // type_index: 4
+	int seed; // type_index: 4
+	char _pad1[4]; // type_index: 0
+}; 
+
+struct LineStyleGeometryModifier_PerlinNoise1D { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	float frequency; // type_index: 7
+	float amplitude; // type_index: 7
+	float angle; // type_index: 7
+	int octaves; // type_index: 4
+	int seed; // type_index: 4
+	char _pad1[4]; // type_index: 0
+}; 
+
+struct LineStyleGeometryModifier_TipRemover { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	float tip_length; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleGeometryModifier_Polygonalization { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	float error; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleGeometryModifier_GuidingLines { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	float offset; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleGeometryModifier_Blueprint { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	int flags; // type_index: 4
+	int rounds; // type_index: 4
+	float backbone_length; // type_index: 7
+	int random_radius; // type_index: 4
+	int random_center; // type_index: 4
+	int random_backbone; // type_index: 4
+}; 
+
+struct LineStyleGeometryModifier_SpatialNoise { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	float amplitude; // type_index: 7
+	float scale; // type_index: 7
+	int octaves; // type_index: 4
+	int flags; // type_index: 4
+}; 
+
+struct LineStyleGeometryModifier_2DOffset { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	float start; // type_index: 7
+	float end; // type_index: 7
+	float x; // type_index: 7
+	float y; // type_index: 7
+}; 
+
+struct LineStyleGeometryModifier_2DTransform { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	int pivot; // type_index: 4
+	float scale_x; // type_index: 7
+	float scale_y; // type_index: 7
+	float angle; // type_index: 7
+	float pivot_u; // type_index: 7
+	float pivot_x; // type_index: 7
+	float pivot_y; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleGeometryModifier_SinusDisplacement { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	float wavelength; // type_index: 7
+	float amplitude; // type_index: 7
+	float phase; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleGeometryModifier_Simplification { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	float tolerance; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleThicknessModifier_Calligraphy { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	float min_thickness; // type_index: 7
+	float max_thickness; // type_index: 7
+	float orientation; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleAlphaModifier_DistanceFromObject { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	Object *target; // type_index: 51
+	CurveMapping *curve; // type_index: 127
+	int flags; // type_index: 4
+	float range_min; // type_index: 7
+	float range_max; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleGeometryModifier_BezierCurve { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	float error; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleThicknessModifier_CreaseAngle { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	CurveMapping *curve; // type_index: 127
+	int flags; // type_index: 4
+	char _pad[4]; // type_index: 0
+	float min_angle; // type_index: 7
+	float max_angle; // type_index: 7
+	float min_thickness; // type_index: 7
+	float max_thickness; // type_index: 7
+}; 
+
+struct LineStyleThicknessModifier_Noise { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	float period; // type_index: 7
+	float amplitude; // type_index: 7
+	int flags; // type_index: 4
+	int seed; // type_index: 4
+}; 
+
+struct LineStyleAlphaModifier_Noise { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	CurveMapping *curve; // type_index: 127
+	int flags; // type_index: 4
+	float period; // type_index: 7
+	float amplitude; // type_index: 7
+	int seed; // type_index: 4
+}; 
+
+struct LineStyleColorModifier_Tangent { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	ColorBand *color_ramp; // type_index: 132
+}; 
+
+struct LineStyleColorModifier_Noise { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	ColorBand *color_ramp; // type_index: 132
+	float period; // type_index: 7
+	float amplitude; // type_index: 7
+	int seed; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleThicknessModifier_Curvature_3D { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	CurveMapping *curve; // type_index: 127
+	int flags; // type_index: 4
+	char _pad[4]; // type_index: 0
+	float min_curvature; // type_index: 7
+	float max_curvature; // type_index: 7
+	float min_thickness; // type_index: 7
+	float max_thickness; // type_index: 7
+}; 
+
+struct LineStyleGeometryModifier_Sampling { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	float sampling; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleAlphaModifier_Curvature_3D { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	CurveMapping *curve; // type_index: 127
+	int flags; // type_index: 4
+	float min_curvature; // type_index: 7
+	float max_curvature; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleGeometryModifier_BackboneStretcher { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	float backbone_length; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LineStyleThicknessModifier_Material { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	CurveMapping *curve; // type_index: 127
+	int flags; // type_index: 4
+	float value_min; // type_index: 7
+	float value_max; // type_index: 7
+	int mat_attr; // type_index: 4
+}; 
+
+struct LineStyleThicknessModifier_DistanceFromObject { // Max dep:351
+	LineStyleModifier modifier; // type_index: 351
+	Object *target; // type_index: 51
+	CurveMapping *curve; // type_index: 127
+	int flags; // type_index: 4
+	float range_min; // type_index: 7
+	float range_max; // type_index: 7
+	float value_min; // type_index: 7
+	float value_max; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct Mask { // Max dep:393
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	ListBase masklayers; // type_index: 22
+	int masklay_act; // type_index: 4
+	int masklay_tot; // type_index: 4
+	int sfra; // type_index: 4
+	int efra; // type_index: 4
+	int flag; // type_index: 4
+	char _pad[4]; // type_index: 0
+	Mask_Runtime runtime; // type_index: 393
+}; 
+
+struct MaskSplinePoint { // Max dep:395
+	BezTriple bezt; // type_index: 90
+	char _pad[4]; // type_index: 0
+	int tot_uw; // type_index: 4
+	MaskSplinePointUW *uw; // type_index: 396
+	MaskParent parent; // type_index: 395
+}; 
+
+struct MaskSpline { // Max dep:395
+	MaskSpline *next; // type_index: 398
+	MaskSpline *prev; // type_index: 398
+	short flag; // type_index: 2
+	char offset_mode; // type_index: 0
+	char weight_interp; // type_index: 0
+	int tot_point; // type_index: 4
+	MaskSplinePoint *points; // type_index: 397
+	MaskParent parent; // type_index: 395
+	MaskSplinePoint *points_deform; // type_index: 397
+}; 
+
+struct Material { // Max dep:403
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	short flag; // type_index: 2
+	char surface_render_method; // type_index: 0
+	char _pad1[1]; // type_index: 0
+	float r; // type_index: 7
+	float g; // type_index: 7
+	float b; // type_index: 7
+	float a; // type_index: 7
+	float specr; // type_index: 7
+	float specg; // type_index: 7
+	float specb; // type_index: 7
+	float alpha; // type_index: 7
+	float ray_mirror; // type_index: 7
+	float spec; // type_index: 7
+	float gloss_mir; // type_index: 7
+	float roughness; // type_index: 7
+	float metallic; // type_index: 7
+	char use_nodes; // type_index: 0
+	char pr_type; // type_index: 0
+	short pr_texture; // type_index: 2
+	short pr_flag; // type_index: 2
+	short index; // type_index: 2
+	bNodeTree *nodetree; // type_index: 338
+	PreviewImage *preview; // type_index: 37
+	float line_col[4]; // type_index: 7
+	short line_priority; // type_index: 2
+	short vcol_alpha; // type_index: 2
+	short paint_active_slot; // type_index: 2
+	short paint_clone_slot; // type_index: 2
+	short tot_slots; // type_index: 2
+	char displacement_method; // type_index: 0
+	char thickness_mode; // type_index: 0
+	float alpha_threshold; // type_index: 7
+	float refract_depth; // type_index: 7
+	char blend_method; // type_index: 0
+	char blend_shadow; // type_index: 0
+	char blend_flag; // type_index: 0
+	char volume_intersection_method; // type_index: 0
+	float inflate_bounds; // type_index: 7
+	char _pad3[4]; // type_index: 0
+	TexPaintSlot *texpaintslot; // type_index: 401
+	ListBase gpumaterial; // type_index: 22
+	MaterialGPencilStyle *gp_style; // type_index: 402
+	MaterialLineArt lineart; // type_index: 403
+}; 
+
+struct OceanModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Ocean *ocean; // type_index: 478
+	OceanCache *oceancache; // type_index: 479
+	int resolution; // type_index: 4
+	int viewport_resolution; // type_index: 4
+	int spatial_size; // type_index: 4
+	float wind_velocity; // type_index: 7
+	float damp; // type_index: 7
+	float smallest_wave; // type_index: 7
+	float depth; // type_index: 7
+	float wave_alignment; // type_index: 7
+	float wave_direction; // type_index: 7
+	float wave_scale; // type_index: 7
+	float chop_amount; // type_index: 7
+	float foam_coverage; // type_index: 7
+	float time; // type_index: 7
+	int spectrum; // type_index: 4
+	float fetch_jonswap; // type_index: 7
+	float sharpen_peak_jonswap; // type_index: 7
+	int bakestart; // type_index: 4
+	int bakeend; // type_index: 4
+	char cachepath[1024]; // type_index: 0
+	char foamlayername[68]; // type_index: 0
+	char spraylayername[68]; // type_index: 0
+	char cached; // type_index: 0
+	char geometry_mode; // type_index: 0
+	char flag; // type_index: 0
+	char _pad2; // type_index: 0
+	short repeat_x; // type_index: 2
+	short repeat_y; // type_index: 2
+	int seed; // type_index: 4
+	float size; // type_index: 7
+	float foam_fade; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct SolidifyModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	char defgrp_name[64]; // type_index: 0
+	char shell_defgrp_name[64]; // type_index: 0
+	char rim_defgrp_name[64]; // type_index: 0
+	float offset; // type_index: 7
+	float offset_fac; // type_index: 7
+	float offset_fac_vg; // type_index: 7
+	float offset_clamp; // type_index: 7
+	char mode; // type_index: 0
+	char nonmanifold_offset_mode; // type_index: 0
+	char nonmanifold_boundary_mode; // type_index: 0
+	char _pad; // type_index: 0
+	float crease_inner; // type_index: 7
+	float crease_outer; // type_index: 7
+	float crease_rim; // type_index: 7
+	int flag; // type_index: 4
+	short mat_ofs; // type_index: 2
+	short mat_ofs_rim; // type_index: 2
+	float merge_tolerance; // type_index: 7
+	float bevel_convex; // type_index: 7
+}; 
+
+struct ArmatureModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	short deformflag; // type_index: 2
+	short multi; // type_index: 2
+	char _pad2[4]; // type_index: 0
+	Object *object; // type_index: 51
+	float (*vert_coords_prev)(); // type_index: 7
+	char defgrp_name[64]; // type_index: 0
+}; 
+
+struct WaveModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Tex *texture; // type_index: 227
+	Object *map_object; // type_index: 51
+	char map_bone[64]; // type_index: 0
+	char uvlayer_name[68]; // type_index: 0
+	char _pad1[4]; // type_index: 0
+	int uvlayer_tmp; // type_index: 4
+	int texmapping; // type_index: 4
+	Object *objectcenter; // type_index: 51
+	char defgrp_name[64]; // type_index: 0
+	short flag; // type_index: 2
+	char _pad2[2]; // type_index: 0
+	float startx; // type_index: 7
+	float starty; // type_index: 7
+	float height; // type_index: 7
+	float width; // type_index: 7
+	float narrow; // type_index: 7
+	float speed; // type_index: 7
+	float damp; // type_index: 7
+	float falloff; // type_index: 7
+	float timeoffs; // type_index: 7
+	float lifetime; // type_index: 7
+	char _pad3[4]; // type_index: 0
+	void *_pad4; // type_index: 11
+}; 
+
+struct WarpModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Tex *texture; // type_index: 227
+	Object *map_object; // type_index: 51
+	char map_bone[64]; // type_index: 0
+	char uvlayer_name[68]; // type_index: 0
+	char _pad1[4]; // type_index: 0
+	int uvlayer_tmp; // type_index: 4
+	int texmapping; // type_index: 4
+	Object *object_from; // type_index: 51
+	Object *object_to; // type_index: 51
+	char bone_from[64]; // type_index: 0
+	char bone_to[64]; // type_index: 0
+	CurveMapping *curfalloff; // type_index: 127
+	char defgrp_name[64]; // type_index: 0
+	float strength; // type_index: 7
+	float falloff_radius; // type_index: 7
+	char flag; // type_index: 0
+	char falloff_type; // type_index: 0
+	char _pad2[6]; // type_index: 0
+	void *_pad3; // type_index: 11
+}; 
+
+struct CastModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *object; // type_index: 51
+	float fac; // type_index: 7
+	float radius; // type_index: 7
+	float size; // type_index: 7
+	char defgrp_name[64]; // type_index: 0
+	short flag; // type_index: 2
+	short type; // type_index: 2
+	void *_pad1; // type_index: 11
+}; 
+
+struct WeightVGEditModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	char defgrp_name[64]; // type_index: 0
+	short edit_flags; // type_index: 2
+	short falloff_type; // type_index: 2
+	float default_weight; // type_index: 7
+	CurveMapping *cmap_curve; // type_index: 127
+	float add_threshold; // type_index: 7
+	float rem_threshold; // type_index: 7
+	float mask_constant; // type_index: 7
+	char mask_defgrp_name[64]; // type_index: 0
+	int mask_tex_use_channel; // type_index: 4
+	Tex *mask_texture; // type_index: 227
+	Object *mask_tex_map_obj; // type_index: 51
+	char mask_tex_map_bone[64]; // type_index: 0
+	int mask_tex_mapping; // type_index: 4
+	char mask_tex_uvlayer_name[68]; // type_index: 0
+	void *_pad1; // type_index: 11
+}; 
+
+struct WeightVGMixModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	char defgrp_name_a[64]; // type_index: 0
+	char defgrp_name_b[64]; // type_index: 0
+	float default_weight_a; // type_index: 7
+	float default_weight_b; // type_index: 7
+	char mix_mode; // type_index: 0
+	char mix_set; // type_index: 0
+	char _pad0[6]; // type_index: 0
+	float mask_constant; // type_index: 7
+	char mask_defgrp_name[64]; // type_index: 0
+	int mask_tex_use_channel; // type_index: 4
+	Tex *mask_texture; // type_index: 227
+	Object *mask_tex_map_obj; // type_index: 51
+	char mask_tex_map_bone[64]; // type_index: 0
+	int mask_tex_mapping; // type_index: 4
+	char mask_tex_uvlayer_name[68]; // type_index: 0
+	char _pad1[4]; // type_index: 0
+	char flag; // type_index: 0
+	char _pad2[3]; // type_index: 0
+}; 
+
+struct SmoothModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	float fac; // type_index: 7
+	char defgrp_name[64]; // type_index: 0
+	short flag; // type_index: 2
+	short repeat; // type_index: 2
+}; 
+
+struct DecimateModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	float percent; // type_index: 7
+	short iter; // type_index: 2
+	char delimit; // type_index: 0
+	char symmetry_axis; // type_index: 0
+	float angle; // type_index: 7
+	char defgrp_name[64]; // type_index: 0
+	float defgrp_factor; // type_index: 7
+	short flag; // type_index: 2
+	short mode; // type_index: 2
+	int face_count; // type_index: 4
+}; 
+
+struct GreasePencilLineartModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	ushort edge_types; // type_index: 3
+	char source_type; // type_index: 0
+	char use_multiple_levels; // type_index: 0
+	short level_start; // type_index: 2
+	short level_end; // type_index: 2
+	Object *source_camera; // type_index: 51
+	Object *light_contour_object; // type_index: 51
+	Object *source_object; // type_index: 51
+	Collection *source_collection; // type_index: 66
+	Material *target_material; // type_index: 128
+	char target_layer[64]; // type_index: 0
+	char source_vertex_group[64]; // type_index: 0
+	char vgname[64]; // type_index: 0
+	float overscan; // type_index: 7
+	float shadow_camera_fov; // type_index: 7
+	float shadow_camera_size; // type_index: 7
+	float shadow_camera_near; // type_index: 7
+	float shadow_camera_far; // type_index: 7
+	float opacity; // type_index: 7
+	float radius; // type_index: 7
+	short thickness; // type_index: 2
+	char mask_switches; // type_index: 0
+	char material_mask_bits; // type_index: 0
+	char intersection_mask; // type_index: 0
+	char shadow_selection; // type_index: 0
+	char silhouette_selection; // type_index: 0
+	char _pad[5]; // type_index: 0
+	float crease_threshold; // type_index: 7
+	float angle_splitting_threshold; // type_index: 7
+	float chain_smooth_tolerance; // type_index: 7
+	float chaining_image_threshold; // type_index: 7
+	int calculation_flags; // type_index: 4
+	int flags; // type_index: 4
+	float stroke_depth_offset; // type_index: 7
+	char level_start_override; // type_index: 0
+	char level_end_override; // type_index: 0
+	short edge_types_override; // type_index: 2
+	char shadow_selection_override; // type_index: 0
+	char shadow_use_silhouette_override; // type_index: 0
+	char _pad2[6]; // type_index: 0
+	LineartCache *shared_cache; // type_index: 295
+	LineartCache *cache; // type_index: 295
+	LineartData *la_data_ptr; // type_index: 296
+	LineartModifierRuntime *runtime; // type_index: 534
+}; 
+
+struct UVProjectModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *projectors[10]; // type_index: 51
+	char _pad2[4]; // type_index: 0
+	int num_projectors; // type_index: 4
+	float aspectx; // type_index: 7
+	float aspecty; // type_index: 7
+	float scalex; // type_index: 7
+	float scaley; // type_index: 7
+	char uvlayer_name[68]; // type_index: 0
+	int uvlayer_tmp; // type_index: 4
+}; 
+
+struct DisplaceModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Tex *texture; // type_index: 227
+	Object *map_object; // type_index: 51
+	char map_bone[64]; // type_index: 0
+	char uvlayer_name[68]; // type_index: 0
+	char _pad1[4]; // type_index: 0
+	int uvlayer_tmp; // type_index: 4
+	int texmapping; // type_index: 4
+	float strength; // type_index: 7
+	int direction; // type_index: 4
+	char defgrp_name[64]; // type_index: 0
+	float midlevel; // type_index: 7
+	int space; // type_index: 4
+	short flag; // type_index: 2
+	char _pad2[6]; // type_index: 0
+}; 
+
+struct FluidModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	FluidDomainSettings *domain; // type_index: 239
+	FluidFlowSettings *flow; // type_index: 243
+	FluidEffectorSettings *effector; // type_index: 245
+	float time; // type_index: 7
+	int type; // type_index: 4
+	void *_pad1; // type_index: 11
+}; 
+
+struct BevelModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	float value; // type_index: 7
+	int res; // type_index: 4
+	short flags; // type_index: 2
+	short val_flags; // type_index: 2
+	short profile_type; // type_index: 2
+	short lim_flags; // type_index: 2
+	short e_flags; // type_index: 2
+	short mat; // type_index: 2
+	short edge_flags; // type_index: 2
+	short face_str_mode; // type_index: 2
+	short miter_inner; // type_index: 2
+	short miter_outer; // type_index: 2
+	short vmesh_method; // type_index: 2
+	char affect_type; // type_index: 0
+	char _pad; // type_index: 0
+	float profile; // type_index: 7
+	float bevel_angle; // type_index: 7
+	float spread; // type_index: 7
+	char defgrp_name[64]; // type_index: 0
+	char _pad1[4]; // type_index: 0
+	CurveProfile *custom_profile; // type_index: 211
+	char edge_weight_name[64]; // type_index: 0
+	char vertex_weight_name[64]; // type_index: 0
+}; 
+
+struct DynamicPaintModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	DynamicPaintCanvasSettings *canvas; // type_index: 224
+	DynamicPaintBrushSettings *brush; // type_index: 229
+	int type; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct MultiresModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	char lvl; // type_index: 0
+	char sculptlvl; // type_index: 0
+	char renderlvl; // type_index: 0
+	char totlvl; // type_index: 0
+	char simple; // type_index: 0
+	char flags; // type_index: 0
+	char _pad[2]; // type_index: 0
+	short quality; // type_index: 2
+	short uv_smooth; // type_index: 2
+	short boundary_smooth; // type_index: 2
+	char _pad2[2]; // type_index: 0
+}; 
+
+struct BooleanModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *object; // type_index: 51
+	Collection *collection; // type_index: 66
+	float double_threshold; // type_index: 7
+	char operation; // type_index: 0
+	char solver; // type_index: 0
+	char material_mode; // type_index: 0
+	char flag; // type_index: 0
+	char bm_flag; // type_index: 0
+	char _pad[7]; // type_index: 0
+}; 
+
+struct MeshDeformModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *object; // type_index: 51
+	char defgrp_name[64]; // type_index: 0
+	short gridsize; // type_index: 2
+	short flag; // type_index: 2
+	char _pad[4]; // type_index: 0
+	MDefInfluence *bindinfluences; // type_index: 462
+	ImplicitSharingInfoHandle *bindinfluences_sharing_info; // type_index: 112
+	int *bindoffsets; // type_index: 4
+	ImplicitSharingInfoHandle *bindoffsets_sharing_info; // type_index: 112
+	float *bindcagecos; // type_index: 7
+	ImplicitSharingInfoHandle *bindcagecos_sharing_info; // type_index: 112
+	int totvert; // type_index: 4
+	int totcagevert; // type_index: 4
+	MDefCell *dyngrid; // type_index: 463
+	ImplicitSharingInfoHandle *dyngrid_sharing_info; // type_index: 112
+	MDefInfluence *dyninfluences; // type_index: 462
+	ImplicitSharingInfoHandle *dyninfluences_sharing_info; // type_index: 112
+	int *dynverts; // type_index: 4
+	ImplicitSharingInfoHandle *dynverts_sharing_info; // type_index: 112
+	int dyngridsize; // type_index: 4
+	int totinfluence; // type_index: 4
+	float dyncellmin[3]; // type_index: 7
+	float dyncellwidth; // type_index: 7
+	float bindmat[4][4]; // type_index: 7
+	float *bindweights; // type_index: 7
+	float *bindcos; // type_index: 7
+	void (*bindfunc)(); // type_index: 11
+}; 
+
+struct ParticleSystemModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	ParticleSystem *psys; // type_index: 230
+	Mesh *mesh_final; // type_index: 244
+	Mesh *mesh_original; // type_index: 244
+	int totdmvert; // type_index: 4
+	int totdmedge; // type_index: 4
+	int totdmface; // type_index: 4
+	short flag; // type_index: 2
+	char _pad[2]; // type_index: 0
+	void *_pad1; // type_index: 11
+}; 
+
+struct CollisionModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	float (*x)(); // type_index: 7
+	float (*xnew)(); // type_index: 7
+	float (*xold)(); // type_index: 7
+	float (*current_xnew)(); // type_index: 7
+	float (*current_x)(); // type_index: 7
+	float (*current_v)(); // type_index: 7
+	int (*vert_tris)(); // type_index: 4
+	int mvert_num; // type_index: 4
+	int tri_num; // type_index: 4
+	float time_x; // type_index: 7
+	float time_xnew; // type_index: 7
+	char is_static; // type_index: 0
+	char _pad[7]; // type_index: 0
+	BVHTree *bvhtree; // type_index: 457
+}; 
+
+struct ParticleInstanceModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *ob; // type_index: 51
+	short psys; // type_index: 2
+	short flag; // type_index: 2
+	short axis; // type_index: 2
+	short space; // type_index: 2
+	float position; // type_index: 7
+	float random_position; // type_index: 7
+	float rotation; // type_index: 7
+	float random_rotation; // type_index: 7
+	float particle_amount; // type_index: 7
+	float particle_offset; // type_index: 7
+	char index_layer_name[68]; // type_index: 0
+	char value_layer_name[68]; // type_index: 0
+	void *_pad1; // type_index: 11
+}; 
+
+struct ClothModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Cloth *clothObject; // type_index: 453
+	ClothSimSettings *sim_parms; // type_index: 153
+	ClothCollSettings *coll_parms; // type_index: 156
+	PointCache *point_cache; // type_index: 226
+	ListBase ptcaches; // type_index: 22
+	ClothHairData *hairdata; // type_index: 454
+	float hair_grid_min[3]; // type_index: 7
+	float hair_grid_max[3]; // type_index: 7
+	int hair_grid_res[3]; // type_index: 4
+	float hair_grid_cellsize; // type_index: 7
+	ClothSolverResult *solver_result; // type_index: 455
+}; 
+
+struct ExplodeModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	int *facepa; // type_index: 4
+	short flag; // type_index: 2
+	short vgroup; // type_index: 2
+	float protect; // type_index: 7
+	char uvname[68]; // type_index: 0
+	char _pad1[4]; // type_index: 0
+	void *_pad2; // type_index: 11
+}; 
+
+struct SoftbodyModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+}; 
+
+struct ScrewModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *ob_axis; // type_index: 51
+	int steps; // type_index: 4
+	int render_steps; // type_index: 4
+	int iter; // type_index: 4
+	float screw_ofs; // type_index: 7
+	float angle; // type_index: 7
+	float merge_dist; // type_index: 7
+	short flag; // type_index: 2
+	char axis; // type_index: 0
+	char _pad[5]; // type_index: 0
+	void *_pad1; // type_index: 11
+}; 
+
+struct HookModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *object; // type_index: 51
+	char subtarget[64]; // type_index: 0
+	char flag; // type_index: 0
+	char falloff_type; // type_index: 0
+	char _pad[6]; // type_index: 0
+	float parentinv[4][4]; // type_index: 7
+	float cent[3]; // type_index: 7
+	float falloff; // type_index: 7
+	CurveMapping *curfalloff; // type_index: 127
+	int *indexar; // type_index: 4
+	int totindex; // type_index: 4
+	float force; // type_index: 7
+	char name[64]; // type_index: 0
+	void *_pad1; // type_index: 11
+}; 
+
+struct FluidsimModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	FluidsimSettings *fss; // type_index: 470
+	void *_pad1; // type_index: 11
+}; 
+
+struct SmokeModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	int type; // type_index: 4
+	int _pad; // type_index: 4
+}; 
+
+struct ShrinkwrapModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *target; // type_index: 51
+	Object *auxTarget; // type_index: 51
+	char vgroup_name[64]; // type_index: 0
+	float keepDist; // type_index: 7
+	short shrinkType; // type_index: 2
+	char shrinkOpts; // type_index: 0
+	char shrinkMode; // type_index: 0
+	float projLimit; // type_index: 7
+	char projAxis; // type_index: 0
+	char subsurfLevels; // type_index: 0
+	char _pad[2]; // type_index: 0
+}; 
+
+struct SimpleDeformModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *origin; // type_index: 51
+	char vgroup_name[64]; // type_index: 0
+	float factor; // type_index: 7
+	float limit[2]; // type_index: 7
+	char mode; // type_index: 0
+	char axis; // type_index: 0
+	char deform_axis; // type_index: 0
+	char flag; // type_index: 0
+	void *_pad1; // type_index: 11
+}; 
+
+struct ShapeKeyModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+}; 
+
+struct WeightVGProximityModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	char defgrp_name[64]; // type_index: 0
+	CurveMapping *cmap_curve; // type_index: 127
+	int proximity_mode; // type_index: 4
+	int proximity_flags; // type_index: 4
+	Object *proximity_ob_target; // type_index: 51
+	float mask_constant; // type_index: 7
+	char mask_defgrp_name[64]; // type_index: 0
+	int mask_tex_use_channel; // type_index: 4
+	Tex *mask_texture; // type_index: 227
+	Object *mask_tex_map_obj; // type_index: 51
+	char mask_tex_map_bone[64]; // type_index: 0
+	int mask_tex_mapping; // type_index: 4
+	char mask_tex_uvlayer_name[68]; // type_index: 0
+	char _pad1[4]; // type_index: 0
+	float min_dist; // type_index: 7
+	float max_dist; // type_index: 7
+	short falloff_type; // type_index: 2
+	char _pad0[2]; // type_index: 0
+}; 
+
+struct MeshCacheModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	char flag; // type_index: 0
+	char type; // type_index: 0
+	char time_mode; // type_index: 0
+	char play_mode; // type_index: 0
+	char forward_axis; // type_index: 0
+	char up_axis; // type_index: 0
+	char flip_axis; // type_index: 0
+	char interp; // type_index: 0
+	float factor; // type_index: 7
+	char deform_mode; // type_index: 0
+	char defgrp_name[64]; // type_index: 0
+	char _pad[7]; // type_index: 0
+	float frame_start; // type_index: 7
+	float frame_scale; // type_index: 7
+	float eval_frame; // type_index: 7
+	float eval_time; // type_index: 7
+	float eval_factor; // type_index: 7
+	char filepath[1024]; // type_index: 0
+}; 
+
+struct MeshToVolumeModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *object; // type_index: 51
+	int resolution_mode; // type_index: 4
+	float voxel_size; // type_index: 7
+	int voxel_amount; // type_index: 4
+	float interior_band_width; // type_index: 7
+	float density; // type_index: 7
+	char _pad2[4]; // type_index: 0
+	void *_pad3; // type_index: 11
+}; 
+
+struct VolumeDisplaceModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Tex *texture; // type_index: 227
+	Object *texture_map_object; // type_index: 51
+	int texture_map_mode; // type_index: 4
+	float strength; // type_index: 7
+	float texture_mid_level[3]; // type_index: 7
+	float texture_sample_radius; // type_index: 7
+}; 
+
+struct WeightedNormalModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	char defgrp_name[64]; // type_index: 0
+	char mode; // type_index: 0
+	char flag; // type_index: 0
+	short weight; // type_index: 2
+	float thresh; // type_index: 7
+}; 
+
+struct SurfaceDeformModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Depsgraph *depsgraph; // type_index: 501
+	Object *target; // type_index: 51
+	SDefVert *verts; // type_index: 499
+	ImplicitSharingInfoHandle *verts_sharing_info; // type_index: 112
+	float falloff; // type_index: 7
+	int num_mesh_verts; // type_index: 4
+	int numverts; // type_index: 4
+	int target_verts_num; // type_index: 4
+	int numpoly; // type_index: 4
+	int flags; // type_index: 4
+	float mat[4][4]; // type_index: 7
+	float strength; // type_index: 7
+	char defgrp_name[64]; // type_index: 0
+	int _pad2; // type_index: 4
+}; 
+
+struct VolumeToMeshModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *object; // type_index: 51
+	float threshold; // type_index: 7
+	float adaptivity; // type_index: 7
+	int flag; // type_index: 4
+	int resolution_mode; // type_index: 4
+	float voxel_size; // type_index: 7
+	int voxel_amount; // type_index: 4
+	char grid_name[64]; // type_index: 0
+	void *_pad1; // type_index: 11
+}; 
+
+struct MeshSeqCacheModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	CacheFile *cache_file; // type_index: 139
+	char object_path[1024]; // type_index: 0
+	char read_flag; // type_index: 0
+	char _pad[3]; // type_index: 0
+	float velocity_scale; // type_index: 7
+	CacheReader *reader; // type_index: 202
+	char reader_object_path[1024]; // type_index: 0
+}; 
+
+struct NormalEditModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	char defgrp_name[64]; // type_index: 0
+	Object *target; // type_index: 51
+	short mode; // type_index: 2
+	short flag; // type_index: 2
+	short mix_mode; // type_index: 2
+	char _pad[2]; // type_index: 0
+	float mix_factor; // type_index: 7
+	float mix_limit; // type_index: 7
+	float offset[3]; // type_index: 7
+	char _pad0[4]; // type_index: 0
+	void *_pad1; // type_index: 11
+}; 
+
+struct DataTransferModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *ob_source; // type_index: 51
+	int data_types; // type_index: 4
+	int vmap_mode; // type_index: 4
+	int emap_mode; // type_index: 4
+	int lmap_mode; // type_index: 4
+	int pmap_mode; // type_index: 4
+	float map_max_distance; // type_index: 7
+	float map_ray_radius; // type_index: 7
+	float islands_precision; // type_index: 7
+	char _pad1[4]; // type_index: 0
+	int layers_select_src[5]; // type_index: 4
+	int layers_select_dst[5]; // type_index: 4
+	int mix_mode; // type_index: 4
+	float mix_factor; // type_index: 7
+	char defgrp_name[64]; // type_index: 0
+	int flags; // type_index: 4
+	void *_pad2; // type_index: 11
+}; 
+
+struct MappingInfoModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Tex *texture; // type_index: 227
+	Object *map_object; // type_index: 51
+	char map_bone[64]; // type_index: 0
+	char uvlayer_name[68]; // type_index: 0
+	char _pad1[4]; // type_index: 0
+	int uvlayer_tmp; // type_index: 4
+	int texmapping; // type_index: 4
+}; 
+
+struct WeldModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	float merge_dist; // type_index: 7
+	char defgrp_name[64]; // type_index: 0
+	char mode; // type_index: 0
+	char flag; // type_index: 0
+	char _pad[2]; // type_index: 0
+}; 
+
+struct WireframeModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	char defgrp_name[64]; // type_index: 0
+	float offset; // type_index: 7
+	float offset_fac; // type_index: 7
+	float offset_fac_vg; // type_index: 7
+	float crease_weight; // type_index: 7
+	short flag; // type_index: 2
+	short mat_ofs; // type_index: 2
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LaplacianDeformModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	char anchor_grp_name[64]; // type_index: 0
+	int total_verts; // type_index: 4
+	int repeat; // type_index: 4
+	float *vertexco; // type_index: 7
+	ImplicitSharingInfoHandle *vertexco_sharing_info; // type_index: 112
+	void *cache_system; // type_index: 11
+	short flag; // type_index: 2
+	char _pad[6]; // type_index: 0
+}; 
+
+struct RemeshModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	float threshold; // type_index: 7
+	float scale; // type_index: 7
+	float hermite_num; // type_index: 7
+	char depth; // type_index: 0
+	char flag; // type_index: 0
+	char mode; // type_index: 0
+	char _pad; // type_index: 0
+	float voxel_size; // type_index: 7
+	float adaptivity; // type_index: 7
+}; 
+
+struct UVWarpModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	char axis_u; // type_index: 0
+	char axis_v; // type_index: 0
+	short flag; // type_index: 2
+	float center[2]; // type_index: 7
+	float offset[2]; // type_index: 7
+	float scale[2]; // type_index: 7
+	float rotation; // type_index: 7
+	Object *object_src; // type_index: 51
+	char bone_src[64]; // type_index: 0
+	Object *object_dst; // type_index: 51
+	char bone_dst[64]; // type_index: 0
+	char vgroup_name[64]; // type_index: 0
+	char uvlayer_name[68]; // type_index: 0
+	char _pad[4]; // type_index: 0
+}; 
+
+struct LaplacianSmoothModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	float lambda; // type_index: 7
+	float lambda_border; // type_index: 7
+	char _pad1[4]; // type_index: 0
+	char defgrp_name[64]; // type_index: 0
+	short flag; // type_index: 2
+	short repeat; // type_index: 2
+}; 
+
+struct TriangulateModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	int flag; // type_index: 4
+	int quad_method; // type_index: 4
+	int ngon_method; // type_index: 4
+	int min_vertices; // type_index: 4
+}; 
+
+struct EdgeSplitModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	float split_angle; // type_index: 7
+	int flags; // type_index: 4
+}; 
+
+struct MirrorModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	short axis; // type_index: 2
+	short flag; // type_index: 2
+	float tolerance; // type_index: 7
+	float bisect_threshold; // type_index: 7
+	uchar use_correct_order_on_merge; // type_index: 1
+	char _pad[3]; // type_index: 0
+	float uv_offset[2]; // type_index: 7
+	float uv_offset_copy[2]; // type_index: 7
+	Object *mirror_ob; // type_index: 51
+	void *_pad1; // type_index: 11
+}; 
+
+struct ArrayModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *start_cap; // type_index: 51
+	Object *end_cap; // type_index: 51
+	Object *curve_ob; // type_index: 51
+	Object *offset_ob; // type_index: 51
+	float offset[3]; // type_index: 7
+	float scale[3]; // type_index: 7
+	float length; // type_index: 7
+	float merge_dist; // type_index: 7
+	int fit_type; // type_index: 4
+	int offset_type; // type_index: 4
+	int flags; // type_index: 4
+	int count; // type_index: 4
+	float uv_offset[2]; // type_index: 7
+}; 
+
+struct MaskModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *ob_arm; // type_index: 51
+	char vgroup[64]; // type_index: 0
+	short mode; // type_index: 2
+	short flag; // type_index: 2
+	float threshold; // type_index: 7
+	void *_pad1; // type_index: 11
+}; 
+
+struct BuildModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	float start; // type_index: 7
+	float length; // type_index: 7
+	short flag; // type_index: 2
+	short randomize; // type_index: 2
+	int seed; // type_index: 4
+}; 
+
+struct CurveModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *object; // type_index: 51
+	char name[64]; // type_index: 0
+	short defaxis; // type_index: 2
+	short flag; // type_index: 2
+	char _pad[4]; // type_index: 0
+	void *_pad1; // type_index: 11
+}; 
+
+struct LatticeModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	Object *object; // type_index: 51
+	char name[64]; // type_index: 0
+	float strength; // type_index: 7
+	short flag; // type_index: 2
+	char _pad[2]; // type_index: 0
+	void *_pad1; // type_index: 11
+}; 
+
+struct SkinModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	float branch_smoothing; // type_index: 7
+	char flag; // type_index: 0
+	char symmetry_axes; // type_index: 0
+	char _pad[2]; // type_index: 0
+}; 
+
+struct SubsurfModifierData { // Max dep:432
+	ModifierData modifier; // type_index: 432
+	short subdivType; // type_index: 2
+	short levels; // type_index: 2
+	short renderLevels; // type_index: 2
+	short flags; // type_index: 2
+	short uv_smooth; // type_index: 2
+	short quality; // type_index: 2
+	short boundary_smooth; // type_index: 2
+	short adaptive_space; // type_index: 2
+	float adaptive_pixel_size; // type_index: 7
+	float adaptive_object_edge_length; // type_index: 7
+}; 
+
+struct SurfaceModifierData { // Max dep:458
+	ModifierData modifier; // type_index: 432
+	SurfaceModifierData_Runtime runtime; // type_index: 458
+}; 
+
+struct CorrectiveSmoothModifierData { // Max dep:488
+	ModifierData modifier; // type_index: 432
+	float (*bind_coords)(); // type_index: 7
+	ImplicitSharingInfoHandle *bind_coords_sharing_info; // type_index: 112
+	int bind_coords_num; // type_index: 4
+	float lambda; // type_index: 7
+	float scale; // type_index: 7
+	short repeat; // type_index: 2
+	short flag; // type_index: 2
+	char smooth_type; // type_index: 0
+	char rest_source; // type_index: 0
+	char _pad[6]; // type_index: 0
+	char defgrp_name[64]; // type_index: 0
+	CorrectiveSmoothDeltaCache delta_cache; // type_index: 488
+}; 
+
+struct NodesModifierData { // Max dep:503
+	ModifierData modifier; // type_index: 432
+	bNodeTree *node_group; // type_index: 338
+	NodesModifierSettings settings; // type_index: 503
+	char *simulation_bake_directory; // type_index: 0
+	int8_t flag; // type_index: 12
+	int8_t bake_target; // type_index: 12
+	char _pad[2]; // type_index: 0
+	int bakes_num; // type_index: 4
+	NodesModifierBake *bakes; // type_index: 507
+	char _pad2[4]; // type_index: 0
+	int panels_num; // type_index: 4
+	NodesModifierPanel *panels; // type_index: 508
+	NodesModifierRuntimeHandle *runtime; // type_index: 510
+}; 
+
+struct GreasePencilMirrorModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	Object *object; // type_index: 51
+	int flag; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct GreasePencilWeightProximityModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	int flag; // type_index: 4
+	char target_vgname[64]; // type_index: 0
+	float min_weight; // type_index: 7
+	float dist_start; // type_index: 7
+	float dist_end; // type_index: 7
+	Object *object; // type_index: 51
+}; 
+
+struct GreasePencilLatticeModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	Object *object; // type_index: 51
+	float strength; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct GreasePencilDashModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	GreasePencilDashModifierSegment *segments_array; // type_index: 525
+	int segments_num; // type_index: 4
+	int segment_active_index; // type_index: 4
+	int dash_offset; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct GreasePencilArrayModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	Object *object; // type_index: 51
+	int count; // type_index: 4
+	int flag; // type_index: 4
+	float offset[3]; // type_index: 7
+	float shift[3]; // type_index: 7
+	float rnd_offset[3]; // type_index: 7
+	float rnd_rot[3]; // type_index: 7
+	float rnd_scale[3]; // type_index: 7
+	char _pad[4]; // type_index: 0
+	int seed; // type_index: 4
+	int mat_rpl; // type_index: 4
+}; 
+
+struct GreasePencilMultiModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	int flag; // type_index: 4
+	int duplications; // type_index: 4
+	float distance; // type_index: 7
+	float offset; // type_index: 7
+	float fading_center; // type_index: 7
+	float fading_thickness; // type_index: 7
+	float fading_opacity; // type_index: 7
+	int _pad0; // type_index: 4
+	void *_pad; // type_index: 11
+}; 
+
+struct GreasePencilThickModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	int flag; // type_index: 4
+	float thickness_fac; // type_index: 7
+	float thickness; // type_index: 7
+	char _pad[4]; // type_index: 0
+	void *_pad1; // type_index: 11
+}; 
+
+struct GreasePencilHookModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	Object *object; // type_index: 51
+	char subtarget[64]; // type_index: 0
+	char _pad[4]; // type_index: 0
+	int flag; // type_index: 4
+	char falloff_type; // type_index: 0
+	char _pad1[3]; // type_index: 0
+	float parentinv[4][4]; // type_index: 7
+	float cent[3]; // type_index: 7
+	float falloff; // type_index: 7
+	float force; // type_index: 7
+}; 
+
+struct GreasePencilTimeModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	int flag; // type_index: 4
+	int offset; // type_index: 4
+	float frame_scale; // type_index: 7
+	int mode; // type_index: 4
+	int sfra; // type_index: 4
+	int efra; // type_index: 4
+	GreasePencilTimeModifierSegment *segments_array; // type_index: 536
+	int segments_num; // type_index: 4
+	int segment_active_index; // type_index: 4
+}; 
+
+struct GreasePencilWeightAngleModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	int flag; // type_index: 4
+	float min_weight; // type_index: 7
+	short axis; // type_index: 2
+	short space; // type_index: 2
+	float angle; // type_index: 7
+	char target_vgname[64]; // type_index: 0
+	void *_pad; // type_index: 11
+}; 
+
+struct GreasePencilLengthModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	int flag; // type_index: 4
+	float start_fac; // type_index: 7
+	float end_fac; // type_index: 7
+	float rand_start_fac; // type_index: 7
+	float rand_end_fac; // type_index: 7
+	float rand_offset; // type_index: 7
+	float overshoot_fac; // type_index: 7
+	int seed; // type_index: 4
+	int step; // type_index: 4
+	int mode; // type_index: 4
+	char _pad[4]; // type_index: 0
+	float point_density; // type_index: 7
+	float segment_influence; // type_index: 7
+	float max_angle; // type_index: 7
+	void *_pad1; // type_index: 11
+}; 
+
+struct GreasePencilArmatureModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	Object *object; // type_index: 51
+	short deformflag; // type_index: 2
+	char _pad[6]; // type_index: 0
+}; 
+
+struct GreasePencilOffsetModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	int flag; // type_index: 4
+	int offset_mode; // type_index: 4
+	float loc[3]; // type_index: 7
+	float rot[3]; // type_index: 7
+	float scale[3]; // type_index: 7
+	float stroke_loc[3]; // type_index: 7
+	float stroke_rot[3]; // type_index: 7
+	float stroke_scale[3]; // type_index: 7
+	int seed; // type_index: 4
+	int stroke_step; // type_index: 4
+	int stroke_start_offset; // type_index: 4
+	char _pad1[4]; // type_index: 0
+	void *_pad2; // type_index: 11
+}; 
+
+struct GreasePencilColorModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	char color_mode; // type_index: 0
+	char _pad1[3]; // type_index: 0
+	float hsv[3]; // type_index: 7
+	void *_pad2; // type_index: 11
+}; 
+
+struct GreasePencilSubdivModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	int type; // type_index: 4
+	int level; // type_index: 4
+	char _pad[8]; // type_index: 0
+	void *_pad1; // type_index: 11
+}; 
+
+struct GreasePencilEnvelopeModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	int mode; // type_index: 4
+	int mat_nr; // type_index: 4
+	float thickness; // type_index: 7
+	float strength; // type_index: 7
+	int skip; // type_index: 4
+	int spread; // type_index: 4
+}; 
+
+struct GreasePencilTintModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	short flag; // type_index: 2
+	char color_mode; // type_index: 0
+	char tint_mode; // type_index: 0
+	float factor; // type_index: 7
+	float radius; // type_index: 7
+	float color[3]; // type_index: 7
+	Object *object; // type_index: 51
+	ColorBand *color_ramp; // type_index: 132
+	void *_pad; // type_index: 11
+}; 
+
+struct GreasePencilSmoothModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	int flag; // type_index: 4
+	float factor; // type_index: 7
+	int step; // type_index: 4
+	char _pad[4]; // type_index: 0
+	void *_pad1; // type_index: 11
+}; 
+
+struct GreasePencilOpacityModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	int flag; // type_index: 4
+	char color_mode; // type_index: 0
+	char _pad1[3]; // type_index: 0
+	float color_factor; // type_index: 7
+	float hardness_factor; // type_index: 7
+	void *_pad2; // type_index: 11
+}; 
+
+struct GreasePencilTextureModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	float uv_offset; // type_index: 7
+	float uv_scale; // type_index: 7
+	float fill_rotation; // type_index: 7
+	float fill_offset[2]; // type_index: 7
+	float fill_scale; // type_index: 7
+	int layer_pass; // type_index: 4
+	short fit_method; // type_index: 2
+	short mode; // type_index: 2
+	float alignment_rotation; // type_index: 7
+	char _pad[4]; // type_index: 0
+}; 
+
+struct GreasePencilOutlineModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	Object *object; // type_index: 51
+	int flag; // type_index: 4
+	int thickness; // type_index: 4
+	float sample_length; // type_index: 7
+	int subdiv; // type_index: 4
+	Material *outline_material; // type_index: 128
+}; 
+
+struct GreasePencilSimplifyModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	short mode; // type_index: 2
+	char _pad[4]; // type_index: 0
+	short step; // type_index: 2
+	float factor; // type_index: 7
+	float length; // type_index: 7
+	float sharp_threshold; // type_index: 7
+	float distance; // type_index: 7
+}; 
+
+struct GreasePencilNoiseModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	int flag; // type_index: 4
+	float factor; // type_index: 7
+	float factor_strength; // type_index: 7
+	float factor_thickness; // type_index: 7
+	float factor_uvs; // type_index: 7
+	float noise_scale; // type_index: 7
+	float noise_offset; // type_index: 7
+	short noise_mode; // type_index: 2
+	char _pad[2]; // type_index: 0
+	int step; // type_index: 4
+	int seed; // type_index: 4
+	void *_pad1; // type_index: 11
+}; 
+
+struct GreasePencilShrinkwrapModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	Object *target; // type_index: 51
+	Object *aux_target; // type_index: 51
+	float keep_dist; // type_index: 7
+	short shrink_type; // type_index: 2
+	char shrink_opts; // type_index: 0
+	char shrink_mode; // type_index: 0
+	float proj_limit; // type_index: 7
+	char proj_axis; // type_index: 0
+	char subsurf_levels; // type_index: 0
+	char _pad[2]; // type_index: 0
+	float smooth_factor; // type_index: 7
+	int smooth_step; // type_index: 4
+	ShrinkwrapTreeData *cache_data; // type_index: 298
+}; 
+
+struct GreasePencilBuildModifierData { // Max dep:514
+	ModifierData modifier; // type_index: 432
+	GreasePencilModifierInfluenceData influence; // type_index: 514
+	float start_frame; // type_index: 7
+	float end_frame; // type_index: 7
+	float start_delay; // type_index: 7
+	float length; // type_index: 7
+	short flag; // type_index: 2
+	short mode; // type_index: 2
+	short transition; // type_index: 2
+	short time_alignment; // type_index: 2
+	float speed_fac; // type_index: 7
+	float speed_maxgap; // type_index: 7
+	short time_mode; // type_index: 2
+	char _pad[6]; // type_index: 0
+	Object *object; // type_index: 51
+	float percentage_fac; // type_index: 7
+	float fade_fac; // type_index: 7
+	char target_vgname[64]; // type_index: 0
+	float fade_opacity_strength; // type_index: 7
+	float fade_thickness_strength; // type_index: 7
+}; 
+
+struct MovieClip { // Max dep:548
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	char name[1024]; // type_index: 0
+	int source; // type_index: 4
+	int _pad; // type_index: 4
+	int lastsize[2]; // type_index: 4
+	float aspx; // type_index: 7
+	float aspy; // type_index: 7
+	MovieReader *anim; // type_index: 316
+	MovieClipCache *cache; // type_index: 547
+	bGPdata *gpd; // type_index: 266
+	MovieTracking tracking; // type_index: 548
+	void *tracking_context; // type_index: 11
+	MovieClipProxy proxy; // type_index: 544
+	int flag; // type_index: 4
+	int len; // type_index: 4
+	int start_frame; // type_index: 4
+	int frame_offset; // type_index: 4
+	ColorManagedColorspaceSettings colorspace_settings; // type_index: 169
+	MovieClip_Runtime runtime; // type_index: 546
+}; 
+
+struct MovieClipScopes { // Max dep:550
+	short ok; // type_index: 2
+	short use_track_mask; // type_index: 2
+	int track_preview_height; // type_index: 4
+	int frame_width; // type_index: 4
+	int frame_height; // type_index: 4
+	MovieTrackingMarker undist_marker; // type_index: 550
+	ImBuf *track_search; // type_index: 551
+	ImBuf *track_preview; // type_index: 551
+	float track_pos[2]; // type_index: 7
+	short track_disabled; // type_index: 2
+	short track_locked; // type_index: 2
+	int scene_framenr; // type_index: 4
+	MovieTrackingTrack *track; // type_index: 552
+	MovieTrackingMarker *marker; // type_index: 550
+	float slide_scale[2]; // type_index: 7
+}; 
+
+struct bNodeTreeInterfacePanel { // Max dep:555
+	bNodeTreeInterfaceItem item; // type_index: 555
+	char *name; // type_index: 0
+	char *description; // type_index: 0
+	int flag; // type_index: 4
+	char _pad[4]; // type_index: 0
+	bNodeTreeInterfaceItem **items_array; // type_index: 555
+	int items_num; // type_index: 4
+	int identifier; // type_index: 4
+}; 
+
+struct bNodeTreeInterfaceSocket { // Max dep:555
+	bNodeTreeInterfaceItem item; // type_index: 555
+	char *name; // type_index: 0
+	char *description; // type_index: 0
+	char *socket_type; // type_index: 0
+	int flag; // type_index: 4
+	short attribute_domain; // type_index: 2
+	short default_input; // type_index: 2
+	char *default_attribute_name; // type_index: 0
+	char *identifier; // type_index: 0
+	void *socket_data; // type_index: 11
+	IDProperty *properties; // type_index: 24
+	int8_t structure_type; // type_index: 12
+	char _pad[7]; // type_index: 0
+}; 
+
+struct bNodeTreeInterface { // Max dep:557
+	bNodeTreeInterfacePanel root_panel; // type_index: 557
+	int active_index; // type_index: 4
+	int next_uid; // type_index: 4
+	bNodeTreeInterfaceRuntimeHandle *runtime; // type_index: 559
+}; 
+
+struct bNodeSocket { // Max dep:560
+	bNodeSocket *next; // type_index: 561
+	bNodeSocket *prev; // type_index: 561
+	IDProperty *prop; // type_index: 24
+	char identifier[64]; // type_index: 0
+	char name[64]; // type_index: 0
+	void *storage; // type_index: 11
+	short type; // type_index: 2
+	short flag; // type_index: 2
+	short limit; // type_index: 2
+	short in_out; // type_index: 2
+	bNodeSocketTypeHandle *typeinfo; // type_index: 562
+	char idname[64]; // type_index: 0
+	void *default_value; // type_index: 11
+	int stack_index; // type_index: 4
+	char display_shape; // type_index: 0
+	char attribute_domain; // type_index: 0
+	char _pad[2]; // type_index: 0
+	char label[64]; // type_index: 0
+	char short_label[64]; // type_index: 0
+	char description[64]; // type_index: 0
+	char *default_attribute_name; // type_index: 0
+	int own_index; // type_index: 4
+	int to_index; // type_index: 4
+	bNodeLink *link; // type_index: 563
+	bNodeStack ns; // type_index: 560
+	bNodeSocketRuntimeHandle *runtime; // type_index: 564
+}; 
+
+struct bNodeTreePath { // Max dep:569
+	bNodeTreePath *next; // type_index: 977
+	bNodeTreePath *prev; // type_index: 977
+	bNodeTree *nodetree; // type_index: 338
+	bNodeInstanceKey parent_key; // type_index: 569
+	char _pad[4]; // type_index: 0
+	float view_center[2]; // type_index: 7
+	char node_name[64]; // type_index: 0
+	char display_name[64]; // type_index: 0
+}; 
+
+struct bNodeTree { // Max dep:569
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	ID *owner_id; // type_index: 26
+	bNodeTreeTypeHandle *typeinfo; // type_index: 572
+	char idname[64]; // type_index: 0
+	char *description; // type_index: 0
+	bGPdata *gpd; // type_index: 266
+	float view_center[2]; // type_index: 7
+	ListBase nodes; // type_index: 22
+	ListBase links; // type_index: 22
+	int type; // type_index: 4
+	int cur_index; // type_index: 4
+	int flag; // type_index: 4
+	int chunksize; // type_index: 4
+	int execution_mode; // type_index: 4
+	int precision; // type_index: 4
+	int color_tag; // type_index: 4
+	int default_group_node_width; // type_index: 4
+	rctf viewer_border; // type_index: 82
+	ListBase inputs; // type_index: 22
+	ListBase outputs; // type_index: 22
+	bNodeTreeInterface tree_interface; // type_index: 558
+	bNodeInstanceKey active_viewer_key; // type_index: 569
+	int nested_node_refs_num; // type_index: 4
+	bNestedNodeRef *nested_node_refs; // type_index: 571
+	GeometryNodeAssetTraits *geometry_node_asset_traits; // type_index: 573
+	PreviewImage *preview; // type_index: 37
+	bNodeTreeRuntimeHandle *runtime; // type_index: 574
+}; 
+
+struct bNestedNodeRef { // Max dep:570
+	int id; // type_index: 4
+	char _pad[4]; // type_index: 0
+	bNestedNodePath path; // type_index: 570
+}; 
+
+struct NodeColorCorrection { // Max dep:592
+	ColorCorrectionData master; // type_index: 592
+	ColorCorrectionData shadows; // type_index: 592
+	ColorCorrectionData midtones; // type_index: 592
+	ColorCorrectionData highlights; // type_index: 592
+	float startmidtones; // type_index: 7
+	float endmidtones; // type_index: 7
+}; 
+
+struct NodeImageFile { // Max dep:605
+	char name[1024]; // type_index: 0
+	ImageFormatData im_format; // type_index: 605
+	int sfra; // type_index: 4
+	int efra; // type_index: 4
+}; 
+
+struct NodeImageMultiFile { // Max dep:605
+	char base_path[1024]; // type_index: 0
+	char *file_name; // type_index: 0
+	ImageFormatData format; // type_index: 605
+	NodeCompositorFileOutputItem *items; // type_index: 606
+	int items_count; // type_index: 4
+	int active_input; // type_index: 4
+	char save_as_render; // type_index: 0
+	char _pad[7]; // type_index: 0
+}; 
+
+struct BakeData { // Max dep:605
+	ImageFormatData im_format; // type_index: 605
+	char filepath[1024]; // type_index: 0
+	int type; // type_index: 4
+	short width; // type_index: 2
+	short height; // type_index: 2
+	short margin; // type_index: 2
+	short flag; // type_index: 2
+	float cage_extrusion; // type_index: 7
+	float max_ray_distance; // type_index: 7
+	int pass_filter; // type_index: 4
+	char normal_swizzle[3]; // type_index: 0
+	char normal_space; // type_index: 0
+	char displacement_space; // type_index: 0
+	char target; // type_index: 0
+	char save_mode; // type_index: 0
+	char margin_type; // type_index: 0
+	char view_from; // type_index: 0
+	char _pad[7]; // type_index: 0
+	Object *cage_object; // type_index: 51
+}; 
+
+struct NodeCompositorFileOutputItem { // Max dep:605
+	int identifier; // type_index: 4
+	short socket_type; // type_index: 2
+	char vector_socket_dimensions; // type_index: 0
+	char override_node_format; // type_index: 0
+	char save_as_render; // type_index: 0
+	char _pad[7]; // type_index: 0
+	char *name; // type_index: 0
+	ImageFormatData format; // type_index: 605
+}; 
+
+struct NodeImageMultiFileSocket { // Max dep:605
+	short use_render_format; // type_index: 2
+	short use_node_format; // type_index: 2
+	char save_as_render; // type_index: 0
+	char _pad1[3]; // type_index: 0
+	char path[1024]; // type_index: 0
+	ImageFormatData format; // type_index: 605
+	char layer[62]; // type_index: 0
+	char _pad2[2]; // type_index: 0
+}; 
+
+struct NodeTexGradient { // Max dep:626
+	NodeTexBase base; // type_index: 626
+	int gradient_type; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeTexMagic { // Max dep:626
+	NodeTexBase base; // type_index: 626
+	int depth; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeTexWave { // Max dep:626
+	NodeTexBase base; // type_index: 626
+	int wave_type; // type_index: 4
+	int bands_direction; // type_index: 4
+	int rings_direction; // type_index: 4
+	int wave_profile; // type_index: 4
+}; 
+
+struct NodeTexMusgrave { // Max dep:626
+	NodeTexBase base; // type_index: 626
+	int musgrave_type; // type_index: 4
+	int dimensions; // type_index: 4
+}; 
+
+struct NodeTexVoronoi { // Max dep:626
+	NodeTexBase base; // type_index: 626
+	int dimensions; // type_index: 4
+	int feature; // type_index: 4
+	int distance; // type_index: 4
+	int normalize; // type_index: 4
+	int coloring; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeTexNoise { // Max dep:626
+	NodeTexBase base; // type_index: 626
+	int dimensions; // type_index: 4
+	uchar type; // type_index: 1
+	uchar normalize; // type_index: 1
+	char _pad[2]; // type_index: 0
+}; 
+
+struct NodeTexGabor { // Max dep:626
+	NodeTexBase base; // type_index: 626
+	char type; // type_index: 0
+	char _pad[7]; // type_index: 0
+}; 
+
+struct NodeTexEnvironment { // Max dep:626
+	NodeTexBase base; // type_index: 626
+	ImageUser iuser; // type_index: 145
+	int color_space; // type_index: 4
+	int projection; // type_index: 4
+	int interpolation; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeTexBrick { // Max dep:626
+	NodeTexBase base; // type_index: 626
+	int offset_freq; // type_index: 4
+	int squash_freq; // type_index: 4
+	float offset; // type_index: 7
+	float squash; // type_index: 7
+}; 
+
+struct NodeTexChecker { // Max dep:626
+	NodeTexBase base; // type_index: 626
+}; 
+
+struct NodeTexImage { // Max dep:626
+	NodeTexBase base; // type_index: 626
+	ImageUser iuser; // type_index: 145
+	int color_space; // type_index: 4
+	int projection; // type_index: 4
+	float projection_blend; // type_index: 7
+	int interpolation; // type_index: 4
+	int extension; // type_index: 4
+	char _pad[4]; // type_index: 0
+}; 
+
+struct NodeTexSky { // Max dep:626
+	NodeTexBase base; // type_index: 626
+	int sky_model; // type_index: 4
+	float sun_direction[3]; // type_index: 7
+	float turbidity; // type_index: 7
+	float ground_albedo; // type_index: 7
+	float sun_size; // type_index: 7
+	float sun_intensity; // type_index: 7
+	float sun_elevation; // type_index: 7
+	float sun_rotation; // type_index: 7
+	float altitude; // type_index: 7
+	float air_density; // type_index: 7
+	float dust_density; // type_index: 7
+	float ozone_density; // type_index: 7
+	char sun_disc; // type_index: 0
+	char _pad[7]; // type_index: 0
+}; 
+
+struct NodeTexBase { // Max dep:628
+	TexMapping tex_mapping; // type_index: 627
+	ColorMapping color_mapping; // type_index: 628
+}; 
+
+struct NodeCryptomatte { // Max dep:668
+	ImageUser iuser; // type_index: 145
+	ListBase entries; // type_index: 22
+	char layer_name[64]; // type_index: 0
+	char *matte_id; // type_index: 0
+	int num_inputs; // type_index: 4
+	char _pad[4]; // type_index: 0
+	NodeCryptomatte_Runtime runtime; // type_index: 668
+}; 
+
+struct NodeMenuSwitch { // Max dep:695
+	NodeEnumDefinition enum_definition; // type_index: 695
+	uchar data_type; // type_index: 1
+	char _pad[7]; // type_index: 0
+}; 
+
+struct NodeGeometryForeachGeometryElementOutput { // Max dep:741
+	NodeForeachGeometryElementInputItems input_items; // type_index: 739
+	NodeForeachGeometryElementMainItems main_items; // type_index: 740
+	NodeForeachGeometryElementGenerationItems generation_items; // type_index: 741
+	int inspection_index; // type_index: 4
+	uchar domain; // type_index: 1
+	char _pad[3]; // type_index: 0
+}; 
+
+struct NodeClosureOutput { // Max dep:747
+	NodeClosureInputItems input_items; // type_index: 746
+	NodeClosureOutputItems output_items; // type_index: 747
+	uchar flag; // type_index: 1
+	char _pad[7]; // type_index: 0
+}; 
+
+struct NodeEvaluateClosure { // Max dep:752
+	NodeEvaluateClosureInputItems input_items; // type_index: 751
+	NodeEvaluateClosureOutputItems output_items; // type_index: 752
+	uchar flag; // type_index: 1
+	char _pad[7]; // type_index: 0
+}; 
+
+struct Object { // Max dep:783
+	ID id; // type_index: 26
+	AnimData *adt; // type_index: 96
+	SculptSession *sculpt; // type_index: 786
+	short type; // type_index: 2
+	short partype; // type_index: 2
+	int par1; // type_index: 4
+	int par2; // type_index: 4
+	int par3; // type_index: 4
+	char parsubstr[64]; // type_index: 0
+	Object *parent; // type_index: 51
+	Object *track; // type_index: 51
+	Object *proxy; // type_index: 51
+	Object *proxy_group; // type_index: 51
+	Object *proxy_from; // type_index: 51
+	bAction *poselib; // type_index: 61
+	bPose *pose; // type_index: 54
+	void *data; // type_index: 11
+	bGPdata *gpd; // type_index: 266
+	bAnimVizSettings avs; // type_index: 43
+	bMotionPath *mpath; // type_index: 40
+	ListBase effect; // type_index: 22
+	ListBase defbase; // type_index: 22
+	ListBase fmaps; // type_index: 22
+	ListBase modifiers; // type_index: 22
+	ListBase greasepencil_modifiers; // type_index: 22
+	ListBase shader_fx; // type_index: 22
+	int mode; // type_index: 4
+	int restore_mode; // type_index: 4
+	Material **mat; // type_index: 128
+	char *matbits; // type_index: 0
+	int totcol; // type_index: 4
+	int actcol; // type_index: 4
+	float loc[3]; // type_index: 7
+	float dloc[3]; // type_index: 7
+	float size[3]; // type_index: 7
+	float dsize[3]; // type_index: 7
+	float dscale[3]; // type_index: 7
+	float rot[3]; // type_index: 7
+	float drot[3]; // type_index: 7
+	float quat[4]; // type_index: 7
+	float dquat[4]; // type_index: 7
+	float rotAxis[3]; // type_index: 7
+	float drotAxis[3]; // type_index: 7
+	float rotAngle; // type_index: 7
+	float drotAngle; // type_index: 7
+	float parentinv[4][4]; // type_index: 7
+	float constinv[4][4]; // type_index: 7
+	int lay; // type_index: 4
+	short flag; // type_index: 2
+	short colbits; // type_index: 2
+	short transflag; // type_index: 2
+	short protectflag; // type_index: 2
+	short trackflag; // type_index: 2
+	short upflag; // type_index: 2
+	short nlaflag; // type_index: 2
+	char _pad1; // type_index: 0
+	char duplicator_visibility_flag; // type_index: 0
+	short base_flag; // type_index: 2
+	short base_local_view_bits; // type_index: 2
+	short col_group; // type_index: 2
+	short col_mask; // type_index: 2
+	short rotmode; // type_index: 2
+	char boundtype; // type_index: 0
+	char collision_boundtype; // type_index: 0
+	short dtx; // type_index: 2
+	char dt; // type_index: 0
+	char empty_drawtype; // type_index: 0
+	float empty_drawsize; // type_index: 7
+	float dupfacesca; // type_index: 7
+	short index; // type_index: 2
+	short actdef; // type_index: 2
+	char _pad2[4]; // type_index: 0
+	float col[4]; // type_index: 7
+	short softflag; // type_index: 2
+	short restrictflag; // type_index: 2
+	short shapenr; // type_index: 2
+	char shapeflag; // type_index: 0
+	char _pad3[1]; // type_index: 0
+	ListBase constraints; // type_index: 22
+	ListBase hooks; // type_index: 22
+	ListBase particlesystem; // type_index: 22
+	PartDeflect *pd; // type_index: 774
+	SoftBody *soft; // type_index: 777
+	Collection *dup_group; // type_index: 66
+	FluidsimSettings *fluidsimSettings; // type_index: 470
+	ListBase pc_ids; // type_index: 22
+	RigidBodyOb *rigidbody_object; // type_index: 787
+	RigidBodyCon *rigidbody_constraint; // type_index: 788
+	float ima_ofs[2]; // type_index: 7
+	ImageUser *iuser; // type_index: 145
+	char empty_image_visibility_flag; // type_index: 0
+	char empty_image_depth; // type_index: 0
+	char empty_image_flag; // type_index: 0
+	uchar modifier_flag; // type_index: 1
+	float shadow_terminator_normal_offset; // type_index: 7
+	float shadow_terminator_geometry_offset; // type_index: 7
+	float shadow_terminator_shading_offset; // type_index: 7
+	PreviewImage *preview; // type_index: 37
+	ObjectLineArt lineart; // type_index: 783
+	LightgroupMembership *lightgroup; // type_index: 334
+	LightLinking *light_linking; // type_index: 785
+	LightProbeObjectCache *lightprobe_cache; // type_index: 350
+	ObjectRuntimeHandle *runtime; // type_index: 789
+}; 
+
+struct LightLinking { // Max dep:784
+	Collection *receiver_collection; // type_index: 66
+	Collection *blocker_collection; // type_index: 66
+	LightLinkingRuntime runtime; // type_index: 784
+}; 
+
+struct ParticleData { // Max dep:794
+	ParticleKey state; // type_index: 794
+	ParticleKey prev_state; // type_index: 794
+	HairKey *hair; // type_index: 793
+	ParticleKey *keys; // type_index: 794
+	BoidParticle *boid; // type_index: 795
+	int totkey; // type_index: 4
+	float time; // type_index: 7
+	float lifetime; // type_index: 7
+	float dietime; // type_index: 7
+	int num; // type_index: 4
+	int num_dmcache; // type_index: 4
+	float fuv[4]; // type_index: 7
+	float foffset; // type_index: 7
+	float size; // type_index: 7
+	float sphdensity; // type_index: 7
+	char _pad[4]; // type_index: 0
+	int hair_index; // type_index: 4
+	short flag; // type_index: 2
+	short alive; // type_index: 2
 }; 
 
 struct RenderData { // Max dep:819
@@ -11241,72 +12092,28 @@ struct RenderData { // Max dep:819
 	char _pad10[4]; // type_index: 0
 }; 
 
-struct TimeMarker { // Max dep:821
-	TimeMarker *next; // type_index: 821
-	TimeMarker *prev; // type_index: 821
-	int frame; // type_index: 4
-	char name[64]; // type_index: 0
-	int flag; // type_index: 4
-	Object *camera; // type_index: 51
-	IDProperty *prop; // type_index: 24
-}; 
-
-struct NamedBrushAssetReference { // Max dep:823
-	NamedBrushAssetReference *next; // type_index: 823
-	NamedBrushAssetReference *prev; // type_index: 823
-	char *name; // type_index: 0
+struct Paint { // Max dep:824
+	Brush *brush; // type_index: 130
 	AssetWeakReference *brush_asset_reference; // type_index: 109
+	Brush *eraser_brush; // type_index: 130
+	AssetWeakReference *eraser_brush_asset_reference; // type_index: 109
+	ToolSystemBrushBindings tool_brush_bindings; // type_index: 824
+	Palette *palette; // type_index: 135
+	CurveMapping *cavity_curve; // type_index: 127
+	int flags; // type_index: 4
+	int num_input_samples; // type_index: 4
+	int symmetry_flags; // type_index: 4
+	int curve_visibility_flags; // type_index: 4
+	char _pad[4]; // type_index: 0
+	float tile_offset[3]; // type_index: 7
+	UnifiedPaintSettings unified_paint_settings; // type_index: 822
+	PaintRuntimeHandle *runtime; // type_index: 826
 }; 
 
 struct GpWeightPaint { // Max dep:825
 	Paint paint; // type_index: 825
 	int flag; // type_index: 4
 	char _pad[4]; // type_index: 0
-}; 
-
-struct GpSculptPaint { // Max dep:825
-	Paint paint; // type_index: 825
-	int flag; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct GpVertexPaint { // Max dep:825
-	Paint paint; // type_index: 825
-	int flag; // type_index: 4
-	char _pad[4]; // type_index: 0
-}; 
-
-struct GpPaint { // Max dep:825
-	Paint paint; // type_index: 825
-	int flag; // type_index: 4
-	int mode; // type_index: 4
-}; 
-
-struct CurvesSculpt { // Max dep:825
-	Paint paint; // type_index: 825
-}; 
-
-struct Sculpt { // Max dep:825
-	Paint paint; // type_index: 825
-	int flags; // type_index: 4
-	int transform_mode; // type_index: 4
-	int automasking_flags; // type_index: 4
-	int radial_symm[3]; // type_index: 4
-	float detail_size; // type_index: 7
-	int symmetrize_direction; // type_index: 4
-	float gravity_factor; // type_index: 7
-	float constant_detail; // type_index: 7
-	float detail_percent; // type_index: 7
-	int automasking_boundary_edges_propagation_steps; // type_index: 4
-	int automasking_cavity_blur_steps; // type_index: 4
-	float automasking_cavity_factor; // type_index: 7
-	float automasking_start_normal_limit; // type_index: 7
-	float automasking_start_normal_falloff; // type_index: 7
-	float automasking_view_normal_limit; // type_index: 7
-	float automasking_view_normal_falloff; // type_index: 7
-	CurveMapping *automasking_cavity_curve; // type_index: 127
-	CurveMapping *automasking_cavity_curve_op; // type_index: 127
-	Object *gravity_object; // type_index: 51
 }; 
 
 struct VPaint { // Max dep:825
@@ -11335,22 +12142,49 @@ struct ImagePaintSettings { // Max dep:825
 	char _pad2[4]; // type_index: 0
 }; 
 
-struct Paint { // Max dep:826
-	Brush *brush; // type_index: 130
-	AssetWeakReference *brush_asset_reference; // type_index: 109
-	Brush *eraser_brush; // type_index: 130
-	AssetWeakReference *eraser_brush_asset_reference; // type_index: 109
-	ToolSystemBrushBindings tool_brush_bindings; // type_index: 824
-	Palette *palette; // type_index: 135
-	CurveMapping *cavity_curve; // type_index: 127
+struct Sculpt { // Max dep:825
+	Paint paint; // type_index: 825
 	int flags; // type_index: 4
-	int num_input_samples; // type_index: 4
-	int symmetry_flags; // type_index: 4
-	int curve_visibility_flags; // type_index: 4
+	int transform_mode; // type_index: 4
+	int automasking_flags; // type_index: 4
+	int radial_symm[3]; // type_index: 4
+	float detail_size; // type_index: 7
+	int symmetrize_direction; // type_index: 4
+	float gravity_factor; // type_index: 7
+	float constant_detail; // type_index: 7
+	float detail_percent; // type_index: 7
+	int automasking_boundary_edges_propagation_steps; // type_index: 4
+	int automasking_cavity_blur_steps; // type_index: 4
+	float automasking_cavity_factor; // type_index: 7
+	float automasking_start_normal_limit; // type_index: 7
+	float automasking_start_normal_falloff; // type_index: 7
+	float automasking_view_normal_limit; // type_index: 7
+	float automasking_view_normal_falloff; // type_index: 7
+	CurveMapping *automasking_cavity_curve; // type_index: 127
+	CurveMapping *automasking_cavity_curve_op; // type_index: 127
+	Object *gravity_object; // type_index: 51
+}; 
+
+struct GpSculptPaint { // Max dep:825
+	Paint paint; // type_index: 825
+	int flag; // type_index: 4
 	char _pad[4]; // type_index: 0
-	float tile_offset[3]; // type_index: 7
-	UnifiedPaintSettings unified_paint_settings; // type_index: 822
-	PaintRuntimeHandle *runtime; // type_index: 826
+}; 
+
+struct CurvesSculpt { // Max dep:825
+	Paint paint; // type_index: 825
+}; 
+
+struct GpPaint { // Max dep:825
+	Paint paint; // type_index: 825
+	int flag; // type_index: 4
+	int mode; // type_index: 4
+}; 
+
+struct GpVertexPaint { // Max dep:825
+	Paint paint; // type_index: 825
+	int flag; // type_index: 4
+	char _pad[4]; // type_index: 0
 }; 
 
 struct ParticleEditSettings { // Max dep:829
@@ -11382,7 +12216,7 @@ struct GP_Sculpt_Settings { // Max dep:839
 	GP_Sculpt_Guide guide; // type_index: 839
 }; 
 
-struct ToolSettings { // Max dep:844
+struct ToolSettings { // Max dep:843
 	VPaint *vpaint; // type_index: 838
 	VPaint *wpaint; // type_index: 838
 	Sculpt *sculpt; // type_index: 831
@@ -11582,7 +12416,7 @@ struct SceneEEVEE { // Max dep:851
 	float light_threshold; // type_index: 7
 }; 
 
-struct Scene { // Max dep:858
+struct Scene { // Max dep:856
 	ID id; // type_index: 26
 	AnimData *adt; // type_index: 96
 	Object *camera; // type_index: 51
@@ -11639,35 +12473,6 @@ struct Scene { // Max dep:858
 	SceneRuntimeHandle *runtime; // type_index: 858
 }; 
 
-struct bScreen { // Max dep:861
-	ID id; // type_index: 26
-	ListBase vertbase; // type_index: 22
-	ListBase edgebase; // type_index: 22
-	ListBase areabase; // type_index: 22
-	ListBase regionbase; // type_index: 22
-	Scene *scene; // type_index: 238
-	short flag; // type_index: 2
-	short winid; // type_index: 2
-	short redraws_flag; // type_index: 2
-	char temp; // type_index: 0
-	char state; // type_index: 0
-	char do_draw; // type_index: 0
-	char do_refresh; // type_index: 0
-	char do_draw_gesture; // type_index: 0
-	char do_draw_paintcursor; // type_index: 0
-	char do_draw_drag; // type_index: 0
-	char skip_handling; // type_index: 0
-	char scrubbing; // type_index: 0
-	char _pad[1]; // type_index: 0
-	ARegion *active_region; // type_index: 859
-	wmTimer *animtimer; // type_index: 860
-	void *context; // type_index: 11
-	short fullscreen_flag; // type_index: 2
-	char _pad2[6]; // type_index: 0
-	wmTooltipState *tool_tip; // type_index: 861
-	PreviewImage *preview; // type_index: 37
-}; 
-
 struct ScrVert { // Max dep:863
 	ScrVert *next; // type_index: 862
 	ScrVert *prev; // type_index: 862
@@ -11677,106 +12482,88 @@ struct ScrVert { // Max dep:863
 	short editflag; // type_index: 2
 }; 
 
-struct ScrEdge { // Max dep:864
-	ScrEdge *next; // type_index: 864
-	ScrEdge *prev; // type_index: 864
-	ScrVert *v1; // type_index: 862
-	ScrVert *v2; // type_index: 862
-	short border; // type_index: 2
-	short flag; // type_index: 2
-	char _pad[4]; // type_index: 0
+struct wmWindow { // Max dep:865
+	wmWindow *next; // type_index: 1084
+	wmWindow *prev; // type_index: 1084
+	void *ghostwin; // type_index: 11
+	void *gpuctx; // type_index: 11
+	wmWindow *parent; // type_index: 1084
+	Scene *scene; // type_index: 238
+	Scene *new_scene; // type_index: 238
+	char view_layer_name[64]; // type_index: 0
+	Scene *unpinned_scene; // type_index: 238
+	WorkSpaceInstanceHook *workspace_hook; // type_index: 1085
+	ScrAreaMap global_area_map; // type_index: 865
+	bScreen *screen; // type_index: 237
+	int winid; // type_index: 4
+	short posx; // type_index: 2
+	short posy; // type_index: 2
+	short sizex; // type_index: 2
+	short sizey; // type_index: 2
+	char windowstate; // type_index: 0
+	char active; // type_index: 0
+	short cursor; // type_index: 2
+	short lastcursor; // type_index: 2
+	short modalcursor; // type_index: 2
+	short grabcursor; // type_index: 2
+	short pie_event_type_lock; // type_index: 2
+	short pie_event_type_last; // type_index: 2
+	char tag_cursor_refresh; // type_index: 0
+	char event_queue_check_click; // type_index: 0
+	char event_queue_check_drag; // type_index: 0
+	char event_queue_check_drag_handled; // type_index: 0
+	short event_queue_consecutive_gesture_type; // type_index: 2
+	int event_queue_consecutive_gesture_xy[2]; // type_index: 4
+	wmEvent_ConsecutiveData *event_queue_consecutive_gesture_data; // type_index: 1086
+	wmEvent *eventstate; // type_index: 1087
+	wmEvent *event_last_handled; // type_index: 1087
+	char addmousemove; // type_index: 0
+	char _pad1[7]; // type_index: 0
+	ListBase handlers; // type_index: 22
+	ListBase modalhandlers; // type_index: 22
+	ListBase gesture; // type_index: 22
+	Stereo3dFormat *stereo3d_format; // type_index: 324
+	ListBase drawcalls; // type_index: 22
+	void *cursor_keymap_status; // type_index: 11
+	void *_pad2; // type_index: 11
+	uint64_t eventstate_prev_press_time_ms; // type_index: 10
+	WindowRuntimeHandle *runtime; // type_index: 1088
+	void *_pad3; // type_index: 11
 }; 
 
-struct LayoutPanelState { // Max dep:866
-	LayoutPanelState *next; // type_index: 866
-	LayoutPanelState *prev; // type_index: 866
-	char *idname; // type_index: 0
-	uchar flag; // type_index: 1
-	char _pad[3]; // type_index: 0
-	int last_used; // type_index: 4
-}; 
-
-struct Panel { // Max dep:870
-	Panel *next; // type_index: 867
-	Panel *prev; // type_index: 867
-	PanelType *type; // type_index: 868
-	uiLayout *layout; // type_index: 869
-	char panelname[64]; // type_index: 0
-	char *drawname; // type_index: 0
-	int ofsx; // type_index: 4
-	int ofsy; // type_index: 4
-	int sizex; // type_index: 4
-	int sizey; // type_index: 4
-	int blocksizex; // type_index: 4
-	int blocksizey; // type_index: 4
-	short labelofs; // type_index: 2
-	short flag; // type_index: 2
-	short runtime_flag; // type_index: 2
-	char _pad[6]; // type_index: 0
-	int sortorder; // type_index: 4
-	void *activedata; // type_index: 11
-	ListBase children; // type_index: 22
-	ListBase layout_panel_states; // type_index: 22
-	int layout_panel_states_clock; // type_index: 4
-	char _pad2[4]; // type_index: 0
-	Panel_Runtime *runtime; // type_index: 870
-}; 
-
-struct PanelCategoryStack { // Max dep:871
-	PanelCategoryStack *next; // type_index: 871
-	PanelCategoryStack *prev; // type_index: 871
-	char idname[64]; // type_index: 0
-}; 
-
-struct uiList { // Max dep:874
-	uiList *next; // type_index: 872
-	uiList *prev; // type_index: 872
-	uiListType *type; // type_index: 873
-	char list_id[256]; // type_index: 0
-	int layout_type; // type_index: 4
-	int flag; // type_index: 4
-	int list_scroll; // type_index: 4
-	int list_grip; // type_index: 4
-	int list_last_len; // type_index: 4
-	int list_last_activei; // type_index: 4
-	char filter_byname[256]; // type_index: 0
-	int filter_flag; // type_index: 4
-	int filter_sort_flag; // type_index: 4
-	IDProperty *properties; // type_index: 24
-	uiListDyn *dyn_data; // type_index: 874
-}; 
-
-struct uiViewStateLink { // Max dep:876
+struct uiViewStateLink { // Max dep:875
 	uiViewStateLink *next; // type_index: 876
 	uiViewStateLink *prev; // type_index: 876
 	char idname[64]; // type_index: 0
 	uiViewState state; // type_index: 875
 }; 
 
-struct TransformOrientation { // Max dep:877
-	TransformOrientation *next; // type_index: 877
-	TransformOrientation *prev; // type_index: 877
-	char name[64]; // type_index: 0
-	float mat[3][3]; // type_index: 7
-	char _pad[4]; // type_index: 0
+struct ARegion { // Max dep:883
+	ARegion *next; // type_index: 859
+	ARegion *prev; // type_index: 859
+	View2D v2d; // type_index: 71
+	rcti winrct; // type_index: 883
+	short winx; // type_index: 2
+	short winy; // type_index: 2
+	int category_scroll; // type_index: 4
+	short regiontype; // type_index: 2
+	short alignment; // type_index: 2
+	short flag; // type_index: 2
+	short sizex; // type_index: 2
+	short sizey; // type_index: 2
+	short overlap; // type_index: 2
+	short flagfullscreen; // type_index: 2
+	char _pad[2]; // type_index: 0
+	ListBase panels; // type_index: 22
+	ListBase panels_category_active; // type_index: 22
+	ListBase ui_lists; // type_index: 22
+	ListBase ui_previews; // type_index: 22
+	ListBase view_states; // type_index: 22
+	void *regiondata; // type_index: 11
+	ARegionRuntimeHandle *runtime; // type_index: 885
 }; 
 
-struct uiPreview { // Max dep:878
-	uiPreview *next; // type_index: 878
-	uiPreview *prev; // type_index: 878
-	char preview_id[64]; // type_index: 0
-	short height; // type_index: 2
-	short tag; // type_index: 2
-	int id_session_uid; // type_index: 4
-}; 
-
-struct ScrArea_Runtime { // Max dep:881
-	bToolRef *tool; // type_index: 881
-	char is_tool_set; // type_index: 0
-	char _pad0[7]; // type_index: 0
-}; 
-
-struct ScrArea { // Max dep:884
+struct ScrArea { // Max dep:883
 	ScrArea *next; // type_index: 882
 	ScrArea *prev; // type_index: 882
 	ScrVert *v1; // type_index: 862
@@ -11804,37 +12591,37 @@ struct ScrArea { // Max dep:884
 	ScrArea_Runtime runtime; // type_index: 880
 }; 
 
-struct ARegion { // Max dep:885
-	ARegion *next; // type_index: 859
-	ARegion *prev; // type_index: 859
-	View2D v2d; // type_index: 71
-	rcti winrct; // type_index: 883
+struct View2D { // Max dep:883
+	rctf tot; // type_index: 82
+	rctf cur; // type_index: 82
+	rcti vert; // type_index: 883
+	rcti hor; // type_index: 883
+	rcti mask; // type_index: 883
+	float min[2]; // type_index: 7
+	float max[2]; // type_index: 7
+	float minzoom; // type_index: 7
+	float maxzoom; // type_index: 7
+	short scroll; // type_index: 2
+	short scroll_ui; // type_index: 2
+	short keeptot; // type_index: 2
+	short keepzoom; // type_index: 2
+	short keepofs; // type_index: 2
+	short flag; // type_index: 2
+	short align; // type_index: 2
 	short winx; // type_index: 2
 	short winy; // type_index: 2
-	int category_scroll; // type_index: 4
-	short regiontype; // type_index: 2
-	short alignment; // type_index: 2
-	short flag; // type_index: 2
-	short sizex; // type_index: 2
-	short sizey; // type_index: 2
-	short overlap; // type_index: 2
-	short flagfullscreen; // type_index: 2
+	short oldwinx; // type_index: 2
+	short oldwiny; // type_index: 2
+	short around; // type_index: 2
+	char alpha_vert; // type_index: 0
+	char alpha_hor; // type_index: 0
 	char _pad[2]; // type_index: 0
-	ListBase panels; // type_index: 22
-	ListBase panels_category_active; // type_index: 22
-	ListBase ui_lists; // type_index: 22
-	ListBase ui_previews; // type_index: 22
-	ListBase view_states; // type_index: 22
-	void *regiondata; // type_index: 11
-	ARegionRuntimeHandle *runtime; // type_index: 885
+	float page_size_y; // type_index: 7
+	SmoothView2DStore *sms; // type_index: 1059
+	wmTimer *smooth_timer; // type_index: 860
 }; 
 
-struct RegionAssetShelf { // Max dep:887
-	ListBase shelves; // type_index: 22
-	AssetShelf *active_shelf; // type_index: 887
-}; 
-
-struct AssetShelf { // Max dep:888
+struct AssetShelf { // Max dep:886
 	AssetShelf *next; // type_index: 887
 	AssetShelf *prev; // type_index: 887
 	char idname[64]; // type_index: 0
@@ -11845,49 +12632,7 @@ struct AssetShelf { // Max dep:888
 	char _pad[4]; // type_index: 0
 }; 
 
-struct FileHandler { // Max dep:891
-	FileHandlerTypeHandle *type; // type_index: 891
-}; 
-
-struct StripAnim { // Max dep:892
-	StripAnim *next; // type_index: 892
-	StripAnim *prev; // type_index: 892
-	MovieReader *anim; // type_index: 316
-}; 
-
-struct Strip { // Max dep:898
-	Strip *next; // type_index: 898
-	Strip *prev; // type_index: 898
-	int us; // type_index: 4
-	int done; // type_index: 4
-	StripElem *stripdata; // type_index: 893
-	char dir[768]; // type_index: 0
-	StripProxy *proxy; // type_index: 897
-	StripCrop *crop; // type_index: 894
-	StripTransform *transform; // type_index: 895
-	StripColorBalance *color_balance; // type_index: 896
-	ColorManagedColorspaceSettings colorspace_settings; // type_index: 169
-}; 
-
-struct Speaker { // Max dep:902
-	ID id; // type_index: 26
-	AnimData *adt; // type_index: 96
-	bSound *sound; // type_index: 902
-	float volume_max; // type_index: 7
-	float volume_min; // type_index: 7
-	float distance_max; // type_index: 7
-	float distance_reference; // type_index: 7
-	float attenuation; // type_index: 7
-	float cone_angle_outer; // type_index: 7
-	float cone_angle_inner; // type_index: 7
-	float cone_volume_outer; // type_index: 7
-	float volume; // type_index: 7
-	float pitch; // type_index: 7
-	short flag; // type_index: 2
-	char _pad1[6]; // type_index: 0
-}; 
-
-struct Sequence { // Max dep:902
+struct Sequence { // Max dep:900
 	Sequence *next; // type_index: 901
 	Sequence *prev; // type_index: 901
 	void *_pad; // type_index: 11
@@ -11958,39 +12703,7 @@ struct Sequence { // Max dep:902
 	StripRuntime runtime; // type_index: 900
 }; 
 
-struct MetaStack { // Max dep:903
-	MetaStack *next; // type_index: 903
-	MetaStack *prev; // type_index: 903
-	Sequence *old_strip; // type_index: 901
-	Sequence *parseq; // type_index: 901
-	int disp_range[2]; // type_index: 4
-}; 
-
-struct SeqTimelineChannel { // Max dep:904
-	SeqTimelineChannel *next; // type_index: 904
-	SeqTimelineChannel *prev; // type_index: 904
-	char name[64]; // type_index: 0
-	int index; // type_index: 4
-	int flag; // type_index: 4
-}; 
-
-struct SeqConnection { // Max dep:905
-	SeqConnection *next; // type_index: 905
-	SeqConnection *prev; // type_index: 905
-	Sequence *seq_ref; // type_index: 901
-}; 
-
-struct EditingRuntime { // Max dep:913
-	StripLookup *strip_lookup; // type_index: 907
-	MediaPresence *media_presence; // type_index: 908
-	ThumbnailCache *thumbnail_cache; // type_index: 909
-	IntraFrameCache *intra_frame_cache; // type_index: 910
-	SourceImageCache *source_image_cache; // type_index: 911
-	FinalImageCache *final_image_cache; // type_index: 912
-	PreviewCache *preview_cache; // type_index: 913
-}; 
-
-struct Editing { // Max dep:914
+struct Editing { // Max dep:906
 	Sequence *current_meta_strip; // type_index: 901
 	ListBase seqbase; // type_index: 22
 	ListBase metastack; // type_index: 22
@@ -12008,40 +12721,7 @@ struct Editing { // Max dep:914
 	EditingRuntime runtime; // type_index: 906
 }; 
 
-struct TextVars { // Max dep:922
-	char *text_ptr; // type_index: 0
-	int text_len_bytes; // type_index: 4
-	char _pad2[4]; // type_index: 0
-	VFont *text_font; // type_index: 213
-	int text_blf_id; // type_index: 4
-	float text_size; // type_index: 7
-	float color[4]; // type_index: 7
-	float shadow_color[4]; // type_index: 7
-	float box_color[4]; // type_index: 7
-	float outline_color[4]; // type_index: 7
-	float loc[2]; // type_index: 7
-	float wrap_width; // type_index: 7
-	float box_margin; // type_index: 7
-	float box_roundness; // type_index: 7
-	float shadow_angle; // type_index: 7
-	float shadow_offset; // type_index: 7
-	float shadow_blur; // type_index: 7
-	float outline_width; // type_index: 7
-	char flag; // type_index: 0
-	char align; // type_index: 0
-	char _pad[2]; // type_index: 0
-	int cursor_offset; // type_index: 4
-	int selection_start_offset; // type_index: 4
-	int selection_end_offset; // type_index: 4
-	char align_y; // type_index: 0
-	char anchor_x; // type_index: 0
-	char anchor_y; // type_index: 0
-	char _pad1; // type_index: 0
-	TextVarsRuntime *runtime; // type_index: 922
-	char text[512]; // type_index: 0
-}; 
-
-struct SequenceModifierData { // Max dep:925
+struct SequenceModifierData { // Max dep:924
 	SequenceModifierData *next; // type_index: 925
 	SequenceModifierData *prev; // type_index: 925
 	int type; // type_index: 4
@@ -12057,36 +12737,19 @@ struct SequenceModifierData { // Max dep:925
 	StripModifierDataRuntime runtime; // type_index: 924
 }; 
 
-struct ColorBalanceModifierData { // Max dep:925
-	SequenceModifierData modifier; // type_index: 925
-	StripColorBalance color_balance; // type_index: 896
-	float color_multiply; // type_index: 7
-}; 
-
 struct CurvesModifierData { // Max dep:925
 	SequenceModifierData modifier; // type_index: 925
 	CurveMapping curve_mapping; // type_index: 127
 }; 
 
-struct HueCorrectModifierData { // Max dep:925
+struct SoundEqualizerModifierData { // Max dep:925
 	SequenceModifierData modifier; // type_index: 925
-	CurveMapping curve_mapping; // type_index: 127
+	ListBase graphics; // type_index: 22
 }; 
 
-struct BrightContrastModifierData { // Max dep:925
+struct SequencerCompositorModifierData { // Max dep:925
 	SequenceModifierData modifier; // type_index: 925
-	float bright; // type_index: 7
-	float contrast; // type_index: 7
-}; 
-
-struct SequencerMaskModifierData { // Max dep:925
-	SequenceModifierData modifier; // type_index: 925
-}; 
-
-struct WhiteBalanceModifierData { // Max dep:925
-	SequenceModifierData modifier; // type_index: 925
-	float white_value[3]; // type_index: 7
-	char _pad[4]; // type_index: 0
+	bNodeTree *node_group; // type_index: 338
 }; 
 
 struct SequencerTonemapModifierData { // Max dep:925
@@ -12101,96 +12764,31 @@ struct SequencerTonemapModifierData { // Max dep:925
 	int type; // type_index: 4
 }; 
 
-struct SequencerCompositorModifierData { // Max dep:925
+struct WhiteBalanceModifierData { // Max dep:925
 	SequenceModifierData modifier; // type_index: 925
-	bNodeTree *node_group; // type_index: 338
+	float white_value[3]; // type_index: 7
+	char _pad[4]; // type_index: 0
 }; 
 
-struct SoundEqualizerModifierData { // Max dep:925
+struct SequencerMaskModifierData { // Max dep:925
 	SequenceModifierData modifier; // type_index: 925
-	ListBase graphics; // type_index: 22
 }; 
 
-struct EQCurveMappingData { // Max dep:934
-	EQCurveMappingData *next; // type_index: 934
-	EQCurveMappingData *prev; // type_index: 934
+struct BrightContrastModifierData { // Max dep:925
+	SequenceModifierData modifier; // type_index: 925
+	float bright; // type_index: 7
+	float contrast; // type_index: 7
+}; 
+
+struct HueCorrectModifierData { // Max dep:925
+	SequenceModifierData modifier; // type_index: 925
 	CurveMapping curve_mapping; // type_index: 127
 }; 
 
-struct ShaderFxData { // Max dep:936
-	ShaderFxData *next; // type_index: 936
-	ShaderFxData *prev; // type_index: 936
-	int type; // type_index: 4
-	int mode; // type_index: 4
-	char _pad0[4]; // type_index: 0
-	short flag; // type_index: 2
-	short ui_expand_flag; // type_index: 2
-	char name[64]; // type_index: 0
-	char *error; // type_index: 0
-}; 
-
-struct PixelShaderFxData { // Max dep:937
-	ShaderFxData shaderfx; // type_index: 936
-	int size[3]; // type_index: 4
-	int flag; // type_index: 4
-	float rgba[4]; // type_index: 7
-	ShaderFxData_Runtime runtime; // type_index: 937
-}; 
-
-struct BlurShaderFxData { // Max dep:937
-	ShaderFxData shaderfx; // type_index: 936
-	float radius[2]; // type_index: 7
-	int flag; // type_index: 4
-	int samples; // type_index: 4
-	float rotation; // type_index: 7
-	char _pad[4]; // type_index: 0
-	ShaderFxData_Runtime runtime; // type_index: 937
-}; 
-
-struct FlipShaderFxData { // Max dep:937
-	ShaderFxData shaderfx; // type_index: 936
-	int flag; // type_index: 4
-	int flipmode; // type_index: 4
-	ShaderFxData_Runtime runtime; // type_index: 937
-}; 
-
-struct GlowShaderFxData { // Max dep:937
-	ShaderFxData shaderfx; // type_index: 936
-	float glow_color[4]; // type_index: 7
-	float select_color[3]; // type_index: 7
-	float threshold; // type_index: 7
-	int flag; // type_index: 4
-	int mode; // type_index: 4
-	float blur[2]; // type_index: 7
-	int samples; // type_index: 4
-	float rotation; // type_index: 7
-	int blend_mode; // type_index: 4
-	char _pad[4]; // type_index: 0
-	ShaderFxData_Runtime runtime; // type_index: 937
-}; 
-
-struct ColorizeShaderFxData { // Max dep:937
-	ShaderFxData shaderfx; // type_index: 936
-	int mode; // type_index: 4
-	float low_color[4]; // type_index: 7
-	float high_color[4]; // type_index: 7
-	float factor; // type_index: 7
-	int flag; // type_index: 4
-	char _pad[4]; // type_index: 0
-	ShaderFxData_Runtime runtime; // type_index: 937
-}; 
-
-struct RimShaderFxData { // Max dep:937
-	ShaderFxData shaderfx; // type_index: 936
-	int offset[2]; // type_index: 4
-	int flag; // type_index: 4
-	float rim_rgb[3]; // type_index: 7
-	float mask_rgb[3]; // type_index: 7
-	int mode; // type_index: 4
-	int blur[2]; // type_index: 4
-	int samples; // type_index: 4
-	char _pad[4]; // type_index: 0
-	ShaderFxData_Runtime runtime; // type_index: 937
+struct ColorBalanceModifierData { // Max dep:925
+	SequenceModifierData modifier; // type_index: 925
+	StripColorBalance color_balance; // type_index: 896
+	float color_multiply; // type_index: 7
 }; 
 
 struct ShadowShaderFxData { // Max dep:937
@@ -12211,6 +12809,49 @@ struct ShadowShaderFxData { // Max dep:937
 	ShaderFxData_Runtime runtime; // type_index: 937
 }; 
 
+struct RimShaderFxData { // Max dep:937
+	ShaderFxData shaderfx; // type_index: 936
+	int offset[2]; // type_index: 4
+	int flag; // type_index: 4
+	float rim_rgb[3]; // type_index: 7
+	float mask_rgb[3]; // type_index: 7
+	int mode; // type_index: 4
+	int blur[2]; // type_index: 4
+	int samples; // type_index: 4
+	char _pad[4]; // type_index: 0
+	ShaderFxData_Runtime runtime; // type_index: 937
+}; 
+
+struct PixelShaderFxData { // Max dep:937
+	ShaderFxData shaderfx; // type_index: 936
+	int size[3]; // type_index: 4
+	int flag; // type_index: 4
+	float rgba[4]; // type_index: 7
+	ShaderFxData_Runtime runtime; // type_index: 937
+}; 
+
+struct GlowShaderFxData { // Max dep:937
+	ShaderFxData shaderfx; // type_index: 936
+	float glow_color[4]; // type_index: 7
+	float select_color[3]; // type_index: 7
+	float threshold; // type_index: 7
+	int flag; // type_index: 4
+	int mode; // type_index: 4
+	float blur[2]; // type_index: 7
+	int samples; // type_index: 4
+	float rotation; // type_index: 7
+	int blend_mode; // type_index: 4
+	char _pad[4]; // type_index: 0
+	ShaderFxData_Runtime runtime; // type_index: 937
+}; 
+
+struct FlipShaderFxData { // Max dep:937
+	ShaderFxData shaderfx; // type_index: 936
+	int flag; // type_index: 4
+	int flipmode; // type_index: 4
+	ShaderFxData_Runtime runtime; // type_index: 937
+}; 
+
 struct SwirlShaderFxData { // Max dep:937
 	ShaderFxData shaderfx; // type_index: 936
 	Object *object; // type_index: 51
@@ -12218,6 +12859,17 @@ struct SwirlShaderFxData { // Max dep:937
 	int radius; // type_index: 4
 	float angle; // type_index: 7
 	int transparent; // type_index: 4
+	ShaderFxData_Runtime runtime; // type_index: 937
+}; 
+
+struct ColorizeShaderFxData { // Max dep:937
+	ShaderFxData shaderfx; // type_index: 936
+	int mode; // type_index: 4
+	float low_color[4]; // type_index: 7
+	float high_color[4]; // type_index: 7
+	float factor; // type_index: 7
+	int flag; // type_index: 4
+	char _pad[4]; // type_index: 0
 	ShaderFxData_Runtime runtime; // type_index: 937
 }; 
 
@@ -12232,61 +12884,14 @@ struct WaveShaderFxData { // Max dep:937
 	ShaderFxData_Runtime runtime; // type_index: 937
 }; 
 
-struct ShaderFxData_Runtime { // Max dep:938
-	float loc[3]; // type_index: 7
+struct BlurShaderFxData { // Max dep:937
+	ShaderFxData shaderfx; // type_index: 936
+	float radius[2]; // type_index: 7
+	int flag; // type_index: 4
+	int samples; // type_index: 4
+	float rotation; // type_index: 7
 	char _pad[4]; // type_index: 0
-	DRWShadingGroup *fx_sh; // type_index: 938
-	DRWShadingGroup *fx_sh_b; // type_index: 938
-	DRWShadingGroup *fx_sh_c; // type_index: 938
-}; 
-
-struct SpaceButs { // Max dep:950
-	SpaceLink *next; // type_index: 70
-	SpaceLink *prev; // type_index: 70
-	ListBase regionbase; // type_index: 22
-	char spacetype; // type_index: 0
-	char link_flag; // type_index: 0
-	char _pad0[6]; // type_index: 0
-	View2D v2d; // type_index: 71
-	short space_subtype; // type_index: 2
-	short mainb; // type_index: 2
-	short mainbo; // type_index: 2
-	short mainbuser; // type_index: 2
-	int visible_tabs; // type_index: 4
-	short preview; // type_index: 2
-	char flag; // type_index: 0
-	char outliner_sync; // type_index: 0
-	void *path; // type_index: 11
-	int pathflag; // type_index: 4
-	int dataicon; // type_index: 4
-	ID *pinid; // type_index: 26
-	void *texuser; // type_index: 11
-	SpaceProperties_Runtime *runtime; // type_index: 950
-}; 
-
-struct SpaceOops { // Max dep:952
-	SpaceLink *next; // type_index: 70
-	SpaceLink *prev; // type_index: 70
-	ListBase regionbase; // type_index: 22
-	char spacetype; // type_index: 0
-	char link_flag; // type_index: 0
-	char _pad0[6]; // type_index: 0
-	View2D v2d; // type_index: 71
-	ListBase tree; // type_index: 22
-	BLI_mempool *treestore; // type_index: 221
-	char search_string[64]; // type_index: 0
-	short flag; // type_index: 2
-	short outlinevis; // type_index: 2
-	short lib_override_view_mode; // type_index: 2
-	short storeflag; // type_index: 2
-	char search_flags; // type_index: 0
-	char _pad[6]; // type_index: 0
-	char sync_select_dirty; // type_index: 0
-	int filter; // type_index: 4
-	char filter_state; // type_index: 0
-	char show_restrict_flags; // type_index: 0
-	short filter_id_type; // type_index: 2
-	SpaceOutliner_Runtime *runtime; // type_index: 952
+	ShaderFxData_Runtime runtime; // type_index: 937
 }; 
 
 struct SpaceIpo { // Max dep:953
@@ -12308,7 +12913,7 @@ struct SpaceIpo { // Max dep:953
 	SpaceGraph_Runtime runtime; // type_index: 953
 }; 
 
-struct SpaceSeq { // Max dep:960
+struct SpaceSeq { // Max dep:958
 	SpaceLink *next; // type_index: 70
 	SpaceLink *prev; // type_index: 70
 	ListBase regionbase; // type_index: 22
@@ -12348,44 +12953,6 @@ struct FileAssetSelectParams { // Max dep:962
 	short import_type; // type_index: 2
 	short import_flags; // type_index: 2
 	char _pad2[4]; // type_index: 0
-}; 
-
-struct FileFolderHistory { // Max dep:965
-	FileFolderLists *next; // type_index: 965
-	FileFolderLists *prev; // type_index: 965
-	char browse_mode; // type_index: 0
-	char _pad[7]; // type_index: 0
-	ListBase folders_prev; // type_index: 22
-	ListBase folders_next; // type_index: 22
-}; 
-
-struct SpaceFile { // Max dep:970
-	SpaceLink *next; // type_index: 70
-	SpaceLink *prev; // type_index: 70
-	ListBase regionbase; // type_index: 22
-	char spacetype; // type_index: 0
-	char link_flag; // type_index: 0
-	char _pad0[6]; // type_index: 0
-	char browse_mode; // type_index: 0
-	char _pad1[1]; // type_index: 0
-	short tags; // type_index: 2
-	int scroll_offset; // type_index: 4
-	FileSelectParams *params; // type_index: 962
-	FileAssetSelectParams *asset_params; // type_index: 963
-	void *_pad2; // type_index: 11
-	FileList *files; // type_index: 967
-	ListBase *folders_prev; // type_index: 22
-	ListBase *folders_next; // type_index: 22
-	ListBase folder_histories; // type_index: 22
-	wmOperator *op; // type_index: 968
-	wmTimer *smoothscroll_timer; // type_index: 860
-	wmTimer *previews_timer; // type_index: 860
-	FileLayout *layout; // type_index: 969
-	short recentnr; // type_index: 2
-	short bookmarknr; // type_index: 2
-	short systemnr; // type_index: 2
-	short system_bookmarknr; // type_index: 2
-	SpaceFile_Runtime *runtime; // type_index: 970
 }; 
 
 struct SpaceImage { // Max dep:971
@@ -12428,61 +12995,7 @@ struct SpaceImage { // Max dep:971
 	SpaceImageOverlay overlay; // type_index: 971
 }; 
 
-struct SpaceText { // Max dep:974
-	SpaceLink *next; // type_index: 70
-	SpaceLink *prev; // type_index: 70
-	ListBase regionbase; // type_index: 22
-	char spacetype; // type_index: 0
-	char link_flag; // type_index: 0
-	char _pad0[6]; // type_index: 0
-	Text *text; // type_index: 151
-	int top; // type_index: 4
-	int left; // type_index: 4
-	char _pad1[4]; // type_index: 0
-	short flags; // type_index: 2
-	short lheight; // type_index: 2
-	int tabnumber; // type_index: 4
-	char wordwrap; // type_index: 0
-	char doplugins; // type_index: 0
-	char showlinenrs; // type_index: 0
-	char showsyntax; // type_index: 0
-	char line_hlight; // type_index: 0
-	char overwrite; // type_index: 0
-	char live_edit; // type_index: 0
-	char _pad2[1]; // type_index: 0
-	char findstr[256]; // type_index: 0
-	char replacestr[256]; // type_index: 0
-	short margin_column; // type_index: 2
-	char _pad3[2]; // type_index: 0
-	SpaceText_Runtime *runtime; // type_index: 974
-}; 
-
-struct SpaceScript { // Max dep:975
-	SpaceLink *next; // type_index: 70
-	SpaceLink *prev; // type_index: 70
-	ListBase regionbase; // type_index: 22
-	char spacetype; // type_index: 0
-	char link_flag; // type_index: 0
-	char _pad0[6]; // type_index: 0
-	Script *script; // type_index: 975
-	short flags; // type_index: 2
-	short menunr; // type_index: 2
-	char _pad1[4]; // type_index: 0
-	void *but_refs; // type_index: 11
-}; 
-
-struct bNodeTreePath { // Max dep:977
-	bNodeTreePath *next; // type_index: 977
-	bNodeTreePath *prev; // type_index: 977
-	bNodeTree *nodetree; // type_index: 338
-	bNodeInstanceKey parent_key; // type_index: 569
-	char _pad[4]; // type_index: 0
-	float view_center[2]; // type_index: 7
-	char node_name[64]; // type_index: 0
-	char display_name[64]; // type_index: 0
-}; 
-
-struct SpaceNode { // Max dep:980
+struct SpaceNode { // Max dep:978
 	SpaceLink *next; // type_index: 70
 	SpaceLink *prev; // type_index: 70
 	ListBase regionbase; // type_index: 22
@@ -12512,16 +13025,6 @@ struct SpaceNode { // Max dep:980
 	char _pad2[7]; // type_index: 0
 	SpaceNodeOverlay overlay; // type_index: 978
 	SpaceNode_Runtime *runtime; // type_index: 980
-}; 
-
-struct ConsoleLine { // Max dep:981
-	ConsoleLine *next; // type_index: 981
-	ConsoleLine *prev; // type_index: 981
-	int len_alloc; // type_index: 4
-	int len; // type_index: 4
-	char *line; // type_index: 0
-	int cursor; // type_index: 4
-	int type; // type_index: 4
 }; 
 
 struct SpaceClip { // Max dep:984
@@ -12561,45 +13064,7 @@ struct SpaceClip { // Max dep:984
 	SpaceClipOverlay overlay; // type_index: 984
 }; 
 
-struct SpreadsheetColumn { // Max dep:990
-	SpreadsheetColumnID *id; // type_index: 988
-	uchar data_type; // type_index: 1
-	char _pad0[3]; // type_index: 0
-	int flag; // type_index: 4
-	float width; // type_index: 7
-	int last_used; // type_index: 4
-	char *display_name; // type_index: 0
-	SpreadsheetColumnRuntime *runtime; // type_index: 990
-}; 
-
-struct SpreadsheetTable { // Max dep:992
-	SpreadsheetTableID *id; // type_index: 992
-	SpreadsheetColumn **columns; // type_index: 989
-	int num_columns; // type_index: 4
-	int flag; // type_index: 4
-	int last_used; // type_index: 4
-	int column_use_clock; // type_index: 4
-}; 
-
-struct SpreadsheetTableIDGeometry { // Max dep:995
-	SpreadsheetTableID base; // type_index: 992
-	char _pad0[4]; // type_index: 0
-	ViewerPath viewer_path; // type_index: 995
-	int viewer_item_identifier; // type_index: 4
-	int bundle_path_num; // type_index: 4
-	SpreadsheetBundlePathElem *bundle_path; // type_index: 993
-	int8_t closure_input_output; // type_index: 12
-	char _pad3[7]; // type_index: 0
-	SpreadsheetInstanceID *instance_ids; // type_index: 991
-	int instance_ids_num; // type_index: 4
-	uchar geometry_component_type; // type_index: 1
-	uchar attribute_domain; // type_index: 1
-	uchar object_eval_state; // type_index: 1
-	char _pad1[5]; // type_index: 0
-	int layer_index; // type_index: 4
-}; 
-
-struct SpaceSpreadsheet { // Max dep:998
+struct SpaceSpreadsheet { // Max dep:994
 	SpaceLink *next; // type_index: 70
 	SpaceLink *prev; // type_index: 70
 	ListBase regionbase; // type_index: 22
@@ -12619,47 +13084,39 @@ struct SpaceSpreadsheet { // Max dep:998
 	SpaceSpreadsheet_Runtime *runtime; // type_index: 998
 }; 
 
-struct SpreadsheetRowFilter { // Max dep:999
-	SpreadsheetRowFilter *next; // type_index: 999
-	SpreadsheetRowFilter *prev; // type_index: 999
-	char column_name[64]; // type_index: 0
-	uchar operation; // type_index: 1
-	uchar flag; // type_index: 1
-	char _pad0[6]; // type_index: 0
-	int value_int; // type_index: 4
-	int value_int2[2]; // type_index: 4
-	int value_int3[3]; // type_index: 4
-	char *value_string; // type_index: 0
-	float value_float; // type_index: 7
-	float threshold; // type_index: 7
-	float value_float2[2]; // type_index: 7
-	float value_float3[3]; // type_index: 7
-	float value_color[4]; // type_index: 7
-	char _pad1[4]; // type_index: 0
-}; 
-
-struct Text { // Max dep:1001
+struct WorkSpace { // Max dep:995
 	ID id; // type_index: 26
-	void *_pad1; // type_index: 11
-	char *name; // type_index: 0
-	void *compiled; // type_index: 11
+	ListBase layouts; // type_index: 22
+	ListBase hook_layout_relations; // type_index: 22
+	ListBase owner_ids; // type_index: 22
+	ListBase tools; // type_index: 22
+	Scene *pin_scene; // type_index: 238
+	Scene *sequencer_scene; // type_index: 238
+	char _pad[4]; // type_index: 0
+	int object_mode; // type_index: 4
 	int flags; // type_index: 4
-	char _pad0[4]; // type_index: 0
-	ListBase lines; // type_index: 22
-	TextLine *curl; // type_index: 1001
-	TextLine *sell; // type_index: 1001
-	int curc; // type_index: 4
-	int selc; // type_index: 4
-	double mtime; // type_index: 8
+	int order; // type_index: 4
+	WorkSpaceRuntimeHandle *runtime; // type_index: 1102
+	AssetLibraryReference asset_library_ref; // type_index: 108
+	ViewerPath viewer_path; // type_index: 995
 }; 
 
-struct TextLine { // Max dep:1001
-	TextLine *next; // type_index: 1001
-	TextLine *prev; // type_index: 1001
-	char *line; // type_index: 0
-	char *format; // type_index: 0
-	int len; // type_index: 4
+struct SpreadsheetTableIDGeometry { // Max dep:995
+	SpreadsheetTableID base; // type_index: 992
 	char _pad0[4]; // type_index: 0
+	ViewerPath viewer_path; // type_index: 995
+	int viewer_item_identifier; // type_index: 4
+	int bundle_path_num; // type_index: 4
+	SpreadsheetBundlePathElem *bundle_path; // type_index: 993
+	int8_t closure_input_output; // type_index: 12
+	char _pad3[7]; // type_index: 0
+	SpreadsheetInstanceID *instance_ids; // type_index: 991
+	int instance_ids_num; // type_index: 4
+	uchar geometry_component_type; // type_index: 1
+	uchar attribute_domain; // type_index: 1
+	uchar object_eval_state; // type_index: 1
+	char _pad1[5]; // type_index: 0
+	int layer_index; // type_index: 4
 }; 
 
 struct Tex { // Max dep:1002
@@ -12721,7 +13178,7 @@ struct Tex { // Max dep:1002
 	Tex_Runtime runtime; // type_index: 1002
 }; 
 
-struct uiStyle { // Max dep:1004
+struct uiStyle { // Max dep:1003
 	uiStyle *next; // type_index: 1004
 	uiStyle *prev; // type_index: 1004
 	char name[64]; // type_index: 0
@@ -12821,7 +13278,7 @@ struct ThemeUI { // Max dep:1014
 	char panel_active[4]; // type_index: 0
 }; 
 
-struct bTheme { // Max dep:1019
+struct bTheme { // Max dep:1018
 	bTheme *next; // type_index: 1019
 	bTheme *prev; // type_index: 1019
 	char name[64]; // type_index: 0
@@ -12853,30 +13310,7 @@ struct bTheme { // Max dep:1019
 	int active_theme_area; // type_index: 4
 }; 
 
-struct MovieTrackingReconstruction { // Max dep:1020
-	int flag; // type_index: 4
-	float error; // type_index: 7
-	int last_camera; // type_index: 4
-	int camnr; // type_index: 4
-	MovieReconstructedCamera *cameras; // type_index: 1020
-}; 
-
-struct MovieTrackingPlaneTrack { // Max dep:1023
-	MovieTrackingPlaneTrack *next; // type_index: 1023
-	MovieTrackingPlaneTrack *prev; // type_index: 1023
-	char name[64]; // type_index: 0
-	MovieTrackingTrack **point_tracks; // type_index: 552
-	int point_tracksnr; // type_index: 4
-	char _pad[4]; // type_index: 0
-	MovieTrackingPlaneMarker *markers; // type_index: 1022
-	int markersnr; // type_index: 4
-	int flag; // type_index: 4
-	Image *image; // type_index: 144
-	float image_opacity; // type_index: 7
-	int last_marker; // type_index: 4
-}; 
-
-struct MovieTrackingObject { // Max dep:1027
+struct MovieTrackingObject { // Max dep:1026
 	MovieTrackingObject *next; // type_index: 1027
 	MovieTrackingObject *prev; // type_index: 1027
 	char name[64]; // type_index: 0
@@ -12889,29 +13323,6 @@ struct MovieTrackingObject { // Max dep:1027
 	MovieTrackingReconstruction reconstruction; // type_index: 1026
 	int keyframe1; // type_index: 4
 	int keyframe2; // type_index: 4
-}; 
-
-struct MovieTrackingDopesheetChannel { // Max dep:1029
-	MovieTrackingDopesheetChannel *next; // type_index: 1029
-	MovieTrackingDopesheetChannel *prev; // type_index: 1029
-	MovieTrackingTrack *track; // type_index: 552
-	char _pad[4]; // type_index: 0
-	char name[64]; // type_index: 0
-	int tot_segment; // type_index: 4
-	int *segments; // type_index: 4
-	int max_segment; // type_index: 4
-	int total_frames; // type_index: 4
-	int first_not_disabled_marker_framenr; // type_index: 4
-	int last_not_disabled_marker_framenr; // type_index: 4
-}; 
-
-struct MovieTrackingDopesheetCoverageSegment { // Max dep:1030
-	MovieTrackingDopesheetCoverageSegment *next; // type_index: 1030
-	MovieTrackingDopesheetCoverageSegment *prev; // type_index: 1030
-	int coverage; // type_index: 4
-	int start_frame; // type_index: 4
-	int end_frame; // type_index: 4
-	char _pad[4]; // type_index: 0
 }; 
 
 struct MovieTracking { // Max dep:1031
@@ -12930,36 +13341,9 @@ struct MovieTracking { // Max dep:1031
 	MovieTrackingDopesheet dopesheet; // type_index: 1031
 }; 
 
-struct bAddon { // Max dep:1032
-	bAddon *next; // type_index: 1032
-	bAddon *prev; // type_index: 1032
-	char module[128]; // type_index: 0
-	IDProperty *prop; // type_index: 24
-}; 
-
-struct bPathCompare { // Max dep:1033
-	bPathCompare *next; // type_index: 1033
-	bPathCompare *prev; // type_index: 1033
-	char path[768]; // type_index: 0
-	char flag; // type_index: 0
-	char _pad0[7]; // type_index: 0
-}; 
-
-struct bUserMenu { // Max dep:1034
-	bUserMenu *next; // type_index: 1034
-	bUserMenu *prev; // type_index: 1034
-	char space_type; // type_index: 0
-	char _pad0[7]; // type_index: 0
-	char context[64]; // type_index: 0
-	ListBase items; // type_index: 22
-}; 
-
-struct bUserMenuItem { // Max dep:1035
-	bUserMenuItem *next; // type_index: 1035
-	bUserMenuItem *prev; // type_index: 1035
-	char ui_name[64]; // type_index: 0
-	char type; // type_index: 0
-	char _pad0[7]; // type_index: 0
+struct bUserMenuItem_Menu { // Max dep:1035
+	bUserMenuItem item; // type_index: 1035
+	char mt_idname[64]; // type_index: 0
 }; 
 
 struct bUserMenuItem_Op { // Max dep:1035
@@ -12971,40 +13355,12 @@ struct bUserMenuItem_Op { // Max dep:1035
 	char _pad0[7]; // type_index: 0
 }; 
 
-struct bUserMenuItem_Menu { // Max dep:1035
-	bUserMenuItem item; // type_index: 1035
-	char mt_idname[64]; // type_index: 0
-}; 
-
 struct bUserMenuItem_Prop { // Max dep:1035
 	bUserMenuItem item; // type_index: 1035
 	char context_data_path[256]; // type_index: 0
 	char prop_id[64]; // type_index: 0
 	int prop_index; // type_index: 4
 	char _pad0[4]; // type_index: 0
-}; 
-
-struct bUserAssetLibrary { // Max dep:1039
-	bUserAssetLibrary *next; // type_index: 1039
-	bUserAssetLibrary *prev; // type_index: 1039
-	char name[64]; // type_index: 0
-	char path[1024]; // type_index: 0
-	short import_method; // type_index: 2
-	short flag; // type_index: 2
-	char _pad0[4]; // type_index: 0
-}; 
-
-struct bUserExtensionRepo { // Max dep:1040
-	bUserExtensionRepo *next; // type_index: 1040
-	bUserExtensionRepo *prev; // type_index: 1040
-	char name[64]; // type_index: 0
-	char module[48]; // type_index: 0
-	char *access_token; // type_index: 0
-	char custom_dirpath[1024]; // type_index: 0
-	char remote_url[1024]; // type_index: 0
-	uchar flag; // type_index: 1
-	uchar source; // type_index: 1
-	char _pad0[6]; // type_index: 0
 }; 
 
 struct UserDef { // Max dep:1048
@@ -13188,109 +13544,7 @@ struct UserDef { // Max dep:1048
 	UserDef_Runtime runtime; // type_index: 1044
 }; 
 
-struct bUserScriptDirectory { // Max dep:1049
-	bUserScriptDirectory *next; // type_index: 1049
-	bUserScriptDirectory *prev; // type_index: 1049
-	char name[64]; // type_index: 0
-	char dir_path[768]; // type_index: 0
-}; 
-
-struct bUserAssetShelfSettings { // Max dep:1050
-	bUserAssetShelfSettings *next; // type_index: 1050
-	bUserAssetShelfSettings *prev; // type_index: 1050
-	char shelf_idname[64]; // type_index: 0
-	ListBase enabled_catalog_paths; // type_index: 22
-}; 
-
-struct VFont { // Max dep:1058
-	ID id; // type_index: 26
-	char name[1024]; // type_index: 0
-	VFontData *data; // type_index: 1058
-	PackedFile *packedfile; // type_index: 35
-	PackedFile *temp_pf; // type_index: 35
-}; 
-
-struct View2D { // Max dep:1059
-	rctf tot; // type_index: 82
-	rctf cur; // type_index: 82
-	rcti vert; // type_index: 883
-	rcti hor; // type_index: 883
-	rcti mask; // type_index: 883
-	float min[2]; // type_index: 7
-	float max[2]; // type_index: 7
-	float minzoom; // type_index: 7
-	float maxzoom; // type_index: 7
-	short scroll; // type_index: 2
-	short scroll_ui; // type_index: 2
-	short keeptot; // type_index: 2
-	short keepzoom; // type_index: 2
-	short keepofs; // type_index: 2
-	short flag; // type_index: 2
-	short align; // type_index: 2
-	short winx; // type_index: 2
-	short winy; // type_index: 2
-	short oldwinx; // type_index: 2
-	short oldwiny; // type_index: 2
-	short around; // type_index: 2
-	char alpha_vert; // type_index: 0
-	char alpha_hor; // type_index: 0
-	char _pad[2]; // type_index: 0
-	float page_size_y; // type_index: 7
-	SmoothView2DStore *sms; // type_index: 1059
-	wmTimer *smooth_timer; // type_index: 860
-}; 
-
-struct RegionView3D { // Max dep:1062
-	float winmat[4][4]; // type_index: 7
-	float viewmat[4][4]; // type_index: 7
-	float viewinv[4][4]; // type_index: 7
-	float persmat[4][4]; // type_index: 7
-	float persinv[4][4]; // type_index: 7
-	float viewcamtexcofac[4]; // type_index: 7
-	float viewmatob[4][4]; // type_index: 7
-	float persmatob[4][4]; // type_index: 7
-	float clip[6][4]; // type_index: 7
-	float clip_local[6][4]; // type_index: 7
-	BoundBox *clipbb; // type_index: 430
-	RegionView3D *localvd; // type_index: 1060
-	ViewRender *view_render; // type_index: 1061
-	SmoothView3DStore *sms; // type_index: 1062
-	wmTimer *smooth_timer; // type_index: 860
-	float twmat[4][4]; // type_index: 7
-	float tw_axis_min[3]; // type_index: 7
-	float tw_axis_max[3]; // type_index: 7
-	float tw_axis_matrix[3][3]; // type_index: 7
-	float gridview; // type_index: 7
-	float viewquat[4]; // type_index: 7
-	float dist; // type_index: 7
-	float camdx; // type_index: 7
-	float camdy; // type_index: 7
-	float pixsize; // type_index: 7
-	float ofs[3]; // type_index: 7
-	float camzoom; // type_index: 7
-	char is_persp; // type_index: 0
-	char persp; // type_index: 0
-	char view; // type_index: 0
-	char view_axis_roll; // type_index: 0
-	char viewlock; // type_index: 0
-	char runtime_viewlock; // type_index: 0
-	char viewlock_quad; // type_index: 0
-	char _pad[1]; // type_index: 0
-	float ofs_lock[2]; // type_index: 7
-	short twdrawflag; // type_index: 2
-	short rflag; // type_index: 2
-	float lviewquat[4]; // type_index: 7
-	char lpersp; // type_index: 0
-	char lview; // type_index: 0
-	char lview_axis_roll; // type_index: 0
-	char _pad8[4]; // type_index: 0
-	char ndof_flag; // type_index: 0
-	float ndof_ofs[3]; // type_index: 7
-	float ndof_rot_angle; // type_index: 7
-	float ndof_rot_axis[3]; // type_index: 7
-}; 
-
-struct View3D { // Max dep:1065
+struct View3D { // Max dep:1064
 	SpaceLink *next; // type_index: 70
 	SpaceLink *prev; // type_index: 70
 	ListBase regionbase; // type_index: 22
@@ -13354,42 +13608,15 @@ struct View3D { // Max dep:1065
 	View3D_Runtime runtime; // type_index: 1064
 }; 
 
-struct EvaluateClosureNodeViewerPathElem { // Max dep:1066
+struct IDViewerPathElem { // Max dep:1066
 	ViewerPathElem base; // type_index: 1066
-	int evaluate_node_id; // type_index: 4
-	int source_output_node_id; // type_index: 4
-	bNodeTree *source_node_tree; // type_index: 338
+	ID *id; // type_index: 26
 }; 
 
 struct ViewerNodeViewerPathElem { // Max dep:1066
 	ViewerPathElem base; // type_index: 1066
 	int node_id; // type_index: 4
 	char _pad1[4]; // type_index: 0
-}; 
-
-struct RepeatZoneViewerPathElem { // Max dep:1066
-	ViewerPathElem base; // type_index: 1066
-	int repeat_output_node_id; // type_index: 4
-	int iteration; // type_index: 4
-}; 
-
-struct IDViewerPathElem { // Max dep:1066
-	ViewerPathElem base; // type_index: 1066
-	ID *id; // type_index: 26
-}; 
-
-struct ViewerPathElem { // Max dep:1066
-	ViewerPathElem *next; // type_index: 1066
-	ViewerPathElem *prev; // type_index: 1066
-	int type; // type_index: 4
-	char _pad[4]; // type_index: 0
-	char *ui_name; // type_index: 0
-}; 
-
-struct ForeachGeometryElementZoneViewerPathElem { // Max dep:1066
-	ViewerPathElem base; // type_index: 1066
-	int zone_output_node_id; // type_index: 4
-	int index; // type_index: 4
 }; 
 
 struct ModifierViewerPathElem { // Max dep:1066
@@ -13410,7 +13637,26 @@ struct SimulationZoneViewerPathElem { // Max dep:1066
 	char _pad1[4]; // type_index: 0
 }; 
 
-struct Volume { // Max dep:1078
+struct RepeatZoneViewerPathElem { // Max dep:1066
+	ViewerPathElem base; // type_index: 1066
+	int repeat_output_node_id; // type_index: 4
+	int iteration; // type_index: 4
+}; 
+
+struct ForeachGeometryElementZoneViewerPathElem { // Max dep:1066
+	ViewerPathElem base; // type_index: 1066
+	int zone_output_node_id; // type_index: 4
+	int index; // type_index: 4
+}; 
+
+struct EvaluateClosureNodeViewerPathElem { // Max dep:1066
+	ViewerPathElem base; // type_index: 1066
+	int evaluate_node_id; // type_index: 4
+	int source_output_node_id; // type_index: 4
+	bNodeTree *source_node_tree; // type_index: 338
+}; 
+
+struct Volume { // Max dep:1076
 	ID id; // type_index: 26
 	AnimData *adt; // type_index: 96
 	char filepath[1024]; // type_index: 0
@@ -13436,12 +13682,7 @@ struct Volume { // Max dep:1078
 	VolumeRuntimeHandle *runtime; // type_index: 1078
 }; 
 
-struct wmXrData { // Max dep:1081
-	wmXrRuntimeData *runtime; // type_index: 1080
-	XrSessionSettings session_settings; // type_index: 1081
-}; 
-
-struct wmWindowManager { // Max dep:1083
+struct wmWindowManager { // Max dep:1079
 	ID id; // type_index: 26
 	ListBase windows; // type_index: 22
 	uchar init_flag; // type_index: 1
@@ -13458,249 +13699,8 @@ struct wmWindowManager { // Max dep:1083
 	WindowManagerRuntimeHandle *runtime; // type_index: 1083
 }; 
 
-struct wmWindow { // Max dep:1088
-	wmWindow *next; // type_index: 1084
-	wmWindow *prev; // type_index: 1084
-	void *ghostwin; // type_index: 11
-	void *gpuctx; // type_index: 11
-	wmWindow *parent; // type_index: 1084
-	Scene *scene; // type_index: 238
-	Scene *new_scene; // type_index: 238
-	char view_layer_name[64]; // type_index: 0
-	Scene *unpinned_scene; // type_index: 238
-	WorkSpaceInstanceHook *workspace_hook; // type_index: 1085
-	ScrAreaMap global_area_map; // type_index: 865
-	bScreen *screen; // type_index: 237
-	int winid; // type_index: 4
-	short posx; // type_index: 2
-	short posy; // type_index: 2
-	short sizex; // type_index: 2
-	short sizey; // type_index: 2
-	char windowstate; // type_index: 0
-	char active; // type_index: 0
-	short cursor; // type_index: 2
-	short lastcursor; // type_index: 2
-	short modalcursor; // type_index: 2
-	short grabcursor; // type_index: 2
-	short pie_event_type_lock; // type_index: 2
-	short pie_event_type_last; // type_index: 2
-	char tag_cursor_refresh; // type_index: 0
-	char event_queue_check_click; // type_index: 0
-	char event_queue_check_drag; // type_index: 0
-	char event_queue_check_drag_handled; // type_index: 0
-	short event_queue_consecutive_gesture_type; // type_index: 2
-	int event_queue_consecutive_gesture_xy[2]; // type_index: 4
-	wmEvent_ConsecutiveData *event_queue_consecutive_gesture_data; // type_index: 1086
-	wmEvent *eventstate; // type_index: 1087
-	wmEvent *event_last_handled; // type_index: 1087
-	char addmousemove; // type_index: 0
-	char _pad1[7]; // type_index: 0
-	ListBase handlers; // type_index: 22
-	ListBase modalhandlers; // type_index: 22
-	ListBase gesture; // type_index: 22
-	Stereo3dFormat *stereo3d_format; // type_index: 324
-	ListBase drawcalls; // type_index: 22
-	void *cursor_keymap_status; // type_index: 11
-	void *_pad2; // type_index: 11
-	uint64_t eventstate_prev_press_time_ms; // type_index: 10
-	WindowRuntimeHandle *runtime; // type_index: 1088
-	void *_pad3; // type_index: 11
-}; 
-
-struct wmKeyMapItem { // Max dep:1090
-	wmKeyMapItem *next; // type_index: 1089
-	wmKeyMapItem *prev; // type_index: 1089
-	char idname[64]; // type_index: 0
-	IDProperty *properties; // type_index: 24
-	char propvalue_str[64]; // type_index: 0
-	short propvalue; // type_index: 2
-	short type; // type_index: 2
-	int8_t val; // type_index: 12
-	int8_t direction; // type_index: 12
-	int8_t shift; // type_index: 12
-	int8_t ctrl; // type_index: 12
-	int8_t alt; // type_index: 12
-	int8_t oskey; // type_index: 12
-	int8_t hyper; // type_index: 12
-	char _pad0[7]; // type_index: 0
-	short keymodifier; // type_index: 2
-	uchar flag; // type_index: 1
-	uchar maptype; // type_index: 1
-	short id; // type_index: 2
-	PointerRNA *ptr; // type_index: 1090
-}; 
-
-struct wmKeyMapDiffItem { // Max dep:1091
-	wmKeyMapDiffItem *next; // type_index: 1091
-	wmKeyMapDiffItem *prev; // type_index: 1091
-	wmKeyMapItem *remove_item; // type_index: 1089
-	wmKeyMapItem *add_item; // type_index: 1089
-}; 
-
-struct wmKeyMap { // Max dep:1093
-	wmKeyMap *next; // type_index: 1092
-	wmKeyMap *prev; // type_index: 1092
-	ListBase items; // type_index: 22
-	ListBase diff_items; // type_index: 22
-	char idname[64]; // type_index: 0
-	short spaceid; // type_index: 2
-	short regionid; // type_index: 2
-	char owner_id[128]; // type_index: 0
-	short flag; // type_index: 2
-	short kmi_id; // type_index: 2
-	bool (*poll)(); // type_index: 1093
-	bool (*poll_modal_item)(); // type_index: 1093
-	void *modal_items; // type_index: 11
-}; 
-
-struct wmKeyConfigPref { // Max dep:1094
-	wmKeyConfigPref *next; // type_index: 1094
-	wmKeyConfigPref *prev; // type_index: 1094
-	char idname[64]; // type_index: 0
-	IDProperty *prop; // type_index: 24
-}; 
-
-struct wmKeyConfig { // Max dep:1095
-	wmKeyConfig *next; // type_index: 1095
-	wmKeyConfig *prev; // type_index: 1095
-	char idname[64]; // type_index: 0
-	char basename[64]; // type_index: 0
-	ListBase keymaps; // type_index: 22
-	int actkeymap; // type_index: 4
-	short flag; // type_index: 2
-	char _pad0[2]; // type_index: 0
-}; 
-
-struct wmOperator { // Max dep:1097
-	wmOperator *next; // type_index: 968
-	wmOperator *prev; // type_index: 968
-	char idname[64]; // type_index: 0
-	IDProperty *properties; // type_index: 24
-	wmOperatorType *type; // type_index: 1096
-	void *customdata; // type_index: 11
-	void *py_instance; // type_index: 11
-	PointerRNA *ptr; // type_index: 1090
-	ReportList *reports; // type_index: 1097
-	ListBase macro; // type_index: 22
-	wmOperator *opm; // type_index: 968
-	uiLayout *layout; // type_index: 869
-	short flag; // type_index: 2
-	char _pad[6]; // type_index: 0
-}; 
-
-struct bToolRef { // Max dep:1098
-	bToolRef *next; // type_index: 881
-	bToolRef *prev; // type_index: 881
-	char idname[64]; // type_index: 0
-	char idname_fallback[64]; // type_index: 0
-	char idname_pending[64]; // type_index: 0
-	short tag; // type_index: 2
-	short space_type; // type_index: 2
-	int mode; // type_index: 4
-	IDProperty *properties; // type_index: 24
-	bToolRef_Runtime *runtime; // type_index: 1098
-}; 
-
-struct WorkSpaceLayout { // Max dep:1099
-	WorkSpaceLayout *next; // type_index: 1099
-	WorkSpaceLayout *prev; // type_index: 1099
-	bScreen *screen; // type_index: 237
-	char name[64]; // type_index: 0
-}; 
-
-struct wmOwnerID { // Max dep:1100
-	wmOwnerID *next; // type_index: 1100
-	wmOwnerID *prev; // type_index: 1100
-	char name[128]; // type_index: 0
-}; 
-
-struct WorkSpaceInstanceHook { // Max dep:1101
-	WorkSpace *active; // type_index: 1101
-	WorkSpaceLayout *act_layout; // type_index: 1099
-	WorkSpace *temp_workspace_store; // type_index: 1101
-	WorkSpaceLayout *temp_layout_store; // type_index: 1099
-}; 
-
-struct WorkSpace { // Max dep:1102
-	ID id; // type_index: 26
-	ListBase layouts; // type_index: 22
-	ListBase hook_layout_relations; // type_index: 22
-	ListBase owner_ids; // type_index: 22
-	ListBase tools; // type_index: 22
-	Scene *pin_scene; // type_index: 238
-	Scene *sequencer_scene; // type_index: 238
-	char _pad[4]; // type_index: 0
-	int object_mode; // type_index: 4
-	int flags; // type_index: 4
-	int order; // type_index: 4
-	WorkSpaceRuntimeHandle *runtime; // type_index: 1102
-	AssetLibraryReference asset_library_ref; // type_index: 108
-	ViewerPath viewer_path; // type_index: 995
-}; 
-
-struct WorkSpaceDataRelation { // Max dep:1103
-	WorkSpaceDataRelation *next; // type_index: 1103
-	WorkSpaceDataRelation *prev; // type_index: 1103
-	void *parent; // type_index: 11
-	void *value; // type_index: 11
-	int parentid; // type_index: 4
-	char _pad_0[4]; // type_index: 0
-}; 
-
-struct XrComponentPath { // Max dep:1104
-	XrComponentPath *next; // type_index: 1104
-	XrComponentPath *prev; // type_index: 1104
-	char path[192]; // type_index: 0
-}; 
-
-struct XrActionMapBinding { // Max dep:1105
-	XrActionMapBinding *next; // type_index: 1105
-	XrActionMapBinding *prev; // type_index: 1105
-	char name[64]; // type_index: 0
-	char profile[256]; // type_index: 0
-	ListBase component_paths; // type_index: 22
-	float float_threshold; // type_index: 7
-	short axis_flag; // type_index: 2
-	char _pad[2]; // type_index: 0
-	float pose_location[3]; // type_index: 7
-	float pose_rotation[3]; // type_index: 7
-}; 
-
-struct XrUserPath { // Max dep:1106
-	XrUserPath *next; // type_index: 1106
-	XrUserPath *prev; // type_index: 1106
-	char path[64]; // type_index: 0
-}; 
-
-struct XrActionMapItem { // Max dep:1107
-	XrActionMapItem *next; // type_index: 1107
-	XrActionMapItem *prev; // type_index: 1107
-	char name[64]; // type_index: 0
-	char type; // type_index: 0
-	char _pad[7]; // type_index: 0
-	ListBase user_paths; // type_index: 22
-	char op[64]; // type_index: 0
-	IDProperty *op_properties; // type_index: 24
-	PointerRNA *op_properties_ptr; // type_index: 1090
-	short op_flag; // type_index: 2
-	short action_flag; // type_index: 2
-	short haptic_flag; // type_index: 2
-	short pose_flag; // type_index: 2
-	char haptic_name[64]; // type_index: 0
-	float haptic_duration; // type_index: 7
-	float haptic_frequency; // type_index: 7
-	float haptic_amplitude; // type_index: 7
-	short selbinding; // type_index: 2
-	char _pad3[2]; // type_index: 0
-	ListBase bindings; // type_index: 22
-}; 
-
-struct XrActionMap { // Max dep:1108
-	XrActionMap *next; // type_index: 1108
-	XrActionMap *prev; // type_index: 1108
-	char name[64]; // type_index: 0
-	ListBase items; // type_index: 22
-	short selitem; // type_index: 2
-	char _pad[6]; // type_index: 0
+struct wmXrData { // Max dep:1081
+	wmXrRuntimeData *runtime; // type_index: 1080
+	XrSessionSettings session_settings; // type_index: 1081
 }; 
 

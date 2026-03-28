@@ -45,18 +45,27 @@ void WriteSDNA(const SDNA& sdna, const char* path) {
 
     file << "\n";
 
-    /* TODO: sorting system to avoid ordering issues */
 
     // SDNA_Struct** sorted_structs = new SDNA_Struct*[sdna.structs_num];
     // memcpy(sorted_structs, sdna.structs, sdna.structs_num * sizeof(SDNA_Struct*));
+    // TODO: need to check if the member/ is a pointer if so it doesn't coutn toward max dep
     Sortable_SDNA_Struct* sorting_array = new Sortable_SDNA_Struct[sdna.structs_num];
     for (int i = 0; i < sdna.structs_num; i++) {
         SDNA_Struct* struct_pointer = sdna.structs[i];
         int max = -1;
         for (int member_index = 0; member_index < struct_pointer->members_num; member_index++) {
             SDNA_StructMember member = struct_pointer->members[member_index];
+            const char* name = sdna.members[member.member_index];
+            while (*name != '\0') {
+                if (*name == '*') {
+                    goto skip;
+                }
+                name++;
+            }
             if (member.type_index > max)
                 max = member.type_index;
+            skip:
+            continue;
         }
         sorting_array[i] = {
             .struct_pointer = struct_pointer,
