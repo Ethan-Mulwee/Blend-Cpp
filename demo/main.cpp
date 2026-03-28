@@ -23,7 +23,7 @@
 // 5. function for processing the pointers contain within the data block data to remap them to the correct buffers
 
 
-#include <fstream>
+using namespace blendio;
 
 int main() {
     // BlendFileReader blend_file_reader = ReadBlendFile("Cube.blend");

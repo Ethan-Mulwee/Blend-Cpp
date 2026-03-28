@@ -6,6 +6,8 @@
 
 // generates a switch statement that deals with all sdna types, sorting them into lists with cast types and deals with remapping pointers
 
+using namespace blendio;
+
 void WriteSDNA(const SDNA& sdna, const char* path) {
     std::fstream file(path, std::ios::out);
 
