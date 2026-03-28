@@ -26,14 +26,6 @@ add_custom_target(code-gen-run
     COMMAND code-gen
 )
 
-# add_subdirectory(full-lib)
-# file(GLOB_RECURSE ALL_LIBRARY_HEADERS
-# "${CMAKE_CURRENT_SOURCE_DIR}/full-lib/*.hpp"
-# "${CMAKE_CURRENT_SOURCE_DIR}/full-lib/*.h"
-# "${CMAKE_CURRENT_SOURCE_DIR}/core-lib/*.hpp"
-# )
-# file(COPY ${ALL_LIBRARY_HEADERS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include)
-
 # demo
 
 add_executable(blend-demo ${DEMO_SRC_FILES})

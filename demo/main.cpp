@@ -23,12 +23,15 @@
 // 5. function for processing the pointers contain within the data block data to remap them to the correct buffers
 
 
+#include <fstream>
+
 int main() {
     // BlendFileReader blend_file_reader = ReadBlendFile("Cube.blend");
     // BlendFileIntermediate blend_file_intermediate = SplitDataBlocks(blend_file_reader);
     // InterpretDataBlocks(blend_file_intermediate);
 
-    BlendByteBuffer blend_bytes = ReadBlendFileBytes("../Cube.blend");
+
+    BlendByteBuffer blend_bytes = ReadBlendFileBytes("Reference.blend");
     DataBlockList block_list = ParseDataBlocks(blend_bytes);
     SDNA sdna = ParseSDNA(block_list);
     for (int i = 0; i < sdna.members_num; i++) {
