@@ -1,5 +1,5 @@
-#include "core/blend_process.hpp"
-#include "blend_types/sdna_types.h"
+#include "blend_process.hpp"
+#include "blend_types/sdna_types_gen.h"
 #include "blend_types/attribute_types.h"
 
 #include <vector>

@@ -1,8 +1,8 @@
 #include <fstream>
 #include <cstring>
 
-#include "core/blend_data_blocks.hpp"
-#include "core/blend_sdna.hpp"
+#include "core/blendio_data_blocks.hpp"
+#include "core/blendio_sdna.hpp"
 
 // generates a switch statement that deals with all sdna types, sorting them into lists with cast types and deals with remapping pointers
 
@@ -57,10 +57,10 @@ void WriteSDNA(const SDNA& sdna, const char* path) {
 }
 
 int main() {
-    BlendByteBuffer blend_bytes = ReadBlendFileBytes("../Cube.blend");
+    BlendByteBuffer blend_bytes = ReadBlendFileBytes("../Reference.blend");
     DataBlockList block_list = ParseDataBlocks(blend_bytes);
     SDNA sdna = ParseSDNA(block_list);
-    WriteSDNA(sdna, "../include/generated_code.h");
+    WriteSDNA(sdna, "../include/blend_types/generated_code.h");
     // WriteSDNA(const SDNA &sdna, const char *path)
     return 0;
 }

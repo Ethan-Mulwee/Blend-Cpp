@@ -1,7 +1,7 @@
-#ifndef BLEND_SDNA_READER
-#define BLEND_SDNA_READER
+#ifndef BLENDIO_SDNA_READER
+#define BLENDIO_SDNA_READER
 
-#include "blend_data_blocks.hpp"
+#include "blendio_data_blocks.hpp"
 
 /* 
  * Types are null termianted c strings in the style of C like "vertex[3]\0" 

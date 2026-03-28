@@ -1,4 +1,4 @@
-#include "core/blend_byte_buffer.hpp"
+#include "core/blendio_byte_buffer.hpp"
 
 #include <fstream>
 

@@ -1,8 +1,7 @@
-#ifndef BLEND_FILE_PROCESS
-#define BLEND_FILE_PROCESS
+#ifndef BLENDIO_FILE_PROCESS
+#define BLENDIO_FILE_PROCESS
 
-#include "blend_data_blocks.hpp"
-#include "blend_sdna.hpp"
+#include "blendio_core.hpp"
 #include <map>
 
 /* TODO: handle pointer mapping better, either remap all the pointers at once 

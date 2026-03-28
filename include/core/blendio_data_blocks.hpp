@@ -1,7 +1,7 @@
 #ifndef BLEND_DATA_BLOCKS
 #define BLEND_DATA_BLOCKS
 
-#include "blend_byte_buffer.hpp"
+#include "blendio_byte_buffer.hpp"
 
 // TODO: use a more efficent structure
 #include <map>

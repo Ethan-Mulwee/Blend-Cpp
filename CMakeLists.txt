@@ -16,13 +16,13 @@ make_directory(${CMAKE_CURRENT_BINARY_DIR}/include)
 
 add_custom_command(
     COMMAND code-gen
-    DEPENDS  ${CMAKE_CURRENT_SOURCE_DIR}/Cube.blend
-    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/include/generated_code.h
-    COMMENT "tesing123..."
+    DEPENDS  ${CMAKE_CURRENT_SOURCE_DIR}/Reference.blend
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/include/blend_types/generated_code.h
+    COMMENT "generating SDNA types header..."
 )
 
 add_custom_target(code-gen-run 
-    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/include/generated_code.h
+    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/include/blend_types/generated_code.h
     COMMAND code-gen
 )
 
