@@ -1,4 +1,4 @@
-#include "blend_sdna.hpp"
+#include "core/blend_sdna.hpp"
 #include <stdexcept>
 #include <cstring>
 #include <fstream>

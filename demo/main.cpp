@@ -7,13 +7,13 @@
 
 // TODO: get rid of monolithic blend file structs, instead split into multiple functions and structs
 // 1. function for reading and returning the data and info of the raw bytes of the file
-#include "blend_byte_buffer.hpp"
+#include "core/blend_byte_buffer.hpp"
 
 // 2. function for parsing out the list of data blocks, with the data copied and split into individual buffers for each block
-#include "blend_data_blocks.hpp"
+#include "core/blend_data_blocks.hpp"
 
 // 3. function for reading SDNA data block
-#include "blend_sdna.hpp"
+#include "core/blend_sdna.hpp"
 
 #include "generated_code.h"
 
