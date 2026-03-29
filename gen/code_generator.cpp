@@ -45,13 +45,13 @@ void WriteSDNA(const SDNA& sdna, const char* path) {
 
     file << "\n";
 
-
+    std::map<size_t, size_t> typeindex_to_structindex;
     // SDNA_Struct** sorted_structs = new SDNA_Struct*[sdna.structs_num];
     // memcpy(sorted_structs, sdna.structs, sdna.structs_num * sizeof(SDNA_Struct*));
-    // TODO: need to check if the member/ is a pointer if so it doesn't coutn toward max dep
     Sortable_SDNA_Struct* sorting_array = new Sortable_SDNA_Struct[sdna.structs_num];
     for (int i = 0; i < sdna.structs_num; i++) {
         SDNA_Struct* struct_pointer = sdna.structs[i];
+        typeindex_to_structindex.insert({struct_pointer->type_index, i});
         int max = -1;
         for (int member_index = 0; member_index < struct_pointer->members_num; member_index++) {
             SDNA_StructMember member = struct_pointer->members[member_index];
@@ -72,6 +72,9 @@ void WriteSDNA(const SDNA& sdna, const char* path) {
             .max_dep = max
         };
     }
+
+    // TODO: Topological sorting
+    
 
     std::sort(sorting_array, &sorting_array[sdna.structs_num], [](const Sortable_SDNA_Struct &a, const Sortable_SDNA_Struct &b) {
         return a.max_dep < b.max_dep;
