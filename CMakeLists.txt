@@ -17,7 +17,7 @@ make_directory(${CMAKE_CURRENT_BINARY_DIR}/include)
 add_custom_command(
     COMMAND code-gen
     DEPENDS  ${CMAKE_CURRENT_SOURCE_DIR}/Reference.blend code-gen
-    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/include/blend_types/generated_code.h
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/include/blend_types/sdna_types_gen.h
     COMMENT "generating SDNA types header..."
 )
 
