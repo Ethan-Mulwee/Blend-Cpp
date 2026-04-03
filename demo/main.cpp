@@ -17,6 +17,7 @@
 
 // #include "generated_code.h"
 #include "blendio_core.hpp"
+#include "blendio_process.hpp"
 
 // 4. function for sorting the data blocks into lists by type
 // #include "blend_process.hpp"
@@ -34,11 +35,11 @@ int main() {
     BlendByteBuffer blend_bytes = ReadBlendFileBytes("Reference.blend");
     DataBlockList block_list = ParseDataBlocks(blend_bytes);
     SDNA sdna = ParseSDNA(block_list);
-    for (int i = 0; i < sdna.members_num; i++) {
-        std::cout << sdna.members[i] << "\n";
-    }
-    // auto mapping = GetPointerMapping(block_list);
-    // InterpretDataBlocks(block_list, sdna);
+    // for (int i = 0; i < sdna.members_num; i++) {
+    //     std::cout << sdna.members[i] << "\n";
+    // }
+    auto mapping = GetPointerMapping(block_list);
+    InterpretDataBlocks(block_list, sdna);
 
 
     return 0;

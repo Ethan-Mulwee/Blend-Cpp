@@ -12,7 +12,7 @@ target_include_directories(blend-seq-core PUBLIC ${CMAKE_CURRENT_LIST_DIR}/inclu
 
 add_subdirectory(gen)
 
-make_directory(${CMAKE_CURRENT_BINARY_DIR}/include)
+# make_directory(${CMAKE_CURRENT_BINARY_DIR}/include)
 
 add_custom_command(
     COMMAND code-gen
@@ -26,6 +26,13 @@ add_custom_target(code-gen-run
     COMMAND code-gen
 )
 
+file(GLOB_RECURSE FULL_SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
+add_library(blend-seq-full STATIC ${FULL_SRC_FILES})
+target_compile_options(blend-seq-full PRIVATE -Wall)
+target_include_directories(blend-seq-full PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include)
+add_dependencies(blend-seq-full code-gen-run)
+
+
 # demo
 
 add_executable(blend-demo ${DEMO_SRC_FILES})
@@ -35,6 +42,4 @@ target_include_directories(blend-demo
     # PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>/include
     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
-target_link_libraries(blend-demo blend-seq-core)
-
-add_dependencies(blend-demo code-gen-run)
+target_link_libraries(blend-demo blend-seq-full)

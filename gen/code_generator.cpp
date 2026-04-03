@@ -130,6 +130,11 @@ void WriteSDNA(const SDNA& sdna, const char* path) {
     file.close();
 }
 
+// creates giant switch statement which can take a data_block and sort it into an array by its type
+void WriteSDNACaster() {
+
+}
+
 int main() {
     BlendByteBuffer blend_bytes = ReadBlendFileBytes("../Reference.blend");
     DataBlockList block_list = ParseDataBlocks(blend_bytes);
