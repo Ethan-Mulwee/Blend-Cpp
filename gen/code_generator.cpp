@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <fstream>
 #include <cstring>
+#include <vector>
 
 #include "core/blendio_data_blocks.hpp"
 #include "core/blendio_sdna.hpp"
@@ -9,11 +10,62 @@
 
 using namespace blendio;
 
-// void QuickSort(SDNA_Struct* )
-struct Sortable_SDNA_Struct {
-    SDNA_Struct* struct_pointer;
-    int max_dep = -1;
-};
+void TopologicalSortVisit(const SDNA &sdna, int struct_idx, std::vector<const SDNA_Struct*>& sorted_structs, bool* struct_visited, const std::map<size_t, size_t>& typeindex_to_structindex) {
+    struct_visited[struct_idx] = true;
+    const SDNA_Struct* struct_pointer = sdna.structs[struct_idx];
+
+    for (int i = 0; i < struct_pointer->members_num; i++) {
+        int dependency_type = struct_pointer->members[i].type_index; 
+        // skip pointers
+        const char* name = sdna.members[struct_pointer->members[i].member_index];
+        while (*name != '\0') {
+            if (*name == '*') {
+                goto skip;
+            }
+            name++;
+        }
+        try {
+            int dependency_struct_idx = typeindex_to_structindex.at(dependency_type);
+            if (!struct_visited[dependency_struct_idx]) {
+                TopologicalSortVisit(sdna, dependency_struct_idx, sorted_structs, struct_visited, typeindex_to_structindex);
+            }
+        }
+        catch (std::exception e) {
+            // std::cout << "exeception on: " << struct_pointer->members[i].member_index << "\n";
+        }
+        skip:
+        continue;
+    }
+
+    sorted_structs.push_back(struct_pointer);
+}
+
+std::vector<const SDNA_Struct*> TopologicalSort(const SDNA& sdna) {
+    std::vector<const SDNA_Struct*> sorted_structs;
+    sorted_structs.reserve(sdna.structs_num);
+
+    std::map<size_t, size_t> typeindex_to_structindex;
+
+    for (int i = 0; i < sdna.structs_num; i++) {
+        SDNA_Struct* struct_pointer = sdna.structs[i];
+        typeindex_to_structindex.insert({struct_pointer->type_index, i});
+    }
+
+    bool* struct_visited = new bool[sdna.structs_num];
+    memset(struct_visited, false, sizeof(bool) * sdna.structs_num);
+
+    for (int i = 0; i < sdna.structs_num; i++) {
+        if (!struct_visited[i]) {
+            TopologicalSortVisit(sdna, i, sorted_structs, struct_visited, typeindex_to_structindex);
+        }
+    }
+
+    // for (int i = 0; i < sorted_structs.size(); i++) {
+    //     std::cout << sdna.types[sorted_structs[i]->type_index] << "\n";
+    // }
+
+    return sorted_structs;
+}
 
 void WriteSDNA(const SDNA& sdna, const char* path) {
     std::fstream file(path, std::ios::out);
@@ -48,11 +100,9 @@ void WriteSDNA(const SDNA& sdna, const char* path) {
     std::map<size_t, size_t> typeindex_to_structindex;
     // SDNA_Struct** sorted_structs = new SDNA_Struct*[sdna.structs_num];
     // memcpy(sorted_structs, sdna.structs, sdna.structs_num * sizeof(SDNA_Struct*));
-    Sortable_SDNA_Struct* sorting_array = new Sortable_SDNA_Struct[sdna.structs_num];
     for (int i = 0; i < sdna.structs_num; i++) {
         SDNA_Struct* struct_pointer = sdna.structs[i];
         typeindex_to_structindex.insert({struct_pointer->type_index, i});
-        int max = -1;
         for (int member_index = 0; member_index < struct_pointer->members_num; member_index++) {
             SDNA_StructMember member = struct_pointer->members[member_index];
             const char* name = sdna.members[member.member_index];
@@ -62,28 +112,17 @@ void WriteSDNA(const SDNA& sdna, const char* path) {
                 }
                 name++;
             }
-            if (member.type_index > max)
-                max = member.type_index;
             skip:
             continue;
         }
-        sorting_array[i] = {
-            .struct_pointer = struct_pointer,
-            .max_dep = max
-        };
     }
 
     // TODO: Topological sorting
-    
+    std::vector<const SDNA_Struct*> sorted_structs = TopologicalSort(sdna); 
 
-    std::sort(sorting_array, &sorting_array[sdna.structs_num], [](const Sortable_SDNA_Struct &a, const Sortable_SDNA_Struct &b) {
-        return a.max_dep < b.max_dep;
-    });
-
-    for (int i = 0; i < sdna.structs_num; i++) {
-        Sortable_SDNA_Struct sorted_struct = sorting_array[i];
-        SDNA_Struct* struct_pointer = sorted_struct.struct_pointer;
-        file << "struct " << sdna.types[struct_pointer->type_index] << " { // Max dep:" << sorted_struct.max_dep << "\n";
+    for (int i = 0; i < sorted_structs.size(); i++) {
+        const SDNA_Struct* struct_pointer = sorted_structs[i];
+        file << "struct " << sdna.types[struct_pointer->type_index] << " {\n";
         for (int member_index = 0; member_index < struct_pointer->members_num; member_index++) {
             SDNA_StructMember member = struct_pointer->members[member_index];
             
@@ -101,6 +140,7 @@ int main() {
     DataBlockList block_list = ParseDataBlocks(blend_bytes);
     SDNA sdna = ParseSDNA(block_list);
     WriteSDNA(sdna, "../include/blend_types/generated_code.h");
+    TopologicalSort(sdna);
     // WriteSDNA(const SDNA &sdna, const char *path)
     return 0;
 }
